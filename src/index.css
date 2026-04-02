@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #00D1FF;
+  --color-secondary: #00FF94;
+  --color-accent: #FF00E5;
+}
+
+@layer base {
+  body {
+    @apply bg-[#0A0C10] text-gray-100 font-sans antialiased;
+  }
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-primary/80 text-black font-semibold px-4 py-2 rounded-xl transition-all active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-secondary hover:bg-secondary/80 text-black font-semibold px-4 py-2 rounded-xl transition-all active:scale-95;
+}
+
+.input-field {
+  @apply bg-white/5 border border-white/10 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all;
+}
+
+@media print {
+  /* Force white background on everything */
+  html, body {
+    background: white !important;
+    color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #root {
+    background: white !important;
+  }
+
+  /* Hide the main app container */
+  #root > div:not(.fixed) {
+    display: none !important;
+  }
+
+  /* Handle the modal overlay */
+  .fixed.inset-0 {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    background: white !important;
+    display: block !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+
+  /* Hide modal backdrop blur/darkness */
+  .backdrop-blur-sm,
+  .bg-black\/80 {
+    backdrop-filter: none !important;
+    background: white !important;
+  }
+
+  /* Hide the modal's internal scroll and shadow */
+  .max-h-\[90vh\] {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .shadow-2xl {
+    box-shadow: none !important;
+  }
+
+  .rounded-2xl {
+    border-radius: 0 !important;
+  }
+
+  /* Hide UI elements */
+  .print\:hidden,
+  .sticky.top-0,
+  button,
+  .p-4.bg-gray-100.border-b {
+    display: none !important;
+  }
+
+  /* Target the invoice specifically */
+  #invoice-to-download {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10mm !important;
+    background: white !important;
+    min-height: auto !important;
+    position: static !important;
+  }
+
+  /* Ensure colors are printed */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+}
