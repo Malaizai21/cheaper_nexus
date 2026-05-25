@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { 
   Video, 
@@ -55,6 +56,7 @@ type LanguageData = {
     whyUs: string;
     packages: string;
     pricing: string;
+    blog: string;
     contact: string;
     consultation: string;
   };
@@ -117,6 +119,7 @@ const translations: Record<Language, LanguageData> = {
       whyUs: "Why Us",
       packages: "Packages",
       pricing: "Pricing",
+      blog: "Blog",
       contact: "Contact",
       consultation: "Get Free Consultation"
     },
@@ -319,6 +322,7 @@ const translations: Record<Language, LanguageData> = {
       whyUs: "为什么选择我们",
       packages: "套餐方案",
       pricing: "价格方案",
+      blog: "营销博客",
       contact: "联系我们",
       consultation: "获取免费咨询"
     },
@@ -521,6 +525,7 @@ const translations: Record<Language, LanguageData> = {
       whyUs: "Kenapa Kami",
       packages: "Pakej",
       pricing: "Harga",
+      blog: "Blog",
       contact: "Hubungi",
       consultation: "Konsultasi Percuma"
     },
@@ -719,6 +724,74 @@ const translations: Record<Language, LanguageData> = {
   }
 };
 
+type BlogPreviewItem = { id: number; slug: string; language: string; title: string; meta_description: string; topic: string; word_count: number; created_at: string };
+
+function BlogPreview({ lang }: { lang: Language }) {
+  const [posts, setPosts] = useState<BlogPreviewItem[]>([]);
+
+  useEffect(() => {
+    fetch('/blog/articles.json')
+      .then(r => r.json())
+      .then((data: BlogPreviewItem[]) => setPosts(data.slice(0, 3)))
+      .catch(() => {});
+  }, []);
+
+  if (posts.length === 0) return null;
+
+  const title = { zh: '营销知识库', en: 'Marketing Insights', ms: 'Panduan Pemasaran' }[lang];
+  const subtitle = { zh: '最新数码营销干货，助您的业务在马来西亚市场脱颖而出。', en: 'Fresh digital marketing tips to help your business stand out in Malaysia.', ms: 'Tip pemasaran digital terkini untuk membantu perniagaan anda.' }[lang];
+  const readMore = { zh: '阅读全文', en: 'Read More', ms: 'Baca Lagi' }[lang];
+  const viewAll = { zh: '查看全部文章 →', en: 'View All Articles →', ms: 'Lihat Semua →' }[lang];
+
+  return (
+    <section className="py-24 bg-brand-blue/[0.02]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-end justify-between mb-12">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-3">{title}</h2>
+            <p className="text-brand-blue/60 max-w-xl">{subtitle}</p>
+          </div>
+          <Link to="/blog" className="hidden sm:flex items-center gap-1 text-sm font-bold text-brand-cyan hover:text-brand-blue transition-colors whitespace-nowrap">
+            {viewAll}
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {posts.map((post, i) => (
+            <motion.div
+              key={post.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+            >
+              <Link
+                to={`/blog/${post.slug}`}
+                className="group flex flex-col h-full p-7 bg-brand-white rounded-[28px] border border-brand-blue/5 hover:border-brand-cyan/30 hover:shadow-2xl hover:shadow-brand-blue/5 transition-all"
+              >
+                <span className={`self-start mb-4 px-2.5 py-0.5 rounded-full text-xs font-bold ${post.language === 'zh' ? 'bg-red-100 text-red-700' : post.language === 'ms' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}`}>
+                  {post.language === 'zh' ? '中文' : post.language === 'ms' ? 'BM' : 'EN'}
+                </span>
+                <h3 className="text-base font-bold text-brand-blue mb-3 leading-snug line-clamp-2 group-hover:text-brand-cyan transition-colors flex-grow">
+                  {post.title}
+                </h3>
+                <p className="text-sm text-brand-blue/50 line-clamp-2 mb-5">{post.meta_description}</p>
+                <span className="text-xs font-bold text-brand-cyan flex items-center gap-1 group-hover:gap-2 transition-all">
+                  {readMore} <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-8 text-center sm:hidden">
+          <Link to="/blog" className="text-sm font-bold text-brand-cyan">{viewAll}</Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [lang, setLang] = useState<Language>('zh');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -866,6 +939,7 @@ export default function Home() {
               <button onClick={() => scrollToSection('why-us')} className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.whyUs}</button>
               <button onClick={() => scrollToSection('packages')} className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.packages}</button>
               <button onClick={() => scrollToSection('pricing')} className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.pricing}</button>
+              <Link to="/blog" className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.blog}</Link>
               
               {/* Language Switcher */}
               <div className="flex items-center gap-2 px-3 py-1 bg-brand-blue/5 rounded-full">
@@ -921,6 +995,7 @@ export default function Home() {
                 <button onClick={() => scrollToSection('why-us')} className="block w-full text-left px-3 py-2 text-base font-medium">{t.nav.whyUs}</button>
                 <button onClick={() => scrollToSection('packages')} className="block w-full text-left px-3 py-2 text-base font-medium">{t.nav.packages}</button>
                 <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-3 py-2 text-base font-medium">{t.nav.pricing}</button>
+                <Link to="/blog" className="block w-full text-left px-3 py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>{t.nav.blog}</Link>
                 <button 
                   onClick={() => scrollToSection('contact')}
                   className="block w-full px-3 py-3 bg-brand-blue text-brand-white rounded-xl text-center font-semibold"
@@ -1290,6 +1365,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Blog Preview */}
+      <BlogPreview lang={lang} />
 
       {/* Footer */}
       <footer className="py-12 border-t border-brand-blue/5">
