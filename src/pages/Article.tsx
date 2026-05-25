@@ -60,7 +60,7 @@ export default function Article() {
     );
   }
 
-  const keywords: string[] = JSON.parse(article.keywords || '[]');
+  const keywords: string[] = Array.isArray(article.keywords) ? article.keywords : JSON.parse(article.keywords || '[]');
   const date = new Date(article.created_at).toLocaleDateString('zh-MY', {
     year: 'numeric', month: 'long', day: 'numeric',
   });
