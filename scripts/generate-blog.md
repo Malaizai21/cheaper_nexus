@@ -50,7 +50,7 @@ Each article must be saved as two files:
 }
 ```
 
-### 2. Update index: `public/blog/index.json`
+### 2. Update index: `public/blog/articles.json`
 Add the new article's summary (no `content` field) to the BEGINNING of the array.
 
 ## Article Quality Standards
