@@ -18,7 +18,7 @@ export default function Blog() {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    fetch('/api/articles')
+    fetch('/blog/index.json')
       .then(r => r.json())
       .then((data: ArticleSummary[]) => { setArticles(data); setLoading(false); })
       .catch(() => setLoading(false));

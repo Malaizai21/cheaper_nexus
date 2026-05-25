@@ -28,7 +28,7 @@ export default function Article() {
 
   useEffect(() => {
     if (!slug) return;
-    fetch(`/api/articles/${slug}`)
+    fetch(`/blog/${slug}.json`)
       .then(r => {
         if (r.status === 404) { setNotFound(true); setLoading(false); return null; }
         return r.json();
