@@ -12,6 +12,7 @@ export type ArticleSummary = {
   writing_style: string;
   topic: string;
   created_at: string;
+  image_url?: string;
 };
 
 const LANG_BADGES: Record<string, { label: string; color: string }> = {
@@ -34,8 +35,18 @@ export function BlogCard({ article }: { article: ArticleSummary }) {
   return (
     <Link
       to={`/blog/${article.slug}`}
-      className="group flex flex-col h-full p-8 bg-white rounded-[28px] border border-brand-blue/5 hover:border-brand-cyan/30 hover:shadow-2xl hover:shadow-brand-blue/5 transition-all"
+      className="group flex flex-col h-full bg-white rounded-[28px] border border-brand-blue/5 hover:border-brand-cyan/30 hover:shadow-2xl hover:shadow-brand-blue/5 transition-all overflow-hidden"
     >
+      {article.image_url && (
+        <div className="w-full h-44 overflow-hidden">
+          <img
+            src={article.image_url}
+            alt={article.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      )}
+      <div className={`flex flex-col flex-grow ${article.image_url ? 'p-6' : 'p-8'}`}>
       <div className="flex items-center gap-2 mb-5">
         <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.color}`}>
           {badge.label}
@@ -64,6 +75,7 @@ export function BlogCard({ article }: { article: ArticleSummary }) {
         <span className="flex items-center gap-1 text-xs font-bold text-brand-cyan group-hover:gap-2 transition-all">
           阅读全文 <ArrowRight className="w-3.5 h-3.5" />
         </span>
+      </div>
       </div>
     </Link>
   );

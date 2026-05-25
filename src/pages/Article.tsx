@@ -13,6 +13,7 @@ type Article = {
   content: string;
   writing_style: string;
   featured_image_prompt: string;
+  image_url?: string;
   word_count: number;
   topic: string;
   created_at: string;
@@ -77,8 +78,19 @@ export default function Article() {
         </div>
       </div>
 
+      {/* Featured image */}
+      {article.image_url && (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8">
+          <img
+            src={article.image_url}
+            alt={article.title}
+            className="w-full h-64 md:h-80 object-cover rounded-2xl"
+          />
+        </div>
+      )}
+
       {/* Article header */}
-      <header className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-8">
+      <header className="max-w-3xl mx-auto px-4 sm:px-6 pt-10 pb-8">
         <div className="flex flex-wrap gap-2 mb-6">
           {keywords.slice(0, 4).map(kw => (
             <span key={kw} className="inline-flex items-center gap-1 px-3 py-1 bg-brand-cyan/10 text-brand-cyan rounded-full text-xs font-semibold">
