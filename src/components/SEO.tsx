@@ -56,9 +56,8 @@ const jsonLd = [
     areaServed: { '@type': 'Country', name: 'Malaysia' },
     availableLanguage: ['Chinese', 'English', 'Malay'],
     sameAs: [
-      'https://www.facebook.com/cheapernexus',
+      'https://www.facebook.com/share/18oQi47T7w/',
       'https://www.instagram.com/cheapernexus',
-      'https://www.tiktok.com/@cheapernexus',
     ],
     contactPoint: [
       {
