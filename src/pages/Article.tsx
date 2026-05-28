@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { marked } from 'marked';
 import { ArrowLeft, Calendar, BookOpen, Tag } from 'lucide-react';
+
+const SITE_URL = 'https://cheapernexus.com';
 
 type Article = {
   id: number;
@@ -66,9 +69,49 @@ export default function Article() {
     year: 'numeric', month: 'long', day: 'numeric',
   });
   const html = marked.parse(article.content) as string;
+  const canonicalUrl = `${SITE_URL}/blog/${article.slug}`;
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: article.meta_description,
+    image: article.image_url ? (article.image_url.startsWith('http') ? article.image_url : `${SITE_URL}${article.image_url}`) : `${SITE_URL}/logo.png`,
+    datePublished: article.created_at,
+    dateModified: article.created_at,
+    author: { '@type': 'Organization', name: 'Cheaper Nexus', url: SITE_URL },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Cheaper Nexus',
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+    },
+    url: canonicalUrl,
+    inLanguage: article.language === 'zh' ? 'zh-MY' : article.language === 'ms' ? 'ms-MY' : 'en-MY',
+    keywords: keywords.join(', '),
+    wordCount: article.word_count,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+  };
 
   return (
     <div className="min-h-screen bg-brand-white">
+      <Helmet>
+        <title>{article.title} | Cheaper Nexus</title>
+        <meta name="description" content={article.meta_description} />
+        <meta name="keywords" content={keywords.join(', ')} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.meta_description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Cheaper Nexus" />
+        {article.image_url && (
+          <meta property="og:image" content={article.image_url.startsWith('http') ? article.image_url : `${SITE_URL}${article.image_url}`} />
+        )}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={article.title} />
+        <meta name="twitter:description" content={article.meta_description} />
+        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+      </Helmet>
       {/* Back nav */}
       <div className="sticky top-0 z-20 bg-brand-white/90 backdrop-blur border-b border-brand-blue/5">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4">

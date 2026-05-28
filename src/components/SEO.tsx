@@ -35,79 +35,105 @@ const seoData: Record<Language, { title: string; description: string; keywords: 
   },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'Cheaper Nexus',
-  url: SITE_URL,
-  telephone: '+60182228688',
-  description:
-    'All-in-one digital marketing agency in Malaysia offering video production, social media management, Meta Ads, Google SEO, and e-commerce solutions.',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'MY',
-  },
-  priceRange: 'RM288 - RM1888+',
-  areaServed: { '@type': 'Country', name: 'Malaysia' },
-  availableLanguage: ['Chinese', 'English', 'Malay'],
-  contactPoint: [
-    {
-      '@type': 'ContactPoint',
-      telephone: '+60182228688',
-      contactType: 'sales',
-      name: 'Calvin',
-      contactOption: 'WhatsApp',
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'ProfessionalService'],
+    name: 'Cheaper Nexus',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
+    image: `${SITE_URL}/logo.png`,
+    telephone: '+60134391541',
+    description:
+      'All-in-one digital marketing agency in Malaysia offering video production, social media management, Meta Ads, Google SEO, and e-commerce solutions.',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Kuala Lumpur',
+      addressRegion: 'Kuala Lumpur',
+      addressCountry: 'MY',
     },
-    {
-      '@type': 'ContactPoint',
-      telephone: '+60172915754',
-      contactType: 'sales',
-      name: 'Henry',
-      contactOption: 'WhatsApp',
-    },
-  ],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Digital Marketing Services',
-    itemListElement: [
+    priceRange: 'RM288 - RM15000+',
+    areaServed: { '@type': 'Country', name: 'Malaysia' },
+    availableLanguage: ['Chinese', 'English', 'Malay'],
+    sameAs: [
+      'https://www.facebook.com/cheapernexus',
+      'https://www.instagram.com/cheapernexus',
+      'https://www.tiktok.com/@cheapernexus',
+    ],
+    contactPoint: [
       {
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Brand Visual Content Production' },
-        price: '288',
-        priceCurrency: 'MYR',
-        description: 'Professional short-video production optimised for TikTok & Xiaohongshu algorithms.',
+        '@type': 'ContactPoint',
+        telephone: '+60134391541',
+        contactType: 'sales',
+        name: 'Calvin',
+        contactOption: 'WhatsApp',
+        areaServed: 'MY',
+        availableLanguage: ['Chinese', 'English', 'Malay'],
       },
       {
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Social Media Management' },
-        price: '388',
-        priceCurrency: 'MYR',
-        description: 'Full-service account setup and management across 6 platforms: FB, IG, TikTok, Red, Lemon8, WA Business.',
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Meta Ads Management' },
-        price: '1888',
-        priceCurrency: 'MYR',
-        description: 'Precision Facebook and Instagram advertising with audience targeting and creative optimisation.',
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'Google Ads & SEO Marketing' },
-        price: '1888',
-        priceCurrency: 'MYR',
-        description: 'Google keyword advertising and long-term organic SEO growth.',
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: 'E-Commerce & Web Solutions' },
-        price: '1888',
-        priceCurrency: 'MYR',
-        description: 'Shopee, Lazada, TikTok shop onboarding and corporate website design.',
+        '@type': 'ContactPoint',
+        telephone: '+60172915754',
+        contactType: 'sales',
+        name: 'Henry',
+        contactOption: 'WhatsApp',
+        areaServed: 'MY',
+        availableLanguage: ['Chinese', 'English', 'Malay'],
       },
     ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Digital Marketing Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: 'Brand Visual Content Production' },
+          price: '288',
+          priceCurrency: 'MYR',
+          description: 'Professional short-video production optimised for TikTok & Xiaohongshu algorithms.',
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: 'Social Media Management' },
+          price: '388',
+          priceCurrency: 'MYR',
+          description: 'Full-service account setup and management across 6 platforms: FB, IG, TikTok, Red, Lemon8, WA Business.',
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: 'Meta Ads Management' },
+          price: '1888',
+          priceCurrency: 'MYR',
+          description: 'Precision Facebook and Instagram advertising with audience targeting and creative optimisation.',
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: 'Google Ads & SEO Marketing' },
+          price: '1888',
+          priceCurrency: 'MYR',
+          description: 'Google keyword advertising and long-term organic SEO growth.',
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: 'E-Commerce & Web Solutions' },
+          price: '1888',
+          priceCurrency: 'MYR',
+          description: 'Shopee, Lazada, TikTok shop onboarding and corporate website design.',
+        },
+      ],
+    },
   },
-};
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Cheaper Nexus',
+    url: SITE_URL,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/blog?q={search_term_string}` },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+];
 
 interface SEOProps {
   lang: Language;
@@ -149,7 +175,8 @@ export function SEO({ lang }: SEOProps) {
       <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
 
       {/* Structured Data */}
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      <script type="application/ld+json">{JSON.stringify(jsonLd[0])}</script>
+      <script type="application/ld+json">{JSON.stringify(jsonLd[1])}</script>
     </Helmet>
   );
 }
