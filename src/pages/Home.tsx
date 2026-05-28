@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
+import { useLanguage } from '../hooks/useLanguage';
 import { 
   Video, 
   Share2, 
@@ -793,7 +794,7 @@ function BlogPreview({ lang }: { lang: Language }) {
 }
 
 export default function Home() {
-  const [lang, setLang] = useState<Language>('zh');
+  const [lang, setLang] = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [formData, setFormData] = useState({
@@ -935,17 +936,17 @@ export default function Home() {
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('services')} className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.services}</button>
+              <Link to="/services" className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.services}</Link>
               <button onClick={() => scrollToSection('why-us')} className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.whyUs}</button>
-              <button onClick={() => scrollToSection('packages')} className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.packages}</button>
-              <button onClick={() => scrollToSection('pricing')} className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.pricing}</button>
+              <Link to="/pricing" className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.pricing}</Link>
               <Link to="/blog" className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.blog}</Link>
-              
+              <Link to="/contact" className="text-sm font-medium hover:text-brand-cyan transition-colors">{t.nav.contact}</Link>
+
               {/* Language Switcher */}
               <div className="flex items-center gap-2 px-3 py-1 bg-brand-blue/5 rounded-full">
                 <Languages className="w-4 h-4 text-brand-blue/40" />
-                <select 
-                  value={lang} 
+                <select
+                  value={lang}
                   onChange={(e) => setLang(e.target.value as Language)}
                   className="bg-transparent text-xs font-bold text-brand-blue outline-none cursor-pointer"
                 >
@@ -955,12 +956,12 @@ export default function Home() {
                 </select>
               </div>
 
-              <button 
-                onClick={() => scrollToSection('contact')}
+              <Link
+                to="/contact"
                 className="px-6 py-2.5 bg-brand-blue text-brand-white rounded-full text-sm font-semibold hover:bg-brand-blue/90 transition-all hover:shadow-lg hover:shadow-brand-blue/20"
               >
                 {t.nav.consultation}
-              </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -991,17 +992,18 @@ export default function Home() {
               className="md:hidden bg-brand-white border-b border-brand-blue/5 overflow-hidden"
             >
               <div className="px-4 pt-2 pb-6 space-y-4">
-                <button onClick={() => scrollToSection('services')} className="block w-full text-left px-3 py-2 text-base font-medium">{t.nav.services}</button>
+                <Link to="/services" className="block w-full text-left px-3 py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>{t.nav.services}</Link>
                 <button onClick={() => scrollToSection('why-us')} className="block w-full text-left px-3 py-2 text-base font-medium">{t.nav.whyUs}</button>
-                <button onClick={() => scrollToSection('packages')} className="block w-full text-left px-3 py-2 text-base font-medium">{t.nav.packages}</button>
-                <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-3 py-2 text-base font-medium">{t.nav.pricing}</button>
+                <Link to="/pricing" className="block w-full text-left px-3 py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>{t.nav.pricing}</Link>
                 <Link to="/blog" className="block w-full text-left px-3 py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>{t.nav.blog}</Link>
-                <button 
-                  onClick={() => scrollToSection('contact')}
+                <Link to="/contact" className="block w-full text-left px-3 py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>{t.nav.contact}</Link>
+                <Link
+                  to="/contact"
+                  onClick={() => setIsMenuOpen(false)}
                   className="block w-full px-3 py-3 bg-brand-blue text-brand-white rounded-xl text-center font-semibold"
                 >
                   {t.nav.consultation}
-                </button>
+                </Link>
               </div>
             </motion.div>
           )}
