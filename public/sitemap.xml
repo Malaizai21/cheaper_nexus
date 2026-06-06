@@ -10,7 +10,7 @@
     <xhtml:link rel="alternate" hreflang="en-MY" href="https://cheapernexus.com/"/>
     <xhtml:link rel="alternate" hreflang="ms-MY" href="https://cheapernexus.com/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cheapernexus.com/"/>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -40,47 +40,78 @@
   <!-- Blog index -->
   <url>
     <loc>https://cheapernexus.com/blog</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog articles -->
   <url>
+    <loc>https://cheapernexus.com/blog/malaixiya-kol-wanghong-yingxiao-zhinan-2026</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cheapernexus.com/blog/instagram-reels-marketing-malaysia-sme-2026</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cheapernexus.com/blog/google-ads-sem-malaixiya-zhongxiao-qiye-2026</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cheapernexus.com/blog/local-seo-google-business-profile-malaysia-2026</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cheapernexus.com/blog/email-marketing-malaysia-sme-guide-2026</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cheapernexus.com/blog/pemasaran-kandungan-pks-malaysia-panduan-2026</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://cheapernexus.com/blog/malaixiya-dianshangyingxiao-zhinan-2026</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://cheapernexus.com/blog/google-seo-malaysia-sme-guide-2026</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://cheapernexus.com/blog/whatsapp-marketing-pks-malaysia-panduan-2026</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://cheapernexus.com/blog/meta-ads-malaysia-sme-complete-guide-2026</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://cheapernexus.com/blog/tiktok-marketing-malaysia-sme-complete-guide-2026</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://cheapernexus.com/blog/xiaohongshu-qiye-yingxiao-wanzheng-zhinan-malaixiya</loc>
     <lastmod>2026-05-25</lastmod>
