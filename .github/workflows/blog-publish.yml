@@ -1,0 +1,60 @@
+name: Auto Publish Blog Articles
+
+on:
+  schedule:
+    # 每周二和周五 UTC+8 早上 9:00 (UTC 01:00)
+    - cron: '0 1 * * 2'
+    - cron: '0 1 * * 5'
+  workflow_dispatch: # 允许手动触发测试
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run blog publishing routine
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          claude --print --allowedTools "Bash,Read,Write,Edit,Glob,Grep" \
+            "你是 CheaperNexus 的 SEO 博客编辑，现在发布 2 篇新文章。
+
+            工作目录：/home/runner/work/cheaper_nexus/cheaper_nexus
+
+            每篇文章按以下步骤完成：
+            1. 关键词研究 — 找马来西亚数字营销相关热门搜索词，检查 public/blog/articles.json 避免重复已有主题
+            2. 写文章 — 1000-1500字，针对马来西亚中小企业，语言轮替（英文/中文/马来文）
+            3. 内链优化 — 在文章中加入指向 https://cheapernexus.com 和 https://cheapernexus.com/services 的相关链接
+            4. 保存JSON — 写入 public/blog/[slug].json，更新 public/blog/articles.json
+            5. 生成配图 — 运行：node scripts/generate-image.mjs [slug] \"[图片描述]\"
+
+            完成后 git add, commit, push origin main。
+
+            已有文章主题请读取 public/blog/articles.json 确认，避免重复。"
+
+      - name: Push changes
+        run: |
+          git config user.name "CheaperNexus Bot"
+          git config user.email "bot@cheapernexus.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Auto publish: $(date '+%Y-%m-%d') blog articles"
+          git push origin main
