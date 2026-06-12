@@ -29,7 +29,13 @@ for (const meta of articles) {
     continue;
   }
 
-  const article = JSON.parse(readFileSync(articlePath, 'utf-8'));
+  let article;
+  try {
+    article = JSON.parse(readFileSync(articlePath, 'utf-8'));
+  } catch (e) {
+    console.warn(`[prerender] invalid JSON in ${slug}.json — skipping`);
+    continue;
+  }
   const keywords = Array.isArray(article.keywords) ? article.keywords : JSON.parse(article.keywords || '[]');
   const canonicalUrl = `${SITE_URL}/blog/${slug}`;
   const langAttr = language === 'zh' ? 'zh-MY' : language === 'ms' ? 'ms-MY' : 'en-MY';
