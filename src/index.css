@@ -32,6 +32,48 @@
 }
 .animate-float { animation: float-y 5s ease-in-out infinite; }
 
+/* ── Hero section animations ───────────────────────────────────────────── */
+@keyframes hero-gridmove { from{background-position:0 0} to{background-position:0 48px} }
+@keyframes hero-float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes hero-spin     { to{transform:rotate(360deg)} }
+@keyframes hero-spinrev  { to{transform:rotate(-360deg)} }
+@keyframes hero-neon     { 0%,100%{opacity:1;filter:brightness(1)} 50%{opacity:.82;filter:brightness(1.35)} }
+@keyframes hero-glow     { 0%,100%{box-shadow:0 0 22px rgba(74,222,128,.45)} 50%{box-shadow:0 0 44px rgba(74,222,128,.9)} }
+@keyframes hero-drift    { 0%,100%{transform:translate(0,0)} 50%{transform:translate(46px,-34px)} }
+@keyframes hero-driftB   { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,30px)} }
+@keyframes hero-chip-p   { 0%,100%{box-shadow:0 0 0 rgba(74,222,128,0);border-color:rgba(74,222,128,.35)} 50%{box-shadow:0 0 16px rgba(74,222,128,.35);border-color:rgba(74,222,128,.72)} }
+@keyframes hero-pulse    { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:.9;transform:scale(1.05)} }
+@keyframes hero-blink    { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* orbs */
+.hero-orb1 { position:absolute;left:-10%;top:-15%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,.18),transparent 65%);filter:blur(8px);pointer-events:none;animation:hero-drift 14s ease-in-out infinite;z-index:0; }
+.hero-orb2 { position:absolute;right:-8%;bottom:-12%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.14),transparent 65%);filter:blur(8px);pointer-events:none;animation:hero-driftB 16s ease-in-out infinite;z-index:0; }
+
+/* 3-D scrolling grid */
+.hero-grid { position:absolute;left:-50%;bottom:0;width:200%;height:360px;transform:perspective(520px) rotateX(72deg);transform-origin:bottom center;opacity:.5;z-index:1;background-image:linear-gradient(rgba(74,222,128,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,.45) 1px,transparent 1px);background-size:48px 48px;animation:hero-gridmove 2.6s linear infinite;-webkit-mask-image:linear-gradient(to top,#000 0%,transparent 88%);mask-image:linear-gradient(to top,#000 0%,transparent 88%);pointer-events:none; }
+
+/* text & interactive elements */
+.hero-dot    { width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 10px #4ADE80;animation:hero-blink 1.8s ease-in-out infinite;display:inline-block;flex-shrink:0; }
+.hero-accent { color:#6EF36B;text-shadow:0 0 26px rgba(110,243,107,.7),0 0 64px rgba(110,243,107,.35);animation:hero-neon 2.6s ease-in-out infinite; }
+.hero-chip   { padding:9px 16px;border-radius:999px;border:1px solid rgba(74,222,128,.35);background:rgba(74,222,128,.06);color:#BFF4CC;font-size:14px;font-weight:500;animation:hero-chip-p 4s ease-in-out infinite; }
+.hero-btn-primary { display:inline-flex;align-items:center;gap:8px;padding:15px 30px;background:#4ADE80;color:#06210F;font-weight:700;font-size:17px;border-radius:11px;text-decoration:none;animation:hero-glow 2.8s ease-in-out infinite;transition:opacity .2s; }
+.hero-btn-primary:hover { opacity:.88; }
+.hero-btn-ghost   { display:inline-flex;align-items:center;gap:8px;padding:15px 26px;border:1px solid rgba(255,255,255,.22);color:#EAF2FF;font-weight:500;font-size:17px;border-radius:11px;text-decoration:none;transition:background .2s; }
+.hero-btn-ghost:hover { background:rgba(255,255,255,.08); }
+
+/* spinning rings */
+.hero-ring         { position:absolute;right:4%;top:50%;transform:translateY(-50%);width:360px;height:360px;display:flex;align-items:center;justify-content:center; }
+.hero-ring-outer   { position:absolute;inset:0;border-radius:50%;border:2px solid rgba(74,222,128,.22);border-top-color:#4ADE80;border-right-color:#4ADE80;box-shadow:0 0 34px rgba(74,222,128,.22);animation:hero-spin 7s linear infinite; }
+.hero-ring-dash    { position:absolute;inset:30px;border-radius:50%;border:1px dashed rgba(34,211,238,.45);animation:hero-spinrev 12s linear infinite; }
+.hero-ring-glow    { position:absolute;inset:62px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,.2),transparent 70%);animation:hero-pulse 4s ease-in-out infinite; }
+.hero-ring-core    { position:relative;width:216px;height:216px;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:hero-float 5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion:reduce) {
+  .hero-orb1,.hero-orb2,.hero-accent,.hero-chip,.hero-btn-primary,
+  .hero-ring-outer,.hero-ring-dash,.hero-ring-glow,.hero-ring-core,.hero-dot,.hero-grid
+  { animation:none !important; }
+}
+
 /* ── Article prose styles ──────────────────────────────────────────────── */
 .prose-article {
   color: #0A192F;

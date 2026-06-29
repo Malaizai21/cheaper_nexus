@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
@@ -26,7 +26,7 @@ type BlogPost = {
 // ─── Translations ─────────────────────────────────────────────────────────────
 
 const t: Record<Language, {
-  hero: { badge: string; line1: string; line2: string; sub: string; cta1: string; cta2: string };
+  hero: { badge: string; line1: string; line2: string; sub: string; cta1: string; cta2: string; chips: string[] };
   stats: { value: string; label: string }[];
   services: { eyebrow: string; title: string; sub: string; cta: string };
   whyUs: { eyebrow: string; line1: string; line2: string; sub: string; points: { t: string; d: string }[] };
@@ -42,6 +42,7 @@ const t: Record<Language, {
       sub: '从 TikTok 到小红书，从 Meta 广告到 Google SEO，我们帮马来西亚中小企业一站式攻占全平台。',
       cta1: '免费咨询',
       cta2: '查看服务',
+      chips: ['品牌视觉', '社媒管理', 'Meta 广告', 'Google SEO', '电商方案'],
     },
     stats: [
       { value: '5+', label: '覆盖平台' },
@@ -90,6 +91,7 @@ const t: Record<Language, {
       sub: 'From TikTok to Xiaohongshu, Meta Ads to Google SEO — we help Malaysian SMEs dominate digital, all in one place.',
       cta1: 'Free Consultation',
       cta2: 'Our Services',
+      chips: ['Brand Identity', 'Social Media', 'Meta Ads', 'Google SEO', 'E-Commerce'],
     },
     stats: [
       { value: '5+', label: 'Platforms Covered' },
@@ -138,6 +140,7 @@ const t: Record<Language, {
       sub: 'Dari TikTok ke Xiaohongshu, Meta Ads ke Google SEO — kami bantu PKS Malaysia dominasi dunia digital.',
       cta1: 'Konsultasi Percuma',
       cta2: 'Perkhidmatan Kami',
+      chips: ['Identiti Jenama', 'Media Sosial', 'Iklan Meta', 'Google SEO', 'E-Dagang'],
     },
     stats: [
       { value: '5+', label: 'Platform Diliputi' },
@@ -234,6 +237,65 @@ export default function Home() {
   const c = t[lang];
   const cards = serviceCards[lang];
 
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const heroRef   = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const hero   = heroRef.current;
+    if (!canvas || !hero) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const COLOR = '#4ADE80', COUNT = 90;
+    type Particle = { x: number; y: number; r: number; vy: number; vx: number; a: number };
+    let ps: Particle[] = [];
+    let W = 0, H = 0, animId = 0;
+
+    function fit() {
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = hero!.clientWidth;
+      H = hero!.clientHeight;
+      canvas!.width  = W * dpr;
+      canvas!.height = H * dpr;
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function seed() {
+      ps = Array.from({ length: COUNT }, () => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 2 + 0.6,
+        vy: -(Math.random() * 0.5 + 0.12),
+        vx: (Math.random() - 0.5) * 0.22,
+        a: Math.random() * 0.6 + 0.18,
+      }));
+    }
+
+    function draw() {
+      ctx!.clearRect(0, 0, W, H);
+      ctx!.globalCompositeOperation = 'lighter';
+      ctx!.fillStyle   = COLOR;
+      ctx!.shadowColor = COLOR;
+      ctx!.shadowBlur  = 8;
+      for (const p of ps) {
+        p.y += p.vy; p.x += p.vx;
+        if (p.y < -6) { p.y = H + 6; p.x = Math.random() * W; }
+        ctx!.globalAlpha = p.a;
+        ctx!.beginPath();
+        ctx!.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx!.fill();
+      }
+      ctx!.globalAlpha = 1;
+      animId = requestAnimationFrame(draw);
+    }
+
+    fit(); seed(); draw();
+    const onResize = () => fit();
+    window.addEventListener('resize', onResize);
+    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', onResize); };
+  }, []);
+
   useEffect(() => {
     fetch('/blog/articles.json')
       .then(r => r.json())
@@ -247,35 +309,38 @@ export default function Home() {
       <Navbar lang={lang} setLang={setLang} />
 
       {/* ─────────────────────────────────────────────────────── HERO ── */}
-      <section className="relative min-h-screen bg-brand-blue flex items-center overflow-hidden">
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center overflow-hidden"
+        style={{ background: 'radial-gradient(1100px 700px at 75% 30%, #102742 0%, #0A1628 55%, #070f1c 100%)' }}
+      >
+        {/* Ambient drifting orbs */}
+        <div aria-hidden className="hero-orb1" />
+        <div aria-hidden className="hero-orb2" />
 
-        {/* Ambient glow blobs */}
-        <div aria-hidden className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-brand-cyan/10 blur-[140px]" />
-          <div className="absolute bottom-0 -left-20 w-[500px] h-[500px] rounded-full bg-brand-cyan/6 blur-[120px]" />
-        </div>
-
-        {/* Subtle dot-grid */}
-        <div
+        {/* Rising particle canvas */}
+        <canvas
+          ref={canvasRef}
           aria-hidden
-          className="absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle, rgba(0,212,255,0.9) 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
-          }}
+          className="absolute inset-0 pointer-events-none"
+          style={{ width: '100%', height: '100%', opacity: 0.75, zIndex: 2 }}
         />
 
-        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-28">
+        {/* 3D scrolling grid */}
+        <div aria-hidden className="hero-grid" />
 
-          {/* Badge */}
+        {/* Main content */}
+        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-28" style={{ zIndex: 3 }}>
+
+          {/* Badge pill */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-cyan/25 bg-brand-cyan/10 text-brand-cyan text-sm font-semibold mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-sm font-bold"
+            style={{ border: '1px solid rgba(74,222,128,.45)', background: 'rgba(74,222,128,.08)', color: '#BFF4CC' }}
           >
-            <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse shrink-0" />
+            <span aria-hidden className="hero-dot" />
             {c.hero.badge}
           </motion.div>
 
@@ -283,42 +348,55 @@ export default function Home() {
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6"
+            transition={{ duration: 0.65, delay: 0.12 }}
+            className="font-black leading-[1.06] tracking-tight mb-6"
+            style={{
+              fontSize: 'clamp(38px, 6vw, 76px)',
+              color: '#EAF2FF',
+              textShadow: '0 0 30px rgba(74,222,128,.18)',
+            }}
           >
             {c.hero.line1}
             <br />
-            <span className="text-brand-cyan">{c.hero.line2}</span>
+            <span className="hero-accent">{c.hero.line2}</span>
           </motion.h1>
 
-          {/* Sub */}
+          {/* Sub-copy */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/55 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.22 }}
+            className="text-lg max-w-[540px] mb-8 leading-[1.75]"
+            style={{ color: '#9DB2CE' }}
           >
             {c.hero.sub}
           </motion.p>
+
+          {/* Service chips */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.32 }}
+            className="flex flex-wrap gap-2.5 mb-10"
+          >
+            {c.hero.chips.map((chip, i) => (
+              <span key={i} className="hero-chip" style={{ animationDelay: `${i * 0.8}s` }}>
+                {chip}
+              </span>
+            ))}
+          </motion.div>
 
           {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap gap-4 mb-20"
+            transition={{ duration: 0.5, delay: 0.42 }}
+            className="flex flex-wrap gap-4 mb-16"
           >
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-brand-cyan text-brand-blue rounded-full font-bold text-base hover:bg-brand-cyan/90 transition-all shadow-lg shadow-brand-cyan/20"
-            >
-              {c.hero.cta1}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <Link to="/contact" className="hero-btn-primary">
+              {c.hero.cta1} →
             </Link>
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white rounded-full font-bold text-base hover:bg-white/8 transition-all"
-            >
+            <Link to="/services" className="hero-btn-ghost">
               {c.hero.cta2}
             </Link>
           </motion.div>
@@ -327,26 +405,43 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.45 }}
-            className="flex flex-wrap gap-x-10 gap-y-5 pt-8 border-t border-white/10"
+            transition={{ duration: 0.7, delay: 0.55 }}
+            className="flex flex-wrap gap-x-10 gap-y-5 pt-8"
+            style={{ borderTop: '1px solid rgba(255,255,255,.1)' }}
           >
             {c.stats.map((s, i) => (
               <div key={i}>
-                <div className="text-2xl font-bold text-brand-cyan">{s.value}</div>
-                <div className="text-sm text-white/40 mt-0.5">{s.label}</div>
+                <div className="text-2xl font-bold" style={{ color: '#4ADE80' }}>{s.value}</div>
+                <div className="text-sm mt-0.5" style={{ color: 'rgba(255,255,255,.35)' }}>{s.label}</div>
               </div>
             ))}
           </motion.div>
         </div>
 
+        {/* Spinning rings with logo — desktop only */}
+        <div aria-hidden className="hero-ring hidden lg:flex">
+          <div className="hero-ring-outer" />
+          <div className="hero-ring-dash" />
+          <div className="hero-ring-glow" />
+          <div className="hero-ring-core">
+            <img
+              src="/logo.png"
+              alt=""
+              className="w-[184px]"
+              style={{ filter: 'drop-shadow(0 0 16px rgba(74,222,128,.55))' }}
+            />
+          </div>
+        </div>
+
         {/* Scroll cue */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-40"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-35"
           animate={{ y: [0, 7, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+          style={{ zIndex: 3 }}
         >
-          <div className="w-px h-10 bg-gradient-to-b from-transparent to-brand-cyan" />
-          <div className="w-1.5 h-1.5 rounded-full bg-brand-cyan" />
+          <div className="w-px h-10" style={{ background: 'linear-gradient(to bottom, transparent, #4ADE80)' }} />
+          <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#4ADE80' }} />
         </motion.div>
       </section>
 
