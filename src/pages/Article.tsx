@@ -6,6 +6,8 @@ import { ArrowLeft, Calendar, BookOpen, Tag } from 'lucide-react';
 
 const SITE_URL = 'https://cheapernexus.com';
 
+type FAQ = { q: string; a: string };
+
 type Article = {
   id: number;
   slug: string;
@@ -20,6 +22,7 @@ type Article = {
   word_count: number;
   topic: string;
   created_at: string;
+  faq?: FAQ[];
 };
 
 marked.setOptions({ gfm: true, breaks: true });
@@ -71,6 +74,16 @@ export default function Article() {
   const html = marked.parse(article.content) as string;
   const canonicalUrl = `${SITE_URL}/blog/${article.slug}`;
 
+  const faqSchema = article.faq && article.faq.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: article.faq.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  } : null;
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -111,6 +124,9 @@ export default function Article() {
         <meta name="twitter:title" content={article.title} />
         <meta name="twitter:description" content={article.meta_description} />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+        {faqSchema && (
+          <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        )}
       </Helmet>
       {/* Back nav */}
       <div className="sticky top-0 z-20 bg-brand-white/90 backdrop-blur border-b border-brand-blue/5">
@@ -161,6 +177,31 @@ export default function Article() {
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
+
+      {/* FAQ section */}
+      {article.faq && article.faq.length > 0 && (
+        <section className="max-w-3xl mx-auto px-4 sm:px-6 pb-16">
+          <h2 className="text-2xl font-bold text-brand-blue mb-6 flex items-center gap-2">
+            <span className="w-1 h-6 bg-brand-cyan rounded-full inline-block" />
+            {article.language === 'zh' ? '常见问题' : article.language === 'ms' ? 'Soalan Lazim' : 'Frequently Asked Questions'}
+          </h2>
+          <div className="space-y-4">
+            {article.faq.map((item, i) => (
+              <details key={i} className="group rounded-2xl border border-brand-blue/8 bg-white overflow-hidden">
+                <summary className="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-semibold text-brand-blue hover:text-brand-cyan transition-colors list-none">
+                  <span>{item.q}</span>
+                  <svg className="w-5 h-5 shrink-0 text-brand-cyan transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-5 text-brand-blue/65 leading-relaxed text-sm border-t border-brand-blue/5 pt-4">
+                  {item.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA footer */}
       <div className="bg-brand-blue text-white">

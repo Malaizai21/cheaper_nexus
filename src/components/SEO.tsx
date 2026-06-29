@@ -123,6 +123,68 @@ const jsonLd = [
   },
   {
     '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is Cheaper Nexus?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Cheaper Nexus is a Malaysia-based all-in-one digital marketing agency offering brand visual content, social media management, Meta Ads, Google SEO, and e-commerce solutions for SMEs. Services start from RM288 with transparent pricing and no hidden fees.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What digital marketing services does Cheaper Nexus offer in Malaysia?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Cheaper Nexus offers five core services: (1) UGC/KOC brand video production for TikTok and Xiaohongshu, (2) social media management across Facebook, Instagram, TikTok, and Red, (3) Meta Ads and Google Ads management, (4) Google SEO optimisation, and (5) e-commerce management on Shopee, Lazada, and TikTok Shop.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How much does digital marketing cost in Malaysia?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Cheaper Nexus digital marketing packages start from RM288 for brand visual content. Social media management starts from RM388/month. Meta Ads and Google SEO management start from RM1,888/month. All pricing is transparent with no hidden fees.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '马来西亚数码营销费用是多少？',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Cheaper Nexus 的数码营销服务价格从 RM288 起。社媒管理套餐从 RM388/月起，Meta 广告及 Google SEO 管理从 RM1,888/月起，全透明定价，无隐藏费用。',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does Cheaper Nexus work with small businesses and SMEs?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Cheaper Nexus specialises in helping Malaysian SMEs and small businesses grow online. The agency offers flexible, affordable packages starting from RM288, with direct WhatsApp access to the team and a free 30-minute strategy consultation.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I contact Cheaper Nexus?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'You can contact Cheaper Nexus directly via WhatsApp at +60134391541 (Calvin) or +60172915754 (Henry). A free 30-minute strategy consultation is available with no commitment required.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Cheaper Nexus 怎么联系？',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '可以通过 WhatsApp 直接联系 Cheaper Nexus：Calvin +60134391541 / Henry +60172915754。提供免费 30 分钟策略咨询，无任何承诺要求。',
+        },
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Cheaper Nexus',
     url: SITE_URL,
@@ -176,6 +238,7 @@ export function SEO({ lang }: SEOProps) {
       {/* Structured Data */}
       <script type="application/ld+json">{JSON.stringify(jsonLd[0])}</script>
       <script type="application/ld+json">{JSON.stringify(jsonLd[1])}</script>
+      <script type="application/ld+json">{JSON.stringify(jsonLd[2])}</script>
     </Helmet>
   );
 }
