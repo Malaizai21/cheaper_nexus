@@ -262,7 +262,7 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <a href="https://wa.me/60134391541" target="_blank" rel="noopener noreferrer"
+                <a href="https://wa.me/60172915754" target="_blank" rel="noopener noreferrer"
                   className={`w-full text-center py-3 rounded-full font-bold text-sm transition-all ${
                     idx === 1 ? 'bg-brand-cyan text-brand-blue hover:opacity-90' : 'border-2 border-brand-blue/15 text-brand-blue hover:border-brand-cyan hover:text-brand-cyan'
                   }`}>
@@ -319,9 +319,9 @@ export default function Pricing() {
             <h2 className="text-2xl md:text-3xl font-bold mb-4">{content.ctaTitle}</h2>
             <p className="text-white/60 mb-8">{content.ctaSubtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/60134391541" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/60172915754" target="_blank" rel="noopener noreferrer"
                 className="px-8 py-4 bg-brand-cyan text-brand-blue rounded-full font-bold hover:opacity-90">
-                WhatsApp Calvin — 013-439 1541
+                WhatsApp Henry — 017-291 5754
               </a>
               <Link to="/services" className="px-8 py-4 border-2 border-white/20 text-white rounded-full font-bold hover:bg-white/10 flex items-center gap-2 justify-center">
                 {content.viewServices} <ArrowRight className="w-4 h-4" />

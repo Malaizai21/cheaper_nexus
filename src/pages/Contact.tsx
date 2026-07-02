@@ -26,7 +26,7 @@ const t: Record<Language, {
     industries: ['餐饮 / 食品饮料', '零售 / 电商', '美容与健康', '教育', '房地产', '医疗 / 诊所', '专业服务', '旅游与酒店', '时尚与生活方式', '科技与初创', '其他'],
     successTitle: '信息已发送！', successSub: '我们已打开 WhatsApp 并预填了您的信息。我们将在 1 个工作小时内回复。', backHome: '返回首页',
     metaTitle: '联系我们 | 免费数码营销咨询马来西亚 | Cheaper Nexus',
-    metaDesc: '获取马来西亚业务的免费数码营销咨询。通过 WhatsApp 联系 Cheaper Nexus。Calvin：013-439 1541 | Henry：017-291 5754。',
+    metaDesc: '获取马来西亚业务的免费数码营销咨询。通过 WhatsApp 联系 Cheaper Nexus。Henry：017-291 5754。',
   },
   en: {
     hero: { tag: 'Free Consultation', title: "Let's Grow Your Business", subtitle: "Tell us about your business and we'll recommend the right digital marketing strategy — for free." },
@@ -37,7 +37,7 @@ const t: Record<Language, {
     industries: ['F&B / Restaurant', 'Retail / E-Commerce', 'Beauty & Wellness', 'Education', 'Property & Real Estate', 'Healthcare / Clinic', 'Professional Services', 'Travel & Hospitality', 'Fashion & Lifestyle', 'Tech & Startup', 'Other'],
     successTitle: 'Message Sent!', successSub: "We've opened WhatsApp with your details. We'll respond within 1 business hour.", backHome: 'Back to Home',
     metaTitle: 'Contact Us | Free Digital Marketing Consultation Malaysia | Cheaper Nexus',
-    metaDesc: 'Get a free digital marketing consultation for your Malaysian business. Contact Cheaper Nexus via WhatsApp. Calvin: 013-439 1541 | Henry: 017-291 5754.',
+    metaDesc: 'Get a free digital marketing consultation for your Malaysian business. Contact Cheaper Nexus via WhatsApp. Henry: 017-291 5754.',
   },
   ms: {
     hero: { tag: 'Konsultasi Percuma', title: 'Mari Kembangkan Perniagaan Anda', subtitle: 'Ceritakan tentang perniagaan anda dan kami akan mengesyorkan strategi pemasaran digital yang tepat — percuma.' },
@@ -48,7 +48,7 @@ const t: Record<Language, {
     industries: ['F&B / Restoran', 'Runcit / E-Dagang', 'Kecantikan & Kesihatan', 'Pendidikan', 'Hartanah', 'Penjagaan Kesihatan / Klinik', 'Perkhidmatan Profesional', 'Pelancongan & Hospitaliti', 'Fesyen & Gaya Hidup', 'Teknologi & Syarikat Permulaan', 'Lain-lain'],
     successTitle: 'Mesej Dihantar!', successSub: 'Kami telah membuka WhatsApp dengan butiran anda. Kami akan membalas dalam masa 1 jam perniagaan.', backHome: 'Kembali ke Laman Utama',
     metaTitle: 'Hubungi Kami | Konsultasi Pemasaran Digital Percuma Malaysia | Cheaper Nexus',
-    metaDesc: 'Dapatkan konsultasi pemasaran digital percuma untuk perniagaan Malaysia anda. Hubungi Cheaper Nexus melalui WhatsApp. Calvin: 013-439 1541 | Henry: 017-291 5754.',
+    metaDesc: 'Dapatkan konsultasi pemasaran digital percuma untuk perniagaan Malaysia anda. Hubungi Cheaper Nexus melalui WhatsApp. Henry: 017-291 5754.',
   },
 };
 
@@ -63,7 +63,7 @@ export default function Contact() {
     const msg = encodeURIComponent(
       `Hi Cheaper Nexus!\n\nName: ${formData.name}\nPhone: ${formData.phone}\nBusiness: ${formData.business}${formData.message ? '\nMessage: ' + formData.message : ''}`
     );
-    window.open(`https://wa.me/60134391541?text=${msg}`, '_blank');
+    window.open(`https://wa.me/60172915754?text=${msg}`, '_blank');
     setSubmitted(true);
   };
 
@@ -100,7 +100,6 @@ export default function Contact() {
               <p className="text-brand-blue/60 mb-10 leading-relaxed">{content.teamSub}</p>
               <div className="space-y-4 mb-12">
                 {[
-                  { name: 'Calvin', role: content.calvinRole, phone: '013-439 1541', wa: '60134391541' },
                   { name: 'Henry', role: content.henryRole, phone: '017-291 5754', wa: '60172915754' },
                 ].map(person => (
                   <a key={person.name} href={`https://wa.me/${person.wa}`} target="_blank" rel="noopener noreferrer"

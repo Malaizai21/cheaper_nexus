@@ -177,7 +177,7 @@ const bizSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   image: `${SITE_URL}/logo.png`,
-  telephone: '+60134391541',
+  telephone: '+60172915754',
   description:
     'All-in-one digital marketing agency in Malaysia offering video production, social media management, Meta Ads, Google SEO, and e-commerce solutions for SMEs. Pricing from RM288 with no hidden fees.',
   address: {
@@ -194,7 +194,6 @@ const bizSchema = {
     'https://www.instagram.com/cheapernexus',
   ],
   contactPoint: [
-    { '@type': 'ContactPoint', telephone: '+60134391541', contactType: 'sales', name: 'Calvin', contactOption: 'WhatsApp', areaServed: 'MY', availableLanguage: ['Chinese', 'English', 'Malay'] },
     { '@type': 'ContactPoint', telephone: '+60172915754', contactType: 'sales', name: 'Henry', contactOption: 'WhatsApp', areaServed: 'MY', availableLanguage: ['Chinese', 'English', 'Malay'] },
   ],
   hasOfferCatalog: {
@@ -216,7 +215,7 @@ const homeFaq = [
   { q: 'How much does digital marketing cost in Malaysia?', a: 'Cheaper Nexus digital marketing packages start from RM288 for brand visual content. Social media management starts from RM388/month. Meta Ads and Google SEO management start from RM1,888/month. All pricing is transparent with no hidden fees.' },
   { q: '马来西亚数码营销费用是多少？', a: 'Cheaper Nexus 的数码营销服务价格从 RM288 起。社媒管理套餐从 RM388/月起，Meta 广告及 Google SEO 管理从 RM1,888/月起，全透明定价，无隐藏费用。' },
   { q: 'Does Cheaper Nexus work with small businesses and SMEs?', a: 'Yes. Cheaper Nexus specialises in helping Malaysian SMEs and small businesses grow online. The agency offers flexible, affordable packages starting from RM288, with direct WhatsApp access to the team and a free 30-minute strategy consultation.' },
-  { q: 'How do I contact Cheaper Nexus?', a: 'You can contact Cheaper Nexus directly via WhatsApp at +60134391541 (Calvin) or +60172915754 (Henry). A free 30-minute strategy consultation is available with no commitment required.' },
+  { q: 'How do I contact Cheaper Nexus?', a: 'You can contact Cheaper Nexus directly via WhatsApp at +60172915754 (Henry). A free 30-minute strategy consultation is available with no commitment required.' },
 ];
 
 const homeFaqSchema = {
@@ -259,7 +258,7 @@ const homeBody = `${wrapStart}
 <h2>Frequently Asked Questions 常见问题</h2>
 ${homeFaq.map(({ q, a }) => `<h3>${escHtml(q)}</h3><p>${escHtml(a)}</p>`).join('')}
 <h2>Contact 联系我们</h2>
-<p>WhatsApp Calvin: +60 13-439 1541 · WhatsApp Henry: +60 17-291 5754 · Kuala Lumpur, Malaysia</p>
+<p>WhatsApp Henry: +60 17-291 5754 · Kuala Lumpur, Malaysia</p>
 <p><a href="/services">Services 服务项目</a> · <a href="/pricing">Pricing 价格方案</a> · <a href="/blog">Marketing Blog 营销博客</a> · <a href="/contact">Contact 联系我们</a></p>
 ${wrapEnd}`;
 
@@ -301,7 +300,7 @@ const staticPages = [
     body: `<h1>Digital Marketing Services Malaysia 服务项目</h1>
 <p>Cheaper Nexus offers five core digital marketing services for Malaysian SMEs. 我们为马来西亚中小企业提供五大核心服务。</p>
 <ul>${servicesList.map(([name, desc]) => `<li><strong>${name}</strong> — ${desc}</li>`).join('')}</ul>
-<p>WhatsApp us for a free 30-minute consultation: Calvin +60 13-439 1541 / Henry +60 17-291 5754.</p>`,
+<p>WhatsApp us for a free 30-minute consultation: Henry +60 17-291 5754.</p>`,
   },
   {
     path: 'pricing',
@@ -316,16 +315,15 @@ const staticPages = [
 <li><strong>Google Ads & SEO</strong> — from RM1,888/month</li>
 <li><strong>E-Commerce & Web Solutions 电商方案</strong> — from RM1,888</li>
 </ul>
-<p>Free 30-minute strategy consultation via WhatsApp: Calvin +60 13-439 1541 / Henry +60 17-291 5754.</p>`,
+<p>Free 30-minute strategy consultation via WhatsApp: Henry +60 17-291 5754.</p>`,
   },
   {
     path: 'contact',
     title: 'Contact 联系我们 | Cheaper Nexus — WhatsApp Us, 1-Hour Response',
-    description: 'Contact Cheaper Nexus digital marketing agency Malaysia. WhatsApp Calvin +60 13-439 1541 or Henry +60 17-291 5754. Free 30-minute strategy consultation, 1-hour response during business hours.',
+    description: 'Contact Cheaper Nexus digital marketing agency Malaysia. WhatsApp Henry +60 17-291 5754. Free 30-minute strategy consultation, 1-hour response during business hours.',
     body: `<h1>Contact Cheaper Nexus 联系我们</h1>
 <p>Get a free 30-minute digital marketing strategy consultation. 免费 30 分钟策略咨询，1 小时内响应。</p>
 <ul>
-<li>WhatsApp Calvin: <a href="https://wa.me/60134391541">+60 13-439 1541</a></li>
 <li>WhatsApp Henry: <a href="https://wa.me/60172915754">+60 17-291 5754</a></li>
 <li>Location: Kuala Lumpur, Malaysia (serving all of Malaysia)</li>
 <li>Languages: 中文 / English / Bahasa Malaysia</li>
@@ -393,7 +391,7 @@ const langLabel = { zh: 'Chinese', en: 'English', ms: 'Malay' };
 
 const llmsTxt = `# Cheaper Nexus
 
-> Cheaper Nexus is an all-in-one digital marketing agency based in Kuala Lumpur, Malaysia, serving Malaysian SMEs nationwide in Chinese, English and Malay. Transparent pricing from RM288 with no hidden fees. WhatsApp: +60 13-439 1541 (Calvin) / +60 17-291 5754 (Henry). Website: ${SITE_URL}
+> Cheaper Nexus is an all-in-one digital marketing agency based in Kuala Lumpur, Malaysia, serving Malaysian SMEs nationwide in Chinese, English and Malay. Transparent pricing from RM288 with no hidden fees. WhatsApp: +60 17-291 5754 (Henry). Website: ${SITE_URL}
 
 ## Services & Pricing
 

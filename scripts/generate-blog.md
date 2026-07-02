@@ -9,7 +9,7 @@ Generate **2 high-quality, SEO-optimized blog articles** and publish them to the
 - Services: UGC/KOC Video Content, Social Media Management, XHS/Xiaohongshu Marketing, Digital Ads & SEO, E-Commerce & Live Streaming
 - Target market: Malaysian businesses (SMEs, F&B, retail, e-commerce)
 - Languages: Primarily Chinese (zh), also English (en) and Malay (ms)
-- Contact: Calvin (013-439 1541), Henry (017-291 5754)
+- Contact: Henry (017-291 5754)
 
 ## Topic Pool (rotate each week, avoid repeating recent topics)
 - 马来西亚 SEO 优化策略

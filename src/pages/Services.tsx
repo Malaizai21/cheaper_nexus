@@ -293,9 +293,9 @@ export default function Services() {
             <h1 className="text-4xl md:text-5xl font-bold mb-4 max-w-2xl">{content.hero.title}</h1>
             <p className="text-white/60 text-lg max-w-2xl mb-8">{content.hero.subtitle}</p>
             <div className="flex flex-wrap gap-4">
-              <a href="https://wa.me/60134391541" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/60172915754" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-brand-cyan text-brand-blue rounded-full font-bold hover:opacity-90 transition-opacity">
-                <Phone className="w-4 h-4" /> WhatsApp Calvin
+                <Phone className="w-4 h-4" /> WhatsApp Henry
               </a>
               <Link to="/pricing" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/20 text-white rounded-full font-bold hover:bg-white/10 transition-all">
                 {content.viewPackages} <ArrowRight className="w-4 h-4" />
@@ -322,7 +322,7 @@ export default function Services() {
                   ))}
                 </ul>
                 {s.note && <p className="text-xs text-brand-blue/40 italic mb-4">* {s.note}</p>}
-                <a href="https://wa.me/60134391541" target="_blank" rel="noopener noreferrer"
+                <a href="https://wa.me/60172915754" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-brand-cyan font-bold text-sm hover:gap-3 transition-all">
                   {content.getQuote} <ArrowRight className="w-4 h-4" />
                 </a>
@@ -366,9 +366,9 @@ export default function Services() {
             <h2 className="text-2xl md:text-3xl font-bold mb-4">{content.ctaTitle}</h2>
             <p className="text-white/60 mb-8 max-w-xl mx-auto">{content.ctaSubtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/60134391541" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/60172915754" target="_blank" rel="noopener noreferrer"
                 className="px-8 py-4 bg-brand-cyan text-brand-blue rounded-full font-bold hover:opacity-90 transition-opacity">
-                WhatsApp Calvin — 013-439 1541
+                WhatsApp Henry — 017-291 5754
               </a>
               <a href="https://wa.me/60172915754" target="_blank" rel="noopener noreferrer"
                 className="px-8 py-4 border-2 border-white/20 text-white rounded-full font-bold hover:bg-white/10 transition-all">

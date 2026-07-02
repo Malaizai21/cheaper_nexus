@@ -662,7 +662,7 @@ export default function Home() {
             </h2>
             <p className="text-white/55 text-lg mb-10 leading-relaxed">{c.final.sub}</p>
             <a
-              href="https://wa.me/60134391541"
+              href="https://wa.me/60172915754"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 px-10 py-4 bg-brand-cyan text-brand-blue rounded-full font-bold text-base hover:bg-brand-cyan/90 transition-all shadow-xl shadow-brand-cyan/15"

@@ -43,7 +43,7 @@ const jsonLd = [
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     image: `${SITE_URL}/logo.png`,
-    telephone: '+60134391541',
+    telephone: '+60172915754',
     description:
       'All-in-one digital marketing agency in Malaysia offering video production, social media management, Meta Ads, Google SEO, and e-commerce solutions.',
     address: {
@@ -60,15 +60,6 @@ const jsonLd = [
       'https://www.instagram.com/cheapernexus',
     ],
     contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        telephone: '+60134391541',
-        contactType: 'sales',
-        name: 'Calvin',
-        contactOption: 'WhatsApp',
-        areaServed: 'MY',
-        availableLanguage: ['Chinese', 'English', 'Malay'],
-      },
       {
         '@type': 'ContactPoint',
         telephone: '+60172915754',
@@ -170,7 +161,7 @@ const jsonLd = [
         name: 'How do I contact Cheaper Nexus?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'You can contact Cheaper Nexus directly via WhatsApp at +60134391541 (Calvin) or +60172915754 (Henry). A free 30-minute strategy consultation is available with no commitment required.',
+          text: 'You can contact Cheaper Nexus directly via WhatsApp at +60172915754 (Henry). A free 30-minute strategy consultation is available with no commitment required.',
         },
       },
       {
@@ -178,7 +169,7 @@ const jsonLd = [
         name: 'Cheaper Nexus 怎么联系？',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: '可以通过 WhatsApp 直接联系 Cheaper Nexus：Calvin +60134391541 / Henry +60172915754。提供免费 30 分钟策略咨询，无任何承诺要求。',
+          text: '可以通过 WhatsApp 直接联系 Cheaper Nexus：Henry +60172915754。提供免费 30 分钟策略咨询，无任何承诺要求。',
         },
       },
     ],

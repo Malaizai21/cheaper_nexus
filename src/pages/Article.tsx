@@ -210,12 +210,12 @@ export default function Article() {
           <p className="text-white/60 mb-6">Cheaper Nexus 提供 Google SEO、Meta 广告、社媒管理等一站式服务。</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://wa.me/60182228688"
+              href="https://wa.me/60172915754"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 bg-brand-cyan text-brand-blue rounded-full font-bold hover:opacity-90 transition-opacity"
             >
-              WhatsApp Calvin
+              WhatsApp Henry
             </a>
             <Link to="/blog" className="px-8 py-3 border-2 border-white/20 text-white rounded-full font-bold hover:bg-white/10 transition-all">
               更多文章

@@ -101,7 +101,7 @@ export default function Blog() {
             <h2 className="text-2xl font-bold text-brand-blue mb-3">需要专业的数码营销服务？</h2>
             <p className="text-brand-blue/60 mb-6">Cheaper Nexus 提供从内容创作到 Google SEO 的一站式服务。</p>
             <a
-              href="https://wa.me/60182228688"
+              href="https://wa.me/60172915754"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3 bg-brand-blue text-white rounded-full font-bold hover:bg-brand-blue/90 transition-all"
