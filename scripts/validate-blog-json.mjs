@@ -5,9 +5,10 @@
  */
 
 import { readFileSync, writeFileSync, readdirSync } from 'fs';
-import { join, resolve } from 'path';
+import { join, dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
-const ROOT = resolve(new URL('.', import.meta.url).pathname, '..');
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const PUBLIC_BLOG = join(ROOT, 'public', 'blog');
 
 const files = readdirSync(PUBLIC_BLOG).filter(f => f.endsWith('.json') && f !== 'articles.json');
