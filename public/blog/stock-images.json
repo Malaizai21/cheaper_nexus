@@ -1,0 +1,77 @@
+{
+  "_readme": "真实 Unsplash 摄影图池（免费商用、可外链）。发文 agent 按主题选图，避免与最近 8 篇文章重复。URL 参数固定 ?w=1200&h=630&fit=crop&q=80&auto=format。只允许 images.unsplash.com 域名（plus.unsplash.com 是付费图会带水印，禁止使用）。",
+  "categories": {
+    "social_media_phone": [
+      "https://images.unsplash.com/photo-1519069060891-f8c50519bf39?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1521931961826-fe48677230a5?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1480694313141-fce5e697ee25?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1579869847557-1f67382cc158?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1562147458-0c12e8d29f50?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1595039838779-f3780873afdd?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "analytics_laptop": [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1608222351212-18fe0ec7b13b?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1616499370260-485b3e5ed653?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1616499452581-cc7f8e3dd3c9?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "working_laptop": [
+      "https://images.unsplash.com/photo-1584964139384-8baf818ba6c8?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1499914485622-a88fac536970?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1704770064557-416292d1f4bd?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1612215032354-01ed1f818e32?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1700190827495-f9d8eec1a08c?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "ecommerce_shopping": [
+      "https://images.unsplash.com/photo-1664455340023-214c33a9d0bd?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1592839930500-3445eb72b8ad?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "live_stream_video": [
+      "https://images.unsplash.com/photo-1653038417395-3015b6e5486b?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1712320861715-25f320ad66fa?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1625690303837-654c9666d2d0?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1617349035560-b32339aeeb14?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "youtube_video": [
+      "https://images.unsplash.com/photo-1541877944-ac82a091518a?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1548328928-34db1c5fcc1f?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1603566234384-f5f5b59168cc?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "tiktok_shortvideo": [
+      "https://images.unsplash.com/photo-1596346599094-4dfa5c61fd0d?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1646446855655-451a3a8f19b6?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "whatsapp_chat": [
+      "https://images.unsplash.com/photo-1610548822783-33fb5cb0e3a8?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "b2b_business": [
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1672380135241-c024f7fbfa13?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1591453214154-c95db71dbd83?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "finance_pricing": [
+      "https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1711606815631-38d32cdaec3e?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "malaysia_local": [
+      "https://images.unsplash.com/photo-1470217957101-da7150b9b681?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1629925526243-9062fb828146?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1595342011782-30a4dde83708?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1764679396838-f987b757d589?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "food_restaurant": [
+      "https://images.unsplash.com/photo-1768634003113-42903d7ffe1b?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1767324672441-e3537cde4d0d?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1767438030771-4f1d20615881?w=1200&h=630&fit=crop&q=80&auto=format"
+    ],
+    "ai_technology": [
+      "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?w=1200&h=630&fit=crop&q=80&auto=format",
+      "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?w=1200&h=630&fit=crop&q=80&auto=format"
+    ]
+  }
+}
