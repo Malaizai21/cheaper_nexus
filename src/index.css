@@ -62,8 +62,9 @@
 .hero-btn-ghost   { display:inline-flex;align-items:center;gap:8px;padding:15px 26px;border:1px solid rgba(255,255,255,.22);color:#EAF2FF;font-weight:500;font-size:17px;border-radius:11px;text-decoration:none;transition:background .2s; }
 .hero-btn-ghost:hover { background:rgba(255,255,255,.08); }
 
-/* spinning rings */
-.hero-ring         { position:absolute;right:4%;top:50%;transform:translateY(-50%);width:360px;height:360px;display:flex;align-items:center;justify-content:center; }
+/* spinning rings — 仅桌面显示（手机上会压住文字） */
+.hero-ring         { display:none;position:absolute;right:4%;top:50%;transform:translateY(-50%);width:360px;height:360px;align-items:center;justify-content:center; }
+@media (min-width:1024px) { .hero-ring { display:flex; } }
 .hero-ring-outer   { position:absolute;inset:0;border-radius:50%;border:2px solid rgba(74,222,128,.22);border-top-color:#4ADE80;border-right-color:#4ADE80;box-shadow:0 0 34px rgba(74,222,128,.22);animation:hero-spin 7s linear infinite; }
 .hero-ring-dash    { position:absolute;inset:30px;border-radius:50%;border:1px dashed rgba(34,211,238,.45);animation:hero-spinrev 12s linear infinite; }
 .hero-ring-glow    { position:absolute;inset:62px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,.2),transparent 70%);animation:hero-pulse 4s ease-in-out infinite; }

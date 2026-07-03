@@ -445,7 +445,7 @@ export default function Home() {
         </div>
 
         {/* Spinning rings with logo — desktop only */}
-        <div aria-hidden className="hero-ring hidden lg:flex">
+        <div aria-hidden className="hero-ring">
           <div className="hero-ring-outer" />
           <div className="hero-ring-dash" />
           <div className="hero-ring-glow" />
