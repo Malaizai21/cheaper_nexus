@@ -246,14 +246,29 @@ export default function Home() {
     if (!canvas || !hero) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const COLOR = '#4ADE80', COUNT = 90;
+    const COUNT = window.innerWidth < 768 ? 40 : 90;
     type Particle = { x: number; y: number; r: number; vy: number; vx: number; a: number };
     let ps: Particle[] = [];
     let W = 0, H = 0, animId = 0;
+    let running = false, heroVisible = true;
+
+    // Pre-rendered glow sprite: drawImage per particle is ~10x cheaper than
+    // per-frame shadowBlur, which froze the renderer during scroll.
+    const SPRITE = 32;
+    const sprite = document.createElement('canvas');
+    sprite.width = sprite.height = SPRITE;
+    const sctx = sprite.getContext('2d')!;
+    const grad = sctx.createRadialGradient(SPRITE / 2, SPRITE / 2, 0, SPRITE / 2, SPRITE / 2, SPRITE / 2);
+    grad.addColorStop(0, 'rgba(74,222,128,1)');
+    grad.addColorStop(0.35, 'rgba(74,222,128,0.55)');
+    grad.addColorStop(1, 'rgba(74,222,128,0)');
+    sctx.fillStyle = grad;
+    sctx.fillRect(0, 0, SPRITE, SPRITE);
 
     function fit() {
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const dpr = Math.min(1.5, window.devicePixelRatio || 1);
       W = hero!.clientWidth;
       H = hero!.clientHeight;
       canvas!.width  = W * dpr;
@@ -273,27 +288,38 @@ export default function Home() {
     }
 
     function draw() {
+      if (!running) return;
       ctx!.clearRect(0, 0, W, H);
       ctx!.globalCompositeOperation = 'lighter';
-      ctx!.fillStyle   = COLOR;
-      ctx!.shadowColor = COLOR;
-      ctx!.shadowBlur  = 8;
       for (const p of ps) {
         p.y += p.vy; p.x += p.vx;
         if (p.y < -6) { p.y = H + 6; p.x = Math.random() * W; }
+        const s = p.r * 6;
         ctx!.globalAlpha = p.a;
-        ctx!.beginPath();
-        ctx!.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx!.fill();
+        ctx!.drawImage(sprite, p.x - s / 2, p.y - s / 2, s, s);
       }
       ctx!.globalAlpha = 1;
       animId = requestAnimationFrame(draw);
     }
 
-    fit(); seed(); draw();
+    const start = () => { if (!running) { running = true; animId = requestAnimationFrame(draw); } };
+    const stop  = () => { running = false; cancelAnimationFrame(animId); };
+    const sync  = () => { (heroVisible && !document.hidden) ? start() : stop(); };
+
+    fit(); seed(); start();
+
+    // Pause the loop whenever the hero is scrolled out of view or the tab is hidden
+    const io = new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; sync(); });
+    io.observe(hero);
+    document.addEventListener('visibilitychange', sync);
     const onResize = () => fit();
     window.addEventListener('resize', onResize);
-    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', onResize); };
+    return () => {
+      stop();
+      io.disconnect();
+      document.removeEventListener('visibilitychange', sync);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -327,7 +353,7 @@ export default function Home() {
         />
 
         {/* 3D scrolling grid */}
-        <div aria-hidden className="hero-grid" />
+        <div aria-hidden className="hero-grid"><div className="hero-grid-inner" /></div>
 
         {/* Main content */}
         <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-28" style={{ zIndex: 3 }}>

@@ -33,7 +33,7 @@
 .animate-float { animation: float-y 5s ease-in-out infinite; }
 
 /* ── Hero section animations ───────────────────────────────────────────── */
-@keyframes hero-gridmove { from{background-position:0 0} to{background-position:0 48px} }
+@keyframes hero-gridmove { from{transform:translateY(0)} to{transform:translateY(48px)} }
 @keyframes hero-float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 @keyframes hero-spin     { to{transform:rotate(360deg)} }
 @keyframes hero-spinrev  { to{transform:rotate(-360deg)} }
@@ -45,12 +45,13 @@
 @keyframes hero-pulse    { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:.9;transform:scale(1.05)} }
 @keyframes hero-blink    { 0%,100%{opacity:1} 50%{opacity:.2} }
 
-/* orbs */
-.hero-orb1 { position:absolute;left:-10%;top:-15%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,.18),transparent 65%);filter:blur(8px);pointer-events:none;animation:hero-drift 14s ease-in-out infinite;z-index:0; }
-.hero-orb2 { position:absolute;right:-8%;bottom:-12%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.14),transparent 65%);filter:blur(8px);pointer-events:none;animation:hero-driftB 16s ease-in-out infinite;z-index:0; }
+/* orbs — 渐变本身已是柔边，去掉 blur 滤镜避免大图层实时模糊 */
+.hero-orb1 { position:absolute;left:-10%;top:-15%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,.18),transparent 70%);pointer-events:none;animation:hero-drift 14s ease-in-out infinite;z-index:0; }
+.hero-orb2 { position:absolute;right:-8%;bottom:-12%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.14),transparent 70%);pointer-events:none;animation:hero-driftB 16s ease-in-out infinite;z-index:0; }
 
-/* 3-D scrolling grid */
-.hero-grid { position:absolute;left:-50%;bottom:0;width:200%;height:360px;transform:perspective(520px) rotateX(72deg);transform-origin:bottom center;opacity:.5;z-index:1;background-image:linear-gradient(rgba(74,222,128,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,.45) 1px,transparent 1px);background-size:48px 48px;animation:hero-gridmove 2.6s linear infinite;-webkit-mask-image:linear-gradient(to top,#000 0%,transparent 88%);mask-image:linear-gradient(to top,#000 0%,transparent 88%);pointer-events:none; }
+/* 3-D scrolling grid — 内层用 transform 动画（GPU 合成），外层负责透视和渐隐 */
+.hero-grid { position:absolute;left:-50%;bottom:0;width:200%;height:360px;transform:perspective(520px) rotateX(72deg);transform-origin:bottom center;opacity:.5;z-index:1;overflow:hidden;-webkit-mask-image:linear-gradient(to top,#000 0%,transparent 88%);mask-image:linear-gradient(to top,#000 0%,transparent 88%);pointer-events:none; }
+.hero-grid-inner { position:absolute;left:0;top:-48px;width:100%;height:calc(100% + 48px);background-image:linear-gradient(rgba(74,222,128,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,.45) 1px,transparent 1px);background-size:48px 48px;animation:hero-gridmove 2.6s linear infinite;will-change:transform; }
 
 /* text & interactive elements */
 .hero-dot    { width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 10px #4ADE80;animation:hero-blink 1.8s ease-in-out infinite;display:inline-block;flex-shrink:0; }
@@ -70,7 +71,7 @@
 
 @media (prefers-reduced-motion:reduce) {
   .hero-orb1,.hero-orb2,.hero-accent,.hero-chip,.hero-btn-primary,
-  .hero-ring-outer,.hero-ring-dash,.hero-ring-glow,.hero-ring-core,.hero-dot,.hero-grid
+  .hero-ring-outer,.hero-ring-dash,.hero-ring-glow,.hero-ring-core,.hero-dot,.hero-grid-inner
   { animation:none !important; }
 }
 

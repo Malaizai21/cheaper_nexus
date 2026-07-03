@@ -129,7 +129,7 @@ export default function Article() {
         )}
       </Helmet>
       {/* Back nav */}
-      <div className="sticky top-0 z-20 bg-brand-white/90 backdrop-blur border-b border-brand-blue/5">
+      <div className="sticky top-0 z-20 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-4">
           <Link to="/blog" className="inline-flex items-center gap-2 text-brand-blue/60 hover:text-brand-blue transition-colors text-sm font-medium">
             <ArrowLeft className="w-4 h-4" /> 营销知识库

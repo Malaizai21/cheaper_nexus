@@ -48,7 +48,7 @@ export default function Blog() {
         </div>
 
         {/* Filters */}
-        <div className="sticky top-0 z-20 bg-brand-white/90 backdrop-blur border-b border-brand-blue/5">
+        <div className="sticky top-0 z-20 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row gap-3 items-center">
             <div className="flex gap-2">
               {LANG_TABS.map(t => (
