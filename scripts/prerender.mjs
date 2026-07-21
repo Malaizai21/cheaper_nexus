@@ -66,6 +66,27 @@ function buildPage(shell, { headMeta, bodyContent, langAttr }) {
 const wrapStart = '<div style="max-width:760px;margin:0 auto;padding:32px 20px;font-family:system-ui,sans-serif;line-height:1.7;color:#0A192F">';
 const wrapEnd = '</div>';
 
+/** Same-language related articles ranked by keyword + topic overlap (mirrors Article.tsx). */
+function pickRelated(current, all, n = 3) {
+  const curKw = new Set((current.keywords || []).map(k => String(k).toLowerCase()));
+  const curWords = new Set(
+    `${current.topic || ''} ${current.title}`.toLowerCase().split(/\W+/).filter(w => w.length > 3),
+  );
+  return all
+    .filter(a => a.slug !== current.slug && a.language === current.language)
+    .map(a => {
+      let s = 0;
+      for (const k of (a.keywords || [])) if (curKw.has(String(k).toLowerCase())) s += 2;
+      for (const w of `${a.topic || ''} ${a.title}`.toLowerCase().split(/\W+/)) {
+        if (w.length > 3 && curWords.has(w)) s += 1;
+      }
+      return { s, a };
+    })
+    .sort((x, y) => y.s - x.s || new Date(y.a.created_at) - new Date(x.a.created_at))
+    .slice(0, n)
+    .map(x => x.a);
+}
+
 // ────────────────────────────── 1. Blog articles ──────────────────────────────
 
 let count = 0;
@@ -156,7 +177,15 @@ ${schemas.map(s => `    <script type="application/ld+json">${JSON.stringify(s)}<
       }</section>`
     : '';
 
-  const bodyContent = `${wrapStart}<article><h1>${escHtml(title)}</h1><p><em>${escHtml(meta_description)}</em></p>${contentHtml}${faqHtml}</article>${wrapEnd}`;
+  // Static internal links — the crawler-visible related-articles block
+  const related = pickRelated({ slug, title, topic: meta.topic, keywords, language }, articles);
+  const relatedHtml = related.length > 0
+    ? `<section><h2>${language === 'zh' ? '相关文章' : language === 'ms' ? 'Artikel Berkaitan' : 'Related Articles'}</h2><ul>${
+        related.map(r => `<li><a href="/blog/${r.slug}">${escHtml(r.title)}</a></li>`).join('')
+      }</ul></section>`
+    : '';
+
+  const bodyContent = `${wrapStart}<article><h1>${escHtml(title)}</h1><p><em>${escHtml(meta_description)}</em></p>${contentHtml}${faqHtml}${relatedHtml}</article>${wrapEnd}`;
 
   const html = buildPage(cleanShell(baseHtml, { nested: true }), { headMeta, bodyContent, langAttr });
 

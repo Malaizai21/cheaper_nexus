@@ -8,6 +8,12 @@ const SITE_URL = 'https://cheapernexus.com';
 
 type FAQ = { q: string; a: string };
 
+type ArticleMeta = {
+  slug: string; language: string; title: string;
+  meta_description: string; keywords: string[] | string;
+  topic: string; created_at: string; image_url?: string;
+};
+
 type Article = {
   id: number;
   slug: string;
@@ -27,11 +33,43 @@ type Article = {
 
 marked.setOptions({ gfm: true, breaks: true });
 
+/** Score related articles: same language, ranked by keyword + topic overlap. */
+function pickRelated(current: Article, all: ArticleMeta[], n = 3): ArticleMeta[] {
+  const curKw = new Set(
+    (Array.isArray(current.keywords) ? current.keywords : JSON.parse(current.keywords || '[]'))
+      .map((k: string) => k.toLowerCase()),
+  );
+  const curWords = new Set(
+    `${current.topic || ''} ${current.title}`.toLowerCase().split(/\W+/).filter(w => w.length > 3),
+  );
+  const scored = all
+    .filter(a => a.slug !== current.slug && a.language === current.language)
+    .map(a => {
+      let s = 0;
+      const kws = Array.isArray(a.keywords) ? a.keywords : [];
+      for (const k of kws) if (curKw.has(String(k).toLowerCase())) s += 2;
+      for (const w of `${a.topic || ''} ${a.title}`.toLowerCase().split(/\W+/)) {
+        if (w.length > 3 && curWords.has(w)) s += 1;
+      }
+      return { s, a };
+    })
+    .sort((x, y) => y.s - x.s || +new Date(y.a.created_at) - +new Date(x.a.created_at));
+  return scored.slice(0, n).map(x => x.a);
+}
+
 export default function Article() {
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<Article | null>(null);
+  const [allArticles, setAllArticles] = useState<ArticleMeta[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+
+  useEffect(() => {
+    fetch('/blog/articles.json')
+      .then(r => r.json())
+      .then((data: ArticleMeta[]) => setAllArticles(data))
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!slug) return;
@@ -202,6 +240,41 @@ export default function Article() {
           </div>
         </section>
       )}
+
+      {/* Related articles */}
+      {allArticles.length > 0 && (() => {
+        const related = pickRelated(article, allArticles);
+        if (related.length === 0) return null;
+        return (
+          <section className="max-w-3xl mx-auto px-4 sm:px-6 pb-16">
+            <h2 className="text-2xl font-bold text-brand-blue mb-6 flex items-center gap-2">
+              <span className="w-1 h-6 bg-brand-cyan rounded-full inline-block" />
+              {article.language === 'zh' ? '相关文章' : article.language === 'ms' ? 'Artikel Berkaitan' : 'Related Articles'}
+            </h2>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {related.map(r => (
+                <Link
+                  key={r.slug}
+                  to={`/blog/${r.slug}`}
+                  className="group flex flex-col rounded-2xl border border-brand-blue/8 overflow-hidden bg-white hover:border-brand-cyan/30 hover:shadow-lg transition-all"
+                >
+                  {r.image_url && (
+                    <div className="h-28 overflow-hidden shrink-0">
+                      <img src={r.image_url} alt={r.title} loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                  )}
+                  <div className="p-4 flex flex-col flex-grow">
+                    <h3 className="text-sm font-bold text-brand-blue leading-snug line-clamp-3 group-hover:text-brand-cyan transition-colors">
+                      {r.title}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* CTA footer */}
       <div className="bg-brand-blue text-white">
