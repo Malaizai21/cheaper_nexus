@@ -191,24 +191,24 @@ const platforms = [
 
 const serviceCards: Record<Language, { icon: React.ReactNode; title: string; desc: string }[]> = {
   zh: [
-    { icon: <Video className="w-6 h-6" />, title: 'UGC / KOC 视频矩阵', desc: '达人真实测评视频，精准触达 TikTok & Instagram 受众，驱动高互动与转化。' },
-    { icon: <Share2 className="w-6 h-6" />, title: '全网社媒运营', desc: '统一品牌形象，专业内容日历，Facebook / IG / TikTok 全平台持续增长。' },
-    { icon: <TrendingUp className="w-6 h-6" />, title: '数字广告 & SEO', desc: 'Meta / Google 精准投放 + 长期搜索霸屏，双轮驱动高意向客户。' },
-    { icon: <Globe className="w-6 h-6" />, title: '小红书企业营销', desc: '蓝V认证入驻、官方账号全案托管，KOC 批量种草触达华人市场。' },
+    { icon: <Video className="w-6 h-6" />, title: 'UGC 短视频制作', desc: '拍摄、剪接、写剧本一站包办，为 TikTok & Instagram 算法深度优化，按支计价。' },
+    { icon: <Share2 className="w-6 h-6" />, title: 'Meta 广告与内容管理', desc: '帖文文案撰写 + 广告投放优化二合一，Facebook / IG 持续曝光与转化。' },
+    { icon: <TrendingUp className="w-6 h-6" />, title: 'Google 广告 & SEO', desc: 'Google 精准投放 + 长期搜索霸屏，双轮驱动高意向客户。' },
+    { icon: <Globe className="w-6 h-6" />, title: '小红书 KOC 种草', desc: 'KOC 批量种草铺量，精准触达马来西亚华人消费市场。' },
     { icon: <ShoppingBag className="w-6 h-6" />, title: '电商全案 & 直播', desc: '多平台店铺搭建、360° 电商托管与专业直播带货，一站式覆盖。' },
   ],
   en: [
-    { icon: <Video className="w-6 h-6" />, title: 'UGC / KOC Video Matrix', desc: 'Authentic creator videos optimised for TikTok & Instagram algorithms — driving real engagement.' },
-    { icon: <Share2 className="w-6 h-6" />, title: 'Social Media Management', desc: 'Unified brand presence, professional content calendar, consistent growth across all platforms.' },
-    { icon: <TrendingUp className="w-6 h-6" />, title: 'Digital Ads & SEO', desc: 'Precision Meta/Google ads + long-term search dominance — dual engine for high-intent customers.' },
-    { icon: <Globe className="w-6 h-6" />, title: 'Xiaohongshu Marketing', desc: 'Blue V verification, full account management, and mass KOC seeding for the Chinese market.' },
+    { icon: <Video className="w-6 h-6" />, title: 'UGC Short-Video Production', desc: 'Filming, editing & scriptwriting handled end-to-end, optimised for TikTok & Instagram algorithms — priced per video.' },
+    { icon: <Share2 className="w-6 h-6" />, title: 'Meta Ads & Content Management', desc: 'Post copywriting and ads management combined — consistent visibility and conversions on Facebook & Instagram.' },
+    { icon: <TrendingUp className="w-6 h-6" />, title: 'Google Ads & SEO', desc: 'Precision Google ads + long-term search dominance — dual engine for high-intent customers.' },
+    { icon: <Globe className="w-6 h-6" />, title: 'Xiaohongshu KOC Seeding', desc: 'Mass organic KOC seeding campaigns reaching Chinese-speaking consumers in Malaysia.' },
     { icon: <ShoppingBag className="w-6 h-6" />, title: 'E-Commerce & Live Streaming', desc: 'Multi-platform shop setup, 360° e-commerce management, and professional live broadcasting.' },
   ],
   ms: [
-    { icon: <Video className="w-6 h-6" />, title: 'Matriks Video UGC / KOC', desc: 'Video pencipta autentik dioptimumkan untuk TikTok & Instagram — penglibatan dan penukaran nyata.' },
-    { icon: <Share2 className="w-6 h-6" />, title: 'Pengurusan Media Sosial', desc: 'Kehadiran jenama bersatu, kalendar kandungan profesional, pertumbuhan berterusan merentasi semua platform.' },
-    { icon: <TrendingUp className="w-6 h-6" />, title: 'Iklan Digital & SEO', desc: 'Iklan Meta/Google yang tepat + dominasi carian jangka panjang — enjin pertumbuhan dua hala.' },
-    { icon: <Globe className="w-6 h-6" />, title: 'Pemasaran Xiaohongshu', desc: 'Pengesahan Blue V, pengurusan akaun penuh, dan penanaman KOC berskala besar untuk pasaran Cina.' },
+    { icon: <Video className="w-6 h-6" />, title: 'Penerbitan Video Pendek UGC', desc: 'Penggambaran, penyuntingan & penulisan skrip diuruskan sepenuhnya, dioptimumkan untuk TikTok & Instagram — dikenakan bayaran setiap video.' },
+    { icon: <Share2 className="w-6 h-6" />, title: 'Pengurusan Iklan & Kandungan Meta', desc: 'Penulisan kandungan dan pengurusan iklan digabungkan — keterlihatan dan penukaran konsisten di Facebook & Instagram.' },
+    { icon: <TrendingUp className="w-6 h-6" />, title: 'Iklan Google & SEO', desc: 'Iklan Google yang tepat + dominasi carian jangka panjang — enjin pertumbuhan dua hala.' },
+    { icon: <Globe className="w-6 h-6" />, title: 'Penanaman KOC Xiaohongshu', desc: 'Kempen penanaman KOC organik besar-besaran menjangkau pengguna berbahasa Cina di Malaysia.' },
     { icon: <ShoppingBag className="w-6 h-6" />, title: 'E-Dagang & Siaran Langsung', desc: 'Persediaan kedai berbilang platform, pengurusan e-dagang 360°, dan siaran langsung profesional.' },
   ],
 };

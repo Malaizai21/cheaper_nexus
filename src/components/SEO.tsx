@@ -9,7 +9,7 @@ const seoData: Record<Language, { title: string; description: string; keywords: 
   zh: {
     title: 'Cheaper Nexus | 马来西亚数码营销专家',
     description:
-      '一站式数码营销服务商：品牌视觉内容、社媒管理、Meta 广告精准投放、Google SEO 优化、电商解决方案。价格从 RM288 起，全透明无隐藏收费。',
+      '一站式数码营销服务商：UGC短视频制作、Meta广告与内容管理、Google SEO 优化、小红书KOC种草、电商解决方案。价格从 RM500 起，全透明无隐藏收费。',
     keywords:
       '数码营销,SEO优化,Meta广告,社媒管理,电商,TikTok营销,马来西亚,网络营销,Google广告,品牌推广',
     locale: 'zh_MY',
@@ -18,7 +18,7 @@ const seoData: Record<Language, { title: string; description: string; keywords: 
   en: {
     title: 'Cheaper Nexus | Digital Marketing Agency Malaysia',
     description:
-      'Your all-in-one digital growth partner in Malaysia. Video production, social media management, Meta Ads, Google SEO & e-commerce solutions from RM288. Transparent pricing, no hidden fees.',
+      'Your all-in-one digital growth partner in Malaysia. UGC video production, Meta ads & content management, Google SEO & e-commerce solutions from RM500. Transparent pricing, no hidden fees.',
     keywords:
       'digital marketing malaysia,SEO malaysia,Meta ads,social media management,e-commerce,TikTok marketing,Google ads,branding,content creation',
     locale: 'en_MY',
@@ -27,7 +27,7 @@ const seoData: Record<Language, { title: string; description: string; keywords: 
   ms: {
     title: 'Cheaper Nexus | Agensi Pemasaran Digital Malaysia',
     description:
-      'Rakan pertumbuhan digital all-in-one anda di Malaysia. Pengeluaran video, pengurusan media sosial, iklan Meta, SEO Google & penyelesaian e-dagang dari RM288. Harga telus, tiada caj tersembunyi.',
+      'Rakan pertumbuhan digital all-in-one anda di Malaysia. Penerbitan video UGC, pengurusan iklan & kandungan Meta, SEO Google & penyelesaian e-dagang dari RM500. Harga telus, tiada caj tersembunyi.',
     keywords:
       'pemasaran digital malaysia,SEO malaysia,iklan Meta,pengurusan media sosial,e-dagang,pemasaran TikTok,iklan Google,penjenamaan',
     locale: 'ms_MY',
@@ -52,7 +52,7 @@ const jsonLd = [
       addressRegion: 'Kuala Lumpur',
       addressCountry: 'MY',
     },
-    priceRange: 'RM288 - RM15000+',
+    priceRange: 'RM500 - RM15000+',
     areaServed: { '@type': 'Country', name: 'Malaysia' },
     availableLanguage: ['Chinese', 'English', 'Malay'],
     sameAs: [
@@ -76,24 +76,24 @@ const jsonLd = [
       itemListElement: [
         {
           '@type': 'Offer',
-          itemOffered: { '@type': 'Service', name: 'Brand Visual Content Production' },
-          price: '288',
+          itemOffered: { '@type': 'Service', name: 'UGC Short-Video Production' },
+          price: '500',
           priceCurrency: 'MYR',
-          description: 'Professional short-video production optimised for TikTok & Xiaohongshu algorithms.',
+          description: 'Native-style short-video production for TikTok & Xiaohongshu — filming, editing, and scriptwriting included, priced per video.',
         },
         {
           '@type': 'Offer',
-          itemOffered: { '@type': 'Service', name: 'Social Media Management' },
-          price: '388',
+          itemOffered: { '@type': 'Service', name: 'Meta Ads & Content Management' },
+          price: '2000',
           priceCurrency: 'MYR',
-          description: 'Full-service account setup and management across 6 platforms: FB, IG, TikTok, Red, Lemon8, WA Business.',
+          description: 'Combined Facebook and Instagram post copywriting and ads management with audience targeting and creative optimisation.',
         },
         {
           '@type': 'Offer',
-          itemOffered: { '@type': 'Service', name: 'Meta Ads Management' },
-          price: '1888',
+          itemOffered: { '@type': 'Service', name: 'Xiaohongshu KOC Seeding' },
+          price: '4500',
           priceCurrency: 'MYR',
-          description: 'Precision Facebook and Instagram advertising with audience targeting and creative optimisation.',
+          description: 'Organic KOC seeding campaign on Xiaohongshu — 10 seeded posts to reach Chinese-speaking consumers in Malaysia.',
         },
         {
           '@type': 'Offer',
@@ -121,7 +121,7 @@ const jsonLd = [
         name: 'What is Cheaper Nexus?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Cheaper Nexus is a Malaysia-based all-in-one digital marketing agency offering brand visual content, social media management, Meta Ads, Google SEO, and e-commerce solutions for SMEs. Services start from RM288 with transparent pricing and no hidden fees.',
+          text: 'Cheaper Nexus is a Malaysia-based all-in-one digital marketing agency offering UGC video production, Meta ads & content management, Xiaohongshu KOC seeding, Google SEO, and e-commerce solutions for SMEs. Services start from RM500 with transparent pricing and no hidden fees.',
         },
       },
       {
@@ -129,7 +129,7 @@ const jsonLd = [
         name: 'What digital marketing services does Cheaper Nexus offer in Malaysia?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Cheaper Nexus offers five core services: (1) UGC/KOC brand video production for TikTok and Xiaohongshu, (2) social media management across Facebook, Instagram, TikTok, and Red, (3) Meta Ads and Google Ads management, (4) Google SEO optimisation, and (5) e-commerce management on Shopee, Lazada, and TikTok Shop.',
+          text: 'Cheaper Nexus offers five core services: (1) UGC short-video production (filming, editing, scriptwriting) for TikTok and Xiaohongshu, (2) combined Meta post copywriting and ads management for Facebook and Instagram, (3) Xiaohongshu KOC seeding, (4) Google Ads and SEO optimisation, and (5) e-commerce management on Shopee, Lazada, and TikTok Shop.',
         },
       },
       {
@@ -137,7 +137,7 @@ const jsonLd = [
         name: 'How much does digital marketing cost in Malaysia?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Cheaper Nexus digital marketing packages start from RM288 for brand visual content. Social media management starts from RM388/month. Meta Ads and Google SEO management start from RM1,888/month. All pricing is transparent with no hidden fees.',
+          text: 'Cheaper Nexus digital marketing packages start from RM500 per UGC video. Combined Meta content and ads management is RM2,000/month. Xiaohongshu KOC seeding starts from RM4,500 for 10 posts. Google Ads and SEO management start from RM1,200/month. All pricing is transparent with no hidden fees.',
         },
       },
       {
@@ -145,7 +145,7 @@ const jsonLd = [
         name: '马来西亚数码营销费用是多少？',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Cheaper Nexus 的数码营销服务价格从 RM288 起。社媒管理套餐从 RM388/月起，Meta 广告及 Google SEO 管理从 RM1,888/月起，全透明定价，无隐藏费用。',
+          text: 'Cheaper Nexus 的数码营销服务价格从 RM500/支（UGC短视频）起。Meta 内容与广告管理为 RM2,000/月，小红书 KOC 种草从 RM4,500/10篇起，Google 广告管理从 RM1,200/月起，全透明定价，无隐藏费用。',
         },
       },
       {
@@ -153,7 +153,7 @@ const jsonLd = [
         name: 'Does Cheaper Nexus work with small businesses and SMEs?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes. Cheaper Nexus specialises in helping Malaysian SMEs and small businesses grow online. The agency offers flexible, affordable packages starting from RM288, with direct WhatsApp access to the team and a free 30-minute strategy consultation.',
+          text: 'Yes. Cheaper Nexus specialises in helping Malaysian SMEs and small businesses grow online. The agency offers flexible, affordable packages starting from RM500, with direct WhatsApp access to the team and a free 30-minute strategy consultation.',
         },
       },
       {
