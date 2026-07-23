@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { CheckCircle2, Phone, ArrowRight, Star } from 'lucide-react';
+import { CheckCircle2, Phone, ArrowRight, Star, Video, Share2, BookOpen, TrendingUp, ShoppingBag } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { useLanguage, type Language } from '../hooks/useLanguage';
 
@@ -10,31 +10,26 @@ const t: Record<Language, {
   hero: { tag: string; title: string; subtitle: string };
   packagesTitle: string; packagesSub: string;
   enterprise: string; enterpriseDesc: string;
-  tableTitle: string; tableSub: string;
-  tableHeaders: [string, string, string];
-  tableNote: string;
+  singleTitle: string; singleSub: string;
   ctaTitle: string; ctaSubtitle: string; viewServices: string;
   getStarted: string; mostPopular: string;
   tiers: { name: string; tagline: string; features: { category: string; value: string }[] }[];
-  tableRows: { service: string; price: string; billing: string }[];
+  singleServices: { title: string; price: string; unit: string; desc: string }[];
 }> = {
   zh: {
     hero: { tag: '价格透明', title: '马来西亚数码营销套餐', subtitle: '无隐藏费用，无模糊月费。每个套餐都清楚列明您所获得的内容，让您做出明智的决定。' },
     packagesTitle: '选择您的增长套餐', packagesSub: '针对业务各发展阶段的捆绑解决方案。',
     enterprise: '企业定制方案', enterpriseDesc: '专为高速增长企业和IPO准备中品牌量身定制。',
-    tableTitle: '完整价格一览', tableSub: '所有单项服务价格，可根据需求自由组合。',
-    tableHeaders: ['服务项目', '价格', '计费方式'],
-    tableNote: '* 可定制套餐。广告投放费用不含在管理费内。',
+    singleTitle: '单项服务价格', singleSub: '五大核心服务，价格透明，可单独订购或自由组合。',
     ctaTitle: '准备好开始了吗？', ctaSubtitle: '联系我们——帮您选择最适合预算和目标的套餐。',
     viewServices: '查看所有服务', getStarted: '立即开始', mostPopular: '最受欢迎',
     tiers: [
-      { name: 'Basic Starter', tagline: '基础建立', features: [
-        { category: '视频内容', value: '1 支短视频' },
-        { category: '图文帖子', value: '1 篇创意帖子' },
+      { name: 'Meta 广告与内容', tagline: '内容 + 广告一体化', features: [
+        { category: '内容文案', value: 'Meta 帖文文案撰写' },
+        { category: '内容排期', value: '每周内容规划与发布' },
+        { category: '广告管理', value: '广告投放定向与优化' },
         { category: '平台', value: 'Facebook & Instagram' },
-        { category: '广告管理', value: '基础广告配置' },
-        { category: '内容文案', value: '基础美工编辑' },
-        { category: '支持服务', value: 'WhatsApp 咨询按钮设置' },
+        { category: '支持服务', value: 'WhatsApp 直接对接' },
       ]},
       { name: 'Growth Booster', tagline: '主动增长', features: [
         { category: '视频内容', value: '4 支短视频' },
@@ -55,36 +50,28 @@ const t: Record<Language, {
         { category: '支持服务', value: '营销讨论与优先支持' },
       ]},
     ],
-    tableRows: [
-      { service: 'UGC 短视频（含拍摄、剪接、写剧本）', price: 'RM 500', billing: '/ 支' },
-      { service: 'Meta Post 文案 + 广告管理', price: 'RM 2,000', billing: '/ 月' },
-      { service: '小红书 KOC 种草铺量', price: 'RM 4,500', billing: '/ 10 篇' },
-      { service: 'Google 广告：基础版', price: 'RM 1,200', billing: '/ 月' },
-      { service: 'Google 广告：标准版', price: 'RM 2,000', billing: '/ 月' },
-      { service: 'GEO & SEO 搜索优化（最少 6 个月）', price: 'RM 2,500', billing: '/ 月' },
-      { service: '高转化落地页', price: '从 RM 1,000', billing: '/ 页' },
-      { service: '电商多平台开店及装修', price: 'RM 1,888', billing: '单次' },
-      { service: '电商 360° 全托管', price: 'RM 5,000', billing: '/ 月' },
-      { service: '直播 / 播出服务', price: 'RM 2,500', billing: '/ 月' },
+    singleServices: [
+      { title: 'UGC 短视频制作', price: 'RM 500', unit: '/ 支', desc: '拍摄、剪接、写剧本一站包办' },
+      { title: 'Meta 广告与内容管理', price: 'RM 2,000', unit: '/ 月', desc: 'Meta 帖文文案 + 广告投放一体化' },
+      { title: '小红书 KOC 种草', price: 'RM 4,500', unit: '/ 10 篇', desc: 'KOC 批量种草铺量，触达华人市场' },
+      { title: 'Google 广告与 SEO', price: 'RM 1,200', unit: '/ 月起', desc: '广告投放 + 长期搜索优化' },
+      { title: '电商全案与直播', price: 'RM 1,888', unit: '起', desc: '多平台开店、全托管与直播带货' },
     ],
   },
   en: {
     hero: { tag: 'Transparent Pricing', title: 'Digital Marketing Packages for Malaysian SMEs', subtitle: 'No hidden fees. No vague retainers. Every package clearly defines what you get — so you can make a confident decision.' },
     packagesTitle: 'Choose Your Growth Package', packagesSub: 'Bundled solutions for every stage of your business.',
     enterprise: 'Enterprise & Custom', enterpriseDesc: 'Tailored for high-growth corporate entities and IPO-ready brands.',
-    tableTitle: 'Full Pricing Summary', tableSub: 'All individual service prices. Mix and match based on your needs.',
-    tableHeaders: ['Service', 'Price', 'Billing'],
-    tableNote: '* Custom packages available. Ad spend not included in management fees.',
+    singleTitle: 'Individual Service Pricing', singleSub: 'Our five core services — transparent pricing, order individually or mix and match.',
     ctaTitle: 'Ready to Get Started?', ctaSubtitle: "Chat with us — we'll help you pick the right package for your budget and goals.",
     viewServices: 'View All Services', getStarted: 'Get Started', mostPopular: 'Most Popular',
     tiers: [
-      { name: 'Basic Starter', tagline: 'Foundation Building', features: [
-        { category: 'Video Content', value: '1 Short Video' },
-        { category: 'Graphic Posts', value: '1 Creative Post' },
+      { name: 'Meta Ads & Content', tagline: 'Content + Ads Combined', features: [
+        { category: 'Content & Copy', value: 'Meta Post Copywriting' },
+        { category: 'Scheduling', value: 'Weekly Content Planning & Posting' },
+        { category: 'Ads Management', value: 'Ad Targeting & Optimisation' },
         { category: 'Platforms', value: 'Facebook & Instagram' },
-        { category: 'Ads Management', value: 'Basic Ads Configuration' },
-        { category: 'Content & Copy', value: 'Basic Artwork Editing' },
-        { category: 'Support', value: 'WhatsApp Inquiry Button Setup' },
+        { category: 'Support', value: 'Direct WhatsApp Access' },
       ]},
       { name: 'Growth Booster', tagline: 'Active Engagement', features: [
         { category: 'Video Content', value: '4 Short Videos' },
@@ -105,36 +92,28 @@ const t: Record<Language, {
         { category: 'Support', value: 'Marketing Discussions & Priority Support' },
       ]},
     ],
-    tableRows: [
-      { service: 'UGC Short Video (Filming + Editing + Script)', price: 'RM 500', billing: '/ video' },
-      { service: 'Meta Post Copywriting + Ads Management', price: 'RM 2,000', billing: '/ month' },
-      { service: 'XHS Organic KOC Seeding', price: 'RM 4,500', billing: '/ 10 posts' },
-      { service: 'Google Ads Starter Edition', price: 'RM 1,200', billing: '/ month' },
-      { service: 'Google Ads Standard Edition', price: 'RM 2,000', billing: '/ month' },
-      { service: 'GEO & SEO Optimization (Min. 6 months)', price: 'RM 2,500', billing: '/ month' },
-      { service: 'High-Conversion Landing Page', price: 'From RM 1,000', billing: '/ page' },
-      { service: 'E-Commerce Multi-Platform Setup', price: 'RM 1,888', billing: 'one-time' },
-      { service: 'E-Commerce 360° Full Management', price: 'RM 5,000', billing: '/ month' },
-      { service: 'Live Streaming / Broadcasting Service', price: 'RM 2,500', billing: '/ month' },
+    singleServices: [
+      { title: 'UGC Short-Video Production', price: 'RM 500', unit: '/ video', desc: 'Filming, editing & scriptwriting handled end-to-end' },
+      { title: 'Meta Ads & Content Management', price: 'RM 2,000', unit: '/ month', desc: 'Meta post copywriting + ads management combined' },
+      { title: 'Xiaohongshu KOC Seeding', price: 'RM 4,500', unit: '/ 10 posts', desc: 'Mass KOC seeding to reach Chinese-speaking consumers' },
+      { title: 'Google Ads & SEO', price: 'RM 1,200', unit: '/ month+', desc: 'Ad placement + long-term search optimisation' },
+      { title: 'E-Commerce & Live Streaming', price: 'RM 1,888', unit: '+', desc: 'Multi-platform setup, full management & live commerce' },
     ],
   },
   ms: {
     hero: { tag: 'Harga Telus', title: 'Pakej Pemasaran Digital untuk PKS Malaysia', subtitle: 'Tiada caj tersembunyi. Tiada yuran samar. Setiap pakej dengan jelas menentukan apa yang anda perolehi.' },
     packagesTitle: 'Pilih Pakej Pertumbuhan Anda', packagesSub: 'Penyelesaian berpakej untuk setiap peringkat perniagaan anda.',
     enterprise: 'Perusahaan & Tersuai', enterpriseDesc: 'Disesuaikan untuk entiti korporat pertumbuhan tinggi dan jenama sedia IPO.',
-    tableTitle: 'Ringkasan Harga Penuh', tableSub: 'Semua harga perkhidmatan individu. Gabung dan padankan mengikut keperluan.',
-    tableHeaders: ['Perkhidmatan', 'Harga', 'Pengebilan'],
-    tableNote: '* Pakej tersuai tersedia. Belanja iklan tidak termasuk dalam yuran pengurusan.',
+    singleTitle: 'Harga Perkhidmatan Individu', singleSub: 'Lima perkhidmatan teras kami — harga telus, tempah secara berasingan atau gabungkan mengikut keperluan.',
     ctaTitle: 'Bersedia Untuk Bermula?', ctaSubtitle: 'Berbual dengan kami — kami akan membantu anda memilih pakej yang tepat untuk bajet dan matlamat anda.',
     viewServices: 'Lihat Semua Perkhidmatan', getStarted: 'Mulakan', mostPopular: 'Paling Popular',
     tiers: [
-      { name: 'Basic Starter', tagline: 'Pembinaan Asas', features: [
-        { category: 'Kandungan Video', value: '1 Video Pendek' },
-        { category: 'Hantaran Grafik', value: '1 Hantaran Kreatif' },
+      { name: 'Iklan & Kandungan Meta', tagline: 'Kandungan + Iklan Bersepadu', features: [
+        { category: 'Kandungan & Teks', value: 'Penulisan Kandungan Meta' },
+        { category: 'Penjadualan', value: 'Perancangan & Hantaran Mingguan' },
+        { category: 'Pengurusan Iklan', value: 'Penyasaran & Pengoptimuman Iklan' },
         { category: 'Platform', value: 'Facebook & Instagram' },
-        { category: 'Pengurusan Iklan', value: 'Konfigurasi Iklan Asas' },
-        { category: 'Kandungan & Teks', value: 'Penyuntingan Karya Seni Asas' },
-        { category: 'Sokongan', value: 'Persediaan Butang Pertanyaan WhatsApp' },
+        { category: 'Sokongan', value: 'Akses WhatsApp Terus' },
       ]},
       { name: 'Growth Booster', tagline: 'Penglibatan Aktif', features: [
         { category: 'Kandungan Video', value: '4 Video Pendek' },
@@ -155,32 +134,35 @@ const t: Record<Language, {
         { category: 'Sokongan', value: 'Perbincangan Pemasaran & Sokongan Keutamaan' },
       ]},
     ],
-    tableRows: [
-      { service: 'Video Pendek UGC (Penggambaran + Penyuntingan + Skrip)', price: 'RM 500', billing: '/ video' },
-      { service: 'Penulisan Kandungan Meta + Pengurusan Iklan', price: 'RM 2,000', billing: '/ bulan' },
-      { service: 'Penanaman KOC Organik XHS', price: 'RM 4,500', billing: '/ 10 catatan' },
-      { service: 'Iklan Google Edisi Permulaan', price: 'RM 1,200', billing: '/ bulan' },
-      { service: 'Iklan Google Edisi Standard', price: 'RM 2,000', billing: '/ bulan' },
-      { service: 'Pengoptimuman GEO & SEO (Min. 6 bulan)', price: 'RM 2,500', billing: '/ bulan' },
-      { service: 'Halaman Pendaratan Penukaran Tinggi', price: 'Dari RM 1,000', billing: '/ halaman' },
-      { service: 'Persediaan E-Dagang Pelbagai Platform', price: 'RM 1,888', billing: 'sekali' },
-      { service: 'Pengurusan Penuh E-Dagang 360°', price: 'RM 5,000', billing: '/ bulan' },
-      { service: 'Perkhidmatan Penstriman Langsung', price: 'RM 2,500', billing: '/ bulan' },
+    singleServices: [
+      { title: 'Penerbitan Video Pendek UGC', price: 'RM 500', unit: '/ video', desc: 'Penggambaran, penyuntingan & skrip diuruskan sepenuhnya' },
+      { title: 'Pengurusan Iklan & Kandungan Meta', price: 'RM 2,000', unit: '/ bulan', desc: 'Penulisan kandungan Meta + pengurusan iklan bersepadu' },
+      { title: 'Penanaman KOC Xiaohongshu', price: 'RM 4,500', unit: '/ 10 catatan', desc: 'Penanaman KOC besar-besaran menjangkau pengguna Cina' },
+      { title: 'Iklan Google & SEO', price: 'RM 1,200', unit: '/ bulan+', desc: 'Penempatan iklan + pengoptimuman carian jangka panjang' },
+      { title: 'E-Dagang & Siaran Langsung', price: 'RM 1,888', unit: '+', desc: 'Persediaan pelbagai platform, pengurusan penuh & siaran langsung' },
     ],
   },
 };
 
-const prices = ['RM 1,688', 'RM 4,688', 'RM 10,888'];
+const prices = ['RM 2,000', 'RM 4,688', 'RM 10,888'];
 const units: Record<Language, string[]> = {
   zh: ['/ 月', '/ 月', '/ 3 个月'],
   en: ['/ month', '/ month', '/ 3 months'],
   ms: ['/ bulan', '/ bulan', '/ 3 bulan'],
 };
 
+const icons = [
+  <Video className="w-6 h-6" />,
+  <Share2 className="w-6 h-6" />,
+  <BookOpen className="w-6 h-6" />,
+  <TrendingUp className="w-6 h-6" />,
+  <ShoppingBag className="w-6 h-6" />,
+];
+
 const metaT: Record<Language, { title: string; desc: string }> = {
-  zh: { title: '数码营销价格套餐马来西亚 | 从RM1,688/月 | Cheaper Nexus', desc: '马来西亚数码营销透明定价。套餐从 RM 1,688/月起。Basic Starter、Growth Booster、Ultimate 及企业定制方案。' },
-  en: { title: 'Digital Marketing Pricing Malaysia | Packages from RM 1,688 | Cheaper Nexus', desc: 'Transparent digital marketing pricing in Malaysia. Packages from RM 1,688/month. Basic Starter, Growth Booster, Ultimate and Enterprise packages for SMEs.' },
-  ms: { title: 'Harga Pemasaran Digital Malaysia | Pakej dari RM 1,688 | Cheaper Nexus', desc: 'Harga pemasaran digital telus di Malaysia. Pakej dari RM 1,688/bulan untuk PKS Malaysia.' },
+  zh: { title: '数码营销价格套餐马来西亚 | 从RM500起 | Cheaper Nexus', desc: '马来西亚数码营销透明定价。UGC短视频 RM500/支，Meta广告与内容管理 RM2,000/月，Growth Booster、Ultimate 及企业定制方案。' },
+  en: { title: 'Digital Marketing Pricing Malaysia | Packages from RM 500 | Cheaper Nexus', desc: 'Transparent digital marketing pricing in Malaysia. UGC video from RM500, Meta Ads & Content, Growth Booster, Ultimate and Enterprise packages for SMEs.' },
+  ms: { title: 'Harga Pemasaran Digital Malaysia | Pakej dari RM 500 | Cheaper Nexus', desc: 'Harga pemasaran digital telus di Malaysia. Video UGC dari RM500, Iklan & Kandungan Meta, Growth Booster dan Ultimate untuk PKS Malaysia.' },
 };
 
 export default function Pricing() {
@@ -270,31 +252,34 @@ export default function Pricing() {
             </a>
           </div>
 
-          {/* Full table */}
+          {/* Individual services */}
           <div>
-            <h2 className="text-2xl font-bold text-brand-blue mb-3">{content.tableTitle}</h2>
-            <p className="text-brand-blue/60 mb-8">{content.tableSub}</p>
-            <div className="overflow-x-auto rounded-2xl border border-brand-blue/8">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-brand-blue text-white">
-                    {content.tableHeaders.map(h => (
-                      <th key={h} className={`px-6 py-4 text-sm font-semibold ${h === content.tableHeaders[0] ? 'text-left' : 'text-right'}`}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {content.tableRows.map((row, i) => (
-                    <tr key={i} className={`border-t border-brand-blue/5 ${i % 2 === 0 ? 'bg-white' : 'bg-brand-blue/2'}`}>
-                      <td className="px-6 py-4 text-sm text-brand-blue/80">{row.service}</td>
-                      <td className="px-6 py-4 text-sm font-bold text-brand-blue text-right">{row.price}</td>
-                      <td className="px-6 py-4 text-sm text-brand-blue/40 text-right">{row.billing}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="text-center mb-10">
+              <h2 className="text-2xl font-bold text-brand-blue mb-3">{content.singleTitle}</h2>
+              <p className="text-brand-blue/60">{content.singleSub}</p>
             </div>
-            <p className="text-xs text-brand-blue/40 mt-4">{content.tableNote}</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {content.singleServices.map((s, i) => (
+                <Link
+                  key={s.title}
+                  to="/services"
+                  className="group flex flex-col p-7 rounded-[28px] border border-brand-blue/8 bg-white hover:border-brand-cyan/30 hover:shadow-xl hover:shadow-brand-blue/5 transition-all"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-brand-blue text-brand-cyan flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                    {icons[i]}
+                  </div>
+                  <h3 className="text-base font-bold text-brand-blue mb-1">{s.title}</h3>
+                  <p className="text-sm text-brand-blue/50 mb-6 flex-grow">{s.desc}</p>
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <span className="text-xl font-bold text-brand-blue">{s.price}</span>
+                      <span className="text-xs text-brand-blue/40 ml-1">{s.unit}</span>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-brand-cyan opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 
