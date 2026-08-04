@@ -273,8 +273,8 @@ const servicesList = [
 ];
 
 const homeBody = `${wrapStart}
-<h1>Cheaper Nexus — 马来西亚一站式数码营销专家 | Digital Marketing Agency Malaysia</h1>
-<p>Cheaper Nexus is an all-in-one digital marketing agency in Kuala Lumpur, Malaysia, helping Malaysian SMEs grow across TikTok, Xiaohongshu (小红书), Facebook, Instagram, Google and e-commerce platforms. Transparent pricing from RM500, no hidden fees. 我们帮马来西亚中小企业一站式攻占全平台：从 TikTok 到小红书，从 Meta 广告到 Google SEO。</p>
+<h1>Cheaper Nexus — 马来西亚数码营销公司 | Digital Marketing Agency Malaysia</h1>
+<p>Cheaper Nexus 是一家马来西亚数码营销公司，同时也是专注搜索排名优化的马来西亚SEO公司，总部位于吉隆坡。Cheaper Nexus is an all-in-one digital marketing agency and SEO company in Kuala Lumpur, Malaysia, helping Malaysian SMEs grow across TikTok, Xiaohongshu (小红书), Facebook, Instagram, Google and e-commerce platforms. Transparent pricing from RM500, no hidden fees. 我们帮马来西亚中小企业一站式攻占全平台：从 TikTok 到小红书，从 Meta 广告到 Google SEO。</p>
 <h2>Our Services 服务项目</h2>
 <ul>${servicesList.map(([name, desc]) => `<li><strong>${name}</strong> — ${desc}</li>`).join('')}</ul>
 <h2>Why Choose Cheaper Nexus 为什么选择我们</h2>
@@ -292,18 +292,18 @@ ${homeFaq.map(({ q, a }) => `<h3>${escHtml(q)}</h3><p>${escHtml(a)}</p>`).join('
 ${wrapEnd}`;
 
 const homeHeadMeta = `
-    <title>Cheaper Nexus | 马来西亚数码营销专家 · Digital Marketing Agency Malaysia</title>
-    <meta name="description" content="一站式数码营销服务商：UGC短视频制作、Meta广告与内容管理、Google SEO 优化、小红书KOC种草、电商解决方案。价格从 RM500 起，全透明无隐藏收费。All-in-one digital marketing agency Malaysia." />
+    <title>Cheaper Nexus | 马来西亚数码营销公司 · SEO优化专家 · Digital Marketing Agency Malaysia</title>
+    <meta name="description" content="Cheaper Nexus 是马来西亚数码营销公司，专精 SEO优化、UGC短视频制作、Meta广告与内容管理、小红书KOC种草、电商解决方案。价格从 RM500 起，全透明无隐藏收费，值得信赖的马来西亚SEO公司。" />
     <link rel="canonical" href="${SITE_URL}" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Cheaper Nexus | 马来西亚数码营销专家" />
-    <meta property="og:description" content="一站式数码营销服务商，价格从 RM500 起，全透明无隐藏收费。" />
+    <meta property="og:title" content="Cheaper Nexus | 马来西亚数码营销公司" />
+    <meta property="og:description" content="马来西亚数码营销公司，价格从 RM500 起，全透明无隐藏收费。" />
     <meta property="og:url" content="${SITE_URL}" />
     <meta property="og:site_name" content="Cheaper Nexus" />
     <meta property="og:image" content="${SITE_URL}/logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Cheaper Nexus | 马来西亚数码营销专家" />
-    <meta name="twitter:description" content="一站式数码营销服务商，价格从 RM500 起。" />
+    <meta name="twitter:title" content="Cheaper Nexus | 马来西亚数码营销公司" />
+    <meta name="twitter:description" content="马来西亚数码营销公司，价格从 RM500 起。" />
     <link rel="alternate" hrefLang="zh-MY" href="${SITE_URL}" />
     <link rel="alternate" hrefLang="en-MY" href="${SITE_URL}" />
     <link rel="alternate" hrefLang="ms-MY" href="${SITE_URL}" />

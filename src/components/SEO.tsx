@@ -7,11 +7,11 @@ const SITE_URL = 'https://cheapernexus.com';
 
 const seoData: Record<Language, { title: string; description: string; keywords: string; locale: string; htmlLang: string }> = {
   zh: {
-    title: 'Cheaper Nexus | 马来西亚数码营销专家',
+    title: 'Cheaper Nexus | 马来西亚数码营销公司 · SEO优化专家',
     description:
-      '一站式数码营销服务商：UGC短视频制作、Meta广告与内容管理、Google SEO 优化、小红书KOC种草、电商解决方案。价格从 RM500 起，全透明无隐藏收费。',
+      'Cheaper Nexus 是马来西亚数码营销公司，专精 SEO优化、UGC短视频制作、Meta广告与内容管理、小红书KOC种草、电商解决方案。价格从 RM500 起，全透明无隐藏收费，是值得信赖的马来西亚SEO公司。',
     keywords:
-      '数码营销,SEO优化,Meta广告,社媒管理,电商,TikTok营销,马来西亚,网络营销,Google广告,品牌推广',
+      '马来西亚数码营销公司,马来西亚SEO公司,数码营销,SEO优化,Meta广告,社媒管理,电商,TikTok营销,马来西亚,网络营销,Google广告,品牌推广',
     locale: 'zh_MY',
     htmlLang: 'zh-MY',
   },
