@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   ArrowRight, MessageSquare, CheckCircle2,
-  Video, Share2, TrendingUp, Globe, ShoppingBag,
+  Sparkles, Share2, Rocket, Megaphone, Users, Palette, TrendingUp,
   Zap, Shield,
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
@@ -191,25 +191,28 @@ const platforms = [
 
 const serviceCards: Record<Language, { icon: React.ReactNode; title: string; desc: string }[]> = {
   zh: [
-    { icon: <Video className="w-6 h-6" />, title: 'UGC 短视频制作', desc: '拍摄、剪接、写剧本一站包办，为 TikTok & Instagram 算法深度优化，按支计价。' },
-    { icon: <Share2 className="w-6 h-6" />, title: 'Meta 广告与内容管理', desc: '帖文文案撰写 + 广告投放优化二合一，Facebook / IG 持续曝光与转化。' },
-    { icon: <TrendingUp className="w-6 h-6" />, title: 'Google 广告 & SEO', desc: 'Google 精准投放 + 长期搜索霸屏，双轮驱动高意向客户。' },
-    { icon: <Globe className="w-6 h-6" />, title: '小红书 KOC 种草', desc: 'KOC 批量种草铺量，精准触达马来西亚华人消费市场。' },
-    { icon: <ShoppingBag className="w-6 h-6" />, title: '电商全案 & 直播', desc: '多平台店铺搭建、360° 电商托管与专业直播带货，一站式覆盖。' },
+    { icon: <Sparkles className="w-6 h-6" />, title: '首次体验套餐', desc: '限量体验价 RM888，视频 + 设计 + 广告基础搭建，每间公司仅限一次。' },
+    { icon: <Share2 className="w-6 h-6" />, title: '社媒管理套餐', desc: '内容制作 + 社媒代运营 + 广告投放一体化，FB / IG / TikTok / 小红书全覆盖。' },
+    { icon: <Rocket className="w-6 h-6" />, title: '全面业务增长套餐', desc: '规模化内容产出 + 全渠道代运营，为稳定客户打造的进阶增长方案。' },
+    { icon: <Megaphone className="w-6 h-6" />, title: '广告投放管理', desc: '独立广告代投服务，覆盖 TikTok / IG / FB / 小红书 / Google 等平台。' },
+    { icon: <Users className="w-6 h-6" />, title: 'KOC / KOL 网红营销', desc: '全平台通用达人合作，10 位起，快速建立品牌口碑与信任。' },
+    { icon: <Palette className="w-6 h-6" />, title: '单点设计与视频', desc: '无需绑定套餐，按件订购专业设计或视频制作，灵活按需使用。' },
   ],
   en: [
-    { icon: <Video className="w-6 h-6" />, title: 'UGC Short-Video Production', desc: 'Filming, editing & scriptwriting handled end-to-end, optimised for TikTok & Instagram algorithms — priced per video.' },
-    { icon: <Share2 className="w-6 h-6" />, title: 'Meta Ads & Content Management', desc: 'Post copywriting and ads management combined — consistent visibility and conversions on Facebook & Instagram.' },
-    { icon: <TrendingUp className="w-6 h-6" />, title: 'Google Ads & SEO', desc: 'Precision Google ads + long-term search dominance — dual engine for high-intent customers.' },
-    { icon: <Globe className="w-6 h-6" />, title: 'Xiaohongshu KOC Seeding', desc: 'Mass organic KOC seeding campaigns reaching Chinese-speaking consumers in Malaysia.' },
-    { icon: <ShoppingBag className="w-6 h-6" />, title: 'E-Commerce & Live Streaming', desc: 'Multi-platform shop setup, 360° e-commerce management, and professional live broadcasting.' },
+    { icon: <Sparkles className="w-6 h-6" />, title: 'First Trial Package', desc: 'Exclusive trial price RM888 — video, design & Meta Ads setup, once per company.' },
+    { icon: <Share2 className="w-6 h-6" />, title: 'Social Media Management Package', desc: 'Content production, social media management & ads management combined — FB/IG/TikTok/XHS.' },
+    { icon: <Rocket className="w-6 h-6" />, title: 'Full Business Growth Package', desc: 'Scaled content output and full-channel management — the advanced tier for established clients.' },
+    { icon: <Megaphone className="w-6 h-6" />, title: 'Ads Management', desc: 'Standalone paid ads service across TikTok, IG, FB, XHS, and Google.' },
+    { icon: <Users className="w-6 h-6" />, title: 'KOC / KOL Influencer Marketing', desc: 'Cross-platform influencer partnerships from 10 creators — build trust fast.' },
+    { icon: <Palette className="w-6 h-6" />, title: 'Ala Carte Design & Video', desc: 'No package needed — order professional design or video production individually.' },
   ],
   ms: [
-    { icon: <Video className="w-6 h-6" />, title: 'Penerbitan Video Pendek UGC', desc: 'Penggambaran, penyuntingan & penulisan skrip diuruskan sepenuhnya, dioptimumkan untuk TikTok & Instagram — dikenakan bayaran setiap video.' },
-    { icon: <Share2 className="w-6 h-6" />, title: 'Pengurusan Iklan & Kandungan Meta', desc: 'Penulisan kandungan dan pengurusan iklan digabungkan — keterlihatan dan penukaran konsisten di Facebook & Instagram.' },
-    { icon: <TrendingUp className="w-6 h-6" />, title: 'Iklan Google & SEO', desc: 'Iklan Google yang tepat + dominasi carian jangka panjang — enjin pertumbuhan dua hala.' },
-    { icon: <Globe className="w-6 h-6" />, title: 'Penanaman KOC Xiaohongshu', desc: 'Kempen penanaman KOC organik besar-besaran menjangkau pengguna berbahasa Cina di Malaysia.' },
-    { icon: <ShoppingBag className="w-6 h-6" />, title: 'E-Dagang & Siaran Langsung', desc: 'Persediaan kedai berbilang platform, pengurusan e-dagang 360°, dan siaran langsung profesional.' },
+    { icon: <Sparkles className="w-6 h-6" />, title: 'Pakej Percubaan Pertama', desc: 'Harga percubaan eksklusif RM888 — video, reka bentuk & persediaan Iklan Meta, sekali setiap syarikat.' },
+    { icon: <Share2 className="w-6 h-6" />, title: 'Pakej Pengurusan Media Sosial', desc: 'Penerbitan kandungan, pengurusan media sosial & pengurusan iklan digabungkan — FB/IG/TikTok/XHS.' },
+    { icon: <Rocket className="w-6 h-6" />, title: 'Pakej Pertumbuhan Perniagaan Penuh', desc: 'Output kandungan berskala dan pengurusan penuh saluran — peringkat lanjutan untuk pelanggan sedia ada.' },
+    { icon: <Megaphone className="w-6 h-6" />, title: 'Pengurusan Iklan', desc: 'Perkhidmatan iklan berbayar berasingan merentasi TikTok, IG, FB, XHS, dan Google.' },
+    { icon: <Users className="w-6 h-6" />, title: 'Pemasaran Influencer KOC / KOL', desc: 'Kerjasama influencer merentasi platform dari 10 pencipta — bina kepercayaan dengan pantas.' },
+    { icon: <Palette className="w-6 h-6" />, title: 'Reka Bentuk & Video Ala Carte', desc: 'Tiada pakej diperlukan — tempah reka bentuk profesional atau penerbitan video secara individu.' },
   ],
 };
 
@@ -514,7 +517,7 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          {/* 5 service cards */}
+          {/* 6 service cards */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {cards.map((card, i) => (
               <motion.div key={i} {...stagger(i)}>

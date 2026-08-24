@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { CheckCircle2, Phone, ArrowRight, Star, Video, Share2, BookOpen, TrendingUp, ShoppingBag } from 'lucide-react';
+import { CheckCircle2, Phone, ArrowRight, Star, Megaphone, Users, Palette, Video } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { useLanguage, type Language } from '../hooks/useLanguage';
 
@@ -18,151 +18,132 @@ const t: Record<Language, {
 }> = {
   zh: {
     hero: { tag: '价格透明', title: '马来西亚数码营销套餐', subtitle: '无隐藏费用，无模糊月费。每个套餐都清楚列明您所获得的内容，让您做出明智的决定。' },
-    packagesTitle: '选择您的增长套餐', packagesSub: '针对业务各发展阶段的捆绑解决方案。',
+    packagesTitle: '选择您的增长套餐', packagesSub: '从首次体验到全面业务增长，针对业务各发展阶段的捆绑解决方案。',
     enterprise: '企业定制方案', enterpriseDesc: '专为高速增长企业和IPO准备中品牌量身定制。',
-    singleTitle: '单项服务价格', singleSub: '五大核心服务，价格透明，可单独订购或自由组合。',
+    singleTitle: '独立服务价格', singleSub: '广告投放、网红营销与单点设计视频，价格透明，可单独订购。',
     ctaTitle: '准备好开始了吗？', ctaSubtitle: '联系我们——帮您选择最适合预算和目标的套餐。',
     viewServices: '查看所有服务', getStarted: '立即开始', mostPopular: '最受欢迎',
     tiers: [
-      { name: 'Meta 广告与内容', tagline: '内容 + 广告一体化', features: [
-        { category: '内容文案', value: 'Meta 帖文文案撰写' },
-        { category: '内容排期', value: '每周内容规划与发布' },
-        { category: '广告管理', value: '广告投放定向与优化' },
-        { category: '平台', value: 'Facebook & Instagram' },
-        { category: '支持服务', value: 'WhatsApp 直接对接' },
+      { name: '首次体验套餐', tagline: '限量体验，每间公司仅限一次', features: [
+        { category: '视频内容', value: '1 支短视频（拍摄 + 剪接 + 脚本 + 文案）' },
+        { category: '设计', value: '2 份专业设计' },
+        { category: '广告', value: 'Meta 广告基础搭建（1 专页）' },
+        { category: '原价值', value: 'RM3,100（省 RM2,212）' },
       ]},
-      { name: 'Growth Booster', tagline: '主动增长', features: [
-        { category: '视频内容', value: '4 支短视频' },
-        { category: '图文帖子', value: '8 篇创意帖子' },
-        { category: '平台', value: 'FB / IG / TikTok' },
-        { category: '广告管理', value: '广告设置与主动监控' },
-        { category: '内容文案', value: '内容规划、文案撰写、限时动态发布' },
-        { category: '策略', value: '月度营销活动规划' },
-        { category: '报告', value: '月度绩效报告' },
+      { name: '社媒管理套餐', tagline: '内容 + 代运营 + 广告一体化', features: [
+        { category: '视频内容', value: '2 支短视频' },
+        { category: '设计', value: '5 份专业设计 + IG Feed' },
+        { category: '社媒代运营', value: 'FB / IG / TikTok / 小红书（各 1 专页）' },
+        { category: '广告管理', value: 'Meta 广告投放与优化' },
+        { category: '原价值', value: 'RM5,738（省 RM2,850）' },
       ]},
-      { name: 'Ultimate', tagline: '战略主导', features: [
-        { category: '视频内容', value: '12 支专业视频' },
-        { category: '图文帖子', value: '10 篇创意帖子' },
-        { category: '平台', value: 'FB / IG / TikTok / 小红书' },
-        { category: '广告管理', value: '完整广告策略与漏斗搭建' },
-        { category: '内容文案', value: '内容规划、活动创意、品牌定位' },
-        { category: '策略', value: '销售漏斗规划' },
-        { category: '支持服务', value: '营销讨论与优先支持' },
+      { name: '全面业务增长套餐', tagline: '规模化内容 + 全渠道代运营', features: [
+        { category: '视频内容', value: '6 支短视频' },
+        { category: '设计', value: '18 份专业设计 + IG Feed' },
+        { category: '全渠道代运营', value: 'FB / IG / TikTok / 小红书 / Google 商家 / Waze / Telegram / Lemon8' },
+        { category: '广告管理', value: 'Meta 广告投放与优化' },
+        { category: '原价值', value: 'RM10,888（省 RM2,000）' },
       ]},
     ],
     singleServices: [
-      { title: 'UGC 短视频制作', price: 'RM 500', unit: '/ 支', desc: '拍摄、剪接、写剧本一站包办' },
-      { title: 'Meta 广告与内容管理', price: 'RM 2,000', unit: '/ 月', desc: 'Meta 帖文文案 + 广告投放一体化' },
-      { title: '小红书 KOC 种草', price: 'RM 4,500', unit: '/ 10 篇', desc: 'KOC 批量种草铺量，触达华人市场' },
-      { title: 'Google 广告与 SEO', price: 'RM 1,200', unit: '/ 月起', desc: '广告投放 + 长期搜索优化' },
-      { title: '电商全案与直播', price: 'RM 1,888', unit: '起', desc: '多平台开店、全托管与直播带货' },
+      { title: '广告投放管理', price: 'RM 2,000', unit: '/ 月起', desc: 'TikTok/IG/FB/小红书/Google 等平台广告代投' },
+      { title: 'KOC / KOL 网红营销', price: 'RM 3,888', unit: '起', desc: '全平台通用达人合作，10 位起' },
+      { title: '单点设计', price: 'RM 150', unit: '起', desc: '无需绑定套餐，按件订购专业设计' },
+      { title: '单点视频', price: 'RM 800', unit: '起', desc: '拍摄、剪接、脚本、内容一支起订' },
     ],
   },
   en: {
     hero: { tag: 'Transparent Pricing', title: 'Digital Marketing Packages for Malaysian SMEs', subtitle: 'No hidden fees. No vague retainers. Every package clearly defines what you get — so you can make a confident decision.' },
-    packagesTitle: 'Choose Your Growth Package', packagesSub: 'Bundled solutions for every stage of your business.',
+    packagesTitle: 'Choose Your Growth Package', packagesSub: 'From your first trial to full-scale growth — bundled solutions for every stage of your business.',
     enterprise: 'Enterprise & Custom', enterpriseDesc: 'Tailored for high-growth corporate entities and IPO-ready brands.',
-    singleTitle: 'Individual Service Pricing', singleSub: 'Our five core services — transparent pricing, order individually or mix and match.',
+    singleTitle: 'Standalone Service Pricing', singleSub: 'Ads management, influencer marketing, and ala carte design & video — transparent pricing, order individually.',
     ctaTitle: 'Ready to Get Started?', ctaSubtitle: "Chat with us — we'll help you pick the right package for your budget and goals.",
     viewServices: 'View All Services', getStarted: 'Get Started', mostPopular: 'Most Popular',
     tiers: [
-      { name: 'Meta Ads & Content', tagline: 'Content + Ads Combined', features: [
-        { category: 'Content & Copy', value: 'Meta Post Copywriting' },
-        { category: 'Scheduling', value: 'Weekly Content Planning & Posting' },
-        { category: 'Ads Management', value: 'Ad Targeting & Optimisation' },
-        { category: 'Platforms', value: 'Facebook & Instagram' },
-        { category: 'Support', value: 'Direct WhatsApp Access' },
+      { name: 'First Trial Package', tagline: 'Limited trial, once per company', features: [
+        { category: 'Video Content', value: '1 short video (filming + editing + script + copywriting)' },
+        { category: 'Design', value: '2 professional designs' },
+        { category: 'Ads', value: 'Meta Ads foundation setup (1 page)' },
+        { category: 'Original Value', value: 'RM3,100 (save RM2,212)' },
       ]},
-      { name: 'Growth Booster', tagline: 'Active Engagement', features: [
-        { category: 'Video Content', value: '4 Short Videos' },
-        { category: 'Graphic Posts', value: '8 Creative Posts' },
-        { category: 'Platforms', value: 'FB / IG / TikTok' },
-        { category: 'Ads Management', value: 'Ads Setting & Active Monitoring' },
-        { category: 'Content & Copy', value: 'Content Planning, Caption Copywriting, Story Posting' },
-        { category: 'Strategy', value: 'Monthly Campaign Planning' },
-        { category: 'Reports', value: 'Monthly Performance Report' },
+      { name: 'Social Media Management Package', tagline: 'Content + Management + Ads Combined', features: [
+        { category: 'Video Content', value: '2 short videos' },
+        { category: 'Design', value: '5 professional designs + IG feed' },
+        { category: 'Social Media Management', value: 'FB / IG / TikTok / XHS (1 page each)' },
+        { category: 'Ads Management', value: 'Meta ads management & optimisation' },
+        { category: 'Original Value', value: 'RM5,738 (save RM2,850)' },
       ]},
-      { name: 'Ultimate', tagline: 'Strategic Dominance', features: [
-        { category: 'Video Content', value: '12 Professional Videos' },
-        { category: 'Graphic Posts', value: '10 Creative Posts' },
-        { category: 'Platforms', value: 'FB / IG / TikTok / XHS (小红书)' },
-        { category: 'Ads Management', value: 'Full Ads Strategy Setup & Funnels' },
-        { category: 'Content & Copy', value: 'Content Planning, Campaign Ideas, Brand Positioning' },
-        { category: 'Strategy', value: 'Sales Funnel Planning' },
-        { category: 'Support', value: 'Marketing Discussions & Priority Support' },
+      { name: 'Full Business Growth Package', tagline: 'Scaled Content + Full-Channel Management', features: [
+        { category: 'Video Content', value: '6 short videos' },
+        { category: 'Design', value: '18 professional designs + IG feed' },
+        { category: 'Full-Channel Management', value: 'FB / IG / TikTok / XHS / Google / Waze / Telegram / Lemon8' },
+        { category: 'Ads Management', value: 'Meta ads management & optimisation' },
+        { category: 'Original Value', value: 'RM10,888 (save RM2,000)' },
       ]},
     ],
     singleServices: [
-      { title: 'UGC Short-Video Production', price: 'RM 500', unit: '/ video', desc: 'Filming, editing & scriptwriting handled end-to-end' },
-      { title: 'Meta Ads & Content Management', price: 'RM 2,000', unit: '/ month', desc: 'Meta post copywriting + ads management combined' },
-      { title: 'Xiaohongshu KOC Seeding', price: 'RM 4,500', unit: '/ 10 posts', desc: 'Mass KOC seeding to reach Chinese-speaking consumers' },
-      { title: 'Google Ads & SEO', price: 'RM 1,200', unit: '/ month+', desc: 'Ad placement + long-term search optimisation' },
-      { title: 'E-Commerce & Live Streaming', price: 'RM 1,888', unit: '+', desc: 'Multi-platform setup, full management & live commerce' },
+      { title: 'Ads Management', price: 'RM 2,000', unit: '/ month+', desc: 'Paid ads across TikTok/IG/FB/XHS/Google and more' },
+      { title: 'KOC / KOL Influencer Marketing', price: 'RM 3,888', unit: '+', desc: 'Cross-platform influencer collaborations from 10 creators' },
+      { title: 'Ala Carte Design', price: 'RM 150', unit: '+', desc: 'No package needed — order professional designs per unit' },
+      { title: 'Ala Carte Video', price: 'RM 800', unit: '+', desc: 'Filming, editing, script & content from 1 video' },
     ],
   },
   ms: {
     hero: { tag: 'Harga Telus', title: 'Pakej Pemasaran Digital untuk PKS Malaysia', subtitle: 'Tiada caj tersembunyi. Tiada yuran samar. Setiap pakej dengan jelas menentukan apa yang anda perolehi.' },
-    packagesTitle: 'Pilih Pakej Pertumbuhan Anda', packagesSub: 'Penyelesaian berpakej untuk setiap peringkat perniagaan anda.',
+    packagesTitle: 'Pilih Pakej Pertumbuhan Anda', packagesSub: 'Dari percubaan pertama hingga pertumbuhan menyeluruh — penyelesaian berpakej untuk setiap peringkat perniagaan anda.',
     enterprise: 'Perusahaan & Tersuai', enterpriseDesc: 'Disesuaikan untuk entiti korporat pertumbuhan tinggi dan jenama sedia IPO.',
-    singleTitle: 'Harga Perkhidmatan Individu', singleSub: 'Lima perkhidmatan teras kami — harga telus, tempah secara berasingan atau gabungkan mengikut keperluan.',
+    singleTitle: 'Harga Perkhidmatan Berasingan', singleSub: 'Pengurusan iklan, pemasaran influencer, dan reka bentuk & video ala carte — harga telus, tempah secara berasingan.',
     ctaTitle: 'Bersedia Untuk Bermula?', ctaSubtitle: 'Berbual dengan kami — kami akan membantu anda memilih pakej yang tepat untuk bajet dan matlamat anda.',
     viewServices: 'Lihat Semua Perkhidmatan', getStarted: 'Mulakan', mostPopular: 'Paling Popular',
     tiers: [
-      { name: 'Iklan & Kandungan Meta', tagline: 'Kandungan + Iklan Bersepadu', features: [
-        { category: 'Kandungan & Teks', value: 'Penulisan Kandungan Meta' },
-        { category: 'Penjadualan', value: 'Perancangan & Hantaran Mingguan' },
-        { category: 'Pengurusan Iklan', value: 'Penyasaran & Pengoptimuman Iklan' },
-        { category: 'Platform', value: 'Facebook & Instagram' },
-        { category: 'Sokongan', value: 'Akses WhatsApp Terus' },
+      { name: 'Pakej Percubaan Pertama', tagline: 'Percubaan terhad, sekali sahaja setiap syarikat', features: [
+        { category: 'Kandungan Video', value: '1 video pendek (penggambaran + penyuntingan + skrip + penulisan)' },
+        { category: 'Reka Bentuk', value: '2 reka bentuk profesional' },
+        { category: 'Iklan', value: 'Persediaan asas Iklan Meta (1 halaman)' },
+        { category: 'Nilai Asal', value: 'RM3,100 (jimat RM2,212)' },
       ]},
-      { name: 'Growth Booster', tagline: 'Penglibatan Aktif', features: [
-        { category: 'Kandungan Video', value: '4 Video Pendek' },
-        { category: 'Hantaran Grafik', value: '8 Hantaran Kreatif' },
-        { category: 'Platform', value: 'FB / IG / TikTok' },
-        { category: 'Pengurusan Iklan', value: 'Tetapan Iklan & Pemantauan Aktif' },
-        { category: 'Kandungan & Teks', value: 'Perancangan Kandungan, Penulisan Kapsyen, Hantaran Cerita' },
-        { category: 'Strategi', value: 'Perancangan Kempen Bulanan' },
-        { category: 'Laporan', value: 'Laporan Prestasi Bulanan' },
+      { name: 'Pakej Pengurusan Media Sosial', tagline: 'Kandungan + Pengurusan + Iklan Bersepadu', features: [
+        { category: 'Kandungan Video', value: '2 video pendek' },
+        { category: 'Reka Bentuk', value: '5 reka bentuk profesional + IG feed' },
+        { category: 'Pengurusan Media Sosial', value: 'FB / IG / TikTok / XHS (1 halaman setiap satu)' },
+        { category: 'Pengurusan Iklan', value: 'Pengurusan & pengoptimuman iklan Meta' },
+        { category: 'Nilai Asal', value: 'RM5,738 (jimat RM2,850)' },
       ]},
-      { name: 'Ultimate', tagline: 'Dominasi Strategik', features: [
-        { category: 'Kandungan Video', value: '12 Video Profesional' },
-        { category: 'Hantaran Grafik', value: '10 Hantaran Kreatif' },
-        { category: 'Platform', value: 'FB / IG / TikTok / XHS (小红书)' },
-        { category: 'Pengurusan Iklan', value: 'Persediaan Strategi Iklan Penuh & Corong' },
-        { category: 'Kandungan & Teks', value: 'Perancangan Kandungan, Idea Kempen, Peletakan Jenama' },
-        { category: 'Strategi', value: 'Perancangan Corong Jualan' },
-        { category: 'Sokongan', value: 'Perbincangan Pemasaran & Sokongan Keutamaan' },
+      { name: 'Pakej Pertumbuhan Perniagaan Penuh', tagline: 'Kandungan Berskala + Pengurusan Penuh Saluran', features: [
+        { category: 'Kandungan Video', value: '6 video pendek' },
+        { category: 'Reka Bentuk', value: '18 reka bentuk profesional + IG feed' },
+        { category: 'Pengurusan Penuh Saluran', value: 'FB / IG / TikTok / XHS / Google / Waze / Telegram / Lemon8' },
+        { category: 'Pengurusan Iklan', value: 'Pengurusan & pengoptimuman iklan Meta' },
+        { category: 'Nilai Asal', value: 'RM10,888 (jimat RM2,000)' },
       ]},
     ],
     singleServices: [
-      { title: 'Penerbitan Video Pendek UGC', price: 'RM 500', unit: '/ video', desc: 'Penggambaran, penyuntingan & skrip diuruskan sepenuhnya' },
-      { title: 'Pengurusan Iklan & Kandungan Meta', price: 'RM 2,000', unit: '/ bulan', desc: 'Penulisan kandungan Meta + pengurusan iklan bersepadu' },
-      { title: 'Penanaman KOC Xiaohongshu', price: 'RM 4,500', unit: '/ 10 catatan', desc: 'Penanaman KOC besar-besaran menjangkau pengguna Cina' },
-      { title: 'Iklan Google & SEO', price: 'RM 1,200', unit: '/ bulan+', desc: 'Penempatan iklan + pengoptimuman carian jangka panjang' },
-      { title: 'E-Dagang & Siaran Langsung', price: 'RM 1,888', unit: '+', desc: 'Persediaan pelbagai platform, pengurusan penuh & siaran langsung' },
+      { title: 'Pengurusan Iklan', price: 'RM 2,000', unit: '/ bulan+', desc: 'Iklan berbayar merentasi TikTok/IG/FB/XHS/Google dan lain-lain' },
+      { title: 'Pemasaran Influencer KOC / KOL', price: 'RM 3,888', unit: '+', desc: 'Kerjasama influencer merentasi platform dari 10 pencipta' },
+      { title: 'Reka Bentuk Ala Carte', price: 'RM 150', unit: '+', desc: 'Tiada pakej diperlukan — tempah reka bentuk profesional setiap unit' },
+      { title: 'Video Ala Carte', price: 'RM 800', unit: '+', desc: 'Penggambaran, penyuntingan, skrip & kandungan dari 1 video' },
     ],
   },
 };
 
-const prices = ['RM 2,000', 'RM 4,688', 'RM 10,888'];
+const prices = ['RM 888', 'RM 2,888', 'RM 8,888'];
 const units: Record<Language, string[]> = {
-  zh: ['/ 月', '/ 月', '/ 3 个月'],
-  en: ['/ month', '/ month', '/ 3 months'],
-  ms: ['/ bulan', '/ bulan', '/ 3 bulan'],
+  zh: ['/ 月（限一次）', '/ 月', '/ 3 个月'],
+  en: ['/ month (one-time)', '/ month', '/ 3 months'],
+  ms: ['/ bulan (sekali sahaja)', '/ bulan', '/ 3 bulan'],
 };
 
 const icons = [
+  <Megaphone className="w-6 h-6" />,
+  <Users className="w-6 h-6" />,
+  <Palette className="w-6 h-6" />,
   <Video className="w-6 h-6" />,
-  <Share2 className="w-6 h-6" />,
-  <BookOpen className="w-6 h-6" />,
-  <TrendingUp className="w-6 h-6" />,
-  <ShoppingBag className="w-6 h-6" />,
 ];
 
 const metaT: Record<Language, { title: string; desc: string }> = {
-  zh: { title: '数码营销价格套餐马来西亚 | 从RM500起 | Cheaper Nexus', desc: '马来西亚数码营销透明定价。UGC短视频 RM500/支，Meta广告与内容管理 RM2,000/月，Growth Booster、Ultimate 及企业定制方案。' },
-  en: { title: 'Digital Marketing Pricing Malaysia | Packages from RM 500 | Cheaper Nexus', desc: 'Transparent digital marketing pricing in Malaysia. UGC video from RM500, Meta Ads & Content, Growth Booster, Ultimate and Enterprise packages for SMEs.' },
-  ms: { title: 'Harga Pemasaran Digital Malaysia | Pakej dari RM 500 | Cheaper Nexus', desc: 'Harga pemasaran digital telus di Malaysia. Video UGC dari RM500, Iklan & Kandungan Meta, Growth Booster dan Ultimate untuk PKS Malaysia.' },
+  zh: { title: '数码营销价格套餐马来西亚 | 首次体验RM888起 | Cheaper Nexus', desc: '马来西亚数码营销透明定价。首次体验套餐 RM888（限一次），社媒管理套餐 RM2,888/月，全面业务增长套餐，广告投放管理，KOC/KOL 网红营销及企业定制方案。' },
+  en: { title: 'Digital Marketing Pricing Malaysia | Trial from RM 888 | Cheaper Nexus', desc: 'Transparent digital marketing pricing in Malaysia. First Trial Package RM888 (one-time), Social Media Management RM2,888/month, Full Business Growth Package, Ads Management, KOC/KOL influencer marketing and Enterprise packages.' },
+  ms: { title: 'Harga Pemasaran Digital Malaysia | Percubaan dari RM 888 | Cheaper Nexus', desc: 'Harga pemasaran digital telus di Malaysia. Pakej Percubaan Pertama RM888 (sekali sahaja), Pengurusan Media Sosial RM2,888/bulan, Pakej Pertumbuhan Perniagaan Penuh, Pengurusan Iklan, pemasaran influencer KOC/KOL dan pakej Perusahaan.' },
 };
 
 export default function Pricing() {
@@ -258,7 +239,7 @@ export default function Pricing() {
               <h2 className="text-2xl font-bold text-brand-blue mb-3">{content.singleTitle}</h2>
               <p className="text-brand-blue/60">{content.singleSub}</p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {content.singleServices.map((s, i) => (
                 <Link
                   key={s.title}
