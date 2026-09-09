@@ -12,7 +12,7 @@
  *  5. dist/llms.txt + dist/llms-full.txt — AI-readable site summary + full articles
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
 import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { marked } from 'marked';
@@ -397,8 +397,24 @@ const works = existsSync(worksPath) ? JSON.parse(readFileSync(worksPath, 'utf-8'
 
 const SERVICE_EN = { video: 'Video Production', design: 'Graphic Design', ads: 'Paid Ads' };
 
-function worksHead({ title, description, canonicalUrl, image, schema, ogType = 'website', preload = [] }) {
+/**
+ * Route chunks are only discovered after the entry bundle parses, which puts a
+ * whole extra round trip in front of the first render. Vite emits no preload
+ * hint for a lazily imported route, so resolve the hashed filenames here and
+ * emit <link rel="modulepreload"> for the chunks this page will need.
+ */
+const assetsDir = join(DIST, 'assets');
+const assetFiles = existsSync(assetsDir) ? readdirSync(assetsDir) : [];
+const chunkFor = name => {
+  const hit = assetFiles.find(f => new RegExp(`^${name}-[\\w-]+\\.js$`).test(f));
+  return hit ? `/assets/${hit}` : null;
+};
+const worksChunks = ['Works', 'worksData'].map(chunkFor).filter(Boolean);
+const workDetailChunks = ['WorkDetail', 'worksData'].map(chunkFor).filter(Boolean);
+
+function worksHead({ title, description, canonicalUrl, image, schema, ogType = 'website', preload = [], modules = [] }) {
   return `
+${modules.map(m => `    <link rel="modulepreload" crossorigin href="${escAttr(m)}" />`).join('\n')}
 ${preload.map(p => `    <link rel="preload" as="${p.as}" href="${escAttr(p.href)}"${p.type ? ` type="${p.type}"` : ''}${p.crossorigin ? ' crossorigin' : ''}${p.priority ? ' fetchpriority="high"' : ''} />`).join('\n')}
     <title>${escHtml(title)}</title>
     <meta name="description" content="${escAttr(description)}" />
@@ -457,10 +473,10 @@ if (works.length) {
       // The card covers are only discoverable after the bundle boots and
       // works.json parses, which left the LCP image waiting ~3s. Preloading
       // the data and the first cover lets the browser start both immediately.
+      modules: worksChunks,
       preload: [
         { as: 'fetch', href: '/works/works.json', type: 'application/json', crossorigin: true },
         { as: 'image', href: ordered[0].cover_thumb, type: 'image/webp', priority: true },
-        ...ordered.slice(1, 3).map(w => ({ as: 'image', href: w.cover_thumb, type: 'image/webp' })),
       ],
       schema: {
         '@context': 'https://schema.org',
@@ -511,11 +527,10 @@ ${w.challenge?.en?.trim() ? `<h2>The Challenge</h2>\n<p>${escHtml(w.challenge.en
         canonicalUrl,
         image: `${SITE_URL}${w.cover_image}`,
         ogType: 'article',
+        modules: workDetailChunks,
         preload: [
           { as: 'fetch', href: '/works/works.json', type: 'application/json', crossorigin: true },
-          ...w.media.slice(0, 4).map((m, i) => ({
-            as: 'image', href: m.thumb, type: 'image/webp', priority: i === 0,
-          })),
+          { as: 'image', href: w.media[0].thumb, type: 'image/webp', priority: true },
         ],
         schema: {
           '@context': 'https://schema.org',
