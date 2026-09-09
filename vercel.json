@@ -11,6 +11,8 @@
     { "source": "/blog/:slug", "destination": "/blog/:slug/index.html" },
     { "source": "/works", "destination": "/works/index.html" },
     { "source": "/works/:slug", "destination": "/works/:slug/index.html" },
+    { "source": "/works-v2", "destination": "/works-v2/index.html" },
+    { "source": "/works-v2/:slug", "destination": "/works-v2/:slug/index.html" },
     { "source": "/services", "destination": "/services/index.html" },
     { "source": "/pricing", "destination": "/pricing/index.html" },
     { "source": "/contact", "destination": "/contact/index.html" },
