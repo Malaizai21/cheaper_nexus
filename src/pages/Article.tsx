@@ -127,7 +127,7 @@ export default function Article() {
     '@type': 'BlogPosting',
     headline: article.title,
     description: article.meta_description,
-    image: article.image_url ? (article.image_url.startsWith('http') ? article.image_url : `${SITE_URL}${article.image_url}`) : `${SITE_URL}/logo.png`,
+    image: article.image_url ? (article.image_url.startsWith('http') ? article.image_url : `${SITE_URL}${article.image_url}`) : `${SITE_URL}/logo-og.png`,
     datePublished: article.created_at,
     dateModified: article.created_at,
     author: { '@type': 'Organization', name: 'Cheaper Nexus', url: SITE_URL },

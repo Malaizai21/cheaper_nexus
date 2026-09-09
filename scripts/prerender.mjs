@@ -113,7 +113,7 @@ for (const meta of articles) {
   const langAttr = language === 'zh' ? 'zh-MY' : language === 'ms' ? 'ms-MY' : 'en-MY';
   const imgUrl = image_url
     ? (image_url.startsWith('http') ? image_url : `${SITE_URL}${image_url}`)
-    : `${SITE_URL}/logo.png`;
+    : `${SITE_URL}/logo-og.png`;
   const faq = Array.isArray(article.faq) ? article.faq : [];
 
   const schemas = [
@@ -205,7 +205,7 @@ const bizSchema = {
   name: 'Cheaper Nexus',
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  image: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/logo-og.png`,
   telephone: '+60172915754',
   description:
     'All-in-one digital marketing agency in Malaysia offering social media management packages, ads management, video and design production, and KOC/KOL influencer marketing for SMEs. Pricing from RM150 with no hidden fees.',
@@ -300,7 +300,7 @@ const homeHeadMeta = `
     <meta property="og:description" content="马来西亚数码营销公司，价格从 RM150 起，全透明无隐藏收费。" />
     <meta property="og:url" content="${SITE_URL}" />
     <meta property="og:site_name" content="Cheaper Nexus" />
-    <meta property="og:image" content="${SITE_URL}/logo.png" />
+    <meta property="og:image" content="${SITE_URL}/logo-og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Cheaper Nexus | 马来西亚数码营销公司" />
     <meta name="twitter:description" content="马来西亚数码营销公司，价格从 RM150 起。" />
@@ -372,7 +372,7 @@ for (const page of staticPages) {
     <meta property="og:description" content="${escAttr(page.description)}" />
     <meta property="og:url" content="${canonicalUrl}" />
     <meta property="og:site_name" content="Cheaper Nexus" />
-    <meta property="og:image" content="${SITE_URL}/logo.png" />
+    <meta property="og:image" content="${SITE_URL}/logo-og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">${JSON.stringify(bizSchema)}</script>`.trimStart();
 
@@ -397,8 +397,9 @@ const works = existsSync(worksPath) ? JSON.parse(readFileSync(worksPath, 'utf-8'
 
 const SERVICE_EN = { video: 'Video Production', design: 'Graphic Design', ads: 'Paid Ads' };
 
-function worksHead({ title, description, canonicalUrl, image, schema, ogType = 'website' }) {
+function worksHead({ title, description, canonicalUrl, image, schema, ogType = 'website', preload = [] }) {
   return `
+${preload.map(p => `    <link rel="preload" as="${p.as}" href="${escAttr(p.href)}"${p.type ? ` type="${p.type}"` : ''}${p.crossorigin ? ' crossorigin' : ''}${p.priority ? ' fetchpriority="high"' : ''} />`).join('\n')}
     <title>${escHtml(title)}</title>
     <meta name="description" content="${escAttr(description)}" />
     <link rel="canonical" href="${canonicalUrl}" />
@@ -445,12 +446,22 @@ if (works.length) {
     .join('')}</ul>
 <p>WhatsApp Henry at +60 17-291 5754 for a free 30-minute strategy consultation.</p>`;
 
+  const ordered = works.slice().sort((a, b) => a.order - b.order);
+
   writePage('works', buildPage(cleanShell(baseHtml, { nested: true }), {
     headMeta: worksHead({
       title: listTitle,
       description: listDesc,
       canonicalUrl: `${SITE_URL}/works`,
-      image: `${SITE_URL}/logo.png`,
+      image: `${SITE_URL}/logo-og.png`,
+      // The card covers are only discoverable after the bundle boots and
+      // works.json parses, which left the LCP image waiting ~3s. Preloading
+      // the data and the first cover lets the browser start both immediately.
+      preload: [
+        { as: 'fetch', href: '/works/works.json', type: 'application/json', crossorigin: true },
+        { as: 'image', href: ordered[0].cover_thumb, type: 'image/webp', priority: true },
+        ...ordered.slice(1, 3).map(w => ({ as: 'image', href: w.cover_thumb, type: 'image/webp' })),
+      ],
       schema: {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
@@ -500,6 +511,12 @@ ${w.challenge?.en?.trim() ? `<h2>The Challenge</h2>\n<p>${escHtml(w.challenge.en
         canonicalUrl,
         image: `${SITE_URL}${w.cover_image}`,
         ogType: 'article',
+        preload: [
+          { as: 'fetch', href: '/works/works.json', type: 'application/json', crossorigin: true },
+          ...w.media.slice(0, 4).map((m, i) => ({
+            as: 'image', href: m.thumb, type: 'image/webp', priority: i === 0,
+          })),
+        ],
         schema: {
           '@context': 'https://schema.org',
           '@type': 'CreativeWork',

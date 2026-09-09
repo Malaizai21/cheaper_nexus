@@ -186,6 +186,7 @@ export default function Works() {
                   lang={lang}
                   search={params.toString() ? `?${params}` : ''}
                   priority={i < 3}
+                  lcp={i === 0}
                 />
               ))}
             </div>

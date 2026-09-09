@@ -10,9 +10,12 @@ interface WorkCardProps {
   search: string;
   /** Above-the-fold cards load eagerly — lazy-loading the first one wrecks LCP. */
   priority?: boolean;
+  /** Only the actual LCP candidate gets high fetch priority; more than one
+   *  just steals bandwidth from the render-blocking CSS and JS. */
+  lcp?: boolean;
 }
 
-export function WorkCard({ work, lang, search, priority = false }: WorkCardProps) {
+export function WorkCard({ work, lang, search, priority = false, lcp = false }: WorkCardProps) {
   const cl = copyLang(lang);
   const t = worksT[lang];
   const { videos: videoCount, images: imageCount } = mediaCounts(work.media);
@@ -30,9 +33,11 @@ export function WorkCard({ work, lang, search, priority = false }: WorkCardProps
           width={600}
           height={750}
           loading={priority ? 'eager' : 'lazy'}
-          fetchPriority={priority ? 'high' : 'auto'}
-          decoding={priority ? 'sync' : 'async'}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          fetchPriority={lcp ? 'high' : 'auto'}
+          decoding={lcp ? 'sync' : 'async'}
+          draggable={false}
+          onContextMenu={e => e.preventDefault()}
+          className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-linear-to-t from-brand-blue/85 via-brand-blue/10 to-transparent" />
 

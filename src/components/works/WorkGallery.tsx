@@ -46,6 +46,14 @@ export function WorkGallery({ media, lang, clientName }: WorkGalleryProps) {
 
   const current = openIndex === null ? null : media[openIndex];
 
+  /** Client work is not ours to hand out — block the casual save paths.
+   *  This deters right-click/drag saving; it is not, and cannot be, real DRM. */
+  const noSave = {
+    onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
+    onDragStart: (e: React.DragEvent) => e.preventDefault(),
+    draggable: false,
+  };
+
   return (
     <>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
@@ -62,13 +70,14 @@ export function WorkGallery({ media, lang, clientName }: WorkGalleryProps) {
               }`}
             >
               <img
+                {...noSave}
                 src={m.thumb}
                 alt={`${clientName} — ${isVideo ? 'video' : 'design'} ${i + 1}`}
                 width={600}
                 height={isVideo ? 1067 : 750}
                 loading={i < 4 ? 'eager' : 'lazy'}
                 decoding="async"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-500 group-hover:scale-105"
               />
               {isVideo && (
                 <>
@@ -131,22 +140,26 @@ export function WorkGallery({ media, lang, clientName }: WorkGalleryProps) {
           <div className="max-h-[85vh] max-w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
             {current.type === 'video' ? (
               <video
+                {...noSave}
                 ref={videoRef}
                 key={current.src}
                 src={current.src}
                 poster={current.poster}
                 controls
+                controlsList="nodownload noplaybackrate"
+                disablePictureInPicture
                 playsInline
                 preload="metadata"
                 className="max-h-[85vh] max-w-full rounded-lg"
               />
             ) : (
               <img
+                {...noSave}
                 src={current.src}
                 alt={clientName}
                 width={current.width ?? 1200}
                 height={current.height ?? 1500}
-                className="max-h-[85vh] max-w-full object-contain rounded-lg"
+                className="max-h-[85vh] max-w-full object-contain rounded-lg select-none"
               />
             )}
             <p className="mt-3 text-white/50 text-xs tabular-nums">

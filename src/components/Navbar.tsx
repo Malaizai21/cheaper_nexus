@@ -38,7 +38,17 @@ export function Navbar({ lang, setLang }: NavbarProps) {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/logo.png" alt="Cheaper Nexus" className="h-12 w-auto object-contain" />
+            <picture>
+              <source srcSet="/logo.webp" type="image/webp" />
+              <img
+                src="/logo.png"
+                alt="Cheaper Nexus"
+                width={430}
+                height={120}
+                fetchPriority="high"
+                className="h-12 w-auto object-contain"
+              />
+            </picture>
           </Link>
 
           {/* Desktop nav — lg and up, so five links + language + CTA never crowd on tablets */}

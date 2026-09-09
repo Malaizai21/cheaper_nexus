@@ -42,7 +42,7 @@ const jsonLd = [
     name: 'Cheaper Nexus',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    image: `${SITE_URL}/logo.png`,
+    image: `${SITE_URL}/logo-og.png`,
     telephone: '+60172915754',
     description:
       'All-in-one digital marketing agency in Malaysia offering social media management packages, ads management, video and design production, and KOC/KOL influencer marketing.',

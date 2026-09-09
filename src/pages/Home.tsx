@@ -454,8 +454,10 @@ export default function Home() {
           <div className="hero-ring-glow" />
           <div className="hero-ring-core">
             <img
-              src="/logo.png"
+              src="/logo-dark.png"
               alt=""
+              width={426}
+              height={120}
               className="w-[184px]"
               style={{ filter: 'drop-shadow(0 0 16px rgba(74,222,128,.55))' }}
             />
@@ -708,7 +710,17 @@ export default function Home() {
       <footer className="py-10 border-t border-brand-blue/6">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <Link to="/">
-            <img src="/logo.png" alt="Cheaper Nexus" className="h-10 w-auto object-contain" />
+            <picture>
+              <source srcSet="/logo.webp" type="image/webp" />
+              <img
+                src="/logo.png"
+                alt="Cheaper Nexus"
+                width={430}
+                height={120}
+                loading="lazy"
+                className="h-10 w-auto object-contain"
+              />
+            </picture>
           </Link>
           <p className="text-brand-blue/35 text-sm">
             © {new Date().getFullYear()} Cheaper Nexus. {c.footer.copy}.
