@@ -562,18 +562,21 @@ ${w.challenge?.en?.trim() ? `<h2>The Challenge</h2>\n<p>${escHtml(w.challenge.en
   // relative asset base resolves to /works-v2/assets/… and React never boots.
   // Kept noindex; delete this block (and its vercel rewrites) once a layout wins.
   const v2Chunks = ['WorksV2', 'WorkDetailV2', 'worksData'].map(chunkFor).filter(Boolean);
+  // The base shell declares "index, follow"; drop it so noindex is the only
+  // robots directive on the prototype rather than a conflicting second tag.
+  const v2Shell = cleanShell(baseHtml, { nested: true }).replace(/<meta name="robots"[^>]*>/g, '');
   const v2Head = extra => `
 ${v2Chunks.map(m => `    <link rel="modulepreload" crossorigin href="${escAttr(m)}" />`).join('\n')}
     <title>${escHtml(extra)} | Cheaper Nexus</title>
     <meta name="robots" content="noindex, nofollow" />`.trimStart();
 
-  writePage('works-v2', buildPage(cleanShell(baseHtml, { nested: true }), {
+  writePage('works-v2', buildPage(v2Shell, {
     headMeta: v2Head('Works layout prototype'),
     bodyContent: `${wrapStart}<h1>Works layout prototype</h1>${wrapEnd}`,
     langAttr: 'zh-MY',
   }));
   for (const w of works) {
-    writePage(join('works-v2', w.slug), buildPage(cleanShell(baseHtml, { nested: true }), {
+    writePage(join('works-v2', w.slug), buildPage(v2Shell, {
       headMeta: v2Head(w.client_name),
       bodyContent: `${wrapStart}<h1>${escHtml(w.client_name)}</h1>${wrapEnd}`,
       langAttr: 'zh-MY',

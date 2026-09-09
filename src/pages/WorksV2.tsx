@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { X } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { WorkRow } from '../components/works/WorkRow';
+import { HeroPhone } from '../components/works/HeroPhone';
 import { useLanguage } from '../hooks/useLanguage';
 import { type Work, SERVICE_FILTERS, copyLang, worksT, WHATSAPP_URL } from '../components/works/worksData';
 
@@ -69,20 +70,26 @@ export default function WorksV2() {
       <Navbar lang={lang} setLang={setLang} />
 
       <div className="min-h-screen bg-brand-blue">
-        {/* Hero — oversized type, marquee, flat brand ground */}
-        <header className="bg-brand-blue text-white pt-28 pb-10 overflow-hidden">
-          <div className="px-4 sm:px-8 lg:px-12">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-brand-cyan mb-5">
-              {lang === 'zh' ? '客户作品' : lang === 'ms' ? 'Kerja Kami' : 'Our Work'}
-            </p>
-            <h1 className="font-black uppercase leading-[0.85] tracking-[-0.04em] text-[clamp(3rem,13vw,10rem)]">
-              {lang === 'zh' ? '我们做过' : 'WORK WE'}
-              <br />
-              <span className="text-brand-cyan">{lang === 'zh' ? '的作品' : 'DELIVERED'}</span>
-            </h1>
-            <p className="mt-7 max-w-xl text-white/55 text-base sm:text-lg leading-relaxed">
-              {t.heroSub}
-            </p>
+        {/* Hero — oversized type beside a handset cycling through the reel */}
+        <header className="bg-brand-blue text-white pt-28 pb-14 overflow-hidden">
+          <div className="px-4 sm:px-8 lg:px-12 flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16">
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-brand-cyan mb-5">
+                {lang === 'zh' ? '客户作品' : lang === 'ms' ? 'Kerja Kami' : 'Our Work'}
+              </p>
+              <h1 className="font-black uppercase leading-[0.85] tracking-[-0.04em] text-[clamp(2.8rem,10vw,8rem)]">
+                {lang === 'zh' ? '我们做过' : 'WORK WE'}
+                <br />
+                <span className="text-brand-cyan">{lang === 'zh' ? '的作品' : 'DELIVERED'}</span>
+              </h1>
+              <p className="mt-7 max-w-xl text-white/55 text-base sm:text-lg leading-relaxed">
+                {t.heroSub}
+              </p>
+            </div>
+
+            <div className="flex justify-center lg:justify-end">
+              <HeroPhone works={works} lang={lang} />
+            </div>
           </div>
         </header>
 
