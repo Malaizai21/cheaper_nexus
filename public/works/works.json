@@ -48,7 +48,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/kingsman/v1.jpg",
-        "duration": 25
+        "duration": 25,
+        "thumb": "/works/kingsman/v1-t.webp"
       },
       {
         "type": "video",
@@ -57,7 +58,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/kingsman/v2.jpg",
-        "duration": 27
+        "duration": 27,
+        "thumb": "/works/kingsman/v2-t.webp"
       },
       {
         "type": "video",
@@ -66,7 +68,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/kingsman/v3.jpg",
-        "duration": 33
+        "duration": 33,
+        "thumb": "/works/kingsman/v3-t.webp"
       },
       {
         "type": "video",
@@ -75,7 +78,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/kingsman/v4.jpg",
-        "duration": 18
+        "duration": 18,
+        "thumb": "/works/kingsman/v4-t.webp"
       },
       {
         "type": "video",
@@ -84,7 +88,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/kingsman/v5.jpg",
-        "duration": 58
+        "duration": 58,
+        "thumb": "/works/kingsman/v5-t.webp"
       },
       {
         "type": "video",
@@ -93,95 +98,109 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/kingsman/v6.jpg",
-        "duration": 25
+        "duration": 25,
+        "thumb": "/works/kingsman/v6-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d1.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/kingsman/d1-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d2.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/kingsman/d2-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d3.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d3-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d4.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d4-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d5.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d5-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d6.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d6-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d7.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d7-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d8.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d8-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d9.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d9-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d10.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d10-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d11.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d11-t.webp"
       },
       {
         "type": "image",
         "src": "/works/kingsman/d12.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/kingsman/d12-t.webp"
       }
     ],
     "featured": true,
-    "order": 1
+    "order": 1,
+    "cover_thumb": "/works/kingsman/v1-t.webp"
   },
   {
     "slug": "yse-production",
@@ -232,7 +251,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/yse-production/v1.jpg",
-        "duration": 15
+        "duration": 15,
+        "thumb": "/works/yse-production/v1-t.webp"
       },
       {
         "type": "video",
@@ -241,7 +261,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/yse-production/v2.jpg",
-        "duration": 15
+        "duration": 15,
+        "thumb": "/works/yse-production/v2-t.webp"
       },
       {
         "type": "video",
@@ -250,7 +271,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/yse-production/v3.jpg",
-        "duration": 25
+        "duration": 25,
+        "thumb": "/works/yse-production/v3-t.webp"
       },
       {
         "type": "video",
@@ -259,7 +281,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/yse-production/v4.jpg",
-        "duration": 25
+        "duration": 25,
+        "thumb": "/works/yse-production/v4-t.webp"
       },
       {
         "type": "video",
@@ -268,7 +291,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/yse-production/v5.jpg",
-        "duration": 24
+        "duration": 24,
+        "thumb": "/works/yse-production/v5-t.webp"
       },
       {
         "type": "video",
@@ -277,102 +301,117 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/yse-production/v6.jpg",
-        "duration": 19
+        "duration": 19,
+        "thumb": "/works/yse-production/v6-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d1.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d1-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d2.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d2-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d3.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d3-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d4.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d4-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d5.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d5-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d6.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d6-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d7.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d7-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d8.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d8-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d9.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d9-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d10.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d10-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d11.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d11-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d12.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d12-t.webp"
       },
       {
         "type": "image",
         "src": "/works/yse-production/d13.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/yse-production/d13-t.webp"
       }
     ],
     "featured": true,
-    "order": 2
+    "order": 2,
+    "cover_thumb": "/works/yse-production/v3-t.webp"
   },
   {
     "slug": "3g-mobile",
@@ -420,7 +459,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/3g-mobile/v1.jpg",
-        "duration": 30
+        "duration": 30,
+        "thumb": "/works/3g-mobile/v1-t.webp"
       },
       {
         "type": "video",
@@ -429,7 +469,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/3g-mobile/v2.jpg",
-        "duration": 40
+        "duration": 40,
+        "thumb": "/works/3g-mobile/v2-t.webp"
       },
       {
         "type": "video",
@@ -438,7 +479,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/3g-mobile/v3.jpg",
-        "duration": 28
+        "duration": 28,
+        "thumb": "/works/3g-mobile/v3-t.webp"
       },
       {
         "type": "video",
@@ -447,7 +489,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/3g-mobile/v4.jpg",
-        "duration": 21
+        "duration": 21,
+        "thumb": "/works/3g-mobile/v4-t.webp"
       },
       {
         "type": "video",
@@ -456,7 +499,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/3g-mobile/v5.jpg",
-        "duration": 34
+        "duration": 34,
+        "thumb": "/works/3g-mobile/v5-t.webp"
       },
       {
         "type": "video",
@@ -465,67 +509,77 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/3g-mobile/v6.jpg",
-        "duration": 25
+        "duration": 25,
+        "thumb": "/works/3g-mobile/v6-t.webp"
       },
       {
         "type": "image",
         "src": "/works/3g-mobile/d1.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/3g-mobile/d1-t.webp"
       },
       {
         "type": "image",
         "src": "/works/3g-mobile/d2.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/3g-mobile/d2-t.webp"
       },
       {
         "type": "image",
         "src": "/works/3g-mobile/d3.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/3g-mobile/d3-t.webp"
       },
       {
         "type": "image",
         "src": "/works/3g-mobile/d4.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/3g-mobile/d4-t.webp"
       },
       {
         "type": "image",
         "src": "/works/3g-mobile/d5.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/3g-mobile/d5-t.webp"
       },
       {
         "type": "image",
         "src": "/works/3g-mobile/d6.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/3g-mobile/d6-t.webp"
       },
       {
         "type": "image",
         "src": "/works/3g-mobile/d7.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/3g-mobile/d7-t.webp"
       },
       {
         "type": "image",
         "src": "/works/3g-mobile/d8.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/3g-mobile/d8-t.webp"
       }
     ],
     "featured": true,
-    "order": 3
+    "order": 3,
+    "cover_thumb": "/works/3g-mobile/v1-t.webp"
   },
   {
     "slug": "ace-consistent",
@@ -574,7 +628,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/ace-consistent/v1.jpg",
-        "duration": 38
+        "duration": 38,
+        "thumb": "/works/ace-consistent/v1-t.webp"
       },
       {
         "type": "video",
@@ -583,7 +638,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/ace-consistent/v2.jpg",
-        "duration": 38
+        "duration": 38,
+        "thumb": "/works/ace-consistent/v2-t.webp"
       },
       {
         "type": "video",
@@ -592,7 +648,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/ace-consistent/v3.jpg",
-        "duration": 24
+        "duration": 24,
+        "thumb": "/works/ace-consistent/v3-t.webp"
       },
       {
         "type": "video",
@@ -601,88 +658,101 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/ace-consistent/v4.jpg",
-        "duration": 29
+        "duration": 29,
+        "thumb": "/works/ace-consistent/v4-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d1.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d1-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d2.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d2-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d3.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d3-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d4.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d4-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d5.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d5-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d6.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d6-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d7.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d7-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d8.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d8-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d9.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d9-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d10.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d10-t.webp"
       },
       {
         "type": "image",
         "src": "/works/ace-consistent/d11.jpg",
         "width": 1200,
         "height": 1200,
-        "ratio": "1:1"
+        "ratio": "1:1",
+        "thumb": "/works/ace-consistent/d11-t.webp"
       }
     ],
     "featured": true,
-    "order": 4
+    "order": 4,
+    "cover_thumb": "/works/ace-consistent/v1-t.webp"
   },
   {
     "slug": "lin-lao-shi",
@@ -729,7 +799,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/lin-lao-shi/v1.jpg",
-        "duration": 67
+        "duration": 67,
+        "thumb": "/works/lin-lao-shi/v1-t.webp"
       },
       {
         "type": "video",
@@ -738,7 +809,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/lin-lao-shi/v2.jpg",
-        "duration": 46
+        "duration": 46,
+        "thumb": "/works/lin-lao-shi/v2-t.webp"
       },
       {
         "type": "video",
@@ -747,7 +819,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/lin-lao-shi/v3.jpg",
-        "duration": 30
+        "duration": 30,
+        "thumb": "/works/lin-lao-shi/v3-t.webp"
       },
       {
         "type": "video",
@@ -756,11 +829,13 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/lin-lao-shi/v4.jpg",
-        "duration": 68
+        "duration": 68,
+        "thumb": "/works/lin-lao-shi/v4-t.webp"
       }
     ],
     "featured": true,
-    "order": 5
+    "order": 5,
+    "cover_thumb": "/works/lin-lao-shi/v4-t.webp"
   },
   {
     "slug": "tgif-print",
@@ -807,7 +882,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/tgif-print/v1.jpg",
-        "duration": 38
+        "duration": 38,
+        "thumb": "/works/tgif-print/v1-t.webp"
       },
       {
         "type": "video",
@@ -816,7 +892,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/tgif-print/v2.jpg",
-        "duration": 28
+        "duration": 28,
+        "thumb": "/works/tgif-print/v2-t.webp"
       },
       {
         "type": "video",
@@ -825,7 +902,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/tgif-print/v3.jpg",
-        "duration": 29
+        "duration": 29,
+        "thumb": "/works/tgif-print/v3-t.webp"
       },
       {
         "type": "video",
@@ -834,11 +912,13 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/tgif-print/v4.jpg",
-        "duration": 33
+        "duration": 33,
+        "thumb": "/works/tgif-print/v4-t.webp"
       }
     ],
     "featured": false,
-    "order": 6
+    "order": 6,
+    "cover_thumb": "/works/tgif-print/v1-t.webp"
   },
   {
     "slug": "mj-pro",
@@ -850,14 +930,14 @@
     "services": [
       "video"
     ],
-    "cover_image": "/works/mj-pro/v4.jpg",
+    "cover_image": "/works/mj-pro/v2.jpg",
     "highlight": {
       "zh": "B2C 疗程 + B2B 招商 双线",
       "en": "Dual track: B2C treatment + B2B recruitment"
     },
     "summary": {
-      "zh": "为 MJ Pro 制作 5 支短视频，分成 B2C 与 B2B 两条线：B2C 主打祛斑疗程效果，B2B 面向想做轻创业的美业招商受众。",
-      "en": "Five short videos for MJ Pro across two tracks: B2C content on pigmentation treatment results, and B2B content aimed at recruiting beauty-industry distributors."
+      "zh": "为 MJ Pro 制作 2 支短视频，分成 B2C 与 B2B 两条线：B2C 主打祛斑疗程效果，B2B 面向想做轻创业的美业招商受众。",
+      "en": "Two short videos for MJ Pro across two tracks: B2C content on pigmentation treatment results, and B2B content aimed at recruiting beauty-industry distributors."
     },
     "challenge": {
       "zh": "",
@@ -869,12 +949,12 @@
     },
     "deliverables": {
       "zh": [
-        "5 支短视频",
-        "B2C 祛斑疗程 3 支 + B2B 招商 2 支"
+        "2 支短视频",
+        "B2C 祛斑疗程 1 支 + B2B 招商 1 支"
       ],
       "en": [
-        "5 short videos",
-        "3 B2C treatment videos + 2 B2B recruitment videos"
+        "2 short videos",
+        "1 B2C treatment video + 1 B2B recruitment video"
       ]
     },
     "media": [
@@ -885,7 +965,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/mj-pro/v1.jpg",
-        "duration": 24
+        "duration": 24,
+        "thumb": "/works/mj-pro/v1-t.webp"
       },
       {
         "type": "video",
@@ -894,38 +975,13 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/mj-pro/v2.jpg",
-        "duration": 24
-      },
-      {
-        "type": "video",
-        "src": "/works/mj-pro/v3.mp4",
-        "width": 540,
-        "height": 960,
-        "ratio": "9:16",
-        "poster": "/works/mj-pro/v3.jpg",
-        "duration": 24
-      },
-      {
-        "type": "video",
-        "src": "/works/mj-pro/v4.mp4",
-        "width": 540,
-        "height": 960,
-        "ratio": "9:16",
-        "poster": "/works/mj-pro/v4.jpg",
-        "duration": 41
-      },
-      {
-        "type": "video",
-        "src": "/works/mj-pro/v5.mp4",
-        "width": 540,
-        "height": 960,
-        "ratio": "9:16",
-        "poster": "/works/mj-pro/v5.jpg",
-        "duration": 41
+        "duration": 41,
+        "thumb": "/works/mj-pro/v2-t.webp"
       }
     ],
     "featured": false,
-    "order": 7
+    "order": 7,
+    "cover_thumb": "/works/mj-pro/v2-t.webp"
   },
   {
     "slug": "meta-genesis",
@@ -971,46 +1027,53 @@
         "src": "/works/meta-genesis/d1.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/meta-genesis/d1-t.webp"
       },
       {
         "type": "image",
         "src": "/works/meta-genesis/d2.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/meta-genesis/d2-t.webp"
       },
       {
         "type": "image",
         "src": "/works/meta-genesis/d3.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/meta-genesis/d3-t.webp"
       },
       {
         "type": "image",
         "src": "/works/meta-genesis/d4.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/meta-genesis/d4-t.webp"
       },
       {
         "type": "image",
         "src": "/works/meta-genesis/d5.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/meta-genesis/d5-t.webp"
       },
       {
         "type": "image",
         "src": "/works/meta-genesis/d6.jpg",
         "width": 960,
         "height": 1200,
-        "ratio": "4:5"
+        "ratio": "4:5",
+        "thumb": "/works/meta-genesis/d6-t.webp"
       }
     ],
     "featured": false,
-    "order": 8
+    "order": 8,
+    "cover_thumb": "/works/meta-genesis/d1-t.webp"
   },
   {
     "slug": "merslim",
@@ -1056,7 +1119,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/merslim/v1.jpg",
-        "duration": 28
+        "duration": 28,
+        "thumb": "/works/merslim/v1-t.webp"
       },
       {
         "type": "video",
@@ -1065,11 +1129,13 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/merslim/v2.jpg",
-        "duration": 44
+        "duration": 44,
+        "thumb": "/works/merslim/v2-t.webp"
       }
     ],
     "featured": false,
-    "order": 9
+    "order": 9,
+    "cover_thumb": "/works/merslim/v1-t.webp"
   },
   {
     "slug": "deluxe-tint",
@@ -1114,7 +1180,8 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/deluxe-tint/v1.jpg",
-        "duration": 20
+        "duration": 20,
+        "thumb": "/works/deluxe-tint/v1-t.webp"
       },
       {
         "type": "video",
@@ -1123,10 +1190,12 @@
         "height": 960,
         "ratio": "9:16",
         "poster": "/works/deluxe-tint/v2.jpg",
-        "duration": 28
+        "duration": 28,
+        "thumb": "/works/deluxe-tint/v2-t.webp"
       }
     ],
     "featured": false,
-    "order": 10
+    "order": 10,
+    "cover_thumb": "/works/deluxe-tint/v1-t.webp"
   }
 ]

@@ -179,8 +179,14 @@ export default function Works() {
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {filtered.map(w => (
-                <WorkCard key={w.slug} work={w} lang={lang} search={params.toString() ? `?${params}` : ''} />
+              {filtered.map((w, i) => (
+                <WorkCard
+                  key={w.slug}
+                  work={w}
+                  lang={lang}
+                  search={params.toString() ? `?${params}` : ''}
+                  priority={i < 3}
+                />
               ))}
             </div>
           )}

@@ -51,7 +51,6 @@ export function WorkGallery({ media, lang, clientName }: WorkGalleryProps) {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
         {media.map((m, i) => {
           const isVideo = m.type === 'video';
-          const thumb = isVideo ? m.poster! : m.src;
           return (
             <button
               key={m.src}
@@ -63,11 +62,11 @@ export function WorkGallery({ media, lang, clientName }: WorkGalleryProps) {
               }`}
             >
               <img
-                src={thumb}
+                src={m.thumb}
                 alt={`${clientName} — ${isVideo ? 'video' : 'design'} ${i + 1}`}
-                width={m.width ?? 540}
-                height={m.height ?? 960}
-                loading="lazy"
+                width={600}
+                height={isVideo ? 1067 : 750}
+                loading={i < 4 ? 'eager' : 'lazy'}
                 decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />

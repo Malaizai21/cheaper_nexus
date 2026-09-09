@@ -205,7 +205,7 @@ export default function WorkDetail() {
                 className="group flex items-center gap-4 p-4 rounded-2xl hover:bg-brand-blue/3 transition-colors"
               >
                 <img
-                  src={next.cover_image}
+                  src={next.cover_thumb}
                   alt={next.client_name}
                   width={160}
                   height={200}

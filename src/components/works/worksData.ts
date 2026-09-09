@@ -13,6 +13,8 @@ export interface Bilingual {
 export interface WorkMedia {
   type: 'image' | 'video';
   src: string;
+  /** 600px WebP used for grid tiles; `src`/`poster` stay full-size for the lightbox. */
+  thumb: string;
   width: number | null;
   height: number | null;
   ratio: string;
@@ -26,6 +28,8 @@ export interface Work {
   industry: Bilingual;
   services: string[];
   cover_image: string;
+  /** 600px WebP of the cover, used by the card grid. cover_image stays JPG for og:image. */
+  cover_thumb: string;
   /** One-line angle for this case — describes the work, never a claimed business outcome. */
   highlight: Bilingual;
   summary: Bilingual;

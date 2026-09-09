@@ -8,9 +8,11 @@ interface WorkCardProps {
   lang: Language;
   /** Preserves the active filters so the browser Back button returns to the same view. */
   search: string;
+  /** Above-the-fold cards load eagerly — lazy-loading the first one wrecks LCP. */
+  priority?: boolean;
 }
 
-export function WorkCard({ work, lang, search }: WorkCardProps) {
+export function WorkCard({ work, lang, search, priority = false }: WorkCardProps) {
   const cl = copyLang(lang);
   const t = worksT[lang];
   const { videos: videoCount, images: imageCount } = mediaCounts(work.media);
@@ -23,12 +25,13 @@ export function WorkCard({ work, lang, search }: WorkCardProps) {
       {/* Cover — fixed 4:5 box so the grid never shifts as images load */}
       <div className="relative aspect-4/5 overflow-hidden bg-brand-blue/5">
         <img
-          src={work.cover_image}
+          src={work.cover_thumb}
           alt={work.client_name}
-          width={1200}
-          height={1500}
-          loading="lazy"
-          decoding="async"
+          width={600}
+          height={750}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
+          decoding={priority ? 'sync' : 'async'}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-linear-to-t from-brand-blue/85 via-brand-blue/10 to-transparent" />
