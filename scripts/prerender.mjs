@@ -388,6 +388,144 @@ for (const page of staticPages) {
 }
 console.log('[prerender] ✅ services / pricing / contact pages');
 
+// ────────────────── 3b. /works listing + /works/<slug> case studies ──────────────────
+// These MUST be prerendered: vite builds with a relative base, so a client-side-only
+// /works/<slug> would resolve its bundle to /works/assets/… and never boot.
+
+const worksPath = join(ROOT, 'public', 'works', 'works.json');
+const works = existsSync(worksPath) ? JSON.parse(readFileSync(worksPath, 'utf-8')) : [];
+
+const SERVICE_EN = { video: 'Video Production', design: 'Graphic Design', ads: 'Paid Ads' };
+
+function worksHead({ title, description, canonicalUrl, image, schema, ogType = 'website' }) {
+  return `
+    <title>${escHtml(title)}</title>
+    <meta name="description" content="${escAttr(description)}" />
+    <link rel="canonical" href="${canonicalUrl}" />
+    <meta property="og:type" content="${ogType}" />
+    <meta property="og:title" content="${escAttr(title)}" />
+    <meta property="og:description" content="${escAttr(description)}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:site_name" content="Cheaper Nexus" />
+    <meta property="og:image" content="${image}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escAttr(title)}" />
+    <meta name="twitter:description" content="${escAttr(description)}" />
+    <meta name="twitter:image" content="${image}" />
+    <link rel="alternate" hrefLang="zh-MY" href="${canonicalUrl}" />
+    <link rel="alternate" hrefLang="en-MY" href="${canonicalUrl}" />
+    <link rel="alternate" hrefLang="ms-MY" href="${canonicalUrl}" />
+    <link rel="alternate" hrefLang="x-default" href="${canonicalUrl}" />
+    <script type="application/ld+json">${JSON.stringify(schema)}</script>`.trimStart();
+}
+
+function writePage(relPath, html) {
+  const outDir = join(DIST, relPath);
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, 'index.html'), html, 'utf-8');
+}
+
+if (works.length) {
+  // Listing page
+  const listTitle = 'Client Work & Case Studies 客户作品案例 | Cheaper Nexus Malaysia';
+  const listDesc =
+    'Short-form videos, social media designs and ad creatives Cheaper Nexus has produced for Malaysian businesses — loans, F&B, weddings, mobile retail, beauty, packaging and more.';
+
+  const listBody = `<h1>Client Work &amp; Case Studies 客户作品案例</h1>
+<p>Real work delivered by Cheaper Nexus, a digital marketing agency in Malaysia. 以下是我们实际交付给马来西亚客户的短视频、社媒设计与广告素材。</p>
+<ul>${works
+    .slice()
+    .sort((a, b) => a.order - b.order)
+    .map(w => {
+      const v = w.media.filter(m => m.type === 'video').length;
+      const d = w.media.filter(m => m.type === 'image').length;
+      const counts = [v ? `${v} videos` : null, d ? `${d} designs` : null].filter(Boolean).join(', ');
+      return `<li><a href="/works/${w.slug}"><strong>${escHtml(w.client_name)}</strong></a> — ${escHtml(w.industry.en)} (${counts}). ${escHtml(w.summary.en)}</li>`;
+    })
+    .join('')}</ul>
+<p>WhatsApp Henry at +60 17-291 5754 for a free 30-minute strategy consultation.</p>`;
+
+  writePage('works', buildPage(cleanShell(baseHtml, { nested: true }), {
+    headMeta: worksHead({
+      title: listTitle,
+      description: listDesc,
+      canonicalUrl: `${SITE_URL}/works`,
+      image: `${SITE_URL}/logo.png`,
+      schema: {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: listTitle,
+        description: listDesc,
+        url: `${SITE_URL}/works`,
+        hasPart: works.map(w => ({
+          '@type': 'CreativeWork',
+          name: `${w.client_name} — ${w.industry.en}`,
+          url: `${SITE_URL}/works/${w.slug}`,
+          creator: { '@type': 'Organization', name: 'Cheaper Nexus' },
+        })),
+      },
+    }),
+    bodyContent: `${wrapStart}${listBody}${wrapEnd}`,
+    langAttr: 'zh-MY',
+  }));
+
+  // One page per case study
+  for (const w of works) {
+    const v = w.media.filter(m => m.type === 'video').length;
+    const d = w.media.filter(m => m.type === 'image').length;
+    const counts = [v ? `${v} short videos` : null, d ? `${d} designs` : null].filter(Boolean).join(' · ');
+    const title = `${w.client_name} — ${w.industry.en} | Cheaper Nexus`;
+    const canonicalUrl = `${SITE_URL}/works/${w.slug}`;
+
+    const body = `<h1>${escHtml(w.client_name)}</h1>
+<p><strong>${escHtml(w.industry.en)} · ${escHtml(w.industry.zh)}</strong> — ${escHtml(counts)}</p>
+<p><em>${escHtml(w.highlight.en)}</em></p>
+<h2>Overview 案例概览</h2>
+<p>${escHtml(w.summary.en)}</p>
+<p>${escHtml(w.summary.zh)}</p>
+${w.challenge?.en?.trim() ? `<h2>The Challenge</h2>\n<p>${escHtml(w.challenge.en)}</p>` : ''}
+<h2>What We Did 我们怎么做</h2>
+<p>${escHtml(w.approach.en)}</p>
+<p>${escHtml(w.approach.zh)}</p>
+<h2>Deliverables 交付内容</h2>
+<ul>${(w.deliverables.en || []).map(x => `<li>${escHtml(x)}</li>`).join('')}</ul>
+<p>Services: ${w.services.map(s => escHtml(SERVICE_EN[s] || s)).join(', ')}</p>
+<p><a href="/works">← Back to all client work 返回作品列表</a></p>
+<p>Want work like this? WhatsApp Henry at +60 17-291 5754 for a free 30-minute consultation.</p>`;
+
+    writePage(join('works', w.slug), buildPage(cleanShell(baseHtml, { nested: true }), {
+      headMeta: worksHead({
+        title,
+        description: w.summary.en,
+        canonicalUrl,
+        image: `${SITE_URL}${w.cover_image}`,
+        ogType: 'article',
+        schema: {
+          '@context': 'https://schema.org',
+          '@type': 'CreativeWork',
+          name: `${w.client_name} — ${w.industry.en}`,
+          headline: w.client_name,
+          description: w.summary.en,
+          url: canonicalUrl,
+          image: `${SITE_URL}${w.cover_image}`,
+          inLanguage: ['zh-MY', 'en-MY'],
+          creator: {
+            '@type': 'Organization',
+            name: 'Cheaper Nexus',
+            url: SITE_URL,
+            telephone: '+60172915754',
+          },
+          about: { '@type': 'Thing', name: w.industry.en },
+          keywords: w.services.map(s => SERVICE_EN[s] || s).join(', '),
+        },
+      }),
+      bodyContent: `${wrapStart}${body}${wrapEnd}`,
+      langAttr: 'zh-MY',
+    }));
+  }
+  console.log(`[prerender] ✅ works listing + ${works.length} case study pages`);
+}
+
 // ────────────────────────── 4. sitemap.xml (auto-generated) ──────────────────────────
 
 const today = new Date().toISOString().slice(0, 10);
@@ -397,7 +535,14 @@ const staticUrls = [
   { loc: `${SITE_URL}/pricing`, priority: '0.9', changefreq: 'monthly', lastmod: today },
   { loc: `${SITE_URL}/contact`, priority: '0.8', changefreq: 'monthly', lastmod: today },
   { loc: `${SITE_URL}/blog`, priority: '0.8', changefreq: 'daily', lastmod: today },
+  ...(works.length ? [{ loc: `${SITE_URL}/works`, priority: '0.9', changefreq: 'monthly', lastmod: today }] : []),
 ];
+const workUrls = works.map(w => ({
+  loc: `${SITE_URL}/works/${w.slug}`,
+  priority: '0.7',
+  changefreq: 'monthly',
+  lastmod: today,
+}));
 const articleUrls = articles.map(a => ({
   loc: `${SITE_URL}/blog/${a.slug}`,
   priority: '0.7',
@@ -407,13 +552,13 @@ const articleUrls = articles.map(a => ({
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[...staticUrls, ...articleUrls]
+${[...staticUrls, ...workUrls, ...articleUrls]
   .map(u => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`)
   .join('\n')}
 </urlset>
 `;
 writeFileSync(join(DIST, 'sitemap.xml'), sitemap, 'utf-8');
-console.log(`[prerender] ✅ sitemap.xml (${staticUrls.length + articleUrls.length} URLs)`);
+console.log(`[prerender] ✅ sitemap.xml (${staticUrls.length + workUrls.length + articleUrls.length} URLs)`);
 
 // ──────────────────── 5. llms.txt + llms-full.txt (for AI crawlers) ────────────────────
 

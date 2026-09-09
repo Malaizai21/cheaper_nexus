@@ -4,11 +4,11 @@ import { Menu, X, Languages, Phone } from 'lucide-react';
 import { type Language } from '../hooks/useLanguage';
 
 const navT: Record<Language, {
-  services: string; pricing: string; blog: string; contact: string; cta: string;
+  services: string; works: string; pricing: string; blog: string; contact: string; cta: string;
 }> = {
-  zh: { services: '服务项目', pricing: '价格套餐', blog: '营销博客', contact: '联系我们', cta: '免费咨询' },
-  en: { services: 'Services', pricing: 'Pricing', blog: 'Blog', contact: 'Contact', cta: 'Free Consultation' },
-  ms: { services: 'Perkhidmatan', pricing: 'Harga', blog: 'Blog', contact: 'Hubungi', cta: 'Konsultasi Percuma' },
+  zh: { services: '服务项目', works: '客户作品', pricing: '价格套餐', blog: '营销博客', contact: '联系我们', cta: '免费咨询' },
+  en: { services: 'Services', works: 'Works', pricing: 'Pricing', blog: 'Blog', contact: 'Contact', cta: 'Free Consultation' },
+  ms: { services: 'Perkhidmatan', works: 'Kerja Kami', pricing: 'Harga', blog: 'Blog', contact: 'Hubungi', cta: 'Konsultasi Percuma' },
 };
 
 interface NavbarProps {
@@ -23,10 +23,14 @@ export function Navbar({ lang, setLang }: NavbarProps) {
 
   const links = [
     { href: '/services', label: t.services },
+    { href: '/works', label: t.works },
     { href: '/pricing', label: t.pricing },
     { href: '/blog', label: t.blog },
     { href: '/contact', label: t.contact },
   ];
+
+  // /works/<slug> should still highlight the Works tab
+  const isActive = (href: string) => loc.pathname === href || loc.pathname.startsWith(`${href}/`);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
@@ -37,14 +41,14 @@ export function Navbar({ lang, setLang }: NavbarProps) {
             <img src="/logo.png" alt="Cheaper Nexus" className="h-12 w-auto object-contain" />
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop nav — lg and up, so five links + language + CTA never crowd on tablets */}
+          <div className="hidden lg:flex items-center gap-6">
             {links.map(l => (
               <Link
                 key={l.href}
                 to={l.href}
                 className={`text-sm font-medium transition-colors ${
-                  loc.pathname === l.href ? 'text-brand-cyan' : 'text-brand-blue hover:text-brand-cyan'
+                  isActive(l.href) ? 'text-brand-cyan' : 'text-brand-blue hover:text-brand-cyan'
                 }`}
               >
                 {l.label}
@@ -76,7 +80,7 @@ export function Navbar({ lang, setLang }: NavbarProps) {
           </div>
 
           {/* Mobile */}
-          <div className="md:hidden flex items-center gap-3">
+          <div className="lg:hidden flex items-center gap-3">
             <select
               value={lang}
               onChange={e => setLang(e.target.value as Language)}
@@ -95,14 +99,14 @@ export function Navbar({ lang, setLang }: NavbarProps) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-brand-blue/5 bg-white px-4 py-4 space-y-1">
+        <div className="lg:hidden border-t border-brand-blue/5 bg-white px-4 py-4 space-y-1">
           {links.map(l => (
             <Link
               key={l.href}
               to={l.href}
               onClick={() => setOpen(false)}
               className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                loc.pathname === l.href
+                isActive(l.href)
                   ? 'bg-brand-cyan/10 text-brand-cyan'
                   : 'text-brand-blue hover:bg-brand-blue/5'
               }`}

@@ -1,0 +1,1132 @@
+[
+  {
+    "slug": "kingsman",
+    "client_name": "Kingsman Solutions",
+    "industry": {
+      "zh": "贷款与债务重组",
+      "en": "Loan & Debt Restructuring"
+    },
+    "services": [
+      "video",
+      "design",
+      "ads"
+    ],
+    "cover_image": "/works/kingsman/v1.jpg",
+    "highlight": {
+      "zh": "中文 · 马来文 双语版本",
+      "en": "Chinese & Malay versions"
+    },
+    "summary": {
+      "zh": "为 Kingsman Solutions 制作 6 支竖版短视频与 12 张社媒广告设计，内容涵盖个人贷款、政府贷款方案、先买后付与招聘，并同步产出中文与马来文双语版本。",
+      "en": "Six vertical short-form videos and twelve social ad designs for Kingsman Solutions, covering personal loans, government loan schemes, buy-now-pay-later and recruitment — delivered in both Chinese and Malay."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "同一支影片分别剪出中文与马来文版本，覆盖华裔与巫裔两个受众群。设计端按主题分组产出：贷款广告、政府贷款、好评见证、Spay Later 与招聘贴文，方便按投放档期轮替素材。",
+      "en": "Each video was cut into separate Chinese and Malay versions to reach both audience segments. Designs were produced in themed sets — loan ads, government loan, customer reviews, Spay Later and hiring posts — so creatives could be rotated across ad flights."
+    },
+    "deliverables": {
+      "zh": [
+        "6 支竖版短视频（中文 / 马来文双版本）",
+        "12 张社媒广告设计",
+        "主题分组：贷款 / 政府贷款 / 好评 / 招聘"
+      ],
+      "en": [
+        "6 vertical short videos (Chinese & Malay)",
+        "12 social media ad designs",
+        "Themed sets: loans / government loan / reviews / hiring"
+      ]
+    },
+    "media": [
+      {
+        "type": "video",
+        "src": "/works/kingsman/v1.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/kingsman/v1.jpg",
+        "duration": 25
+      },
+      {
+        "type": "video",
+        "src": "/works/kingsman/v2.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/kingsman/v2.jpg",
+        "duration": 27
+      },
+      {
+        "type": "video",
+        "src": "/works/kingsman/v3.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/kingsman/v3.jpg",
+        "duration": 33
+      },
+      {
+        "type": "video",
+        "src": "/works/kingsman/v4.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/kingsman/v4.jpg",
+        "duration": 18
+      },
+      {
+        "type": "video",
+        "src": "/works/kingsman/v5.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/kingsman/v5.jpg",
+        "duration": 58
+      },
+      {
+        "type": "video",
+        "src": "/works/kingsman/v6.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/kingsman/v6.jpg",
+        "duration": 25
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d1.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d2.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d3.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d4.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d5.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d6.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d7.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d8.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d9.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d10.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d11.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/kingsman/d12.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      }
+    ],
+    "featured": true,
+    "order": 1
+  },
+  {
+    "slug": "yse-production",
+    "client_name": "YSE Production",
+    "industry": {
+      "zh": "婚礼与活动制作",
+      "en": "Wedding & Event Production"
+    },
+    "services": [
+      "video",
+      "design",
+      "ads"
+    ],
+    "cover_image": "/works/yse-production/v3.jpg",
+    "highlight": {
+      "zh": "婚礼 · 企业 · 囍屏 三条产品线",
+      "en": "Three lines: wedding, corporate, LED"
+    },
+    "summary": {
+      "zh": "为 YSE Production 制作 6 支短视频与 13 张社媒设计，内容分为婚礼现场、企业活动与囍屏三条产品线，完整呈现活动制作的现场效果。",
+      "en": "Six short videos and thirteen social designs for YSE Production, split across three product lines — wedding events, corporate events and LED “Xi” screens — showcasing live production quality."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "影片以婚礼现场实拍为主，突出灯光、舞台与囍屏的视觉效果；设计端做成婚礼与活动两套系列贴文，可依接单档期分别投放。",
+      "en": "Videos lead with live wedding footage, highlighting lighting, staging and the LED Xi screen; designs were built as two post series — weddings and corporate events — so each can run in its own booking season."
+    },
+    "deliverables": {
+      "zh": [
+        "6 支短视频（婚礼 / 企业 / 囍屏）",
+        "13 张社媒设计",
+        "婚礼与活动两套贴文系列"
+      ],
+      "en": [
+        "6 short videos (wedding / corporate / Xi screen)",
+        "13 social media designs",
+        "Two post series: weddings and events"
+      ]
+    },
+    "media": [
+      {
+        "type": "video",
+        "src": "/works/yse-production/v1.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/yse-production/v1.jpg",
+        "duration": 15
+      },
+      {
+        "type": "video",
+        "src": "/works/yse-production/v2.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/yse-production/v2.jpg",
+        "duration": 15
+      },
+      {
+        "type": "video",
+        "src": "/works/yse-production/v3.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/yse-production/v3.jpg",
+        "duration": 25
+      },
+      {
+        "type": "video",
+        "src": "/works/yse-production/v4.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/yse-production/v4.jpg",
+        "duration": 25
+      },
+      {
+        "type": "video",
+        "src": "/works/yse-production/v5.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/yse-production/v5.jpg",
+        "duration": 24
+      },
+      {
+        "type": "video",
+        "src": "/works/yse-production/v6.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/yse-production/v6.jpg",
+        "duration": 19
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d1.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d2.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d3.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d4.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d5.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d6.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d7.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d8.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d9.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d10.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d11.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d12.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/yse-production/d13.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      }
+    ],
+    "featured": true,
+    "order": 2
+  },
+  {
+    "slug": "3g-mobile",
+    "client_name": "3G Three Generations Mobile",
+    "industry": {
+      "zh": "手机零售与维修",
+      "en": "Mobile Phone Retail & Repair"
+    },
+    "services": [
+      "video",
+      "design"
+    ],
+    "cover_image": "/works/3g-mobile/v1.jpg",
+    "highlight": {
+      "zh": "零售 · 经销商 双客群",
+      "en": "Two audiences: retail & dealer"
+    },
+    "summary": {
+      "zh": "为 3G Three Generations Mobile 制作 6 支门店短视频与 8 张维修主题设计，分别针对 Kepong 门市零售与经销商两种客群，并产出中文与马来文双语设计。",
+      "en": "Six in-store short videos and eight repair-themed designs for 3G Three Generations Mobile, targeting both Kepong walk-in retail and dealer audiences, with designs delivered in Chinese and Malay."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "影片按客群拆成「零售」与「经销商」两条线，同一门店场景拍出不同话术；维修主题设计做成中文四张、马来文四张的对照组，方便同时投放两个语言市场。",
+      "en": "Videos were split into retail and dealer tracks — same store setting, different messaging. Repair designs were produced as a matched set of four Chinese and four Malay, so both language markets could run in parallel."
+    },
+    "deliverables": {
+      "zh": [
+        "6 支门店短视频（零售 / 经销商）",
+        "8 张维修主题设计（中文 4 + 马来文 4）"
+      ],
+      "en": [
+        "6 in-store short videos (retail / dealer)",
+        "8 repair-themed designs (4 Chinese + 4 Malay)"
+      ]
+    },
+    "media": [
+      {
+        "type": "video",
+        "src": "/works/3g-mobile/v1.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/3g-mobile/v1.jpg",
+        "duration": 30
+      },
+      {
+        "type": "video",
+        "src": "/works/3g-mobile/v2.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/3g-mobile/v2.jpg",
+        "duration": 40
+      },
+      {
+        "type": "video",
+        "src": "/works/3g-mobile/v3.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/3g-mobile/v3.jpg",
+        "duration": 28
+      },
+      {
+        "type": "video",
+        "src": "/works/3g-mobile/v4.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/3g-mobile/v4.jpg",
+        "duration": 21
+      },
+      {
+        "type": "video",
+        "src": "/works/3g-mobile/v5.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/3g-mobile/v5.jpg",
+        "duration": 34
+      },
+      {
+        "type": "video",
+        "src": "/works/3g-mobile/v6.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/3g-mobile/v6.jpg",
+        "duration": 25
+      },
+      {
+        "type": "image",
+        "src": "/works/3g-mobile/d1.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/3g-mobile/d2.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/3g-mobile/d3.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/3g-mobile/d4.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/3g-mobile/d5.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/3g-mobile/d6.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/3g-mobile/d7.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/3g-mobile/d8.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      }
+    ],
+    "featured": true,
+    "order": 3
+  },
+  {
+    "slug": "ace-consistent",
+    "client_name": "Ace Consistent",
+    "industry": {
+      "zh": "贷款咨询",
+      "en": "Loan Consultancy"
+    },
+    "services": [
+      "video",
+      "design",
+      "ads"
+    ],
+    "cover_image": "/works/ace-consistent/v1.jpg",
+    "highlight": {
+      "zh": "痛点式开场，3 秒锁定受众",
+      "en": "Pain-point hook in the first 3 seconds"
+    },
+    "summary": {
+      "zh": "为 Ace Consistent 制作 4 支短视频与 11 张社媒广告设计，影片以「银行拒贷」的真实痛点切入，用问题式开场吸引正在申请贷款的受众。",
+      "en": "Four short videos and eleven social ad designs for Ace Consistent. The videos open on a real pain point — loan rejection by banks — using a question-led hook aimed at people mid-application."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "影片开场直接抛出受众心里的问题（「银行拒绝你，却不会告诉你原因」「不要一直申请，一直被拒」），前 3 秒就锁定目标客群；设计端做成 V2 / V3 两套版本，方便 A/B 测试不同视觉。",
+      "en": "Each video opens with the question already in the viewer’s head — “the bank rejected you and never told you why” — locking in the target audience within the first three seconds. Designs were produced as two versions (V2 / V3) to A/B test visuals."
+    },
+    "deliverables": {
+      "zh": [
+        "4 支短视频（痛点式开场）",
+        "11 张社媒广告设计（V2 / V3 两套版本）"
+      ],
+      "en": [
+        "4 short videos with pain-point hooks",
+        "11 social ad designs across two versions (V2 / V3)"
+      ]
+    },
+    "media": [
+      {
+        "type": "video",
+        "src": "/works/ace-consistent/v1.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/ace-consistent/v1.jpg",
+        "duration": 38
+      },
+      {
+        "type": "video",
+        "src": "/works/ace-consistent/v2.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/ace-consistent/v2.jpg",
+        "duration": 38
+      },
+      {
+        "type": "video",
+        "src": "/works/ace-consistent/v3.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/ace-consistent/v3.jpg",
+        "duration": 24
+      },
+      {
+        "type": "video",
+        "src": "/works/ace-consistent/v4.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/ace-consistent/v4.jpg",
+        "duration": 29
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d1.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d2.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d3.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d4.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d5.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d6.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d7.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d8.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d9.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d10.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      },
+      {
+        "type": "image",
+        "src": "/works/ace-consistent/d11.jpg",
+        "width": 1200,
+        "height": 1200,
+        "ratio": "1:1"
+      }
+    ],
+    "featured": true,
+    "order": 4
+  },
+  {
+    "slug": "lin-lao-shi",
+    "client_name": "林老师火锅 Lin Lao Shi Hotpot",
+    "industry": {
+      "zh": "餐饮 · 火锅",
+      "en": "F&B · Hotpot"
+    },
+    "services": [
+      "video"
+    ],
+    "cover_image": "/works/lin-lao-shi/v4.jpg",
+    "highlight": {
+      "zh": "主打 RM50 火锅 Buffet 促销",
+      "en": "Built around the RM50 buffet promo"
+    },
+    "summary": {
+      "zh": "为林老师火锅制作 4 支餐饮短视频，主打 RM50 火锅 Buffet 促销、午餐免费续面与 PJ 分店，用食物特写与现场氛围带出「吃到饱」的价值感。",
+      "en": "Four F&B short videos for Lin Lao Shi Hotpot, built around the RM50 all-you-can-eat promotion, free lunch noodle refills and the PJ outlet — using food close-ups and dining-room atmosphere to sell the value."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "以促销价格为核心钩子（RM50 Buffet 挑战、午餐免费续面），影片长度做到 30–68 秒，留足空间展示菜色与用餐氛围，适合投放在餐饮决策前的浏览场景。",
+      "en": "Promotional pricing carries the hook (the RM50 buffet challenge, free lunch refills). Runtimes of 30–68 seconds leave room to show the spread and the room itself — suited to the browsing moment before a dining decision."
+    },
+    "deliverables": {
+      "zh": [
+        "4 支餐饮短视频（30–68 秒）",
+        "促销主题：RM50 Buffet / 免费续面 / PJ 分店"
+      ],
+      "en": [
+        "4 F&B short videos (30–68 seconds)",
+        "Promo themes: RM50 buffet / free refills / PJ outlet"
+      ]
+    },
+    "media": [
+      {
+        "type": "video",
+        "src": "/works/lin-lao-shi/v1.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/lin-lao-shi/v1.jpg",
+        "duration": 67
+      },
+      {
+        "type": "video",
+        "src": "/works/lin-lao-shi/v2.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/lin-lao-shi/v2.jpg",
+        "duration": 46
+      },
+      {
+        "type": "video",
+        "src": "/works/lin-lao-shi/v3.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/lin-lao-shi/v3.jpg",
+        "duration": 30
+      },
+      {
+        "type": "video",
+        "src": "/works/lin-lao-shi/v4.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/lin-lao-shi/v4.jpg",
+        "duration": 68
+      }
+    ],
+    "featured": true,
+    "order": 5
+  },
+  {
+    "slug": "tgif-print",
+    "client_name": "TGIF Print Shop",
+    "industry": {
+      "zh": "包装印刷",
+      "en": "Packaging & Printing"
+    },
+    "services": [
+      "video"
+    ],
+    "cover_image": "/works/tgif-print/v1.jpg",
+    "highlight": {
+      "zh": "B2B 采购视角切入",
+      "en": "Shot from the B2B buyer's view"
+    },
+    "summary": {
+      "zh": "为 TGIF Print Shop 制作 4 支 B2B 短视频，切入本地礼盒工厂、中秋节档期与包装升级三个主题，面向需要客制包装的商家客户。",
+      "en": "Four B2B short videos for TGIF Print Shop covering local gift-box manufacturing, the Mid-Autumn season and packaging upgrades — aimed at businesses sourcing custom packaging."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "影片以商家视角出发（「包装礼盒找本地工厂」「丢掉地摊货包装」），用对比手法呈现包装升级前后的品牌感差异；中秋档期单独出一支应节内容。",
+      "en": "Shot from the buyer’s perspective — “source your gift boxes locally”, “drop the street-stall packaging” — using before/after contrast to show what better packaging does for a brand, plus a dedicated Mid-Autumn seasonal cut."
+    },
+    "deliverables": {
+      "zh": [
+        "4 支 B2B 短视频",
+        "主题：本地工厂 / 包装升级 / 中秋档期"
+      ],
+      "en": [
+        "4 B2B short videos",
+        "Themes: local manufacturing / packaging upgrade / Mid-Autumn"
+      ]
+    },
+    "media": [
+      {
+        "type": "video",
+        "src": "/works/tgif-print/v1.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/tgif-print/v1.jpg",
+        "duration": 38
+      },
+      {
+        "type": "video",
+        "src": "/works/tgif-print/v2.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/tgif-print/v2.jpg",
+        "duration": 28
+      },
+      {
+        "type": "video",
+        "src": "/works/tgif-print/v3.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/tgif-print/v3.jpg",
+        "duration": 29
+      },
+      {
+        "type": "video",
+        "src": "/works/tgif-print/v4.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/tgif-print/v4.jpg",
+        "duration": 33
+      }
+    ],
+    "featured": false,
+    "order": 6
+  },
+  {
+    "slug": "mj-pro",
+    "client_name": "MJ Pro",
+    "industry": {
+      "zh": "美容美业",
+      "en": "Beauty & Aesthetics"
+    },
+    "services": [
+      "video"
+    ],
+    "cover_image": "/works/mj-pro/v4.jpg",
+    "highlight": {
+      "zh": "B2C 疗程 + B2B 招商 双线",
+      "en": "Dual track: B2C treatment + B2B recruitment"
+    },
+    "summary": {
+      "zh": "为 MJ Pro 制作 5 支短视频，分成 B2C 与 B2B 两条线：B2C 主打祛斑疗程效果，B2B 面向想做轻创业的美业招商受众。",
+      "en": "Five short videos for MJ Pro across two tracks: B2C content on pigmentation treatment results, and B2B content aimed at recruiting beauty-industry distributors."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "B2C 影片聚焦疗程本身与仪器操作画面；B2B 影片用发布会现场与人群反应带出「轻创业」的机会感，同一品牌两种受众分开投放。",
+      "en": "B2C videos focus on the treatment and the device in use; B2B videos use launch-event footage and crowd reaction to convey the business opportunity — one brand, two audiences, run separately."
+    },
+    "deliverables": {
+      "zh": [
+        "5 支短视频",
+        "B2C 祛斑疗程 3 支 + B2B 招商 2 支"
+      ],
+      "en": [
+        "5 short videos",
+        "3 B2C treatment videos + 2 B2B recruitment videos"
+      ]
+    },
+    "media": [
+      {
+        "type": "video",
+        "src": "/works/mj-pro/v1.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/mj-pro/v1.jpg",
+        "duration": 24
+      },
+      {
+        "type": "video",
+        "src": "/works/mj-pro/v2.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/mj-pro/v2.jpg",
+        "duration": 24
+      },
+      {
+        "type": "video",
+        "src": "/works/mj-pro/v3.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/mj-pro/v3.jpg",
+        "duration": 24
+      },
+      {
+        "type": "video",
+        "src": "/works/mj-pro/v4.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/mj-pro/v4.jpg",
+        "duration": 41
+      },
+      {
+        "type": "video",
+        "src": "/works/mj-pro/v5.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/mj-pro/v5.jpg",
+        "duration": 41
+      }
+    ],
+    "featured": false,
+    "order": 7
+  },
+  {
+    "slug": "meta-genesis",
+    "client_name": "Meta Genesis",
+    "industry": {
+      "zh": "二手手机交易",
+      "en": "Used Phone Trade-In"
+    },
+    "services": [
+      "design",
+      "ads"
+    ],
+    "cover_image": "/works/meta-genesis/d1.jpg",
+    "highlight": {
+      "zh": "6 图轮播叙事结构",
+      "en": "Six-slide carousel narrative"
+    },
+    "summary": {
+      "zh": "为 Meta Genesis 制作 6 张 Facebook 广告轮播设计，以「你还不知道你的旧 iPhone 值这么多？」作为主视觉钩子，引导受众滑看估价内容。",
+      "en": "A six-slide Facebook ad carousel for Meta Genesis, led by the hook “Did you know your old iPhone is worth this much?” to pull viewers through the valuation content."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "整组设计做成可左滑的轮播结构，首图用大字提问制造好奇，后续图逐步展开估价与流程信息，视觉上统一使用品牌蓝与科技感斜切排版。",
+      "en": "Built as a swipeable carousel: the first slide poses the question in oversized type, the following slides unpack valuation and process. Brand blue and angled tech-style layouts hold the set together."
+    },
+    "deliverables": {
+      "zh": [
+        "6 张 Facebook 广告轮播设计",
+        "统一品牌视觉与轮播叙事结构"
+      ],
+      "en": [
+        "6-slide Facebook ad carousel",
+        "Unified brand visuals and carousel narrative"
+      ]
+    },
+    "media": [
+      {
+        "type": "image",
+        "src": "/works/meta-genesis/d1.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/meta-genesis/d2.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/meta-genesis/d3.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/meta-genesis/d4.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/meta-genesis/d5.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      },
+      {
+        "type": "image",
+        "src": "/works/meta-genesis/d6.jpg",
+        "width": 960,
+        "height": 1200,
+        "ratio": "4:5"
+      }
+    ],
+    "featured": false,
+    "order": 8
+  },
+  {
+    "slug": "merslim",
+    "client_name": "Merslim",
+    "industry": {
+      "zh": "瘦身美容",
+      "en": "Slimming & Wellness"
+    },
+    "services": [
+      "video",
+      "ads"
+    ],
+    "cover_image": "/works/merslim/v1.jpg",
+    "highlight": {
+      "zh": "剧情式广告，降低广告感",
+      "en": "Narrative ads that don't feel like ads"
+    },
+    "summary": {
+      "zh": "为 Merslim 制作 2 支剧情式短视频广告，用「无法坦白的秘密」「神秘的跟踪狂」的悬念开场，把瘦身话题包装成故事再带出服务。",
+      "en": "Two narrative-style video ads for Merslim. Suspense-led openings — “the secret she couldn’t tell” and “the mysterious stalker” — wrap the slimming pitch inside a story before revealing the service."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "不走直白的疗程介绍，改用短剧情制造悬念留住观看时长，结尾才落到服务本身，适合在信息流中降低广告感。",
+      "en": "Rather than a straight treatment explainer, short dramatised scenes hold watch time and the service only lands at the end — lowering the ad-feel in a scrolling feed."
+    },
+    "deliverables": {
+      "zh": [
+        "2 支剧情式短视频广告（28 秒 / 44 秒）"
+      ],
+      "en": [
+        "2 narrative-style video ads (28s / 44s)"
+      ]
+    },
+    "media": [
+      {
+        "type": "video",
+        "src": "/works/merslim/v1.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/merslim/v1.jpg",
+        "duration": 28
+      },
+      {
+        "type": "video",
+        "src": "/works/merslim/v2.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/merslim/v2.jpg",
+        "duration": 44
+      }
+    ],
+    "featured": false,
+    "order": 9
+  },
+  {
+    "slug": "deluxe-tint",
+    "client_name": "Deluxe Tint",
+    "industry": {
+      "zh": "汽车贴膜",
+      "en": "Car Tinting"
+    },
+    "services": [
+      "video"
+    ],
+    "cover_image": "/works/deluxe-tint/v1.jpg",
+    "highlight": {
+      "zh": "全马来文口播，门店实拍",
+      "en": "All-Malay delivery, shot in-store"
+    },
+    "summary": {
+      "zh": "为 Deluxe Tint 制作 2 支马来文短视频，在店内实景拍摄，以「车子热是因为还没贴膜」的日常痛点作为开场钩子。",
+      "en": "Two Malay-language short videos for Deluxe Tint, shot on location in the workshop and opening on an everyday pain point — “your car is hot because you haven’t tinted it yet”."
+    },
+    "challenge": {
+      "zh": "",
+      "en": ""
+    },
+    "approach": {
+      "zh": "全程马来文口播，面向本地马来受众；在门店实景拍摄，画面同时展示施工环境与车漆质感，兼顾说服力与专业感。",
+      "en": "Fully Malay-language delivery for a local Malay audience, shot inside the workshop so the footage carries both the install environment and the finish quality."
+    },
+    "deliverables": {
+      "zh": [
+        "2 支马来文短视频（门店实拍）"
+      ],
+      "en": [
+        "2 Malay-language short videos shot on location"
+      ]
+    },
+    "media": [
+      {
+        "type": "video",
+        "src": "/works/deluxe-tint/v1.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/deluxe-tint/v1.jpg",
+        "duration": 20
+      },
+      {
+        "type": "video",
+        "src": "/works/deluxe-tint/v2.mp4",
+        "width": 540,
+        "height": 960,
+        "ratio": "9:16",
+        "poster": "/works/deluxe-tint/v2.jpg",
+        "duration": 28
+      }
+    ],
+    "featured": false,
+    "order": 10
+  }
+]
