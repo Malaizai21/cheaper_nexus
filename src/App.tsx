@@ -10,9 +10,6 @@ const Pricing    = lazy(() => import('./pages/Pricing'));
 const Contact    = lazy(() => import('./pages/Contact'));
 const Works      = lazy(() => import('./pages/Works'));
 const WorkDetail = lazy(() => import('./pages/WorkDetail'));
-// Layout prototype, kept alongside the live pages until one is chosen.
-const WorksV2      = lazy(() => import('./pages/WorksV2'));
-const WorkDetailV2 = lazy(() => import('./pages/WorkDetailV2'));
 const Blog       = lazy(() => import('./pages/Blog'));
 const Article    = lazy(() => import('./pages/Article'));
 const Admin      = lazy(() => import('./pages/Admin'));
@@ -31,8 +28,6 @@ export default function App() {
           <Route path="/contact"     element={<Contact />} />
           <Route path="/works"       element={<Works />} />
           <Route path="/works/:slug" element={<WorkDetail />} />
-          <Route path="/works-v2"       element={<WorksV2 />} />
-          <Route path="/works-v2/:slug" element={<WorkDetailV2 />} />
           <Route path="/blog"        element={<Blog />} />
           <Route path="/blog/:slug"  element={<Article />} />
           <Route path="/admin"       element={<Admin />} />

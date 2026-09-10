@@ -1,15 +1,20 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
-import { WorkCard } from '../components/works/WorkCard';
+import { WorkRow } from '../components/works/WorkRow';
+import { HeroPhone } from '../components/works/HeroPhone';
 import { WorkFilters } from '../components/works/WorkFilters';
 import { useLanguage } from '../hooks/useLanguage';
-import { type Work, SERVICE_FILTERS, copyLang, worksT, WHATSAPP_URL } from '../components/works/worksData';
+import { type Work, copyLang, worksT, WHATSAPP_URL, displayLeading } from '../components/works/worksData';
 
 const SITE_URL = 'https://cheapernexus.com';
 
+/**
+ * Client work index — full-bleed rows down a centre axis, led by a handset
+ * cycling the reel. Everything here is vertical social content, so the phone
+ * is how the work is actually seen rather than decoration.
+ */
 export default function Works() {
   const [lang, setLang] = useLanguage();
   const [works, setWorks] = useState<Work[]>([]);
@@ -53,7 +58,7 @@ export default function Works() {
     setParams(next, { replace: true });
   };
 
-  const hasFilters = activeServices.length > 0 || activeIndustries.length > 0;
+  const search = params.toString() ? `?${params}` : '';
   const canonical = `${SITE_URL}/works`;
 
   return (
@@ -91,23 +96,40 @@ export default function Works() {
 
       <Navbar lang={lang} setLang={setLang} />
 
-      <div className="min-h-screen bg-brand-white">
-        {/* Hero */}
-        <header className="bg-brand-blue text-brand-white pt-28 pb-14">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <Link to="/" className="inline-flex items-center gap-2 text-brand-white/50 hover:text-brand-white transition-colors mb-6 text-sm">
-              <ArrowLeft className="w-4 h-4" /> {lang === 'zh' ? '返回首页' : lang === 'ms' ? 'Laman Utama' : 'Home'}
-            </Link>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t.heroTitle}</h1>
-            <p className="text-brand-white/60 text-base sm:text-lg max-w-2xl leading-relaxed">{t.heroSub}</p>
+      <div className="min-h-screen bg-brand-blue">
+        {/* Hero — centred: label, headline, then the handset directly beneath,
+            so the eye runs straight down the middle into the work. */}
+        <header className="bg-brand-blue text-white pt-28 pb-16 overflow-hidden">
+          <div className="px-4 sm:px-8 lg:px-12 flex flex-col items-center text-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-cyan mb-6">
+              {lang === 'zh' ? '客户作品' : lang === 'ms' ? 'Kerja Kami' : 'Our Work'}
+            </p>
+
+            <h1
+              className={`font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,9vw,7rem)] max-w-5xl ${
+                displayLeading(lang === 'zh' ? '我们做过' : 'WORK WE')
+              }`}
+            >
+              {lang === 'zh' ? '我们做过' : 'WORK WE'}
+              <br />
+              <span className="text-brand-cyan">{lang === 'zh' ? '的作品' : 'DELIVERED'}</span>
+            </h1>
+
+            <p className="mt-6 max-w-lg text-white/50 text-sm sm:text-base leading-relaxed">
+              {t.heroSub}
+            </p>
+
+            <div className="mt-12">
+              <HeroPhone works={works} lang={lang} />
+            </div>
           </div>
         </header>
 
-        {/* Filters — only sticky from sm up; on a phone the bar would eat a
-            quarter of the viewport for the entire scroll. */}
-        <div className="sm:sticky sm:top-20 z-30 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+        {/* Filters */}
+        <div className="bg-brand-blue border-y border-white/10">
+          <div className="px-4 sm:px-8 lg:px-12 py-5">
             <WorkFilters
+              variant="dark"
               lang={lang}
               industries={industries}
               activeServices={activeServices}
@@ -119,50 +141,33 @@ export default function Works() {
           </div>
         </div>
 
-        {/* Grid */}
-        <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+        {/* Rows */}
+        <main>
           {loading ? (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="rounded-2xl border border-brand-blue/8 overflow-hidden">
-                  <div className="aspect-4/5 bg-brand-blue/5 animate-pulse" />
-                  <div className="p-5 space-y-2">
-                    <div className="h-4 w-2/3 bg-brand-blue/5 rounded animate-pulse" />
-                    <div className="h-3 w-1/3 bg-brand-blue/5 rounded animate-pulse" />
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div className="h-[60vh] bg-brand-blue" />
           ) : filtered.length === 0 ? (
-            <div className="py-20 text-center">
+            <div className="py-28 text-center bg-white">
               <p className="text-brand-blue/50">{t.empty}</p>
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {filtered.map((w, i) => (
-                <WorkCard
-                  key={w.slug}
-                  work={w}
-                  lang={lang}
-                  search={params.toString() ? `?${params}` : ''}
-                  priority={i < 3}
-                  lcp={i === 0}
-                />
-              ))}
-            </div>
+            filtered.map((w, i) => (
+              <WorkRow key={w.slug} work={w} lang={lang} index={i} search={search} priority={i === 0} />
+            ))
           )}
         </main>
 
         {/* CTA */}
-        <section className="bg-brand-blue text-brand-white">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3">{t.ctaTitle}</h2>
-            <p className="text-brand-white/60 mb-7">{t.ctaSub}</p>
+        <section className="bg-brand-cyan text-brand-blue">
+          <div className="px-4 sm:px-8 lg:px-12 py-20 text-center">
+            <h2 className="font-black uppercase leading-[0.9] tracking-[-0.03em] text-[clamp(2rem,7vw,5rem)]">
+              {t.ctaTitle}
+            </h2>
+            <p className="mt-5 text-brand-blue/70 font-medium">{t.ctaSub}</p>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-cyan text-brand-blue rounded-full font-bold hover:bg-brand-cyan/90 transition-colors"
+              className="mt-8 inline-flex items-center gap-2 px-9 py-4 bg-brand-blue text-white rounded-full font-bold hover:bg-brand-blue/90 transition-colors"
             >
               {t.ctaButton}
             </a>

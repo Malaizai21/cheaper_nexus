@@ -49,7 +49,7 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
           </span>
         </div>
 
-        <Link to={`/works-v2/${work.slug}${search}`} className="group block max-w-5xl">
+        <Link to={`/works/${work.slug}${search}`} className="group block max-w-5xl">
           <h2
             className={`font-black tracking-[-0.035em] uppercase ${displayLeading(work.client_name)}
                        text-[clamp(2.1rem,7.5vw,5.5rem)] group-hover:text-brand-cyan transition-colors duration-300`}
@@ -93,7 +93,7 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
         {strip.map((m, i) => (
           <Link
             key={m.src}
-            to={`/works-v2/${work.slug}${search}`}
+            to={`/works/${work.slug}${search}`}
             className={`relative shrink-0 snap-start overflow-hidden rounded-lg ${
               m.type === 'video' ? 'aspect-9/16 w-32 sm:w-44' : 'aspect-4/5 w-32 sm:w-44'
             } ${dark ? 'bg-white/5' : 'bg-brand-blue/5'}`}
@@ -119,7 +119,7 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
 
         {work.media.length > strip.length && (
           <Link
-            to={`/works-v2/${work.slug}${search}`}
+            to={`/works/${work.slug}${search}`}
             className={`shrink-0 snap-start w-32 sm:w-44 aspect-9/16 rounded-lg flex items-center justify-center
                         text-sm font-bold ${dark ? 'bg-white/5 text-white/60' : 'bg-brand-blue/5 text-brand-blue/60'}`}
           >
@@ -138,7 +138,7 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
         </p>
 
         <Link
-          to={`/works-v2/${work.slug}${search}`}
+          to={`/works/${work.slug}${search}`}
           className={`group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em]
                       border-b-2 pb-1 transition-colors ${
                         dark

@@ -101,7 +101,7 @@ export function HeroPhone({ works, lang }: HeroPhoneProps) {
         ))}
 
         <Link
-          to={`/works-v2/${active.work.slug}`}
+          to={`/works/${active.work.slug}`}
           className="absolute inset-0 z-10"
           aria-label={active.work.client_name}
         />

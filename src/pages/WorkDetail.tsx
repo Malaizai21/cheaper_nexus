@@ -6,7 +6,7 @@ import { Navbar } from '../components/Navbar';
 import { WorkGallery } from '../components/works/WorkGallery';
 import { useLanguage } from '../hooks/useLanguage';
 import {
-  type Work, SERVICE_FILTERS, copyLang, worksT, WHATSAPP_URL, mediaCounts, countLabel,
+  type Work, SERVICE_FILTERS, copyLang, worksT, WHATSAPP_URL, mediaCounts, countLabel, displayLeading,
 } from '../components/works/worksData';
 
 const SITE_URL = 'https://cheapernexus.com';
@@ -27,7 +27,7 @@ export default function WorkDetail() {
   useEffect(() => {
     fetch('/works/works.json')
       .then(r => r.json())
-      .then((data: Work[]) => { setWorks(data); setLoading(false); })
+      .then((d: Work[]) => { setWorks(d); setLoading(false); })
       .catch(() => setLoading(false));
   }, []);
 
@@ -42,11 +42,8 @@ export default function WorkDetail() {
     return (
       <>
         <Navbar lang={lang} setLang={setLang} />
-        <div className="min-h-screen bg-brand-white pt-28">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-4">
-            <div className="h-8 w-1/2 bg-brand-blue/5 rounded animate-pulse" />
-            <div className="aspect-16/9 bg-brand-blue/5 rounded-2xl animate-pulse" />
-          </div>
+        <div className="min-h-screen bg-brand-blue pt-32 px-6">
+          <div className="h-10 w-2/3 max-w-lg bg-white/5 rounded animate-pulse" />
         </div>
       </>
     );
@@ -56,9 +53,9 @@ export default function WorkDetail() {
     return (
       <>
         <Navbar lang={lang} setLang={setLang} />
-        <div className="min-h-screen bg-brand-white pt-32 text-center px-4">
-          <p className="text-brand-blue/50 mb-6">404 — {t.empty}</p>
-          <Link to="/works" className="inline-flex items-center gap-2 text-brand-cyan font-semibold hover:underline">
+        <div className="min-h-screen bg-brand-blue pt-32 px-6 text-center">
+          <p className="text-white/50 mb-6">404 — {t.empty}</p>
+          <Link to="/works" className="inline-flex items-center gap-2 text-brand-cyan font-bold hover:underline">
             <ArrowLeft className="w-4 h-4" /> {t.backToWorks}
           </Link>
         </div>
@@ -66,11 +63,11 @@ export default function WorkDetail() {
     );
   }
 
+  const { videos, images } = mediaCounts(work.media);
+  const deliverables = work.deliverables[cl] ?? [];
+  const hasChallenge = Boolean(work.challenge[cl]?.trim());
   const canonical = `${SITE_URL}/works/${work.slug}`;
   const title = `${work.client_name} — ${work.industry[cl]} | Cheaper Nexus`;
-  const hasChallenge = Boolean(work.challenge[cl]?.trim());
-  const deliverables = work.deliverables[cl] ?? [];
-  const { videos, images } = mediaCounts(work.media);
 
   return (
     <>
@@ -117,128 +114,125 @@ export default function WorkDetail() {
 
       <Navbar lang={lang} setLang={setLang} />
 
-      <article className="min-h-screen bg-brand-white">
-        {/* Header */}
-        <header className="bg-brand-blue text-brand-white pt-28 pb-12">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <Link
-              to={`/works${backSearch}`}
-              className="inline-flex items-center gap-2 text-brand-white/50 hover:text-brand-white transition-colors mb-6 text-sm"
-            >
-              <ArrowLeft className="w-4 h-4" /> {t.backToWorks}
-            </Link>
+      <article className="bg-brand-blue text-white">
+        {/* Masthead */}
+        <header className="pt-28 pb-12 px-4 sm:px-8 lg:px-12 overflow-hidden">
+          <Link
+            to={`/works${backSearch}`}
+            className="inline-flex items-center gap-2 text-white/45 hover:text-brand-cyan transition-colors mb-8 text-xs font-bold uppercase tracking-[0.16em]"
+          >
+            <ArrowLeft className="w-4 h-4" /> {t.backToWorks}
+          </Link>
 
-            <p className="text-brand-cyan text-sm font-semibold mb-2">{work.industry[cl]}</p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5">{work.client_name}</h1>
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-cyan mb-4">
+            {work.industry[cl]}
+          </p>
 
-            <div className="flex flex-wrap gap-2 mb-6">
-              {work.services.map(id => {
-                const f = SERVICE_FILTERS.find(s => s.id === id);
-                return f ? (
-                  <span key={id} className="px-3 py-1 rounded-full bg-white/10 text-white/85 text-xs font-semibold">
-                    {f.label[lang]}
-                  </span>
-                ) : null;
-              })}
-            </div>
+          <h1 className={`font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,11vw,8rem)] ${displayLeading(work.client_name)}`}>
+            {work.client_name}
+          </h1>
 
-            <p className="text-xl sm:text-2xl font-bold text-brand-cyan leading-snug mb-3">
-              {work.highlight[cl]}
-            </p>
+          <p className="mt-7 text-xl sm:text-3xl font-bold text-brand-cyan max-w-3xl leading-snug">
+            {work.highlight[cl]}
+          </p>
 
-            <p className="text-white/50 text-sm font-medium">
-              {[
-                videos > 0 ? countLabel(videos, 'video', lang) : null,
-                images > 0 ? countLabel(images, 'design', lang) : null,
-              ].filter(Boolean).join(' · ')}
-            </p>
-          </div>
+          <p className="mt-6 text-sm font-medium text-white/40">
+            {[
+              videos > 0 ? countLabel(videos, 'video', lang) : null,
+              images > 0 ? countLabel(images, 'design', lang) : null,
+            ].filter(Boolean).join('  ·  ')}
+          </p>
         </header>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-14">
-          {/* Overview */}
-          <section>
-            <h2 className="text-xs font-bold text-brand-blue/40 uppercase tracking-wider mb-3">{t.overview}</h2>
-            <p className="text-lg text-brand-blue/75 leading-relaxed">{work.summary[cl]}</p>
-          </section>
+        {/* Service marquee */}
+        <div className="overflow-hidden border-y border-white/12 py-3">
+          <div className="animate-marquee flex w-max gap-8 whitespace-nowrap">
+            {Array.from({ length: 6 }, () => work.services).flat().map((id, i) => {
+              const f = SERVICE_FILTERS.find(s => s.id === id);
+              return (
+                <span key={i} className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white/35">
+                  {f?.label[lang]}
+                  <span className="text-brand-cyan ml-8">◆</span>
+                </span>
+              );
+            })}
+          </div>
+        </div>
 
-          {/* Challenge — only when the client has supplied one */}
-          {hasChallenge && (
-            <section>
-              <h2 className="text-xs font-bold text-brand-blue/40 uppercase tracking-wider mb-3">{t.challenge}</h2>
-              <p className="text-brand-blue/70 leading-relaxed">{work.challenge[cl]}</p>
-            </section>
-          )}
+        {/* Copy — two-column editorial */}
+        <div className="px-4 sm:px-8 lg:px-12 py-16 sm:py-20 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-10 lg:gap-16">
+          <div>
+            <h2 className="font-black uppercase text-2xl sm:text-3xl tracking-[-0.02em] leading-tight">
+              {t.overview}
+            </h2>
+          </div>
+          <div className="space-y-10">
+            <p className="text-lg sm:text-xl text-white/75 leading-relaxed">{work.summary[cl]}</p>
 
-          {/* Approach */}
-          <section>
-            <h2 className="text-xs font-bold text-brand-blue/40 uppercase tracking-wider mb-3">{t.approach}</h2>
-            <p className="text-brand-blue/70 leading-relaxed mb-6">{work.approach[cl]}</p>
+            {hasChallenge && (
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-brand-cyan mb-3">{t.challenge}</h3>
+                <p className="text-white/65 leading-relaxed">{work.challenge[cl]}</p>
+              </div>
+            )}
+
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-brand-cyan mb-3">{t.approach}</h3>
+              <p className="text-white/65 leading-relaxed">{work.approach[cl]}</p>
+            </div>
 
             {deliverables.length > 0 && (
-              <>
-                <h3 className="text-sm font-bold text-brand-blue mb-3">{t.deliverables}</h3>
-                <ul className="space-y-2">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-brand-cyan mb-4">{t.deliverables}</h3>
+                <ul className="space-y-2.5">
                   {deliverables.map(d => (
-                    <li key={d} className="flex items-start gap-2.5 text-sm text-brand-blue/70">
-                      <CheckCircle2 className="w-4 h-4 text-brand-cyan shrink-0 mt-0.5" />
+                    <li key={d} className="flex items-start gap-3 text-white/70">
+                      <CheckCircle2 className="w-4 h-4 text-brand-cyan shrink-0 mt-1" />
                       <span>{d}</span>
                     </li>
                   ))}
                 </ul>
-              </>
+              </div>
             )}
-          </section>
-
-          {/* Gallery */}
-          <section>
-            <h2 className="text-xs font-bold text-brand-blue/40 uppercase tracking-wider mb-4">{t.gallery}</h2>
-            <WorkGallery media={work.media} lang={lang} clientName={work.client_name} />
-          </section>
-
-          {/* Next case */}
-          {next && next.slug !== work.slug && (
-            <section className="pt-4 border-t border-brand-blue/8">
-              <p className="text-xs font-bold text-brand-blue/40 uppercase tracking-wider mb-3">{t.nextCase}</p>
-              <Link
-                to={`/works/${next.slug}${backSearch}`}
-                className="group flex items-center gap-4 p-4 rounded-2xl hover:bg-brand-blue/3 transition-colors"
-              >
-                <img
-                  src={next.cover_thumb}
-                  alt={next.client_name}
-                  width={160}
-                  height={200}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-16 h-20 object-cover rounded-xl shrink-0"
-                />
-                <div className="min-w-0">
-                  <p className="font-bold text-brand-blue group-hover:text-brand-cyan transition-colors truncate">
-                    {next.client_name}
-                  </p>
-                  <p className="text-sm text-brand-blue/45 truncate">{next.industry[cl]}</p>
-                </div>
-                <ArrowRight className="w-5 h-5 text-brand-blue/25 group-hover:text-brand-cyan group-hover:translate-x-1 transition-all ml-auto shrink-0" />
-              </Link>
-            </section>
-          )}
+          </div>
         </div>
 
+        {/* Gallery on a light ground so the creative reads properly */}
+        <section className="bg-white text-brand-blue px-4 sm:px-8 lg:px-12 py-16 sm:py-20">
+          <h2 className="font-black uppercase text-2xl sm:text-3xl tracking-[-0.02em] mb-8">{t.gallery}</h2>
+          <WorkGallery media={work.media} lang={lang} clientName={work.client_name} />
+        </section>
+
+        {/* Next */}
+        {next && next.slug !== work.slug && (
+          <Link
+            to={`/works/${next.slug}${backSearch}`}
+            className="group block px-4 sm:px-8 lg:px-12 py-16 sm:py-20 border-t border-white/10 hover:bg-white/3 transition-colors"
+          >
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/35 mb-4">{t.nextCase}</p>
+            <div className="flex items-center justify-between gap-6">
+              <h2 className={`font-black uppercase tracking-[-0.03em] text-[clamp(1.8rem,7vw,4.5rem)] group-hover:text-brand-cyan transition-colors ${displayLeading(next.client_name)}`}>
+                {next.client_name}
+              </h2>
+              <ArrowRight className="w-8 h-8 sm:w-12 sm:h-12 shrink-0 text-white/30 group-hover:text-brand-cyan group-hover:translate-x-2 transition-all" />
+            </div>
+          </Link>
+        )}
+
         {/* CTA */}
-        <section className="bg-brand-blue text-brand-white">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3">{t.ctaTitle}</h2>
-            <p className="text-brand-white/60 mb-7">{t.ctaSub}</p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-cyan text-brand-blue rounded-full font-bold hover:bg-brand-cyan/90 transition-colors"
-            >
-              {t.ctaButton}
-            </a>
-          </div>
+        <section className="bg-brand-cyan text-brand-blue px-4 sm:px-8 lg:px-12 py-20 text-center">
+          <h2 className="font-black uppercase leading-[0.9] tracking-[-0.03em] text-[clamp(2rem,7vw,5rem)]">
+            {t.ctaTitle}
+          </h2>
+          <p className="mt-5 text-brand-blue/70 font-medium">{t.ctaSub}</p>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center gap-2 px-9 py-4 bg-brand-blue text-white rounded-full font-bold hover:bg-brand-blue/90 transition-colors"
+          >
+            {t.ctaButton}
+          </a>
         </section>
       </article>
     </>
