@@ -221,18 +221,24 @@ const serviceCards: Record<Language, { icon: React.ReactNode; title: string; des
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
+/* Scroll reveals. The travel and the settle are deliberately long — a short
+   36px nudge read as barely-there, so headings now rise further and cards
+   arrive one after another rather than almost together. */
+/** Shared easing. Typed as a fixed tuple so it satisfies motion's `Easing`. */
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 const fadeUp = {
-  initial: { opacity: 0, y: 36 },
-  whileInView: { opacity: 1, y: 0 } as Record<string, unknown>,
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+  initial: { opacity: 0, y: 90 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-90px' },
+  transition: { duration: 1.05, ease: EASE },
 };
 
 const stagger = (i: number) => ({
-  initial: { opacity: 0, y: 32 },
-  whileInView: { opacity: 1, y: 0 } as Record<string, unknown>,
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+  initial: { opacity: 0, y: 72, scale: 0.965 },
+  whileInView: { opacity: 1, y: 0, scale: 1 },
+  viewport: { once: true, margin: '-90px' },
+  transition: { duration: 0.85, delay: i * 0.13, ease: EASE },
 });
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -484,18 +490,21 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right — checkpoints */}
-            <div className="space-y-4">
+            {/* Right — numbered manifesto, in the reference's 01 / 02 / 03 rhythm:
+                an oversized index, a short claim, then the detail. */}
+            <div>
               {c.whyUs.points.map((p, i) => (
                 <motion.div
                   key={i}
                   {...stagger(i)}
-                  className="flex gap-4 p-6 rounded-2xl bg-white/5 border border-white/8 hover:border-brand-cyan/20 hover:bg-white/8 transition-all"
+                  className="group flex gap-6 sm:gap-8 py-7 border-t border-white/10 last:border-b"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-brand-cyan mt-0.5 shrink-0" />
-                  <div>
-                    <div className="font-bold text-white text-sm mb-1">{p.t}</div>
-                    <div className="text-sm text-white/45 leading-relaxed">{p.d}</div>
+                  <span className="shrink-0 text-2xl sm:text-3xl font-black tabular-nums text-white/15 group-hover:text-brand-cyan transition-colors duration-300 leading-none pt-0.5">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="font-bold text-white text-base sm:text-lg mb-2 leading-snug">{p.t}</h3>
+                    <p className="text-sm text-white/45 leading-relaxed">{p.d}</p>
                   </div>
                 </motion.div>
               ))}
