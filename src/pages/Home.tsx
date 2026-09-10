@@ -373,21 +373,21 @@ export default function Home() {
       </div>
 
       {/* ────────────────────────────────────────────── PLATFORM MARQUEE ── */}
-      <div className="border-y border-brand-blue/6 py-4 overflow-hidden bg-white">
+      <div className="border-y border-white/8 py-4 overflow-hidden bg-[#07080b]">
         <div className="flex animate-marquee">
           {[...platforms, ...platforms].map((name, i) => (
             <div key={i} className="flex items-center gap-3 px-7 shrink-0">
-              <span className="text-xs font-bold text-brand-blue/30 uppercase tracking-widest whitespace-nowrap">
+              <span className="text-xs font-bold text-white/30 uppercase tracking-widest whitespace-nowrap">
                 {name}
               </span>
-              <span className="w-1 h-1 rounded-full bg-brand-blue/15 shrink-0" />
+              <span className="w-1 h-1 rounded-full bg-white/15 shrink-0" />
             </div>
           ))}
         </div>
       </div>
 
       {/* ─────────────────────────────────────────── SERVICES OVERVIEW ── */}
-      <section className="py-28 bg-white">
+      <section className="py-32 bg-[#0a0c11]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
           {/* Header row */}
@@ -399,10 +399,10 @@ export default function Home() {
               <span className="text-xs font-bold text-brand-cyan uppercase tracking-widest block mb-3">
                 {c.services.eyebrow}
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-brand-blue leading-tight">
+              <h2 className="text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.08] font-bold text-white leading-tight">
                 {c.services.title}
               </h2>
-              <p className="text-brand-blue/55 mt-4 max-w-lg leading-relaxed">
+              <p className="text-white/50 mt-4 max-w-lg leading-relaxed">
                 {c.services.sub}
               </p>
             </div>
@@ -421,16 +421,16 @@ export default function Home() {
               <motion.div key={i} {...stagger(i)}>
                 <Link
                   to="/services"
-                  className="group flex flex-col h-full p-8 rounded-[28px] border border-brand-blue/8 bg-white hover:border-brand-cyan/30 hover:shadow-2xl hover:shadow-brand-blue/5 transition-all duration-300"
+                  className="group flex flex-col h-full p-8 rounded-[28px] border border-white/8 bg-white/[0.03] hover:border-brand-cyan/30 hover:bg-white/[0.06] transition-all duration-300"
                 >
                   {/* Icon */}
                   <div className="w-12 h-12 rounded-2xl bg-brand-blue text-brand-cyan flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-brand-blue/20">
                     {card.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-brand-blue mb-3 group-hover:text-brand-cyan transition-colors leading-snug">
+                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors leading-snug">
                     {card.title}
                   </h3>
-                  <p className="text-brand-blue/55 text-sm leading-relaxed flex-grow">
+                  <p className="text-white/50 text-sm leading-relaxed flex-grow">
                     {card.desc}
                   </p>
                   <div className="mt-5 flex items-center gap-1 text-brand-cyan text-xs font-bold translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all">
@@ -445,7 +445,7 @@ export default function Home() {
       </section>
 
       {/* ─────────────────────────────────────────────────── WHY US ── */}
-      <section className="py-28 bg-brand-blue overflow-hidden relative">
+      <section className="py-32 bg-[#07080b] overflow-hidden relative">
 
         {/* Background accent */}
         <div aria-hidden className="absolute inset-0 pointer-events-none">
@@ -460,7 +460,7 @@ export default function Home() {
               <span className="text-xs font-bold text-brand-cyan uppercase tracking-widest block mb-4">
                 {c.whyUs.eyebrow}
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.08] font-bold text-white leading-tight mb-6">
                 {c.whyUs.line1}
                 <br />
                 <span className="text-brand-cyan">{c.whyUs.line2}</span>
@@ -471,7 +471,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-cyan text-brand-blue rounded-full font-bold hover:bg-brand-cyan/90 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-cyan text-white rounded-full font-bold hover:bg-brand-cyan/90 transition-all"
                 >
                   {c.hero.cta1} <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -506,7 +506,7 @@ export default function Home() {
 
       {/* ─────────────────────────────────────────────── BLOG PREVIEW ── */}
       {posts.length > 0 && (
-        <section className="py-28 bg-white">
+        <section className="py-32 bg-[#0a0c11]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
             <motion.div
@@ -517,8 +517,8 @@ export default function Home() {
                 <span className="text-xs font-bold text-brand-cyan uppercase tracking-widest block mb-3">
                   {c.blog.eyebrow}
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold text-brand-blue">{c.blog.title}</h2>
-                <p className="text-brand-blue/55 mt-4 max-w-lg leading-relaxed">{c.blog.sub}</p>
+                <h2 className="text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.08] font-bold text-white">{c.blog.title}</h2>
+                <p className="text-white/50 mt-4 max-w-lg leading-relaxed">{c.blog.sub}</p>
               </div>
               <Link
                 to="/blog"
@@ -534,7 +534,7 @@ export default function Home() {
                 <motion.div key={post.id} {...stagger(i)}>
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="group flex flex-col h-full rounded-[28px] border border-brand-blue/8 overflow-hidden bg-white hover:border-brand-cyan/30 hover:shadow-2xl hover:shadow-brand-blue/5 transition-all duration-300"
+                    className="group flex flex-col h-full rounded-[28px] border border-white/8 overflow-hidden bg-white/[0.03] hover:border-brand-cyan/30 hover:bg-white/[0.06] transition-all duration-300"
                   >
                     {post.image_url ? (
                       <div className="h-48 overflow-hidden shrink-0">
@@ -545,7 +545,7 @@ export default function Home() {
                         />
                       </div>
                     ) : (
-                      <div className="h-32 bg-brand-blue/3 shrink-0 flex items-center justify-center">
+                      <div className="h-32 bg-white/5 shrink-0 flex items-center justify-center">
                         <TrendingUp className="w-8 h-8 text-brand-cyan/30" />
                       </div>
                     )}
@@ -557,10 +557,10 @@ export default function Home() {
                       }`}>
                         {post.language === 'zh' ? '中文' : post.language === 'ms' ? 'BM' : 'EN'}
                       </span>
-                      <h3 className="text-base font-bold text-brand-blue mb-3 leading-snug line-clamp-2 group-hover:text-brand-cyan transition-colors flex-grow">
+                      <h3 className="text-base font-bold text-white mb-3 leading-snug line-clamp-2 group-hover:text-brand-cyan transition-colors flex-grow">
                         {post.title}
                       </h3>
-                      <p className="text-sm text-brand-blue/45 line-clamp-2 mb-5 leading-relaxed">
+                      <p className="text-sm text-white/40 line-clamp-2 mb-5 leading-relaxed">
                         {post.meta_description}
                       </p>
                       <span className="text-xs font-bold text-brand-cyan flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -576,7 +576,7 @@ export default function Home() {
       )}
 
       {/* ─────────────────────────────────────────────────── CTA BAND ── */}
-      <section className="py-24 bg-brand-blue relative overflow-hidden">
+      <section className="py-28 bg-[#07080b] relative overflow-hidden">
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
@@ -584,7 +584,7 @@ export default function Home() {
         />
         <div className="relative max-w-2xl mx-auto px-4 sm:px-6 text-center">
           <motion.div {...fadeUp}>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 leading-tight">
+            <h2 className="text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.08] font-bold text-white mb-5 leading-tight">
               {c.final.title}
             </h2>
             <p className="text-white/55 text-lg mb-10 leading-relaxed">{c.final.sub}</p>
@@ -592,7 +592,7 @@ export default function Home() {
               href="https://wa.me/60172915754"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-10 py-4 bg-brand-cyan text-brand-blue rounded-full font-bold text-base hover:bg-brand-cyan/90 transition-all shadow-xl shadow-brand-cyan/15"
+              className="group inline-flex items-center gap-3 px-10 py-4 bg-brand-cyan text-white rounded-full font-bold text-base hover:bg-brand-cyan/90 transition-all shadow-xl shadow-brand-cyan/15"
             >
               <MessageSquare className="w-5 h-5" />
               {c.final.btn}
