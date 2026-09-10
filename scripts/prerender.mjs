@@ -491,13 +491,8 @@ if (works.length) {
    * emitted it. The markup mirrors Works.tsx + PhoneFrame; React replaces it on
    * mount, and because it matches, the swap is invisible.
    */
-  const wallTiles = ordered
-    .map(w => {
-      const v = w.media.find(m => m.type === 'video' && m.wall);
-      return v ? { slug: w.slug, name: w.client_name, src: v.wall } : null;
-    })
-    .filter(Boolean)
-    .slice(0, 9);
+  const first = ordered.find(w => w.media.some(m => m.type === 'video')) || ordered[0];
+  const firstThumb = (first.media.find(m => m.type === 'video') || first.media[0]).thumb;
 
   const staticHero = `<nav class="fixed top-0 left-0 right-0 z-50 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -507,21 +502,29 @@ if (works.length) {
   </div>
 </nav>
 <div class="min-h-screen bg-brand-blue">
-  <header class="bg-brand-blue text-white pt-28 pb-14 overflow-hidden">
+  <header class="bg-brand-blue text-white pt-28 pb-16 overflow-hidden">
     <div class="px-4 sm:px-8 lg:px-12 flex flex-col items-center text-center">
       <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-cyan mb-6">客户作品</p>
-      <h1 class="font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,9vw,7rem)] max-w-5xl bg-linear-[200deg,#fff_28%,#00D4FF_88%] bg-clip-text text-transparent leading-[1.05]">我们做过<br />的作品</h1>
+      <h1 class="font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,9vw,7rem)] max-w-5xl leading-[1.05]">我们做过<br /><span class="text-brand-cyan">的作品</span></h1>
       <p class="mt-6 max-w-lg text-white/50 text-sm sm:text-base leading-relaxed">短视频、社媒设计、广告素材——这些都是我们实际交付给马来西亚客户的作品。</p>
-    </div>
-    <div class="mt-12">
-      <div class="relative w-full overflow-hidden" style="mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)">
-        <div class="animate-marquee flex w-max gap-3 sm:gap-4">${
-          [0, 1].map(copy => wallTiles.map((tile, i) =>
-            `<a href="/works/${tile.slug}" class="relative block shrink-0 w-[132px] sm:w-[176px] aspect-9/16 overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">`
-            + `<img src="${escAttr(tile.src)}" alt="${copy === 0 ? escAttr(tile.name) : ''}" width="300" height="533" `
-            + `${copy === 0 && i < 4 ? 'fetchpriority="high"' : 'loading="lazy"'} class="h-full w-full object-cover opacity-80" /></a>`,
-          ).join('')).join('')
-        }</div>
+      <div class="mt-12">
+        <div class="relative w-[230px] sm:w-[270px] shrink-0">
+          <div class="relative">
+            <div class="relative rounded-[2.2rem] bg-[#111827] p-2.5 shadow-2xl shadow-black/40 ring-1 ring-white/10">
+              <div class="relative overflow-hidden rounded-[1.7rem] bg-black">
+                <div class="absolute top-2 left-1/2 -translate-x-1/2 z-20 h-4 w-16 rounded-full bg-black/90"></div>
+                <div class="flex items-center gap-2 px-3 pt-7 pb-2 bg-black">
+                  <span class="h-6 w-6 shrink-0 rounded-full bg-linear-to-tr from-brand-cyan via-white to-brand-cyan p-[1.5px]"><span class="block h-full w-full rounded-full bg-brand-blue"></span></span>
+                  <span class="text-[11px] font-semibold text-white truncate">${escHtml(first.client_name)}</span>
+                </div>
+                <div class="relative aspect-9/16 bg-black">
+                  <img src="${escAttr(firstThumb)}" alt="${escAttr(first.client_name)}" width="600" height="1067" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover" />
+                </div>
+                <div class="flex items-center gap-3.5 px-3 py-2.5 bg-black"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -539,10 +542,7 @@ if (works.length) {
       modules: worksChunks,
       preload: [
         { as: 'fetch', href: '/works/works.json', type: 'application/json', crossorigin: true },
-        // The wall's leading tiles are the above-fold imagery now, not the cover.
-        ...wallTiles.slice(0, 3).map((tile, i) => ({
-          as: 'image', href: tile.src, type: 'image/webp', priority: i === 0,
-        })),
+        { as: 'image', href: ordered[0].cover_thumb, type: 'image/webp', priority: true },
       ],
       schema: {
         '@context': 'https://schema.org',

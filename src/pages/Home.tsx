@@ -15,6 +15,8 @@ import { SEO } from '../components/SEO';
 import { Navbar } from '../components/Navbar';
 import { useLanguage, type Language } from '../hooks/useLanguage';
 import { Footer } from '../components/Footer';
+import { WorkWall } from '../components/works/WorkWall';
+import { type Work } from '../components/works/worksData';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -40,10 +42,10 @@ const t: Record<Language, {
       badge: '马来西亚数码营销专家',
       line1: '让您的业务',
       line2: '在全网发光',
-      sub: 'Cheaper Nexus 是马来西亚数码营销公司，从 TikTok 到小红书，从 Meta 广告到 Google SEO，我们帮马来西亚中小企业一站式攻占全平台。',
+      sub: 'Cheaper Nexus 是马来西亚数码营销公司，从 TikTok 到小红书，从短视频制作到 Meta 广告投放，我们帮马来西亚中小企业一站式攻占全平台。',
       cta1: '免费咨询',
       cta2: '查看服务',
-      chips: ['品牌视觉', '社媒管理', 'Meta 广告', 'Google SEO', '电商方案'],
+      chips: ['短视频制作', '社媒管理', 'Meta 广告', '平面设计', 'KOC 网红营销'],
     },
     stats: [
       { value: '5+', label: '覆盖平台' },
@@ -61,11 +63,11 @@ const t: Record<Language, {
       eyebrow: '为什么选择我们',
       line1: '不只是广告公司，',
       line2: '是您的增长伙伴',
-      sub: '作为马来西亚SEO公司与全渠道数码营销团队，我们用透明的价格、实战的策略，帮您的业务真正产生销售增长。',
+      sub: '作为马来西亚数码营销公司，我们用透明的价格、实战的策略，帮您的业务真正产生销售增长。',
       points: [
         { t: '价格透明，无隐藏费用', d: '每项服务标准明确，您清楚知道自己在为什么付费。' },
         { t: '效果导向，关注真实转化', d: '我们不只看数据，更关注您的实际销售增长与客户获取。' },
-        { t: '全平台整合策略', d: 'SEO、社媒、电商、直播——统一品牌策略，全渠道协同。' },
+        { t: '全平台整合策略', d: '短视频、社媒、广告投放、网红营销——统一品牌策略，全渠道协同。' },
         { t: '1小时内响应，专属对接', d: '通过 WhatsApp 直接对接团队，即时沟通，绝无客服转接。' },
       ],
     },
@@ -89,10 +91,10 @@ const t: Record<Language, {
       badge: 'Malaysia Digital Marketing Agency',
       line1: 'Grow Your Business',
       line2: 'Across Every Platform',
-      sub: 'From TikTok to Xiaohongshu, Meta Ads to Google SEO — we help Malaysian SMEs dominate digital, all in one place.',
+      sub: 'From TikTok to Xiaohongshu, short-form video to Meta Ads — we help Malaysian SMEs dominate digital, all in one place.',
       cta1: 'Free Consultation',
       cta2: 'Our Services',
-      chips: ['Brand Identity', 'Social Media', 'Meta Ads', 'Google SEO', 'E-Commerce'],
+      chips: ['Short-Form Video', 'Social Media', 'Meta Ads', 'Graphic Design', 'KOC Marketing'],
     },
     stats: [
       { value: '5+', label: 'Platforms Covered' },
@@ -114,7 +116,7 @@ const t: Record<Language, {
       points: [
         { t: 'Transparent Pricing, No Hidden Fees', d: 'Clear standards for every service — you always know exactly what you\'re paying for.' },
         { t: 'Result-Driven, Real Conversions', d: "We don't just chase metrics. We focus on your actual sales growth and customer acquisition." },
-        { t: 'Cross-Platform Integration', d: 'SEO, social, e-commerce, live streaming — one unified brand strategy across all channels.' },
+        { t: 'Cross-Platform Integration', d: 'Short-form video, social, paid ads, influencer marketing — one unified brand strategy across all channels.' },
         { t: '1-Hour Response, Dedicated Support', d: 'Direct WhatsApp access to our team. No call centres, no tickets — just fast, real answers.' },
       ],
     },
@@ -138,10 +140,10 @@ const t: Record<Language, {
       badge: 'Agensi Pemasaran Digital Malaysia',
       line1: 'Kembangkan Bisnes Anda',
       line2: 'Di Semua Platform',
-      sub: 'Dari TikTok ke Xiaohongshu, Meta Ads ke Google SEO — kami bantu PKS Malaysia dominasi dunia digital.',
+      sub: 'Dari TikTok ke Xiaohongshu, video pendek ke Meta Ads — kami bantu PKS Malaysia dominasi dunia digital.',
       cta1: 'Konsultasi Percuma',
       cta2: 'Perkhidmatan Kami',
-      chips: ['Identiti Jenama', 'Media Sosial', 'Iklan Meta', 'Google SEO', 'E-Dagang'],
+      chips: ['Video Pendek', 'Media Sosial', 'Iklan Meta', 'Reka Bentuk', 'Pemasaran KOC'],
     },
     stats: [
       { value: '5+', label: 'Platform Diliputi' },
@@ -163,7 +165,7 @@ const t: Record<Language, {
       points: [
         { t: 'Harga Telus, Tiada Caj Tersembunyi', d: 'Standard yang jelas untuk setiap perkhidmatan — anda sentiasa tahu apa yang dibayar.' },
         { t: 'Berasaskan Keputusan, Penukaran Nyata', d: 'Kami bukan sekadar kejar angka — kami fokus pada pertumbuhan jualan sebenar anda.' },
-        { t: 'Integrasi Pelbagai Platform', d: 'SEO, media sosial, e-dagang, siaran langsung — strategi jenama bersatu merentasi semua saluran.' },
+        { t: 'Integrasi Pelbagai Platform', d: 'Video pendek, media sosial, iklan berbayar, pemasaran influencer — strategi jenama bersatu merentasi semua saluran.' },
         { t: 'Respons 1 Jam, Sokongan Langsung', d: 'Akses terus ke pasukan kami melalui WhatsApp. Tiada pusat panggilan — hanya jawapan pantas.' },
       ],
     },
@@ -238,8 +240,17 @@ const stagger = (i: number) => ({
 export default function Home() {
   const [lang, setLang] = useLanguage();
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [works, setWorks] = useState<Work[]>([]);
   const c = t[lang];
   const cards = serviceCards[lang];
+
+  // Same file the /works page reads, so the hero wall shows real client work.
+  useEffect(() => {
+    fetch('/works/works.json')
+      .then(r => r.json())
+      .then(setWorks)
+      .catch(() => { /* wall simply renders nothing */ });
+  }, []);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const heroRef   = useRef<HTMLElement>(null);
@@ -341,7 +352,9 @@ export default function Home() {
       {/* ─────────────────────────────────────────────────────── HERO ── */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center overflow-hidden"
+        /* Column, not a row: the headline block, the work wall and the stats
+           are siblings here and must stack rather than compete for width. */
+        className="relative min-h-screen flex flex-col justify-center overflow-hidden"
         style={{ background: 'radial-gradient(1100px 700px at 75% 30%, #102742 0%, #0A1628 55%, #070f1c 100%)' }}
       >
         {/* Ambient drifting orbs */}
@@ -356,11 +369,8 @@ export default function Home() {
           style={{ width: '100%', height: '100%', opacity: 0.75, zIndex: 2 }}
         />
 
-        {/* 3D scrolling grid */}
-        <div aria-hidden className="hero-grid"><div className="hero-grid-inner" /></div>
-
-        {/* Main content */}
-        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-28" style={{ zIndex: 3 }}>
+        {/* Main content — centred, so the eye runs down into the work below */}
+        <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 pt-32 pb-16 flex flex-col items-center text-center" style={{ zIndex: 3 }}>
 
           {/* Badge pill */}
           <motion.div
@@ -379,16 +389,14 @@ export default function Home() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.12 }}
-            className="font-black leading-[1.06] tracking-tight mb-6"
-            style={{
-              fontSize: 'clamp(38px, 6vw, 76px)',
-              color: '#EAF2FF',
-              textShadow: '0 0 30px rgba(74,222,128,.18)',
-            }}
+            /* Gradient-filled display type, as on the reference site. Fills with
+               the brand cyan rather than their silver, so it stays on-brand. */
+            className="font-black tracking-[-0.035em] mb-6 bg-linear-[200deg,#fff_26%,#00D4FF_86%] bg-clip-text text-transparent"
+            style={{ fontSize: 'clamp(40px, 7.5vw, 88px)', lineHeight: 1.05 }}
           >
             {c.hero.line1}
             <br />
-            <span className="hero-accent">{c.hero.line2}</span>
+            {c.hero.line2}
           </motion.h1>
 
           {/* Sub-copy */}
@@ -396,7 +404,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.22 }}
-            className="text-lg max-w-[540px] mb-8 leading-[1.75]"
+            className="text-base sm:text-lg max-w-[560px] mb-9 leading-[1.75]"
             style={{ color: '#9DB2CE' }}
           >
             {c.hero.sub}
@@ -407,7 +415,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.32 }}
-            className="flex flex-wrap gap-2.5 mb-10"
+            className="flex flex-wrap justify-center gap-2.5 mb-9"
           >
             {c.hero.chips.map((chip, i) => (
               <span key={i} className="hero-chip" style={{ animationDelay: `${i * 0.8}s` }}>
@@ -421,7 +429,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.42 }}
-            className="flex flex-wrap gap-4 mb-16"
+            className="flex flex-wrap justify-center gap-4"
           >
             <Link to="/contact" className="hero-btn-primary">
               {c.hero.cta1} →
@@ -431,39 +439,35 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          {/* Stats strip */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.55 }}
-            className="flex flex-wrap gap-x-10 gap-y-5 pt-8"
-            style={{ borderTop: '1px solid rgba(255,255,255,.1)' }}
-          >
-            {c.stats.map((s, i) => (
-              <div key={i}>
-                <div className="text-2xl font-bold" style={{ color: '#4ADE80' }}>{s.value}</div>
-                <div className="text-sm mt-0.5" style={{ color: 'rgba(255,255,255,.35)' }}>{s.label}</div>
-              </div>
-            ))}
-          </motion.div>
         </div>
 
-        {/* Spinning rings with logo — desktop only */}
-        <div aria-hidden className="hero-ring">
-          <div className="hero-ring-outer" />
-          <div className="hero-ring-dash" />
-          <div className="hero-ring-glow" />
-          <div className="hero-ring-core">
-            <img
-              src="/logo-dark.png"
-              alt=""
-              width={426}
-              height={120}
-              className="w-[184px]"
-              style={{ filter: 'drop-shadow(0 0 16px rgba(74,222,128,.55))' }}
-            />
-          </div>
-        </div>
+        {/* The work itself, drifting across under the headline. Nothing sells a
+            marketing agency faster than the output, so it goes above the fold. */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="relative w-full"
+          style={{ zIndex: 3 }}
+        >
+          <WorkWall works={works} count={10} />
+        </motion.div>
+
+        {/* Stats strip */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.65 }}
+          className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 mt-14 pt-8 flex flex-wrap justify-center gap-x-12 gap-y-5 text-center"
+          style={{ zIndex: 3, borderTop: '1px solid rgba(255,255,255,.1)' }}
+        >
+          {c.stats.map((s, i) => (
+            <div key={i}>
+              <div className="text-2xl font-bold text-brand-cyan">{s.value}</div>
+              <div className="text-sm mt-0.5" style={{ color: 'rgba(255,255,255,.35)' }}>{s.label}</div>
+            </div>
+          ))}
+        </motion.div>
 
         {/* Scroll cue */}
         <motion.div
