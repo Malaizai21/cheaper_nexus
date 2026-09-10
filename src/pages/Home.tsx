@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
@@ -252,91 +252,6 @@ export default function Home() {
       .catch(() => { /* wall simply renders nothing */ });
   }, []);
 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const heroRef   = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const hero   = heroRef.current;
-    if (!canvas || !hero) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const COUNT = window.innerWidth < 768 ? 40 : 90;
-    type Particle = { x: number; y: number; r: number; vy: number; vx: number; a: number };
-    let ps: Particle[] = [];
-    let W = 0, H = 0, animId = 0;
-    let running = false, heroVisible = true;
-
-    // Pre-rendered glow sprite: drawImage per particle is ~10x cheaper than
-    // per-frame shadowBlur, which froze the renderer during scroll.
-    const SPRITE = 32;
-    const sprite = document.createElement('canvas');
-    sprite.width = sprite.height = SPRITE;
-    const sctx = sprite.getContext('2d')!;
-    const grad = sctx.createRadialGradient(SPRITE / 2, SPRITE / 2, 0, SPRITE / 2, SPRITE / 2, SPRITE / 2);
-    grad.addColorStop(0, 'rgba(74,222,128,1)');
-    grad.addColorStop(0.35, 'rgba(74,222,128,0.55)');
-    grad.addColorStop(1, 'rgba(74,222,128,0)');
-    sctx.fillStyle = grad;
-    sctx.fillRect(0, 0, SPRITE, SPRITE);
-
-    function fit() {
-      const dpr = Math.min(1.5, window.devicePixelRatio || 1);
-      W = hero!.clientWidth;
-      H = hero!.clientHeight;
-      canvas!.width  = W * dpr;
-      canvas!.height = H * dpr;
-      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function seed() {
-      ps = Array.from({ length: COUNT }, () => ({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        r: Math.random() * 2 + 0.6,
-        vy: -(Math.random() * 0.5 + 0.12),
-        vx: (Math.random() - 0.5) * 0.22,
-        a: Math.random() * 0.6 + 0.18,
-      }));
-    }
-
-    function draw() {
-      if (!running) return;
-      ctx!.clearRect(0, 0, W, H);
-      ctx!.globalCompositeOperation = 'lighter';
-      for (const p of ps) {
-        p.y += p.vy; p.x += p.vx;
-        if (p.y < -6) { p.y = H + 6; p.x = Math.random() * W; }
-        const s = p.r * 6;
-        ctx!.globalAlpha = p.a;
-        ctx!.drawImage(sprite, p.x - s / 2, p.y - s / 2, s, s);
-      }
-      ctx!.globalAlpha = 1;
-      animId = requestAnimationFrame(draw);
-    }
-
-    const start = () => { if (!running) { running = true; animId = requestAnimationFrame(draw); } };
-    const stop  = () => { running = false; cancelAnimationFrame(animId); };
-    const sync  = () => { (heroVisible && !document.hidden) ? start() : stop(); };
-
-    fit(); seed(); start();
-
-    // Pause the loop whenever the hero is scrolled out of view or the tab is hidden
-    const io = new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; sync(); });
-    io.observe(hero);
-    document.addEventListener('visibilitychange', sync);
-    const onResize = () => fit();
-    window.addEventListener('resize', onResize);
-    return () => {
-      stop();
-      io.disconnect();
-      document.removeEventListener('visibilitychange', sync);
-      window.removeEventListener('resize', onResize);
-    };
-  }, []);
-
   useEffect(() => {
     fetch('/blog/articles.json')
       .then(r => r.json())
@@ -351,122 +266,82 @@ export default function Home() {
 
       {/* ─────────────────────────────────────────────────────── HERO ── */}
       <section
-        ref={heroRef}
-        /* Column, not a row: the headline block, the work wall and the stats
-           are siblings here and must stack rather than compete for width. */
+        /* Column, not a row: the headline and the work wall are siblings here
+           and must stack rather than compete for width.
+           Near-black, lit only by a soft vignette. The reference gets its
+           weight from restraint: four elements, one accent, a lot of dark. */
         className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-        style={{ background: 'radial-gradient(1100px 700px at 75% 30%, #102742 0%, #0A1628 55%, #070f1c 100%)' }}
+        style={{ background: 'radial-gradient(1200px 780px at 50% 22%, #10141c 0%, #0a0c11 55%, #07080b 100%)' }}
       >
-        {/* Ambient drifting orbs */}
-        <div aria-hidden className="hero-orb1" />
-        <div aria-hidden className="hero-orb2" />
+        {/* Main content */}
+        <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-8 pt-32 pb-14 flex flex-col items-center text-center" style={{ zIndex: 3 }}>
 
-        {/* Rising particle canvas */}
-        <canvas
-          ref={canvasRef}
-          aria-hidden
-          className="absolute inset-0 pointer-events-none"
-          style={{ width: '100%', height: '100%', opacity: 0.75, zIndex: 2 }}
-        />
-
-        {/* Main content — centred, so the eye runs down into the work below */}
-        <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 pt-32 pb-16 flex flex-col items-center text-center" style={{ zIndex: 3 }}>
-
-          {/* Badge pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
+          {/* Eyebrow — plain letterspaced type, no pill */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-sm font-bold"
-            style={{ border: '1px solid rgba(74,222,128,.45)', background: 'rgba(74,222,128,.08)', color: '#BFF4CC' }}
+            className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.42em] mb-8 sm:mb-10"
+            style={{ color: 'rgba(255,255,255,.38)' }}
           >
-            <span aria-hidden className="hero-dot" />
             {c.hero.badge}
-          </motion.div>
+          </motion.p>
 
-          {/* Headline */}
+          {/* Headline — sized to run nearly the full width, like the reference */}
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.12 }}
-            /* Gradient-filled display type, as on the reference site. Fills with
-               the brand cyan rather than their silver, so it stays on-brand. */
-            className="font-black tracking-[-0.035em] mb-6 bg-linear-[200deg,#fff_26%,#00D4FF_86%] bg-clip-text text-transparent"
-            style={{ fontSize: 'clamp(40px, 7.5vw, 88px)', lineHeight: 1.05 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-black tracking-[-0.045em] bg-linear-[195deg,#ffffff_22%,#8fa3b8_92%] bg-clip-text text-transparent"
+            style={{ fontSize: 'clamp(44px, 11.5vw, 158px)', lineHeight: 0.98 }}
           >
             {c.hero.line1}
             <br />
             {c.hero.line2}
           </motion.h1>
 
-          {/* Sub-copy */}
+          {/* One quiet line — small against the headline, as the reference does */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.22 }}
-            className="text-base sm:text-lg max-w-[560px] mb-9 leading-[1.75]"
-            style={{ color: '#9DB2CE' }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-9 sm:mt-11 max-w-[520px] text-[13px] sm:text-sm leading-[1.9] uppercase tracking-[0.06em]"
+            style={{ color: 'rgba(255,255,255,.42)' }}
           >
             {c.hero.sub}
           </motion.p>
 
-          {/* Service chips */}
+          {/* A single understated CTA */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.32 }}
-            className="flex flex-wrap justify-center gap-2.5 mb-9"
+            transition={{ duration: 0.55, delay: 0.42 }}
+            className="mt-10 flex flex-wrap justify-center items-center gap-7"
           >
-            {c.hero.chips.map((chip, i) => (
-              <span key={i} className="hero-chip" style={{ animationDelay: `${i * 0.8}s` }}>
-                {chip}
-              </span>
-            ))}
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.42 }}
-            className="flex flex-wrap justify-center gap-4"
-          >
-            <Link to="/contact" className="hero-btn-primary">
-              {c.hero.cta1} →
+            <Link
+              to="/contact"
+              className="px-8 py-3.5 rounded-full bg-white text-[#0a0c11] text-sm font-bold hover:bg-brand-cyan transition-colors"
+            >
+              {c.hero.cta1}
             </Link>
-            <Link to="/services" className="hero-btn-ghost">
+            <Link
+              to="/services"
+              className="text-sm font-semibold text-white/45 hover:text-white transition-colors border-b border-white/20 pb-0.5"
+            >
               {c.hero.cta2}
             </Link>
           </motion.div>
-
         </div>
 
-        {/* The work itself, drifting across under the headline. Nothing sells a
-            marketing agency faster than the output, so it goes above the fold. */}
+        {/* The work itself, drifting across under the headline. */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.55 }}
           className="relative w-full"
           style={{ zIndex: 3 }}
         >
           <WorkWall works={works} count={10} />
-        </motion.div>
-
-        {/* Stats strip */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.65 }}
-          className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 mt-14 pt-8 flex flex-wrap justify-center gap-x-12 gap-y-5 text-center"
-          style={{ zIndex: 3, borderTop: '1px solid rgba(255,255,255,.1)' }}
-        >
-          {c.stats.map((s, i) => (
-            <div key={i}>
-              <div className="text-2xl font-bold text-brand-cyan">{s.value}</div>
-              <div className="text-sm mt-0.5" style={{ color: 'rgba(255,255,255,.35)' }}>{s.label}</div>
-            </div>
-          ))}
         </motion.div>
 
         {/* Scroll cue */}
@@ -480,6 +355,22 @@ export default function Home() {
           <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#4ADE80' }} />
         </motion.div>
       </section>
+
+      {/* ─────────────────────────────────────────────────── STATS BAND ── */}
+      {/* Moved out of the hero so the first screen carries only the headline
+          and the work, as the reference does. */}
+      <div className="bg-[#07080b] border-t border-white/8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 flex flex-wrap justify-center gap-x-14 gap-y-6 text-center">
+          {c.stats.map((s, i) => (
+            <motion.div key={i} {...stagger(i)}>
+              <div className="text-2xl sm:text-3xl font-bold text-white">{s.value}</div>
+              <div className="text-[11px] mt-1 uppercase tracking-[0.18em]" style={{ color: 'rgba(255,255,255,.32)' }}>
+                {s.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       {/* ────────────────────────────────────────────── PLATFORM MARQUEE ── */}
       <div className="border-y border-brand-blue/6 py-4 overflow-hidden bg-white">
