@@ -41,6 +41,17 @@ export interface Work {
   order: number;
 }
 
+/**
+ * Line-height for oversized display type.
+ *
+ * Uppercase Latin sits well below the em box, so sub-1 leading reads as tight
+ * and deliberate. CJK glyphs fill the em box, so the same value makes stacked
+ * lines collide — 我们做过 / 的作品 overlapped at 0.86. Pick per content.
+ */
+export function displayLeading(text: string): string {
+  return /[㐀-鿿぀-ヿ가-힯]/.test(text) ? 'leading-[1.05]' : 'leading-[0.88]';
+}
+
 /** Deliverable counts are derived from the media list, so no case study hardcodes them. */
 export function mediaCounts(media: WorkMedia[]) {
   return {

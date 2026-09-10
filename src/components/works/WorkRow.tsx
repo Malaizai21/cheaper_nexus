@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { type Language } from '../../hooks/useLanguage';
-import { type Work, SERVICE_FILTERS, copyLang, worksT, mediaCounts, countLabel } from './worksData';
+import { type Work, SERVICE_FILTERS, copyLang, worksT, mediaCounts, countLabel, displayLeading } from './worksData';
 
 interface WorkRowProps {
   work: Work;
@@ -38,29 +38,27 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
     <section
       className={`relative overflow-hidden ${dark ? 'bg-brand-blue text-white' : 'bg-white text-brand-blue'}`}
     >
-      <div className="px-4 sm:px-8 lg:px-12 pt-14 sm:pt-20 pb-12 sm:pb-16">
-        {/* Index + industry */}
-        <div className="flex items-baseline gap-4 mb-3">
-          <span className={`text-xs font-bold tabular-nums ${dark ? 'text-brand-cyan' : 'text-brand-cyan'}`}>
+      {/* Header runs down the same centre axis as the hero handset */}
+      <div className="px-4 sm:px-8 lg:px-12 pt-14 sm:pt-20 pb-10 sm:pb-14 flex flex-col items-center text-center">
+        <div className="flex items-baseline gap-3 mb-4">
+          <span className="text-xs font-bold tabular-nums text-brand-cyan">
             {String(index + 1).padStart(2, '0')}
           </span>
-          <span className={`text-xs font-semibold uppercase tracking-[0.18em] ${dark ? 'text-white/45' : 'text-brand-blue/45'}`}>
+          <span className={`text-[11px] font-semibold uppercase tracking-[0.2em] ${dark ? 'text-white/40' : 'text-brand-blue/40'}`}>
             {work.industry[cl]}
           </span>
         </div>
 
-        {/* Oversized client name */}
-        <Link to={`/works-v2/${work.slug}${search}`} className="group block">
+        <Link to={`/works-v2/${work.slug}${search}`} className="group block max-w-5xl">
           <h2
-            className="font-black leading-[0.88] tracking-[-0.035em] uppercase
-                       text-[clamp(2.4rem,9vw,7rem)] group-hover:text-brand-cyan transition-colors duration-300"
+            className={`font-black tracking-[-0.035em] uppercase ${displayLeading(work.client_name)}
+                       text-[clamp(2.1rem,7.5vw,5.5rem)] group-hover:text-brand-cyan transition-colors duration-300`}
           >
             {work.client_name}
           </h2>
         </Link>
 
-        {/* Highlight line */}
-        <p className={`mt-4 text-base sm:text-xl font-bold ${dark ? 'text-brand-cyan' : 'text-brand-cyan'}`}>
+        <p className="mt-4 text-base sm:text-xl font-bold text-brand-cyan max-w-2xl">
           {work.highlight[cl]}
         </p>
       </div>
@@ -131,7 +129,7 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
       </div>
 
       {/* Footer: counts + CTA */}
-      <div className="px-4 sm:px-8 lg:px-12 pb-14 sm:pb-20 flex flex-wrap items-center justify-between gap-4">
+      <div className="px-4 sm:px-8 lg:px-12 pb-14 sm:pb-20 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8">
         <p className={`text-sm font-medium ${dark ? 'text-white/45' : 'text-brand-blue/45'}`}>
           {[
             videos > 0 ? countLabel(videos, 'video', lang) : null,

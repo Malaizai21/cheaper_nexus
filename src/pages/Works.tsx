@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { WorkCard } from '../components/works/WorkCard';
+import { WorkFilters } from '../components/works/WorkFilters';
 import { useLanguage } from '../hooks/useLanguage';
 import { type Work, SERVICE_FILTERS, copyLang, worksT, WHATSAPP_URL } from '../components/works/worksData';
 
@@ -102,60 +103,19 @@ export default function Works() {
           </div>
         </header>
 
-        {/* Filters */}
-        <div className="sticky top-20 z-30 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 space-y-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue/40 uppercase tracking-wide shrink-0">
-                <SlidersHorizontal className="w-3.5 h-3.5" /> {t.filterService}
-              </span>
-              {SERVICE_FILTERS.map(f => (
-                <button
-                  key={f.id}
-                  onClick={() => toggle('service', f.id)}
-                  aria-pressed={activeServices.includes(f.id)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                    activeServices.includes(f.id)
-                      ? 'bg-brand-blue text-white'
-                      : 'bg-brand-blue/5 text-brand-blue hover:bg-brand-blue/10'
-                  }`}
-                >
-                  {f.label[lang]}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-bold text-brand-blue/40 uppercase tracking-wide shrink-0">
-                {t.filterIndustry}
-              </span>
-              {industries.map(f => (
-                <button
-                  key={f.id}
-                  onClick={() => toggle('industry', f.id)}
-                  aria-pressed={activeIndustries.includes(f.id)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                    activeIndustries.includes(f.id)
-                      ? 'bg-brand-cyan text-brand-blue'
-                      : 'bg-brand-blue/5 text-brand-blue hover:bg-brand-blue/10'
-                  }`}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-3 pt-1">
-              <span className="text-xs text-brand-blue/45 font-medium">{t.resultCount(filtered.length)}</span>
-              {hasFilters && (
-                <button
-                  onClick={() => setParams(new URLSearchParams(), { replace: true })}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-brand-cyan hover:underline"
-                >
-                  <X className="w-3 h-3" /> {t.clearFilters}
-                </button>
-              )}
-            </div>
+        {/* Filters — only sticky from sm up; on a phone the bar would eat a
+            quarter of the viewport for the entire scroll. */}
+        <div className="sm:sticky sm:top-20 z-30 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+            <WorkFilters
+              lang={lang}
+              industries={industries}
+              activeServices={activeServices}
+              activeIndustries={activeIndustries}
+              onToggle={toggle}
+              onClear={() => setParams(new URLSearchParams(), { replace: true })}
+              count={filtered.length}
+            />
           </div>
         </div>
 

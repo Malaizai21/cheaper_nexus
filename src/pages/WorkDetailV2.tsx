@@ -6,7 +6,7 @@ import { Navbar } from '../components/Navbar';
 import { WorkGallery } from '../components/works/WorkGallery';
 import { useLanguage } from '../hooks/useLanguage';
 import {
-  type Work, SERVICE_FILTERS, copyLang, worksT, WHATSAPP_URL, mediaCounts, countLabel,
+  type Work, SERVICE_FILTERS, copyLang, worksT, WHATSAPP_URL, mediaCounts, countLabel, displayLeading,
 } from '../components/works/worksData';
 
 /** Editorial-layout counterpart to WorkDetail, paired with the /works-v2 prototype. */
@@ -78,7 +78,7 @@ export default function WorkDetailV2() {
             {work.industry[cl]}
           </p>
 
-          <h1 className="font-black uppercase leading-[0.86] tracking-[-0.04em] text-[clamp(2.6rem,11vw,8rem)]">
+          <h1 className={`font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,11vw,8rem)] ${displayLeading(work.client_name)}`}>
             {work.client_name}
           </h1>
 
@@ -161,7 +161,7 @@ export default function WorkDetailV2() {
           >
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/35 mb-4">{t.nextCase}</p>
             <div className="flex items-center justify-between gap-6">
-              <h2 className="font-black uppercase leading-[0.9] tracking-[-0.03em] text-[clamp(1.8rem,7vw,4.5rem)] group-hover:text-brand-cyan transition-colors">
+              <h2 className={`font-black uppercase tracking-[-0.03em] text-[clamp(1.8rem,7vw,4.5rem)] group-hover:text-brand-cyan transition-colors ${displayLeading(next.client_name)}`}>
                 {next.client_name}
               </h2>
               <ArrowRight className="w-8 h-8 sm:w-12 sm:h-12 shrink-0 text-white/30 group-hover:text-brand-cyan group-hover:translate-x-2 transition-all" />

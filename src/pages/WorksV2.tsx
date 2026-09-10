@@ -1,12 +1,12 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { X } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { WorkRow } from '../components/works/WorkRow';
 import { HeroPhone } from '../components/works/HeroPhone';
+import { WorkFilters } from '../components/works/WorkFilters';
 import { useLanguage } from '../hooks/useLanguage';
-import { type Work, SERVICE_FILTERS, copyLang, worksT, WHATSAPP_URL } from '../components/works/worksData';
+import { type Work, copyLang, worksT, WHATSAPP_URL, displayLeading } from '../components/works/worksData';
 
 /**
  * Editorial layout prototype for /works — full-bleed rows instead of a card
@@ -70,24 +70,29 @@ export default function WorksV2() {
       <Navbar lang={lang} setLang={setLang} />
 
       <div className="min-h-screen bg-brand-blue">
-        {/* Hero — oversized type beside a handset cycling through the reel */}
-        <header className="bg-brand-blue text-white pt-28 pb-14 overflow-hidden">
-          <div className="px-4 sm:px-8 lg:px-12 flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16">
-            <div className="min-w-0 flex-1">
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-brand-cyan mb-5">
-                {lang === 'zh' ? '客户作品' : lang === 'ms' ? 'Kerja Kami' : 'Our Work'}
-              </p>
-              <h1 className="font-black uppercase leading-[0.85] tracking-[-0.04em] text-[clamp(2.8rem,10vw,8rem)]">
-                {lang === 'zh' ? '我们做过' : 'WORK WE'}
-                <br />
-                <span className="text-brand-cyan">{lang === 'zh' ? '的作品' : 'DELIVERED'}</span>
-              </h1>
-              <p className="mt-7 max-w-xl text-white/55 text-base sm:text-lg leading-relaxed">
-                {t.heroSub}
-              </p>
-            </div>
+        {/* Hero — centred: label, headline, then the handset directly beneath,
+            so the eye runs straight down the middle into the work. */}
+        <header className="bg-brand-blue text-white pt-28 pb-16 overflow-hidden">
+          <div className="px-4 sm:px-8 lg:px-12 flex flex-col items-center text-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-cyan mb-6">
+              {lang === 'zh' ? '客户作品' : lang === 'ms' ? 'Kerja Kami' : 'Our Work'}
+            </p>
 
-            <div className="flex justify-center lg:justify-end">
+            <h1
+              className={`font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,9vw,7rem)] max-w-5xl ${
+                displayLeading(lang === 'zh' ? '我们做过' : 'WORK WE')
+              }`}
+            >
+              {lang === 'zh' ? '我们做过' : 'WORK WE'}
+              <br />
+              <span className="text-brand-cyan">{lang === 'zh' ? '的作品' : 'DELIVERED'}</span>
+            </h1>
+
+            <p className="mt-6 max-w-lg text-white/50 text-sm sm:text-base leading-relaxed">
+              {t.heroSub}
+            </p>
+
+            <div className="mt-12">
               <HeroPhone works={works} lang={lang} />
             </div>
           </div>
@@ -95,58 +100,17 @@ export default function WorksV2() {
 
         {/* Filters */}
         <div className="bg-brand-blue border-y border-white/10">
-          <div className="px-4 sm:px-8 lg:px-12 py-5 space-y-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/35 shrink-0 mr-1">
-                {t.filterService}
-              </span>
-              {SERVICE_FILTERS.map(f => (
-                <button
-                  key={f.id}
-                  onClick={() => toggle('service', f.id)}
-                  aria-pressed={activeServices.includes(f.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
-                    activeServices.includes(f.id)
-                      ? 'bg-brand-cyan text-brand-blue'
-                      : 'bg-white/8 text-white/70 hover:bg-white/15'
-                  }`}
-                >
-                  {f.label[lang]}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/35 shrink-0 mr-1">
-                {t.filterIndustry}
-              </span>
-              {industries.map(f => (
-                <button
-                  key={f.id}
-                  onClick={() => toggle('industry', f.id)}
-                  aria-pressed={activeIndustries.includes(f.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
-                    activeIndustries.includes(f.id)
-                      ? 'bg-white text-brand-blue'
-                      : 'bg-white/8 text-white/70 hover:bg-white/15'
-                  }`}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-3 pt-0.5">
-              <span className="text-xs text-white/40 font-medium">{t.resultCount(filtered.length)}</span>
-              {hasFilters && (
-                <button
-                  onClick={() => setParams(new URLSearchParams(), { replace: true })}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-brand-cyan hover:underline"
-                >
-                  <X className="w-3 h-3" /> {t.clearFilters}
-                </button>
-              )}
-            </div>
+          <div className="px-4 sm:px-8 lg:px-12 py-5">
+            <WorkFilters
+              variant="dark"
+              lang={lang}
+              industries={industries}
+              activeServices={activeServices}
+              activeIndustries={activeIndustries}
+              onToggle={toggle}
+              onClear={() => setParams(new URLSearchParams(), { replace: true })}
+              count={filtered.length}
+            />
           </div>
         </div>
 
