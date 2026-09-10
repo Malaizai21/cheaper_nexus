@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Phone, MessageSquare, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
 import { useLanguage, type Language } from '../hooks/useLanguage';
 
 const SITE_URL = 'https://cheapernexus.com';
@@ -182,6 +183,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <Footer lang={lang} />
     </>
   );
 }

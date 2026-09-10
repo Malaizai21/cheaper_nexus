@@ -14,6 +14,7 @@ import {
 import { SEO } from '../components/SEO';
 import { Navbar } from '../components/Navbar';
 import { useLanguage, type Language } from '../hooks/useLanguage';
+import { Footer } from '../components/Footer';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -707,42 +708,7 @@ export default function Home() {
       </section>
 
       {/* ──────────────────────────────────────────────────── FOOTER ── */}
-      <footer className="py-10 border-t border-brand-blue/6">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <Link to="/">
-            <picture>
-              <source srcSet="/logo.webp" type="image/webp" />
-              <img
-                src="/logo.png"
-                alt="Cheaper Nexus"
-                width={430}
-                height={120}
-                loading="lazy"
-                className="h-10 w-auto object-contain"
-              />
-            </picture>
-          </Link>
-          <p className="text-brand-blue/35 text-sm">
-            © {new Date().getFullYear()} Cheaper Nexus. {c.footer.copy}.
-          </p>
-          <div className="flex flex-wrap gap-6 justify-center">
-            {[
-              { to: '/services', label: c.footer.services },
-              { to: '/pricing',  label: c.footer.pricing  },
-              { to: '/blog',     label: 'Blog'            },
-              { to: '/contact',  label: c.footer.contact  },
-            ].map(link => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="text-sm text-brand-blue/35 hover:text-brand-cyan transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </footer>
+      <Footer lang={lang} />
     </div>
   );
 }

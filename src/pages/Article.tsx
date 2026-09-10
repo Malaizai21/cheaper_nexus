@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { marked } from 'marked';
 import { ArrowLeft, Calendar, BookOpen, Tag } from 'lucide-react';
+import { Footer } from '../components/Footer';
+import { useLanguage } from '../hooks/useLanguage';
 
 const SITE_URL = 'https://cheapernexus.com';
 
@@ -58,6 +60,7 @@ function pickRelated(current: Article, all: ArticleMeta[], n = 3): ArticleMeta[]
 }
 
 export default function Article() {
+  const [lang] = useLanguage();
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<Article | null>(null);
   const [allArticles, setAllArticles] = useState<ArticleMeta[]>([]);
@@ -296,6 +299,7 @@ export default function Article() {
           </div>
         </div>
       </div>
+      <Footer lang={lang} />
     </div>
   );
 }

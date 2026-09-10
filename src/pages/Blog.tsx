@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Search, RefreshCw } from 'lucide-react';
 import { BlogCard, type ArticleSummary } from '../components/BlogCard';
 import { SEO } from '../components/SEO';
+import { Footer } from '../components/Footer';
+import { useLanguage } from '../hooks/useLanguage';
 
 const LANG_TABS = [
   { id: 'all', label: '全部' },
@@ -12,6 +14,7 @@ const LANG_TABS = [
 ];
 
 export default function Blog() {
+  const [lang] = useLanguage();
   const [articles, setArticles] = useState<ArticleSummary[]>([]);
   const [loading, setLoading]   = useState(true);
   const [langFilter, setLangFilter] = useState('all');
@@ -111,6 +114,7 @@ export default function Blog() {
           </div>
         </div>
       </div>
+      <Footer lang={lang} />
     </>
   );
 }

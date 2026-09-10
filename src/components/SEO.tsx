@@ -44,6 +44,11 @@ const jsonLd = [
     logo: `${SITE_URL}/logo.png`,
     image: `${SITE_URL}/logo-og.png`,
     telephone: '+60172915754',
+    identifier: {
+      '@type': 'PropertyValue',
+      name: 'SSM Company Registration No.',
+      value: '202601007953 (1670051-W)',
+    },
     description:
       'All-in-one digital marketing agency in Malaysia offering social media management packages, ads management, video and design production, and KOC/KOL influencer marketing.',
     address: {

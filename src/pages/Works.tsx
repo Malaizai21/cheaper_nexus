@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
 import { WorkRow } from '../components/works/WorkRow';
 import { HeroPhone } from '../components/works/HeroPhone';
 import { WorkFilters } from '../components/works/WorkFilters';
@@ -174,6 +175,7 @@ export default function Works() {
           </div>
         </section>
       </div>
+      <Footer lang={lang} variant="dark" />
     </>
   );
 }

@@ -3,6 +3,7 @@ import { Link, useParams, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
 import { WorkGallery } from '../components/works/WorkGallery';
 import { useLanguage } from '../hooks/useLanguage';
 import {
@@ -235,6 +236,7 @@ export default function WorkDetail() {
           </a>
         </section>
       </article>
+      <Footer lang={lang} variant="dark" />
     </>
   );
 }

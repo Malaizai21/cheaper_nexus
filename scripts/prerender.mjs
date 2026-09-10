@@ -64,7 +64,14 @@ function buildPage(shell, { headMeta, bodyContent, langAttr }) {
 
 // Shared static wrapper so no-JS content is readable (React replaces it on hydration)
 const wrapStart = '<div style="max-width:760px;margin:0 auto;padding:32px 20px;font-family:system-ui,sans-serif;line-height:1.7;color:#0A192F">';
-const wrapEnd = '</div>';
+
+// SSM requires the company registration number to appear with the company name.
+// Appending it to the shared wrapper puts it in the static HTML of every
+// prerendered page, so no-JS crawlers see it too.
+const SSM_NUMBER = '202601007953 (1670051-W)';
+const wrapEnd = `<hr style="margin:32px 0 16px;border:0;border-top:1px solid rgba(10,25,47,.12)" />`
+  + `<p style="font-size:13px;color:rgba(10,25,47,.55)">Cheaper Nexus ${SSM_NUMBER}</p>`
+  + '</div>';
 
 /** Same-language related articles ranked by keyword + topic overlap (mirrors Article.tsx). */
 function pickRelated(current, all, n = 3) {
@@ -207,6 +214,11 @@ const bizSchema = {
   logo: `${SITE_URL}/logo.png`,
   image: `${SITE_URL}/logo-og.png`,
   telephone: '+60172915754',
+  identifier: {
+    '@type': 'PropertyValue',
+    name: 'SSM Company Registration No.',
+    value: '202601007953 (1670051-W)',
+  },
   description:
     'All-in-one digital marketing agency in Malaysia offering social media management packages, ads management, video and design production, and KOC/KOL influencer marketing for SMEs. Pricing from RM150 with no hidden fees.',
   address: {
@@ -598,7 +610,7 @@ const langLabel = { zh: 'Chinese', en: 'English', ms: 'Malay' };
 
 const llmsTxt = `# Cheaper Nexus
 
-> Cheaper Nexus is an all-in-one digital marketing agency based in Kuala Lumpur, Malaysia, serving Malaysian SMEs nationwide in Chinese, English and Malay. Transparent pricing from RM288 with no hidden fees. WhatsApp: +60 17-291 5754 (Henry). Website: ${SITE_URL}
+> Cheaper Nexus (SSM ${SSM_NUMBER}) is an all-in-one digital marketing agency based in Kuala Lumpur, Malaysia, serving Malaysian SMEs nationwide in Chinese, English and Malay. Transparent pricing from RM150 with no hidden fees. WhatsApp: +60 17-291 5754 (Henry). Website: ${SITE_URL}
 
 ## Services & Pricing
 
