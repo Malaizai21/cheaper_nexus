@@ -15,6 +15,8 @@ export interface WorkMedia {
   src: string;
   /** 600px WebP used for grid tiles; `src`/`poster` stay full-size for the lightbox. */
   thumb: string;
+  /** 300px WebP for the hero wall, where tiles render around 160-200px. */
+  wall?: string;
   width: number | null;
   height: number | null;
   ratio: string;

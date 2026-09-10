@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { WorkRow } from '../components/works/WorkRow';
-import { HeroPhone } from '../components/works/HeroPhone';
+import { WorkWall } from '../components/works/WorkWall';
 import { WorkFilters } from '../components/works/WorkFilters';
 import { useLanguage } from '../hooks/useLanguage';
 import { type Work, copyLang, worksT, WHATSAPP_URL, displayLeading } from '../components/works/worksData';
@@ -98,31 +98,33 @@ export default function Works() {
       <Navbar lang={lang} setLang={setLang} />
 
       <div className="min-h-screen bg-brand-blue">
-        {/* Hero — centred: label, headline, then the handset directly beneath,
-            so the eye runs straight down the middle into the work. */}
-        <header className="bg-brand-blue text-white pt-28 pb-16 overflow-hidden">
+        {/* Hero — eyebrow, gradient headline, then the work itself drifting
+            across beneath it. Text sits above the wall rather than over it;
+            this creative is bright and would fight anything laid on top. */}
+        <header className="bg-brand-blue text-white pt-28 pb-14 overflow-hidden">
           <div className="px-4 sm:px-8 lg:px-12 flex flex-col items-center text-center">
             <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-cyan mb-6">
               {lang === 'zh' ? '客户作品' : lang === 'ms' ? 'Kerja Kami' : 'Our Work'}
             </p>
 
             <h1
-              className={`font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,9vw,7rem)] max-w-5xl ${
-                displayLeading(lang === 'zh' ? '我们做过' : 'WORK WE')
-              }`}
+              className={`font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,9vw,7rem)] max-w-5xl
+                          bg-linear-[200deg,#fff_28%,#00D4FF_88%] bg-clip-text text-transparent ${
+                            displayLeading(lang === 'zh' ? '我们做过' : 'WORK WE')
+                          }`}
             >
               {lang === 'zh' ? '我们做过' : 'WORK WE'}
               <br />
-              <span className="text-brand-cyan">{lang === 'zh' ? '的作品' : 'DELIVERED'}</span>
+              {lang === 'zh' ? '的作品' : 'DELIVERED'}
             </h1>
 
             <p className="mt-6 max-w-lg text-white/50 text-sm sm:text-base leading-relaxed">
               {t.heroSub}
             </p>
+          </div>
 
-            <div className="mt-12">
-              <HeroPhone works={works} lang={lang} />
-            </div>
+          <div className="mt-12">
+            <WorkWall works={works} />
           </div>
         </header>
 
