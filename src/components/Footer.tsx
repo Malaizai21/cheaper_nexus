@@ -2,10 +2,13 @@ import { Link } from 'react-router-dom';
 import { type Language } from '../hooks/useLanguage';
 
 /**
- * Company registration as issued by SSM. Malaysian companies must show this
- * alongside the company name, so this footer goes on every public page.
+ * Registered entity as recorded with SSM. Malaysian companies must show the
+ * registration number alongside the company name, so this footer goes on every
+ * public page. `BRAND_NAME` stays the short form used in marketing copy;
+ * `LEGAL_NAME` is what pairs with the registration number.
  */
-export const COMPANY_NAME = 'Cheaper Nexus';
+export const BRAND_NAME = 'Cheaper Nexus';
+export const LEGAL_NAME = 'Cheaper Nexus Sdn Bhd';
 export const SSM_NUMBER = '202601007953 (1670051-W)';
 
 const footerT: Record<Language, {
@@ -37,7 +40,7 @@ export function Footer({ lang, variant = 'light' }: FooterProps) {
             <source srcSet={dark ? '/logo-dark.png' : '/logo.webp'} type={dark ? 'image/png' : 'image/webp'} />
             <img
               src={dark ? '/logo-dark.png' : '/logo.png'}
-              alt={COMPANY_NAME}
+              alt={BRAND_NAME}
               width={430}
               height={120}
               loading="lazy"
@@ -48,9 +51,9 @@ export function Footer({ lang, variant = 'light' }: FooterProps) {
 
         <div className={`text-center text-xs leading-relaxed ${muted}`}>
           <p className="font-medium">
-            {COMPANY_NAME} <span className="tabular-nums">{SSM_NUMBER}</span>
+            {LEGAL_NAME} <span className="tabular-nums">{SSM_NUMBER}</span>
           </p>
-          <p className="mt-1">© {new Date().getFullYear()} {COMPANY_NAME}. {t.rights}.</p>
+          <p className="mt-1">© {new Date().getFullYear()} {LEGAL_NAME}. {t.rights}.</p>
         </div>
 
         <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">

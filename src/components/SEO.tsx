@@ -44,6 +44,7 @@ const jsonLd = [
     logo: `${SITE_URL}/logo.png`,
     image: `${SITE_URL}/logo-og.png`,
     telephone: '+60172915754',
+    legalName: 'Cheaper Nexus Sdn Bhd',
     identifier: {
       '@type': 'PropertyValue',
       name: 'SSM Company Registration No.',
