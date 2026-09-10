@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { type Language } from '../../hooks/useLanguage';
 import { type WorkMedia, worksT } from './worksData';
+import { PhoneFrame } from './PhoneFrame';
 
 interface WorkGalleryProps {
   media: WorkMedia[];
@@ -139,19 +140,24 @@ export function WorkGallery({ media, lang, clientName }: WorkGalleryProps) {
 
           <div className="max-h-[85vh] max-w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
             {current.type === 'video' ? (
-              <video
-                {...noSave}
-                ref={videoRef}
-                key={current.src}
-                src={current.src}
-                poster={current.poster}
-                controls
-                controlsList="nodownload noplaybackrate"
-                disablePictureInPicture
-                playsInline
-                preload="metadata"
-                className="max-h-[85vh] max-w-full rounded-lg"
-              />
+              /* Played inside a handset — this is vertical social content, so it
+                 reads the way the audience actually saw it. Width is set in vh
+                 so the bezel and its chrome still fit the viewport height. */
+              <PhoneFrame handle={clientName} className="w-[min(88vw,40vh)]">
+                <video
+                  {...noSave}
+                  ref={videoRef}
+                  key={current.src}
+                  src={current.src}
+                  poster={current.poster}
+                  controls
+                  controlsList="nodownload noplaybackrate"
+                  disablePictureInPicture
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </PhoneFrame>
             ) : (
               <img
                 {...noSave}

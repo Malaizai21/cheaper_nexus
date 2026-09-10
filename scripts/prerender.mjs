@@ -478,6 +478,58 @@ if (works.length) {
 
   const ordered = works.slice().sort((a, b) => a.order - b.order);
 
+  /**
+   * Above-the-fold hero, prerendered with the real classes.
+   *
+   * The LCP element is the handset image. Preloading already took its load
+   * delay to zero, but it still sat unpainted for ~3.5s of render delay
+   * waiting on the bundle to boot — nothing can paint a React tree before
+   * React exists. Emitting the hero as styled HTML lets the browser paint it
+   * from the document, so LCP no longer depends on JS at all.
+   *
+   * Every class here is one the React components already use, so Tailwind has
+   * emitted it. The markup mirrors Works.tsx + PhoneFrame; React replaces it on
+   * mount, and because it matches, the swap is invisible.
+   */
+  const first = ordered.find(w => w.media.some(m => m.type === 'video')) || ordered[0];
+  const firstThumb = (first.media.find(m => m.type === 'video') || first.media[0]).thumb;
+
+  const staticHero = `<nav class="fixed top-0 left-0 right-0 z-50 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <a href="/" class="flex items-center"><picture><source srcset="/logo.webp" type="image/webp" /><img src="/logo.png" alt="Cheaper Nexus" width="430" height="120" fetchpriority="high" class="h-12 w-auto object-contain" /></picture></a>
+    </div>
+  </div>
+</nav>
+<div class="min-h-screen bg-brand-blue">
+  <header class="bg-brand-blue text-white pt-28 pb-16 overflow-hidden">
+    <div class="px-4 sm:px-8 lg:px-12 flex flex-col items-center text-center">
+      <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-cyan mb-6">客户作品</p>
+      <h1 class="font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,9vw,7rem)] max-w-5xl leading-[1.05]">我们做过<br /><span class="text-brand-cyan">的作品</span></h1>
+      <p class="mt-6 max-w-lg text-white/50 text-sm sm:text-base leading-relaxed">短视频、社媒设计、广告素材——这些都是我们实际交付给马来西亚客户的作品。</p>
+      <div class="mt-12">
+        <div class="relative w-[230px] sm:w-[270px] shrink-0">
+          <div class="relative">
+            <div class="relative rounded-[2.2rem] bg-[#111827] p-2.5 shadow-2xl shadow-black/40 ring-1 ring-white/10">
+              <div class="relative overflow-hidden rounded-[1.7rem] bg-black">
+                <div class="absolute top-2 left-1/2 -translate-x-1/2 z-20 h-4 w-16 rounded-full bg-black/90"></div>
+                <div class="flex items-center gap-2 px-3 pt-7 pb-2 bg-black">
+                  <span class="h-6 w-6 shrink-0 rounded-full bg-linear-to-tr from-brand-cyan via-white to-brand-cyan p-[1.5px]"><span class="block h-full w-full rounded-full bg-brand-blue"></span></span>
+                  <span class="text-[11px] font-semibold text-white truncate">${escHtml(first.client_name)}</span>
+                </div>
+                <div class="relative aspect-9/16 bg-black">
+                  <img src="${escAttr(firstThumb)}" alt="${escAttr(first.client_name)}" width="600" height="1067" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover" />
+                </div>
+                <div class="flex items-center gap-3.5 px-3 py-2.5 bg-black"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>`;
+
   writePage('works', buildPage(cleanShell(baseHtml, { nested: true }), {
     headMeta: worksHead({
       title: listTitle,
@@ -506,7 +558,9 @@ if (works.length) {
         })),
       },
     }),
-    bodyContent: `${wrapStart}${listBody}${wrapEnd}`,
+    // Styled hero first so it paints immediately; the plain list below it stays
+    // for crawlers that read text rather than render.
+    bodyContent: `${staticHero}${wrapStart}${listBody}${wrapEnd}`,
     langAttr: 'zh-MY',
   }));
 
