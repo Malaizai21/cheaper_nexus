@@ -1,20 +1,26 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { MessageCircle } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { WorkRow } from '../components/works/WorkRow';
 import { HeroPhone } from '../components/works/HeroPhone';
 import { WorkFilters } from '../components/works/WorkFilters';
+import { ProofBar, WorksPricing, WorksProcess, WorksFaq, StickyCta } from '../components/works/WorksOffer';
 import { useLanguage } from '../hooks/useLanguage';
 import { type Work, copyLang, worksT, WHATSAPP_URL, displayLeading } from '../components/works/worksData';
+import { offerT, waLink, waGeneral } from '../components/works/offerData';
 
 const SITE_URL = 'https://cheapernexus.com';
 
 /**
- * Client work index — full-bleed rows down a centre axis, led by a handset
- * cycling the reel. Everything here is vertical social content, so the phone
- * is how the work is actually seen rather than decoration.
+ * Client work + pricing on one page.
+ *
+ * This is the landing page paid traffic hits, so the offer and the proof live
+ * together: price first (an ad click already knows it wants something), then
+ * the work that justifies it, then process and objections. Every price here is
+ * mirrored from /pricing and /services via offerData.ts — the two must agree.
  */
 export default function Works() {
   const [lang, setLang] = useLanguage();
@@ -23,6 +29,7 @@ export default function Works() {
   const [params, setParams] = useSearchParams();
 
   const t = worksT[lang];
+  const o = offerT[lang];
   const cl = copyLang(lang);
 
   useEffect(() => {
@@ -41,6 +48,13 @@ export default function Works() {
     for (const w of works) if (!seen.has(w.industry.en)) seen.set(w.industry.en, w.industry[cl]);
     return [...seen.entries()].map(([id, label]) => ({ id, label }));
   }, [works, cl]);
+
+  /** Proof numbers are counted off the data rather than written by hand. */
+  const totals = useMemo(() => ({
+    clients: works.length,
+    pieces: works.reduce((n, w) => n + w.media.length, 0),
+    industries: new Set(works.map(w => w.industry.en)).size,
+  }), [works]);
 
   const filtered = useMemo(
     () => works
@@ -93,14 +107,42 @@ export default function Works() {
             })),
           })}
         </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'OfferCatalog',
+            name: o.pricingTitle,
+            url: `${canonical}#pricing`,
+            provider: { '@type': 'Organization', name: 'Cheaper Nexus', url: SITE_URL },
+            itemListElement: offerT.en.tiers.map(tier => ({
+              '@type': 'Offer',
+              name: tier.name,
+              price: tier.price.replace(/[^\d]/g, ''),
+              priceCurrency: 'MYR',
+              description: tier.features.join('; '),
+              url: `${canonical}#pricing`,
+            })),
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: o.faqs.map(f => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          })}
+        </script>
       </Helmet>
 
       <Navbar lang={lang} setLang={setLang} />
 
       <div className="min-h-screen bg-brand-blue">
-        {/* Hero — centred: label, headline, then the handset directly beneath,
-            so the eye runs straight down the middle into the work. */}
-        <header className="bg-brand-blue text-white pt-28 pb-16 overflow-hidden">
+        {/* Hero — centred: label, headline, price anchor, CTAs, then the handset,
+            so the eye runs straight down the middle into the offer. */}
+        <header className="bg-brand-blue text-white pt-28 pb-14 overflow-hidden">
           <div className="px-4 sm:px-8 lg:px-12 flex flex-col items-center text-center">
             <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-cyan mb-6">
               {lang === 'zh' ? '客户作品' : lang === 'ms' ? 'Kerja Kami' : 'Our Work'}
@@ -120,14 +162,57 @@ export default function Works() {
               {t.heroSub}
             </p>
 
+            {/* Price anchor — an ad click should see a number before it scrolls. */}
+            <p className="mt-7 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-cyan/35 bg-brand-cyan/10 text-brand-cyan text-xs sm:text-sm font-semibold">
+              {o.heroPriceAnchor}
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row items-center gap-3">
+              <a
+                href={waLink(waGeneral[lang])}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-brand-cyan text-brand-blue font-bold text-sm hover:bg-brand-cyan/90 transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                {o.heroCtaPrimary}
+              </a>
+              <a
+                href="#pricing"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white font-semibold text-sm hover:border-brand-cyan hover:text-brand-cyan transition-colors"
+              >
+                {o.heroCtaSecondary}
+              </a>
+            </div>
+
             <div className="mt-12">
               <HeroPhone works={works} lang={lang} />
             </div>
           </div>
         </header>
 
+        <ProofBar lang={lang} clients={totals.clients} pieces={totals.pieces} industries={totals.industries} />
+
+        {/* Offer first — paid traffic arrives already wanting a number. */}
+        <WorksPricing lang={lang} />
+
+        {/* Then the proof that justifies it. */}
+        <section className="bg-brand-blue border-t border-white/10">
+          <div className="px-4 sm:px-8 lg:px-12 pt-20 sm:pt-24 max-w-7xl mx-auto text-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-cyan mb-5">
+              {o.workEyebrow}
+            </p>
+            <h2 className="font-black tracking-[-0.03em] text-white text-[clamp(1.9rem,5.5vw,3.6rem)] leading-[1.08] max-w-3xl mx-auto">
+              {o.workTitle}
+            </h2>
+            <p className="mt-5 text-white/50 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+              {o.workSub}
+            </p>
+          </div>
+        </section>
+
         {/* Filters */}
-        <div className="bg-brand-blue border-y border-white/10">
+        <div className="bg-brand-blue border-b border-white/10 mt-10">
           <div className="px-4 sm:px-8 lg:px-12 py-5">
             <WorkFilters
               variant="dark"
@@ -157,13 +242,16 @@ export default function Works() {
           )}
         </main>
 
+        <WorksProcess lang={lang} />
+        <WorksFaq lang={lang} />
+
         {/* CTA */}
         <section className="bg-brand-cyan text-brand-blue">
           <div className="px-4 sm:px-8 lg:px-12 py-20 text-center">
             <h2 className="font-black uppercase leading-[0.9] tracking-[-0.03em] text-[clamp(2rem,7vw,5rem)]">
               {t.ctaTitle}
             </h2>
-            <p className="mt-5 text-brand-blue/70 font-medium">{t.ctaSub}</p>
+            <p className="mt-5 text-brand-blue/85 font-medium">{t.ctaSub}</p>
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -175,7 +263,11 @@ export default function Works() {
           </div>
         </section>
       </div>
+
       <Footer lang={lang} variant="dark" />
+      {/* Clearance so the sticky bar never covers the SSM line. */}
+      <div className="lg:hidden h-20 bg-brand-blue" />
+      <StickyCta lang={lang} />
     </>
   );
 }

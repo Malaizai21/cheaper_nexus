@@ -41,10 +41,10 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
       {/* Header runs down the same centre axis as the hero handset */}
       <div className="px-4 sm:px-8 lg:px-12 pt-14 sm:pt-20 pb-10 sm:pb-14 flex flex-col items-center text-center">
         <div className="flex items-baseline gap-3 mb-4">
-          <span className="text-xs font-bold tabular-nums text-brand-cyan">
+          <span className={`text-xs font-bold tabular-nums ${dark ? 'text-brand-cyan' : 'text-brand-blue'}`}>
             {String(index + 1).padStart(2, '0')}
           </span>
-          <span className={`text-[11px] font-semibold uppercase tracking-[0.2em] ${dark ? 'text-white/40' : 'text-brand-blue/40'}`}>
+          <span className={`text-[11px] font-semibold uppercase tracking-[0.2em] ${dark ? 'text-white/55' : 'text-brand-blue/70'}`}>
             {work.industry[cl]}
           </span>
         </div>
@@ -58,7 +58,7 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
           </h2>
         </Link>
 
-        <p className="mt-4 text-base sm:text-xl font-bold text-brand-cyan max-w-2xl">
+        <p className={`mt-4 text-base sm:text-xl font-bold max-w-2xl ${dark ? 'text-brand-cyan' : 'text-brand-blue/85'}`}>
           {work.highlight[cl]}
         </p>
       </div>
@@ -130,7 +130,7 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
 
       {/* Footer: counts + CTA */}
       <div className="px-4 sm:px-8 lg:px-12 pb-14 sm:pb-20 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8">
-        <p className={`text-sm font-medium ${dark ? 'text-white/45' : 'text-brand-blue/45'}`}>
+        <p className={`text-sm font-medium ${dark ? 'text-white/55' : 'text-brand-blue/60'}`}>
           {[
             videos > 0 ? countLabel(videos, 'video', lang) : null,
             images > 0 ? countLabel(images, 'design', lang) : null,

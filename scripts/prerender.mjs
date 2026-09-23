@@ -447,7 +447,9 @@ ${preload.map(p => `    <link rel="preload" as="${p.as}" href="${escAttr(p.href)
     <link rel="alternate" hrefLang="en-MY" href="${canonicalUrl}" />
     <link rel="alternate" hrefLang="ms-MY" href="${canonicalUrl}" />
     <link rel="alternate" hrefLang="x-default" href="${canonicalUrl}" />
-    <script type="application/ld+json">${JSON.stringify(schema)}</script>`.trimStart();
+${(Array.isArray(schema) ? schema : [schema])
+    .map(s => `    <script type="application/ld+json">${JSON.stringify(s)}</script>`)
+    .join('\n')}`.trimStart();
 }
 
 function writePage(relPath, html) {
@@ -458,12 +460,31 @@ function writePage(relPath, html) {
 
 if (works.length) {
   // Listing page
-  const listTitle = 'Client Work & Case Studies 客户作品案例 | Cheaper Nexus Malaysia';
+  const listTitle = 'Our Work & Pricing 客户作品与价格 | Cheaper Nexus Malaysia';
   const listDesc =
-    'Short-form videos, social media designs and ad creatives Cheaper Nexus has produced for Malaysian businesses — loans, F&B, weddings, mobile retail, beauty, packaging and more.';
+    'Real client work plus open pricing from Cheaper Nexus Malaysia: short-form video from RM800 each (10 for RM5,000), social media management from RM2,888/month, first trial package RM888.';
 
-  const listBody = `<h1>Client Work &amp; Case Studies 客户作品案例</h1>
-<p>Real work delivered by Cheaper Nexus, a digital marketing agency in Malaysia. 以下是我们实际交付给马来西亚客户的短视频、社媒设计与广告素材。</p>
+  /**
+   * Prices duplicated from src/components/works/offerData.ts so crawlers see
+   * them without running the bundle. Both trace back to /pricing and /services
+   * — change one, change all three.
+   */
+  const listPricing = `<h2>Pricing 价格</h2>
+<ul>
+<li><strong>First Trial Package 首次体验套餐 — RM888 / month (once per company)</strong>: 1 short video (filming + editing + script + copywriting), 2 professional designs, Meta Ads foundation setup (1 page). Original value RM3,100.</li>
+<li><strong>Social Media Management Package 社媒管理套餐 — RM2,888 / month</strong>: 2 short videos, 5 professional designs + IG feed, FB / IG / TikTok / XHS management (1 page each), Meta ads management &amp; optimisation. Original value RM5,738.</li>
+<li><strong>Full Business Growth Package 全面业务增长套餐 — RM8,888 / 3 months</strong>: 6 short videos, 18 professional designs + IG feed, full-channel management (FB / IG / TikTok / XHS / Google Business / Waze / Telegram / Lemon8), Meta ads management &amp; optimisation. Original value RM10,888.</li>
+<li><strong>Ala carte video 单点视频</strong>: RM800 per video, or 10 videos for RM5,000 (RM500 each).</li>
+<li><strong>Ala carte design 单点设计</strong>: RM150 per design, or 10 designs for RM800.</li>
+<li><strong>Ads management 广告投放管理</strong>: from RM2,000 / month across TikTok / IG / FB / XHS / Google.</li>
+<li><strong>KOC / KOL influencer marketing 网红营销</strong>: from RM3,888 for 10 creators.</li>
+</ul>
+<p>All prices exclude ad spend and model/influencer fees. Within the Klang Valley we recommend at least 5 videos per shoot; for shoots outside KL/Selangor, accommodation, fuel and surcharges are borne by the client. 所有价格不含广告投放费用与模特／达人费用。</p>`;
+
+  const listBody = `<h1>Our Work &amp; Pricing 客户作品与价格</h1>
+<p>Real work delivered by Cheaper Nexus, a digital marketing agency in Malaysia, with our prices published openly on the same page. 以下是我们实际交付给马来西亚客户的短视频、社媒设计与广告素材，价格也一并公开。</p>
+${listPricing}
+<h2>Client Work 客户作品</h2>
 <ul>${works
     .slice()
     .sort((a, b) => a.order - b.order)
@@ -502,11 +523,16 @@ if (works.length) {
   </div>
 </nav>
 <div class="min-h-screen bg-brand-blue">
-  <header class="bg-brand-blue text-white pt-28 pb-16 overflow-hidden">
+  <header class="bg-brand-blue text-white pt-28 pb-14 overflow-hidden">
     <div class="px-4 sm:px-8 lg:px-12 flex flex-col items-center text-center">
       <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-cyan mb-6">客户作品</p>
       <h1 class="font-black uppercase tracking-[-0.04em] text-[clamp(2.6rem,9vw,7rem)] max-w-5xl leading-[1.05]">我们做过<br /><span class="text-brand-cyan">的作品</span></h1>
       <p class="mt-6 max-w-lg text-white/50 text-sm sm:text-base leading-relaxed">短视频、社媒设计、广告素材——这些都是我们实际交付给马来西亚客户的作品。</p>
+      <p class="mt-7 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-cyan/35 bg-brand-cyan/10 text-brand-cyan text-xs sm:text-sm font-semibold">套餐 RM888 起 · 单支影片 RM800 · 10 支 RM5,000</p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center gap-3">
+        <a href="https://wa.me/60172915754?text=${encodeURIComponent('你好 Cheaper Nexus，我看了你们的作品页，想了解一下。')}" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-brand-cyan text-brand-blue font-bold text-sm">WhatsApp 免费咨询</a>
+        <a href="#pricing" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white font-semibold text-sm">看套餐价格</a>
+      </div>
       <div class="mt-12">
         <div class="relative w-[230px] sm:w-[270px] shrink-0">
           <div class="relative">
@@ -544,19 +570,57 @@ if (works.length) {
         { as: 'fetch', href: '/works/works.json', type: 'application/json', crossorigin: true },
         { as: 'image', href: ordered[0].cover_thumb, type: 'image/webp', priority: true },
       ],
-      schema: {
-        '@context': 'https://schema.org',
-        '@type': 'CollectionPage',
-        name: listTitle,
-        description: listDesc,
-        url: `${SITE_URL}/works`,
-        hasPart: works.map(w => ({
-          '@type': 'CreativeWork',
-          name: `${w.client_name} — ${w.industry.en}`,
-          url: `${SITE_URL}/works/${w.slug}`,
-          creator: { '@type': 'Organization', name: 'Cheaper Nexus' },
-        })),
-      },
+      schema: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: listTitle,
+          description: listDesc,
+          url: `${SITE_URL}/works`,
+          hasPart: works.map(w => ({
+            '@type': 'CreativeWork',
+            name: `${w.client_name} — ${w.industry.en}`,
+            url: `${SITE_URL}/works/${w.slug}`,
+            creator: { '@type': 'Organization', name: 'Cheaper Nexus' },
+          })),
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'OfferCatalog',
+          name: 'Cheaper Nexus digital marketing packages',
+          url: `${SITE_URL}/works#pricing`,
+          provider: { '@type': 'Organization', name: 'Cheaper Nexus', url: SITE_URL },
+          itemListElement: [
+            ['First Trial Package', '888', '1 short video; 2 professional designs; Meta Ads foundation setup (1 page)'],
+            ['Social Media Management Package', '2888', '2 short videos; 5 professional designs + IG feed; FB / IG / TikTok / XHS management; Meta ads management & optimisation'],
+            ['Full Business Growth Package', '8888', '6 short videos; 18 professional designs + IG feed; full-channel management; Meta ads management & optimisation'],
+            ['10 Videos', '5000', 'Ten short videos produced in one shoot — RM500 per video'],
+            ['1 Video', '800', 'Filming, editing, script and copywriting for one short video'],
+          ].map(([name, price, description]) => ({
+            '@type': 'Offer',
+            name,
+            price,
+            priceCurrency: 'MYR',
+            description,
+            url: `${SITE_URL}/works#pricing`,
+          })),
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: [
+            ['How much is one short video from Cheaper Nexus?', 'RM800 per video including filming, editing, script and copywriting. Ten videos ordered together is RM5,000 — RM500 each. Model/influencer fees and ad spend are not included.'],
+            ['How many times can I use the First Trial Package?', 'Once per company director. It exists so new clients can see our actual standard for RM888 (original value RM3,100) before deciding on an ongoing package.'],
+            ['Does the package price include ad spend?', 'No. The package covers our production and management fee. Meta/TikTok ad spend is paid by you directly to the platform from your own ad account, at whatever budget you set.'],
+            ['Where does Cheaper Nexus film? Can you travel outstation?', 'Mainly around Kuala Lumpur and Selangor. Within the Klang Valley, 5 or more videos per shoot is the most cost-effective. Outstation shoots can be arranged, with accommodation, fuel and surcharges borne by the client.'],
+            ['How long until the finished work is delivered?', 'Counting from package and script confirmation, videos and designs are usually delivered within a week. Shoot scheduling and revision rounds affect this, and firm dates are given during the first consultation.'],
+          ].map(([q, a]) => ({
+            '@type': 'Question',
+            name: q,
+            acceptedAnswer: { '@type': 'Answer', text: a },
+          })),
+        },
+      ],
     }),
     // Styled hero first so it paints immediately; the plain list below it stays
     // for crawlers that read text rather than render.

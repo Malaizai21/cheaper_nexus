@@ -104,8 +104,8 @@ export const worksT: Record<Language, {
 }> = {
   zh: {
     navLabel: '客户作品',
-    metaTitle: '客户作品案例 | Cheaper Nexus 马来西亚数码营销公司',
-    metaDesc: '浏览 Cheaper Nexus 为马来西亚各行各业客户制作的短视频、社媒设计与广告素材：贷款、餐饮、婚礼活动、手机零售、美业等真实作品案例。',
+    metaTitle: '客户作品与价格 | Cheaper Nexus 马来西亚数码营销公司',
+    metaDesc: '真实客户作品 + 公开价格：短视频 RM800 一支（10 支 RM5,000），社媒管理套餐 RM2,888/月，首次体验 RM888。看完作品直接 WhatsApp 咨询。',
     heroTitle: '我们做过的作品',
     heroSub: '短视频、社媒设计、广告素材——这些都是我们实际交付给马来西亚客户的作品。',
     filterService: '服务类型',
@@ -131,8 +131,8 @@ export const worksT: Record<Language, {
   },
   en: {
     navLabel: 'Works',
-    metaTitle: 'Client Work & Case Studies | Cheaper Nexus Malaysia',
-    metaDesc: 'Browse short-form videos, social media designs and ad creatives Cheaper Nexus has produced for Malaysian businesses across loans, F&B, weddings, mobile retail, beauty and more.',
+    metaTitle: 'Our Work & Pricing | Cheaper Nexus Malaysia',
+    metaDesc: 'Real client work plus open pricing: short-form video from RM800 each (10 for RM5,000), social media management from RM2,888/month, first trial RM888. See the work, then message us.',
     heroTitle: 'Work We’ve Delivered',
     heroSub: 'Short-form video, social design and ad creative — real work delivered for Malaysian businesses.',
     filterService: 'Service',
@@ -158,8 +158,8 @@ export const worksT: Record<Language, {
   },
   ms: {
     navLabel: 'Kerja Kami',
-    metaTitle: 'Kerja Klien & Kajian Kes | Cheaper Nexus Malaysia',
-    metaDesc: 'Lihat video pendek, reka bentuk media sosial dan bahan iklan yang dihasilkan Cheaper Nexus untuk perniagaan Malaysia — pinjaman, F&B, perkahwinan, peruncitan telefon, kecantikan dan lain-lain.',
+    metaTitle: 'Kerja Kami & Harga | Cheaper Nexus Malaysia',
+    metaDesc: 'Kerja klien sebenar dan harga terbuka: video pendek RM800 satu (10 video RM5,000), pengurusan media sosial RM2,888/bulan, percubaan pertama RM888. Lihat kerja kami, kemudian WhatsApp kami.',
     heroTitle: 'Kerja Yang Kami Hasilkan',
     heroSub: 'Video pendek, reka bentuk sosial dan bahan iklan — kerja sebenar untuk perniagaan Malaysia.',
     filterService: 'Perkhidmatan',
