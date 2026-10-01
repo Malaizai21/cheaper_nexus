@@ -308,8 +308,12 @@ ${homeFaq.map(({ q, a }) => `<h3>${escHtml(q)}</h3><p>${escHtml(a)}</p>`).join('
 ${wrapEnd}`;
 
 const homeHeadMeta = `
-    <title>Cheaper Nexus | 马来西亚数码营销公司 · Digital Marketing Agency Malaysia</title>
-    <meta name="description" content="Cheaper Nexus 是马来西亚数码营销公司，提供首次体验套餐（RM888）、社媒管理套餐（RM2,888/月）、全面业务增长套餐、广告投放管理、KOC/KOL 网红营销及单点设计视频服务。价格全透明，无隐藏收费。" />
+    <!-- Title leads with the keyword rather than the brand: "digital marketing
+         kuala lumpur" is 3,600/month at difficulty 27, against 1,000 at
+         difficulty 55 for the Malaysia variant, and the H1 below already
+         carries the Malaysia wording. -->
+    <title>Digital Marketing Agency Kuala Lumpur & Malaysia | Cheaper Nexus</title>
+    <meta name="description" content="Cheaper Nexus 是吉隆坡的马来西亚数码营销公司，提供首次体验套餐（RM888）、社媒管理套餐（RM2,888/月）、全面业务增长套餐、广告投放管理、KOC/KOL 网红营销及单点设计视频服务。价格全透明，无隐藏收费。" />
     <link rel="canonical" href="${SITE_URL}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Cheaper Nexus | 马来西亚数码营销公司" />
@@ -340,10 +344,17 @@ console.log('[prerender] ✅ homepage (schemas + static content)');
 const staticPages = [
   {
     path: 'services',
-    title: 'Services 服务项目 | Cheaper Nexus — Digital Marketing Malaysia',
-    description: 'Digital marketing services Malaysia: First Trial Package RM888, Social Media Management RM2,888/month, Full Business Growth Package, Ads Management, KOC/KOL influencer marketing for Malaysian SMEs.',
+    // Matches the Helmet title in src/pages/Services.tsx so the crawler and the
+    // rendered page agree, and leads with the keyword rather than the brand.
+    title: 'Digital Marketing Services Malaysia | Cheaper Nexus',
+    description: 'Digital marketing services Malaysia: social media agency work across FB, IG, TikTok and Xiaohongshu, short-form video, Meta ads management and KOC/KOL marketing. Packages from RM888, prices published.',
     body: `<h1>Digital Marketing Services Malaysia 服务项目</h1>
 <p>Cheaper Nexus is a digital marketing agency in Kuala Lumpur serving SMEs across Malaysia. We offer a growth-path package system plus standalone services, so a business can start with a single video or move straight to full-channel social media management. 我们为马来西亚中小企业提供成长型套餐及独立服务，从单支影片到全渠道社媒代运营都能承接。</p>
+
+<h2>Social Media Agency Malaysia 社媒代运营</h2>
+<p>Social media management is the service most of our clients come for. As a social media agency in Malaysia we handle the whole loop rather than just scheduling posts: we write the script, film and edit the short-form video, produce the designs, run the day-to-day page management, and manage the Meta ads that put the content in front of people who are not already following you.</p>
+<p>Channels covered are Facebook, Instagram, TikTok and Xiaohongshu (小红书) as standard, with Google Business Profile, Waze, Telegram and Lemon8 added in the Full Business Growth Package. Content is produced in Chinese, English or Bahasa Malaysia depending on who you are selling to — several of our clients run two language versions of the same campaign.</p>
+<p>What makes this different from hiring a freelancer per channel is that one team writes, shoots, designs and advertises, so the message stays the same across platforms. Social media management starts at <strong>RM2,888 per month</strong>, and you can see the actual videos and designs we have delivered before deciding.</p>
 
 <h2>Packages 套餐服务</h2>
 <ul>${servicesList.map(([name, desc]) => `<li><strong>${name}</strong> — ${desc}</li>`).join('')}</ul>
