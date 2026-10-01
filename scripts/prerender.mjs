@@ -231,7 +231,9 @@ const bizSchema = {
   },
   priceRange: 'RM150 - RM15000+',
   areaServed: { '@type': 'Country', name: 'Malaysia' },
-  availableLanguage: ['Chinese', 'English', 'Malay'],
+  // `availableLanguage` is only valid on ContactPoint / Service, never on
+  // LocalBusiness — having it here made all 6 static pages fail structured
+  // data validation. It stays on contactPoint below, where it belongs.
   sameAs: [
     'https://www.facebook.com/share/18oQi47T7w/',
     'https://www.instagram.com/cheapernexus',
@@ -341,37 +343,95 @@ const staticPages = [
     title: 'Services 服务项目 | Cheaper Nexus — Digital Marketing Malaysia',
     description: 'Digital marketing services Malaysia: First Trial Package RM888, Social Media Management RM2,888/month, Full Business Growth Package, Ads Management, KOC/KOL influencer marketing for Malaysian SMEs.',
     body: `<h1>Digital Marketing Services Malaysia 服务项目</h1>
-<p>Cheaper Nexus offers a growth-path package system plus standalone services for Malaysian SMEs. 我们为马来西亚中小企业提供成长型套餐及独立服务。</p>
+<p>Cheaper Nexus is a digital marketing agency in Kuala Lumpur serving SMEs across Malaysia. We offer a growth-path package system plus standalone services, so a business can start with a single video or move straight to full-channel social media management. 我们为马来西亚中小企业提供成长型套餐及独立服务，从单支影片到全渠道社媒代运营都能承接。</p>
+
+<h2>Packages 套餐服务</h2>
 <ul>${servicesList.map(([name, desc]) => `<li><strong>${name}</strong> — ${desc}</li>`).join('')}</ul>
-<p>WhatsApp us for a free 30-minute consultation: Henry +60 17-291 5754.</p>`,
+
+<h2>What each package includes 套餐包含什么</h2>
+<p>The <strong>First Trial Package (RM888)</strong> covers one short video — filming, editing, script and copywriting — plus two professional designs and a Meta Ads foundation setup for one page. Its original value is RM3,100, and it is limited to one use per company director so new clients can judge our standard before committing to anything ongoing. 首次体验套餐每间公司的负责人仅限使用一次。</p>
+<p>The <strong>Social Media Management Package (RM2,888/month)</strong> is the plan most clients run on. It combines two short videos, five professional designs plus IG feed layout, day-to-day management of one Facebook, Instagram, TikTok and Xiaohongshu page each, and Meta ads management and optimisation. Original value RM5,738. 这是选择最多的方案：内容、代运营、广告投放一体化。</p>
+<p>The <strong>Full Business Growth Package (RM8,888 / 3 months)</strong> scales that up to six short videos and eighteen professional designs, and widens management to Facebook, Instagram, TikTok, Xiaohongshu, Google Business Profile, Waze, Telegram and Lemon8, with Meta ads management throughout. Original value RM10,888.</p>
+
+<h2>Standalone services 独立服务</h2>
+<p>Not every business wants a monthly commitment. <strong>Ads Management</strong> starts from RM2,000/month across two pages, covering TikTok, Instagram, Facebook, Xiaohongshu and Google. <strong>KOC / KOL influencer marketing</strong> starts from RM3,888 for a package of 10 creators, and RM10,888 for 30 — cross-platform rather than tied to any one app.</p>
+<p><strong>Ala carte design and video</strong> can be ordered per unit with no package attached: professional design at RM150 each or ten for RM800, and video production at RM800 per video or ten for RM5,000. Video pricing covers filming, editing, script and content. 单点设计与视频按件订购，不需绑定月费套餐。</p>
+
+<h2>What is not included 不包含的项目</h2>
+<p>Package prices cover our production and management work. They do <strong>not</strong> include ad spend — that is paid by the client directly to Meta, TikTok or Google from their own ad account, at whatever budget they set — and they do not include model or influencer talent fees. For ala carte video within the Klang Valley we recommend at least five videos per shoot to make the trip worthwhile; for shoots outside Kuala Lumpur and Selangor, accommodation, fuel and additional surcharges are borne by the client. 所有套餐不含广告投放费用与模特／达人费用。</p>
+
+<h2>Common questions 常见问题</h2>
+<p><strong>How much does digital marketing cost in Malaysia?</strong> With Cheaper Nexus, a first trial starts at RM888 (once per company), ongoing social media management from RM2,888/month, ads management from RM2,000/month, ala carte design from RM150 and video from RM800.</p>
+<p><strong>Which service should a small business start with?</strong> Most SMEs start with the First Trial Package to see the production quality, then move to the Social Media Management Package once they know what the content looks like.</p>
+<p><strong>Can I see your past work first?</strong> Yes — our client work and full price list are published together on the same page, with real videos and designs delivered for 10 Malaysian brands.</p>
+
+<p>WhatsApp us for a free 30-minute strategy consultation with no commitment: Henry +60 17-291 5754. 免费 30 分钟策略咨询，直接 WhatsApp 联系。</p>`,
   },
   {
     path: 'pricing',
     title: 'Pricing 价格方案 | Cheaper Nexus — Trial from RM888',
     description: 'Transparent digital marketing pricing Malaysia: First Trial Package RM888 (one-time), Social Media Management RM2,888/month, Full Business Growth Package RM8,888/3 months, Ads Management from RM2,000/month, KOC/KOL from RM3,888. No hidden fees.',
     body: `<h1>Digital Marketing Pricing Malaysia 价格方案</h1>
-<p>Transparent pricing, no hidden fees. 全透明定价，无隐藏费用。</p>
+<p>Every price Cheaper Nexus charges is published here. No hidden fees, no vague monthly retainers, and no quote-on-request — a Malaysian business should be able to read what a package costs and what it delivers before talking to anyone. 全透明定价，无隐藏费用，所有价格直接写在这一页。</p>
+
+<h2>Social media marketing packages 社媒营销套餐</h2>
 <ul>
-<li><strong>First Trial Package 首次体验套餐</strong> — RM888 / month (one-time)</li>
-<li><strong>Social Media Management Package 社媒管理套餐</strong> — RM2,888/month</li>
-<li><strong>Full Business Growth Package 全面业务增长套餐</strong> — RM8,888 / 3 months</li>
-<li><strong>Ads Management 广告投放管理</strong> — from RM2,000/month</li>
-<li><strong>KOC / KOL Influencer Marketing KOC/KOL网红营销</strong> — from RM3,888</li>
-<li><strong>Ala Carte Design & Video 单点设计与视频</strong> — from RM150</li>
+<li><strong>First Trial Package 首次体验套餐 — RM888 / month (one-time)</strong>. One short video including filming, editing, script and copywriting; two professional designs; Meta Ads foundation setup for one page. Original value RM3,100, a saving of RM2,212. Limited to one use per company director.</li>
+<li><strong>Social Media Management Package 社媒管理套餐 — RM2,888 / month</strong>. Two short videos; five professional designs plus IG feed; day-to-day management of one Facebook, Instagram, TikTok and Xiaohongshu page each; Meta ads management and optimisation. Original value RM5,738, a saving of RM2,850.</li>
+<li><strong>Full Business Growth Package 全面业务增长套餐 — RM8,888 / 3 months</strong>. Six short videos; eighteen professional designs plus IG feed; full-channel management across Facebook, Instagram, TikTok, Xiaohongshu, Google Business Profile, Waze, Telegram and Lemon8; Meta ads management and optimisation. Original value RM10,888, a saving of RM2,000.</li>
 </ul>
-<p>Free 30-minute strategy consultation via WhatsApp: Henry +60 17-291 5754.</p>`,
+
+<h2>Standalone service pricing 独立服务价格</h2>
+<ul>
+<li><strong>Ads Management 广告投放管理 — from RM2,000 / month</strong> for two pages, covering TikTok, Instagram, Facebook, Xiaohongshu and Google. A six-month commitment is RM9,000.</li>
+<li><strong>KOC / KOL Influencer Marketing 网红营销 — from RM3,888</strong> for 10 creators, or RM10,888 for 30. Cross-platform, not tied to any single app.</li>
+<li><strong>Professional design 专业设计 — RM150 each</strong>, or ten designs for RM800 (a saving of RM700, working out to RM80 per design).</li>
+<li><strong>Video production 视频制作 — RM800 per video</strong>, or ten videos for RM5,000 (a saving of RM3,000, working out to RM500 per video). Each video covers filming, editing, script and content.</li>
+</ul>
+
+<h2>What the prices exclude 价格不包含什么</h2>
+<p>Package prices cover production and management work only. <strong>Ad spend is not included</strong> — the client pays Meta, TikTok or Google directly from their own ad account, at a budget they control. <strong>Model and influencer talent fees are not included</strong> either. Design pricing does not bundle a fixed number of revision rounds.</p>
+<p>For ala carte video inside the Klang Valley, five or more videos per shoot is the most cost-effective arrangement. For shoots outside Kuala Lumpur and Selangor, accommodation, fuel and additional surcharges are borne by the client. 巴生谷地区建议单次拍摄 5 支起；外坡拍摄的住宿、油费及附加费由客户承担。</p>
+
+<h2>How to choose 怎么选</h2>
+<p>Businesses that have never worked with an agency usually start with the <strong>RM888 First Trial Package</strong>, see the actual video and designs, then decide. Businesses that already know they need consistent output take the <strong>RM2,888 Social Media Management Package</strong>, which is the most common choice. Businesses that only need production, not management, buy <strong>video or design ala carte</strong>.</p>
+
+<h2>Common questions 常见问题</h2>
+<p><strong>How much does social media marketing cost in Malaysia?</strong> Cheaper Nexus packages run from RM888 for a one-time trial to RM8,888 for three months of full-channel growth, with ongoing management at RM2,888/month.</p>
+<p><strong>How many times can I use the First Trial Package?</strong> Once per company director. It exists so new clients can see our real standard at RM888 before choosing an ongoing package.</p>
+<p><strong>Does the price include advertising budget?</strong> No. The package is our service fee; the ad spend goes directly from your own account to the platform.</p>
+
+<p>Free 30-minute strategy consultation via WhatsApp, no commitment: Henry +60 17-291 5754. 免费 30 分钟策略咨询。</p>`,
   },
   {
     path: 'contact',
     title: 'Contact 联系我们 | Cheaper Nexus — WhatsApp Us, 1-Hour Response',
     description: 'Contact Cheaper Nexus digital marketing agency Malaysia. WhatsApp Henry +60 17-291 5754. Free 30-minute strategy consultation, 1-hour response during business hours.',
     body: `<h1>Contact Cheaper Nexus 联系我们</h1>
-<p>Get a free 30-minute digital marketing strategy consultation. 免费 30 分钟策略咨询，1 小时内响应。</p>
+<p>Cheaper Nexus is a digital marketing agency based in Kuala Lumpur, working with SMEs across Malaysia. The fastest way to reach us is WhatsApp — you talk to Henry directly, not through a form queue or an account manager. 直接 WhatsApp 找 Henry，不用填表等回复。</p>
+
+<h2>How to reach us 联系方式</h2>
 <ul>
-<li>WhatsApp Henry: <a href="https://wa.me/60172915754">+60 17-291 5754</a></li>
-<li>Location: Kuala Lumpur, Malaysia (serving all of Malaysia)</li>
-<li>Languages: 中文 / English / Bahasa Malaysia</li>
-</ul>`,
+<li><strong>WhatsApp Henry</strong>: <a href="https://wa.me/60172915754">+60 17-291 5754</a> — the quickest route, and where most clients start.</li>
+<li><strong>Based in</strong>: Kuala Lumpur, Malaysia. We serve clients throughout Malaysia, with filming concentrated in Kuala Lumpur and Selangor.</li>
+<li><strong>Languages</strong>: 中文 / English / Bahasa Malaysia — we work in whichever language suits your audience, and produce content in all three.</li>
+<li><strong>Response time</strong>: within one hour during business hours.</li>
+</ul>
+
+<h2>The free 30-minute strategy consultation 免费策略咨询</h2>
+<p>Every enquiry starts with a free 30-minute conversation, with no commitment and no obligation to buy. We go through your business, who you are trying to reach, and what you have tried already, then tell you which package fits — or say plainly if none of them do. 聊完我们会直接告诉你该用哪个套餐，不合适也会直说。</p>
+<p>It helps if you can tell us three things: what your business sells, who your customers are, and roughly what monthly budget you have in mind. That is usually enough for us to point at a specific package and a realistic timeline in the first conversation.</p>
+
+<h2>What happens next 之后的流程</h2>
+<p>After the first chat, we confirm the package and write the script and design direction for your approval before any production starts. Filming, editing, design and copywriting are all handled by us — you provide product or service details and a location to film. From confirmation, videos and designs are usually delivered within a week, though shoot scheduling and revision rounds affect that; we give firm dates while we talk. 从确认套餐和脚本开始算，短视频与设计通常一个星期内交付。</p>
+
+<h2>Before you get in touch 联系之前</h2>
+<p>If you would rather see the work before speaking to anyone, our client portfolio and full price list are published on the same page — real videos and designs delivered for 10 Malaysian brands, with every package price listed next to them. Pricing starts at RM888 for a one-time trial package, RM2,888/month for ongoing social media management, and RM800 for a single ala carte video.</p>
+
+<h2>Who we work with 服务对象</h2>
+<p>Most of our clients are Malaysian SMEs — F&B outlets, retail, beauty and wellness, professional services, packaging and printing, automotive, and event production companies. If you are a small business owner handling your own marketing and running out of time for it, that is the situation we are built for.</p>
+
+<p>WhatsApp Henry at +60 17-291 5754 to start. 现在就 WhatsApp 我们。</p>`,
   },
 ];
 
