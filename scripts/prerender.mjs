@@ -248,7 +248,7 @@ const bizSchema = {
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'First Trial Package' }, price: '888', priceCurrency: 'MYR', description: 'One-time trial package (limited to once per company) including 1 short video, 2 professional designs, and Meta Ads foundation setup — original value RM3,100.' },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Social Media Management Package' }, price: '2888', priceCurrency: 'MYR', description: 'Combined content production, multi-platform social media management (Facebook, Instagram, TikTok, Xiaohongshu), and Meta ads management in one monthly plan.' },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Full Business Growth Package' }, price: '8888', priceCurrency: 'MYR', description: 'Scaled content production and full-channel management (Facebook, Instagram, TikTok, Xiaohongshu, Google Business Profile, Waze, Telegram, Lemon8) with ads management, over 3 months.' },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ads Management' }, price: '2000', priceCurrency: 'MYR', description: 'Standalone paid ads management across TikTok, Instagram, Facebook, Xiaohongshu, and Google, with bio & copywriting optimisation and ongoing monitoring.' },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ads Management' }, price: '2000', priceCurrency: 'MYR', description: 'Standalone paid ads management across TikTok, Instagram, Facebook and Xiaohongshu, with bio & copywriting optimisation and ongoing monitoring.' },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'KOC / KOL Influencer Marketing' }, price: '3888', priceCurrency: 'MYR', description: 'Cross-platform influencer and creator marketing campaigns, starting from a package of 10 creators.' },
     ],
   },
@@ -284,7 +284,7 @@ const servicesList = [
   ['First Trial Package (RM888, one-time)', '1 short video, 2 professional designs, and Meta Ads foundation setup — original value RM3,100, limited to once per company.'],
   ['Social Media Management Package (RM2,888/month)', 'Content production, multi-platform social media management (FB/IG/TikTok/Xiaohongshu), and Meta ads management combined.'],
   ['Full Business Growth Package (RM8,888 / 3 months)', 'Scaled content and full-channel management including Google Business Profile, Waze, Telegram, and Lemon8, plus ads management.'],
-  ['Ads Management (from RM2,000/month)', 'Standalone paid ads management across TikTok, Instagram, Facebook, Xiaohongshu, and Google.'],
+  ['Ads Management (from RM2,000/month)', 'Standalone paid ads management across TikTok, Instagram, Facebook and Xiaohongshu.'],
   ['KOC / KOL Influencer Marketing (from RM3,888)', 'Cross-platform influencer and creator marketing campaigns, starting from 10 creators.'],
 ];
 
@@ -365,11 +365,11 @@ const staticPages = [
 <p>The <strong>Full Business Growth Package (RM8,888 / 3 months)</strong> scales that up to six short videos and eighteen professional designs, and widens management to Facebook, Instagram, TikTok, Xiaohongshu, Google Business Profile, Waze, Telegram and Lemon8, with Meta ads management throughout. Original value RM10,888.</p>
 
 <h2>Standalone services 独立服务</h2>
-<p>Not every business wants a monthly commitment. <strong>Ads Management</strong> starts from RM2,000/month across two pages, covering TikTok, Instagram, Facebook, Xiaohongshu and Google. <strong>KOC / KOL influencer marketing</strong> starts from RM3,888 for a package of 10 creators, and RM10,888 for 30 — cross-platform rather than tied to any one app.</p>
+<p>Not every business wants a monthly commitment. <strong>Ads Management</strong> starts from RM2,000/month across two pages, covering TikTok, Instagram, Facebook and Xiaohongshu. <strong>KOC / KOL influencer marketing</strong> starts from RM3,888 for a package of 10 creators, and RM10,888 for 30 — cross-platform rather than tied to any one app.</p>
 <p><strong>Ala carte design and video</strong> can be ordered per unit with no package attached: professional design at RM150 each or ten for RM800, and video production at RM800 per video or ten for RM5,000. Video pricing covers filming, editing, script and content. 单点设计与视频按件订购，不需绑定月费套餐。</p>
 
 <h2>What is not included 不包含的项目</h2>
-<p>Package prices cover our production and management work. They do <strong>not</strong> include ad spend — that is paid by the client directly to Meta, TikTok or Google from their own ad account, at whatever budget they set — and they do not include model or influencer talent fees. For ala carte video within the Klang Valley we recommend at least five videos per shoot to make the trip worthwhile; for shoots outside Kuala Lumpur and Selangor, accommodation, fuel and additional surcharges are borne by the client. 所有套餐不含广告投放费用与模特／达人费用。</p>
+<p>Package prices cover our production and management work. They do <strong>not</strong> include ad spend — that is paid by the client directly to Meta or TikTok from their own ad account, at whatever budget they set — and they do not include model or influencer talent fees. For ala carte video within the Klang Valley we recommend at least five videos per shoot to make the trip worthwhile; for shoots outside Kuala Lumpur and Selangor, accommodation, fuel and additional surcharges are borne by the client. 所有套餐不含广告投放费用与模特／达人费用。</p>
 
 <h2>Common questions 常见问题</h2>
 <p><strong>How much does digital marketing cost in Malaysia?</strong> With Cheaper Nexus, a first trial starts at RM888 (once per company), ongoing social media management from RM2,888/month, ads management from RM2,000/month, ala carte design from RM150 and video from RM800.</p>
@@ -394,14 +394,14 @@ const staticPages = [
 
 <h2>Standalone service pricing 独立服务价格</h2>
 <ul>
-<li><strong>Ads Management 广告投放管理 — from RM2,000 / month</strong> for two pages, covering TikTok, Instagram, Facebook, Xiaohongshu and Google. A six-month commitment is RM9,000.</li>
+<li><strong>Ads Management 广告投放管理 — from RM2,000 / month</strong> for two pages, covering TikTok, Instagram, Facebook and Xiaohongshu. A six-month commitment is RM9,000.</li>
 <li><strong>KOC / KOL Influencer Marketing 网红营销 — from RM3,888</strong> for 10 creators, or RM10,888 for 30. Cross-platform, not tied to any single app.</li>
 <li><strong>Professional design 专业设计 — RM150 each</strong>, or ten designs for RM800 (a saving of RM700, working out to RM80 per design).</li>
 <li><strong>Video production 视频制作 — RM800 per video</strong>, or ten videos for RM5,000 (a saving of RM3,000, working out to RM500 per video). Each video covers filming, editing, script and content.</li>
 </ul>
 
 <h2>What the prices exclude 价格不包含什么</h2>
-<p>Package prices cover production and management work only. <strong>Ad spend is not included</strong> — the client pays Meta, TikTok or Google directly from their own ad account, at a budget they control. <strong>Model and influencer talent fees are not included</strong> either. Design pricing does not bundle a fixed number of revision rounds.</p>
+<p>Package prices cover production and management work only. <strong>Ad spend is not included</strong> — the client pays Meta or TikTok directly from their own ad account, at a budget they control. <strong>Model and influencer talent fees are not included</strong> either. Design pricing does not bundle a fixed number of revision rounds.</p>
 <p>For ala carte video inside the Klang Valley, five or more videos per shoot is the most cost-effective arrangement. For shoots outside Kuala Lumpur and Selangor, accommodation, fuel and additional surcharges are borne by the client. 巴生谷地区建议单次拍摄 5 支起；外坡拍摄的住宿、油费及附加费由客户承担。</p>
 
 <h2>How to choose 怎么选</h2>
@@ -547,7 +547,7 @@ if (works.length) {
 <li><strong>Full Business Growth Package 全面业务增长套餐 — RM8,888 / 3 months</strong>: 6 short videos, 18 professional designs + IG feed, full-channel management (FB / IG / TikTok / XHS / Google Business / Waze / Telegram / Lemon8), Meta ads management &amp; optimisation. Original value RM10,888.</li>
 <li><strong>Ala carte video 单点视频</strong>: RM800 per video, or 10 videos for RM5,000 (RM500 each).</li>
 <li><strong>Ala carte design 单点设计</strong>: RM150 per design, or 10 designs for RM800.</li>
-<li><strong>Ads management 广告投放管理</strong>: from RM2,000 / month across TikTok / IG / FB / XHS / Google.</li>
+<li><strong>Ads management 广告投放管理</strong>: from RM2,000 / month across TikTok / IG / FB / XHS.</li>
 <li><strong>KOC / KOL influencer marketing 网红营销</strong>: from RM3,888 for 10 creators.</li>
 </ul>
 <p>All prices exclude ad spend and model/influencer fees. Within the Klang Valley we recommend at least 5 videos per shoot; for shoots outside KL/Selangor, accommodation, fuel and surcharges are borne by the client. 所有价格不含广告投放费用与模特／达人费用。</p>`;

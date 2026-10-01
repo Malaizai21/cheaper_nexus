@@ -283,7 +283,7 @@ export default function Article() {
       <div className="bg-brand-blue text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 text-center">
           <h2 className="text-2xl font-bold mb-3">准备好把文章里的策略付诸实践了吗？</h2>
-          <p className="text-white/60 mb-6">Cheaper Nexus 提供 Google SEO、Meta 广告、社媒管理等一站式服务。</p>
+          <p className="text-white/60 mb-6">Cheaper Nexus 提供短视频制作、社媒代运营与 Meta 广告投放的一站式服务。</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href="https://wa.me/60172915754"

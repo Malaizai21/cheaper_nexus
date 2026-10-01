@@ -20,7 +20,7 @@ const seoData: Record<Language, { title: string; description: string; keywords: 
     description:
       'Your all-in-one digital growth partner in Malaysia. First Trial Package (RM888), Social Media Management (RM2,888/month), Full Business Growth Package, Ads Management, and KOC/KOL influencer marketing. Transparent pricing, no hidden fees.',
     keywords:
-      'digital marketing malaysia,social media management,Meta ads,ads management,KOC KOL influencer marketing,e-commerce,TikTok marketing,Google ads,branding,content creation',
+      'digital marketing malaysia,social media management,Meta ads,ads management,KOC KOL influencer marketing,e-commerce,TikTok marketing,Xiaohongshu marketing,branding,content creation',
     locale: 'en_MY',
     htmlLang: 'en-MY',
   },
@@ -29,7 +29,7 @@ const seoData: Record<Language, { title: string; description: string; keywords: 
     description:
       'Rakan pertumbuhan digital all-in-one anda di Malaysia. Pakej Percubaan Pertama (RM888), Pengurusan Media Sosial (RM2,888/bulan), Pakej Pertumbuhan Perniagaan Penuh, Pengurusan Iklan, dan pemasaran influencer KOC/KOL. Harga telus, tiada caj tersembunyi.',
     keywords:
-      'pemasaran digital malaysia,pengurusan media sosial,iklan Meta,pengurusan iklan,pemasaran influencer KOC KOL,e-dagang,pemasaran TikTok,iklan Google,penjenamaan',
+      'pemasaran digital malaysia,pengurusan media sosial,iklan Meta,pengurusan iklan,pemasaran influencer KOC KOL,e-dagang,pemasaran TikTok,pemasaran Xiaohongshu,penjenamaan',
     locale: 'ms_MY',
     htmlLang: 'ms-MY',
   },
@@ -106,7 +106,7 @@ const jsonLd = [
           itemOffered: { '@type': 'Service', name: 'Ads Management' },
           price: '2000',
           priceCurrency: 'MYR',
-          description: 'Standalone paid ads management across TikTok, Instagram, Facebook, Xiaohongshu, and Google, with bio & copywriting optimisation and ongoing monitoring.',
+          description: 'Standalone paid ads management across TikTok, Instagram, Facebook and Xiaohongshu, with bio & copywriting optimisation and ongoing monitoring.',
         },
         {
           '@type': 'Offer',

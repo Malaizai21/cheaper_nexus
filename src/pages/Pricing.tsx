@@ -47,7 +47,7 @@ const t: Record<Language, {
       ]},
     ],
     singleServices: [
-      { title: '广告投放管理', price: 'RM 2,000', unit: '/ 月起', desc: 'TikTok/IG/FB/小红书/Google 等平台广告代投' },
+      { title: '广告投放管理', price: 'RM 2,000', unit: '/ 月起', desc: 'TikTok / IG / FB / 小红书平台广告代投' },
       { title: 'KOC / KOL 网红营销', price: 'RM 3,888', unit: '起', desc: '全平台通用达人合作，10 位起' },
       { title: '单点设计', price: 'RM 150', unit: '起', desc: '无需绑定套餐，按件订购专业设计' },
       { title: '单点视频', price: 'RM 800', unit: '起', desc: '拍摄、剪接、脚本、内容一支起订' },
@@ -77,13 +77,13 @@ const t: Record<Language, {
       { name: 'Full Business Growth Package', tagline: 'Scaled Content + Full-Channel Management', features: [
         { category: 'Video Content', value: '6 short videos' },
         { category: 'Design', value: '18 professional designs + IG feed' },
-        { category: 'Full-Channel Management', value: 'FB / IG / TikTok / XHS / Google / Waze / Telegram / Lemon8' },
+        { category: 'Full-Channel Management', value: 'FB / IG / TikTok / XHS / Google Business / Waze / Telegram / Lemon8' },
         { category: 'Ads Management', value: 'Meta ads management & optimisation' },
         { category: 'Original Value', value: 'RM10,888 (save RM2,000)' },
       ]},
     ],
     singleServices: [
-      { title: 'Ads Management', price: 'RM 2,000', unit: '/ month+', desc: 'Paid ads across TikTok/IG/FB/XHS/Google and more' },
+      { title: 'Ads Management', price: 'RM 2,000', unit: '/ month+', desc: 'Paid ads across TikTok, IG, FB and Xiaohongshu' },
       { title: 'KOC / KOL Influencer Marketing', price: 'RM 3,888', unit: '+', desc: 'Cross-platform influencer collaborations from 10 creators' },
       { title: 'Ala Carte Design', price: 'RM 150', unit: '+', desc: 'No package needed — order professional designs per unit' },
       { title: 'Ala Carte Video', price: 'RM 800', unit: '+', desc: 'Filming, editing, script & content from 1 video' },
@@ -113,13 +113,13 @@ const t: Record<Language, {
       { name: 'Pakej Pertumbuhan Perniagaan Penuh', tagline: 'Kandungan Berskala + Pengurusan Penuh Saluran', features: [
         { category: 'Kandungan Video', value: '6 video pendek' },
         { category: 'Reka Bentuk', value: '18 reka bentuk profesional + IG feed' },
-        { category: 'Pengurusan Penuh Saluran', value: 'FB / IG / TikTok / XHS / Google / Waze / Telegram / Lemon8' },
+        { category: 'Pengurusan Penuh Saluran', value: 'FB / IG / TikTok / XHS / Google Business / Waze / Telegram / Lemon8' },
         { category: 'Pengurusan Iklan', value: 'Pengurusan & pengoptimuman iklan Meta' },
         { category: 'Nilai Asal', value: 'RM10,888 (jimat RM2,000)' },
       ]},
     ],
     singleServices: [
-      { title: 'Pengurusan Iklan', price: 'RM 2,000', unit: '/ bulan+', desc: 'Iklan berbayar merentasi TikTok/IG/FB/XHS/Google dan lain-lain' },
+      { title: 'Pengurusan Iklan', price: 'RM 2,000', unit: '/ bulan+', desc: 'Iklan berbayar merentasi TikTok, IG, FB dan XHS' },
       { title: 'Pemasaran Influencer KOC / KOL', price: 'RM 3,888', unit: '+', desc: 'Kerjasama influencer merentasi platform dari 10 pencipta' },
       { title: 'Reka Bentuk Ala Carte', price: 'RM 150', unit: '+', desc: 'Tiada pakej diperlukan — tempah reka bentuk profesional setiap unit' },
       { title: 'Video Ala Carte', price: 'RM 800', unit: '+', desc: 'Penggambaran, penyuntingan, skrip & kandungan dari 1 video' },

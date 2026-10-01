@@ -188,7 +188,7 @@ const t: Record<Language, {
 // ─── Static data ──────────────────────────────────────────────────────────────
 
 const platforms = [
-  'TikTok', 'Instagram', 'Facebook', 'Google', '小红书 XHS',
+  'TikTok', 'Instagram', 'Facebook', 'Google 商家', '小红书 XHS',
   'Shopee', 'Lazada', 'YouTube', 'WhatsApp Business', 'Meta Ads',
 ];
 
@@ -197,7 +197,7 @@ const serviceCards: Record<Language, { icon: React.ReactNode; title: string; des
     { icon: <Sparkles className="w-6 h-6" />, title: '首次体验套餐', desc: '限量体验价 RM888，视频 + 设计 + 广告基础搭建，每间公司仅限一次。' },
     { icon: <Share2 className="w-6 h-6" />, title: '社媒管理套餐', desc: '内容制作 + 社媒代运营 + 广告投放一体化，FB / IG / TikTok / 小红书全覆盖。' },
     { icon: <Rocket className="w-6 h-6" />, title: '全面业务增长套餐', desc: '规模化内容产出 + 全渠道代运营，为稳定客户打造的进阶增长方案。' },
-    { icon: <Megaphone className="w-6 h-6" />, title: '广告投放管理', desc: '独立广告代投服务，覆盖 TikTok / IG / FB / 小红书 / Google 等平台。' },
+    { icon: <Megaphone className="w-6 h-6" />, title: '广告投放管理', desc: '独立广告代投服务，覆盖 TikTok / IG / FB / 小红书等平台。' },
     { icon: <Users className="w-6 h-6" />, title: 'KOC / KOL 网红营销', desc: '全平台通用达人合作，10 位起，快速建立品牌口碑与信任。' },
     { icon: <Palette className="w-6 h-6" />, title: '单点设计与视频', desc: '无需绑定套餐，按件订购专业设计或视频制作，灵活按需使用。' },
   ],
@@ -205,7 +205,7 @@ const serviceCards: Record<Language, { icon: React.ReactNode; title: string; des
     { icon: <Sparkles className="w-6 h-6" />, title: 'First Trial Package', desc: 'Exclusive trial price RM888 — video, design & Meta Ads setup, once per company.' },
     { icon: <Share2 className="w-6 h-6" />, title: 'Social Media Management Package', desc: 'Content production, social media management & ads management combined — FB/IG/TikTok/XHS.' },
     { icon: <Rocket className="w-6 h-6" />, title: 'Full Business Growth Package', desc: 'Scaled content output and full-channel management — the advanced tier for established clients.' },
-    { icon: <Megaphone className="w-6 h-6" />, title: 'Ads Management', desc: 'Standalone paid ads service across TikTok, IG, FB, XHS, and Google.' },
+    { icon: <Megaphone className="w-6 h-6" />, title: 'Ads Management', desc: 'Standalone paid ads service across TikTok, IG, FB and Xiaohongshu.' },
     { icon: <Users className="w-6 h-6" />, title: 'KOC / KOL Influencer Marketing', desc: 'Cross-platform influencer partnerships from 10 creators — build trust fast.' },
     { icon: <Palette className="w-6 h-6" />, title: 'Ala Carte Design & Video', desc: 'No package needed — order professional design or video production individually.' },
   ],
@@ -213,7 +213,7 @@ const serviceCards: Record<Language, { icon: React.ReactNode; title: string; des
     { icon: <Sparkles className="w-6 h-6" />, title: 'Pakej Percubaan Pertama', desc: 'Harga percubaan eksklusif RM888 — video, reka bentuk & persediaan Iklan Meta, sekali setiap syarikat.' },
     { icon: <Share2 className="w-6 h-6" />, title: 'Pakej Pengurusan Media Sosial', desc: 'Penerbitan kandungan, pengurusan media sosial & pengurusan iklan digabungkan — FB/IG/TikTok/XHS.' },
     { icon: <Rocket className="w-6 h-6" />, title: 'Pakej Pertumbuhan Perniagaan Penuh', desc: 'Output kandungan berskala dan pengurusan penuh saluran — peringkat lanjutan untuk pelanggan sedia ada.' },
-    { icon: <Megaphone className="w-6 h-6" />, title: 'Pengurusan Iklan', desc: 'Perkhidmatan iklan berbayar berasingan merentasi TikTok, IG, FB, XHS, dan Google.' },
+    { icon: <Megaphone className="w-6 h-6" />, title: 'Pengurusan Iklan', desc: 'Perkhidmatan iklan berbayar berasingan merentasi TikTok, IG, FB dan XHS.' },
     { icon: <Users className="w-6 h-6" />, title: 'Pemasaran Influencer KOC / KOL', desc: 'Kerjasama influencer merentasi platform dari 10 pencipta — bina kepercayaan dengan pantas.' },
     { icon: <Palette className="w-6 h-6" />, title: 'Reka Bentuk & Video Ala Carte', desc: 'Tiada pakej diperlukan — tempah reka bentuk profesional atau penerbitan video secara individu.' },
   ],

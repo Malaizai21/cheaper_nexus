@@ -61,7 +61,7 @@ const t: Record<Language, {
       },
       {
         title: '广告投放管理',
-        subtitle: '独立广告代投服务，覆盖 TikTok / IG / FB / 小红书 / Google 等平台',
+        subtitle: '独立广告代投服务，覆盖 TikTok / IG / FB / 小红书等平台',
         description: '专注广告投放的独立服务，涵盖广告搭建、投放管理、主页文案优化与专人监控建议，适合已有内容团队、只需要广告代投的客户。',
         includes: ['广告搭建与投放管理', '2 个专页额度（可加购）', '主页与文案优化', '专人监控与顾问建议'],
         note: '每月方案 RM2,000 起（含 2 个专页，加购每页 RM500/月）；半年方案 RM9,000（原价 RM12,000，加购每页 RM300/月）。',
@@ -138,7 +138,7 @@ const t: Record<Language, {
         title: 'Full Business Growth Package',
         subtitle: 'The advanced tier after the Social Media Management package — scaled content and full-channel management',
         description: 'Built for established clients ready to scale — significantly more content output and expanded platform coverage (Google Business Profile, Waze, Telegram, Lemon8), paired with ads management for full-scale business growth.',
-        includes: ['6 short videos', '18 professional designs + IG feed', 'Full-channel management (FB/IG/TikTok/XHS/Google/Waze/Telegram/Lemon8)', 'Meta ads management & optimisation'],
+        includes: ['6 short videos', '18 professional designs + IG feed', 'Full-channel management (FB/IG/TikTok/XHS/Google Business/Waze/Telegram/Lemon8)', 'Meta ads management & optimisation'],
         note: 'Original value RM10,888. Excludes ad spend and model/talent fees.',
         options: [
           { name: 'Full Business Growth Package', price: 'RM 8,888', unit: '/ 3 months' },
@@ -146,7 +146,7 @@ const t: Record<Language, {
       },
       {
         title: 'Ads Management',
-        subtitle: 'Standalone paid ads service across TikTok/IG/FB/XHS/Google and more',
+        subtitle: 'Standalone paid ads service across TikTok, IG, FB and Xiaohongshu',
         description: "A dedicated ads-only service — setup, management, bio & copywriting optimisation, and ongoing monitoring & advisory — ideal for clients who already have their own content team and just need ads run professionally.",
         includes: ['Ads setup & management', '2 pages included (add-ons available)', 'Bio & copywriting optimisation', 'Monitoring & advisory'],
         note: 'Monthly plan from RM2,000 (2 pages included, add-on page RM500/month); 6-month plan RM9,000 (originally RM12,000, add-on page RM300/month).',
@@ -223,7 +223,7 @@ const t: Record<Language, {
         title: 'Pakej Pertumbuhan Perniagaan Penuh',
         subtitle: 'Peringkat lanjutan selepas Pakej Pengurusan Media Sosial — kandungan berskala dan pengurusan penuh saluran',
         description: 'Dibina untuk pelanggan sedia ada yang bersedia berkembang — output kandungan jauh lebih banyak dan liputan platform diperluaskan (Profil Perniagaan Google, Waze, Telegram, Lemon8), digabungkan dengan pengurusan iklan untuk pertumbuhan perniagaan menyeluruh.',
-        includes: ['6 video pendek', '18 reka bentuk profesional + IG feed', 'Pengurusan penuh saluran (FB/IG/TikTok/XHS/Google/Waze/Telegram/Lemon8)', 'Pengurusan & pengoptimuman iklan Meta'],
+        includes: ['6 video pendek', '18 reka bentuk profesional + IG feed', 'Pengurusan penuh saluran (FB/IG/TikTok/XHS/Google Business/Waze/Telegram/Lemon8)', 'Pengurusan & pengoptimuman iklan Meta'],
         note: 'Nilai asal RM10,888. Tidak termasuk belanja iklan dan yuran model/bakat.',
         options: [
           { name: 'Pakej Pertumbuhan Perniagaan Penuh', price: 'RM 8,888', unit: '/ 3 bulan' },
@@ -231,7 +231,7 @@ const t: Record<Language, {
       },
       {
         title: 'Pengurusan Iklan',
-        subtitle: 'Perkhidmatan iklan berbayar berasingan merentasi TikTok/IG/FB/XHS/Google dan lain-lain',
+        subtitle: 'Perkhidmatan iklan berbayar berasingan merentasi TikTok, IG, FB dan XHS',
         description: 'Perkhidmatan khusus iklan sahaja — persediaan, pengurusan, pengoptimuman bio & penulisan, serta pemantauan & nasihat berterusan — sesuai untuk pelanggan yang sudah mempunyai pasukan kandungan sendiri dan hanya memerlukan iklan diuruskan secara profesional.',
         includes: ['Persediaan & pengurusan iklan', '2 halaman termasuk (tambahan tersedia)', 'Pengoptimuman bio & penulisan', 'Pemantauan & nasihat'],
         note: 'Pakej bulanan dari RM2,000 (2 halaman termasuk, halaman tambahan RM500/bulan); pakej 6 bulan RM9,000 (asal RM12,000, halaman tambahan RM300/bulan).',
