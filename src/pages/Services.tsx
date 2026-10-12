@@ -18,7 +18,7 @@ const t: Record<Language, {
   zh: {
     hero: {
       tag: '我们的服务',
-      title: '马来西亚数码营销全套服务',
+      title: '马来西亚社媒代运营与数码营销服务',
       subtitle: '从内容制作、社媒代运营到广告投放与网红营销——一站式帮您的业务在马来西亚线上增长。价格透明，无隐藏费用。',
     },
     included: '服务内容包含',
@@ -103,7 +103,7 @@ const t: Record<Language, {
   en: {
     hero: {
       tag: 'Our Services',
-      title: 'Digital Marketing Services for Malaysian Businesses',
+      title: 'Social Media Agency Malaysia — Full Digital Marketing Services',
       subtitle: 'From content production and social media management to paid ads and influencer marketing — everything your business needs to grow online in Malaysia. Transparent pricing, no hidden fees.',
     },
     included: "What's Included",
@@ -188,7 +188,7 @@ const t: Record<Language, {
   ms: {
     hero: {
       tag: 'Perkhidmatan Kami',
-      title: 'Perkhidmatan Pemasaran Digital untuk Perniagaan Malaysia',
+      title: 'Agensi Media Sosial Malaysia — Perkhidmatan Pemasaran Digital',
       subtitle: 'Dari penerbitan kandungan dan pengurusan media sosial hingga iklan berbayar dan pemasaran influencer — semua yang perniagaan anda perlukan untuk berkembang dalam talian di Malaysia. Harga telus, tiada caj tersembunyi.',
     },
     included: 'Apa Yang Disertakan',
@@ -272,6 +272,41 @@ const t: Record<Language, {
   },
 };
 
+/**
+ * Prose for the term this page targets. Kept outside the main content object
+ * because it is SEO body copy rather than service data, and a crawler needs
+ * sentences here — the card grid below renders almost no indexable text.
+ */
+const agencyCopy: Record<Language, { heading: string; paras: string[]; aside: string }> = {
+  zh: {
+    heading: '马来西亚社媒代运营，我们怎么做',
+    paras: [
+      '社媒代运营是我们最多客户购买的服务。跟一般代理商不同的是，我们不只是帮你排程发帖——脚本、拍摄、剪接、设计、日常运营到 Meta 广告投放，全部由同一个团队完成。',
+      '覆盖平台是 Facebook、Instagram、TikTok 和小红书，全面业务增长套餐还包含 Google 商家、Waze、Telegram 和 Lemon8。内容按你的客群用中文、英文或马来文制作——有几个客户同时跑两个语言版本。',
+      '找自由业者按平台分开做，最常见的问题是讯息散掉：拍片的不知道设计在讲什么，投广告的不知道内容在推什么。一个团队从头做到尾，这个问题就不存在。',
+    ],
+    aside: '社媒代运营套餐 RM2,888/月起。价格和实际作品都公开在网站上，先看完再决定。',
+  },
+  en: {
+    heading: 'What a Social Media Agency in Malaysia Should Actually Do',
+    paras: [
+      'Social media management is the service most of our clients come for. Unlike agencies that only schedule posts, we handle the whole loop: script, filming, editing, design, day-to-day page management, and the Meta ads that put the content in front of people who are not already following you.',
+      'Channels covered are Facebook, Instagram, TikTok and Xiaohongshu (小红书) as standard, with Google Business Profile, Waze, Telegram and Lemon8 added in the Full Business Growth Package. Content is produced in Chinese, English or Bahasa Malaysia depending on who you are selling to — several clients run two language versions of the same campaign.',
+      'The usual problem with hiring a freelancer per channel is that the message drifts: the videographer does not know what the designs say, and whoever runs the ads does not know what the content is pushing. One team writing, shooting, designing and advertising removes that gap.',
+    ],
+    aside: 'Social media management starts at RM2,888 per month. Both the prices and the actual delivered work are published on this site — read them before you decide.',
+  },
+  ms: {
+    heading: 'Apa Yang Agensi Media Sosial Malaysia Patut Buat',
+    paras: [
+      'Pengurusan media sosial ialah perkhidmatan yang paling ramai pelanggan kami pilih. Berbeza dengan agensi yang hanya menjadualkan post, kami uruskan keseluruhan proses: skrip, penggambaran, penyuntingan, reka bentuk, pengurusan harian, dan iklan Meta yang membawa kandungan itu kepada orang yang belum mengikuti anda.',
+      'Saluran yang dilindungi ialah Facebook, Instagram, TikTok dan Xiaohongshu, dengan Profil Perniagaan Google, Waze, Telegram dan Lemon8 ditambah dalam Pakej Pertumbuhan Perniagaan Penuh. Kandungan dihasilkan dalam bahasa Cina, Inggeris atau Melayu bergantung kepada sasaran anda.',
+      'Masalah biasa apabila mengupah freelancer berasingan untuk setiap saluran ialah mesej menjadi tidak selaras. Satu pasukan yang menulis, merakam, mereka bentuk dan mengiklan menghapuskan jurang itu.',
+    ],
+    aside: 'Pengurusan media sosial bermula RM2,888 sebulan. Harga dan hasil kerja sebenar kedua-duanya diterbitkan di laman ini.',
+  },
+};
+
 const icons = [
   <Sparkles className="w-7 h-7" />,
   <Share2 className="w-7 h-7" />,
@@ -326,6 +361,18 @@ export default function Services() {
               <Link to="/pricing" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/20 text-white rounded-full font-bold hover:bg-white/10 transition-all">
                 {content.viewPackages} <ArrowRight className="w-4 h-4" />
               </Link>
+            </div>
+          </div>
+
+          {/* Body copy for the term this page targets. The card grid below is
+              mostly data, so without this a crawler sees almost no prose. */}
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-16 pt-12 border-t border-white/10">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 max-w-3xl">{agencyCopy[lang].heading}</h2>
+            <div className="max-w-3xl space-y-4">
+              {agencyCopy[lang].paras.map((p, i) => (
+                <p key={i} className="text-white/60 leading-relaxed">{p}</p>
+              ))}
+              <p className="text-brand-cyan font-semibold pt-2">{agencyCopy[lang].aside}</p>
             </div>
           </div>
         </div>

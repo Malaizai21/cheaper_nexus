@@ -348,13 +348,21 @@ const staticPages = [
     // rendered page agree, and leads with the keyword rather than the brand.
     title: 'Digital Marketing Services Malaysia | Cheaper Nexus',
     description: 'Digital marketing services Malaysia: social media agency work across FB, IG, TikTok and Xiaohongshu, short-form video, Meta ads management and KOC/KOL marketing. Packages from RM888, prices published.',
-    body: `<h1>Digital Marketing Services Malaysia 服务项目</h1>
+    body: `<h1>Social Media Agency Malaysia — Digital Marketing Services 马来西亚社媒代运营</h1>
 <p>Cheaper Nexus is a digital marketing agency in Kuala Lumpur serving SMEs across Malaysia. We offer a growth-path package system plus standalone services, so a business can start with a single video or move straight to full-channel social media management. 我们为马来西亚中小企业提供成长型套餐及独立服务，从单支影片到全渠道社媒代运营都能承接。</p>
 
-<h2>Social Media Agency Malaysia 社媒代运营</h2>
+<h2>What a Social Media Agency in Malaysia Should Actually Do 社媒代运营</h2>
 <p>Social media management is the service most of our clients come for. As a social media agency in Malaysia we handle the whole loop rather than just scheduling posts: we write the script, film and edit the short-form video, produce the designs, run the day-to-day page management, and manage the Meta ads that put the content in front of people who are not already following you.</p>
 <p>Channels covered are Facebook, Instagram, TikTok and Xiaohongshu (小红书) as standard, with Google Business Profile, Waze, Telegram and Lemon8 added in the Full Business Growth Package. Content is produced in Chinese, English or Bahasa Malaysia depending on who you are selling to — several of our clients run two language versions of the same campaign.</p>
 <p>What makes this different from hiring a freelancer per channel is that one team writes, shoots, designs and advertises, so the message stays the same across platforms. Social media management starts at <strong>RM2,888 per month</strong>, and you can see the actual videos and designs we have delivered before deciding.</p>
+
+<h2>Who This Suits 适合什么样的生意</h2>
+<p>Our clients are typically Malaysian SME owners who run their own marketing and have run out of hours for it — F&amp;B outlets, retail, beauty and wellness, professional services, packaging and printing, automotive, and event production companies. The common thread is that they know short-form video works but cannot produce it weekly on their own.</p>
+<p>We are probably not the right fit if you need a website built, Google Ads or SEO managed, or a full e-commerce operation run — we do not offer those, and will say so on the first call rather than take the job. 如果你需要的是建网站、Google 广告代投或 SEO，我们不做这几块，会直接告诉你。</p>
+
+<h2>How We Work 合作流程</h2>
+<p>Everything starts with a free 30-minute WhatsApp conversation about your business, your customers and your budget. Within that call we will tell you which package fits, or say plainly that none of them do.</p>
+<p>Once a package is confirmed we write the script and design direction for your approval before any production begins. Filming, editing, design and copywriting are then handled entirely by us — you provide the product or service details and a place to film. From confirmation, videos and designs are usually delivered within a week, with firm dates agreed during the first call.</p>
 
 <h2>Packages 套餐服务</h2>
 <ul>${servicesList.map(([name, desc]) => `<li><strong>${name}</strong> — ${desc}</li>`).join('')}</ul>
