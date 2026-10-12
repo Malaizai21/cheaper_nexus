@@ -6,6 +6,7 @@ import Home from './pages/Home';
 // route is split out so a visitor landing on /works does not download Home's
 // canvas hero, the blog reader and the admin screen before anything renders.
 const Services   = lazy(() => import('./pages/Services'));
+const About   = lazy(() => import('./pages/About'));
 const Pricing    = lazy(() => import('./pages/Pricing'));
 const Contact    = lazy(() => import('./pages/Contact'));
 const Works      = lazy(() => import('./pages/Works'));
@@ -23,6 +24,7 @@ export default function App() {
       <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route path="/"            element={<Home />} />
+          <Route path="/about"       element={<About />} />
           <Route path="/services"    element={<Services />} />
           <Route path="/pricing"     element={<Pricing />} />
           <Route path="/contact"     element={<Contact />} />

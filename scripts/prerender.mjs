@@ -123,6 +123,7 @@ for (const meta of articles) {
     ? (image_url.startsWith('http') ? image_url : `${SITE_URL}${image_url}`)
     : `${SITE_URL}/logo-og.png`;
   const faq = Array.isArray(article.faq) ? article.faq : [];
+  const modified = article.updated_at || created_at;
 
   const schemas = [
     {
@@ -132,7 +133,7 @@ for (const meta of articles) {
       description: meta_description,
       image: imgUrl,
       datePublished: created_at,
-      dateModified: created_at,
+      dateModified: modified,
       author: { '@type': 'Organization', name: 'Cheaper Nexus', url: SITE_URL },
       publisher: {
         '@type': 'Organization',
@@ -193,7 +194,9 @@ ${schemas.map(s => `    <script type="application/ld+json">${JSON.stringify(s)}<
       }</ul></section>`
     : '';
 
-  const bodyContent = `${wrapStart}<article><h1>${escHtml(title)}</h1><p><em>${escHtml(meta_description)}</em></p>${contentHtml}${faqHtml}${relatedHtml}</article>${wrapEnd}`;
+  const fmt = d => new Date(d).toISOString().slice(0, 10);
+  const dateLine = `<p><time datetime="${fmt(created_at)}">${fmt(created_at)}</time>${modified !== created_at ? ` · ${language === 'zh' ? '更新于' : language === 'ms' ? 'dikemas kini' : 'updated'} <time datetime="${fmt(modified)}">${fmt(modified)}</time>` : ''}</p>`;
+  const bodyContent = `${wrapStart}<article><h1>${escHtml(title)}</h1><p><em>${escHtml(meta_description)}</em></p>${dateLine}${contentHtml}${faqHtml}${relatedHtml}</article>${wrapEnd}`;
 
   const html = buildPage(cleanShell(baseHtml, { nested: true }), { headMeta, bodyContent, langAttr });
 
@@ -342,6 +345,30 @@ console.log('[prerender] ✅ homepage (schemas + static content)');
 // ──────────────────── 3. Services / Pricing / Contact pages ────────────────────
 
 const staticPages = [
+  {
+    path: 'about',
+    title: 'About Cheaper Nexus | Digital Marketing Company in Malaysia',
+    description: 'Cheaper Nexus Sdn Bhd is a registered Malaysian digital marketing company based in Kuala Lumpur, producing short-form video, design, social media management and Meta ads for SMEs. Prices and portfolio are public.',
+    body: `<h1>About Cheaper Nexus 关于我们</h1>
+<p>Cheaper Nexus is a registered Malaysian digital marketing company, based in Kuala Lumpur and working with SMEs across the country. The registered entity is <strong>${LEGAL_NAME}</strong>, SSM company registration number <strong>${SSM_NUMBER}</strong>. Cheaper Nexus 是一家注册在马来西亚、总部位于吉隆坡的数码营销公司，专门服务本地中小企业。</p>
+
+<h2>What we do 我们做什么</h2>
+<p>We produce short-form video, graphic design, day-to-day social media management and Meta advertising. Script, filming, editing, design, page management and ads are all handled by one team, which is what keeps the message consistent across Facebook, Instagram, TikTok and Xiaohongshu rather than drifting between separate freelancers.</p>
+<p>Content is produced in Chinese, English or Bahasa Malaysia depending on the audience being sold to. Several clients run two language versions of the same campaign.</p>
+
+<h2>Why our prices are public 为什么价格都公开</h2>
+<p>Most agencies in Malaysia keep pricing behind a form, a discovery call and a wait. Our full price list sits on the site, on the same page as the work it buys. Packages start at RM888 for a one-time trial package and RM2,888 per month for ongoing social media management.</p>
+<p>The reason is practical rather than idealistic: a business whose budget does not fit stops reading without anyone wasting an afternoon, and a business whose budget does fit can message us directly instead of going through a sales loop first.</p>
+
+<h2>You talk to a person 你会直接找到人</h2>
+<p>Every enquiry is answered by Henry on WhatsApp at +60 17-291 5754. There is no support queue and no account manager relaying messages. Work starts with a free 30-minute conversation, and if we are not the right fit we say so during it.</p>
+
+<h2>What we do not do 我们不做的事</h2>
+<p>We do not manage Google Ads or SEM campaigns, we do not sell SEO services, we do not build websites or landing pages, and we do not run full-service e-commerce or live streaming. Saying so plainly is cheaper for both sides than discovering it on a first call. 我们不做 Google 广告代投、SEO 代运营、网站开发，以及电商全案与直播。</p>
+
+<h2>Our work 作品</h2>
+<p>The client work and the full price list are published together on one page, so the output can be judged before any money changes hands. See <a href="/works">client work and pricing</a>, the <a href="/services">full service list</a>, or <a href="/contact">how to reach us</a>.</p>`,
+  },
   {
     path: 'services',
     // Matches the Helmet title in src/pages/Services.tsx so the crawler and the
@@ -775,6 +802,7 @@ const today = new Date().toISOString().slice(0, 10);
 const staticUrls = [
   { loc: `${SITE_URL}/`, priority: '1.0', changefreq: 'weekly', lastmod: today },
   { loc: `${SITE_URL}/services`, priority: '0.9', changefreq: 'monthly', lastmod: today },
+  { loc: `${SITE_URL}/about`, priority: '0.6', changefreq: 'yearly', lastmod: today },
   { loc: `${SITE_URL}/pricing`, priority: '0.9', changefreq: 'monthly', lastmod: today },
   { loc: `${SITE_URL}/contact`, priority: '0.8', changefreq: 'monthly', lastmod: today },
   { loc: `${SITE_URL}/blog`, priority: '0.8', changefreq: 'daily', lastmod: today },
