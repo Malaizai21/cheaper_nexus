@@ -61,6 +61,16 @@ export function WorkRow({ work, lang, index, search, priority = false }: WorkRow
         <p className={`mt-4 text-base sm:text-xl font-bold max-w-2xl ${dark ? 'text-brand-cyan' : 'text-brand-blue/85'}`}>
           {work.highlight[cl]}
         </p>
+
+        <p className={`mt-4 text-sm font-semibold ${dark ? 'text-white/55' : 'text-brand-blue/60'}`}>
+          {work.result && (
+            <>
+              <span className={dark ? 'text-brand-cyan' : 'text-brand-blue'}>{work.result.value}</span>
+              {' '}
+              {work.result.label[cl]}
+            </>
+          )}
+        </p>
       </div>
 
       {/* Service marquee */}

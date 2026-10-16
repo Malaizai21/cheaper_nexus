@@ -143,6 +143,30 @@ export default function WorkDetail() {
               images > 0 ? countLabel(images, 'design', lang) : null,
             ].filter(Boolean).join('  ·  ')}
           </p>
+
+          {work.result && (
+            <div className="mt-10 max-w-2xl rounded-2xl border border-brand-cyan/30 bg-brand-cyan/[0.07] p-6 sm:p-7">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-brand-cyan/80">
+                {lang === 'zh' ? '实际投放成效' : lang === 'ms' ? 'Hasil Kempen Sebenar' : 'Actual campaign result'}
+              </p>
+              <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="text-4xl sm:text-5xl font-black tracking-[-0.03em] text-brand-cyan">
+                  {work.result.value}
+                </span>
+                <span className="text-sm font-semibold text-white/70">{work.result.label[cl]}</span>
+              </p>
+              <p className="mt-2 text-xs font-medium text-white/45">
+                {lang === 'zh' ? work.result.period : work.result.periodEn}
+                {' · '}
+                {lang === 'zh'
+                  ? '由 Cheaper Nexus 投放'
+                  : lang === 'ms'
+                    ? 'Dikendalikan oleh Cheaper Nexus'
+                    : 'Run by Cheaper Nexus'}
+              </p>
+              <p className="mt-4 text-sm text-white/55 leading-relaxed">{work.result.note[cl]}</p>
+            </div>
+          )}
         </header>
 
         {/* Service marquee */}

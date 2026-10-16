@@ -746,6 +746,9 @@ ${listPricing}
     const body = `<h1>${escHtml(w.client_name)}</h1>
 <p><strong>${escHtml(w.industry.en)} · ${escHtml(w.industry.zh)}</strong> — ${escHtml(counts)}</p>
 <p><em>${escHtml(w.highlight.en)}</em></p>
+${w.result ? `<h2>Campaign Result 实际投放成效</h2>
+<p><strong>${escHtml(w.result.value)}</strong> — ${escHtml(w.result.label.en)} (${escHtml(w.result.periodEn)}, campaign run by Cheaper Nexus).</p>
+<p>${escHtml(w.result.note.en)}</p>` : ''}
 <h2>Overview 案例概览</h2>
 <p>${escHtml(w.summary.en)}</p>
 <p>${escHtml(w.summary.zh)}</p>

@@ -206,7 +206,20 @@
     ],
     "featured": true,
     "order": 1,
-    "cover_thumb": "/works/kingsman/v1-t.webp"
+    "cover_thumb": "/works/kingsman/v1-t.webp",
+    "result": {
+      "value": "RM 10.57",
+      "label": {
+        "zh": "每个表单 lead 成本",
+        "en": "Cost per lead (form)"
+      },
+      "period": "2026 年 9 月",
+      "periodEn": "Sep 2026",
+      "note": {
+        "zh": "同一客户也跑过对话型广告（马来文版 RM11.23 一次对话）。表单与对话是两种打法，成本不能直接比。",
+        "en": "The same client also ran conversation ads (RM11.23 per conversation on the Malay version). Forms and conversations are different plays; the costs are not directly comparable."
+      }
+    }
   },
   {
     "slug": "yse-production",
@@ -423,7 +436,20 @@
     ],
     "featured": true,
     "order": 2,
-    "cover_thumb": "/works/yse-production/v3-t.webp"
+    "cover_thumb": "/works/yse-production/v3-t.webp",
+    "result": {
+      "value": "RM 24.52",
+      "label": {
+        "zh": "每次 WhatsApp 对话成本",
+        "en": "Cost per WhatsApp conversation"
+      },
+      "period": "2026 年 8 月",
+      "periodEn": "Aug 2026",
+      "note": {
+        "zh": "婚礼与企业活动属于高单价、低频次的生意，单次对话成本高但一单的价值也高。",
+        "en": "Weddings and corporate events are high-value, low-frequency purchases — a dearer conversation, but a far larger job behind each one."
+      }
+    }
   },
   {
     "slug": "3g-mobile",
@@ -597,7 +623,20 @@
     ],
     "featured": true,
     "order": 3,
-    "cover_thumb": "/works/3g-mobile/v1-t.webp"
+    "cover_thumb": "/works/3g-mobile/v1-t.webp",
+    "result": {
+      "value": "RM 5.20",
+      "label": {
+        "zh": "每次 WhatsApp 对话成本",
+        "en": "Cost per WhatsApp conversation"
+      },
+      "period": "2026 年 9–10 月",
+      "periodEn": "Sep–Oct 2026",
+      "note": {
+        "zh": "马来文与中文两个版本分开投放，成本几乎一致（RM5.20 / RM5.24）—— 双语策略不是碰运气。",
+        "en": "The Malay and Chinese versions ran separately and landed at almost the same cost (RM5.20 / RM5.24) — the bilingual split was not luck."
+      }
+    }
   },
   {
     "slug": "ace-consistent",
@@ -774,7 +813,20 @@
     ],
     "featured": true,
     "order": 4,
-    "cover_thumb": "/works/ace-consistent/v1-t.webp"
+    "cover_thumb": "/works/ace-consistent/v1-t.webp",
+    "result": {
+      "value": "RM 43.37",
+      "label": {
+        "zh": "每个表单 lead 成本",
+        "en": "Cost per lead (form)"
+      },
+      "period": "2026 年 9 月",
+      "periodEn": "Sep 2026",
+      "note": {
+        "zh": "贷款咨询需要先收集资料再跟进，必须走表单。表单 lead 的成本本来就比对话高一个量级，这是行业常态，不是投放失误。",
+        "en": "Loan consultancy needs details collected before follow-up, so a lead form is the only workable format. Form leads cost an order of magnitude more than conversations — that is the norm for this category, not a misfire."
+      }
+    }
   },
   {
     "slug": "lin-lao-shi",
@@ -861,7 +913,20 @@
     ],
     "featured": true,
     "order": 5,
-    "cover_thumb": "/works/lin-lao-shi/v4-t.webp"
+    "cover_thumb": "/works/lin-lao-shi/v4-t.webp",
+    "result": {
+      "value": "RM 12.96",
+      "label": {
+        "zh": "每次 WhatsApp 对话成本",
+        "en": "Cost per WhatsApp conversation"
+      },
+      "period": "2026 年 7–8 月",
+      "periodEn": "Jul–Aug 2026",
+      "note": {
+        "zh": "主打 RM50 火锅 Buffet 促销，目标是把人带进店里，所以走对话而不是表单。",
+        "en": "Built around the RM50 hotpot buffet promotion. The goal was walk-ins, so the campaign ran on conversations rather than lead forms."
+      }
+    }
   },
   {
     "slug": "tgif-print",
@@ -948,7 +1013,20 @@
     ],
     "featured": false,
     "order": 6,
-    "cover_thumb": "/works/tgif-print/v1-t.webp"
+    "cover_thumb": "/works/tgif-print/v1-t.webp",
+    "result": {
+      "value": "RM 14.53",
+      "label": {
+        "zh": "每次 WhatsApp 对话成本",
+        "en": "Cost per WhatsApp conversation"
+      },
+      "period": "2026 年 6 月",
+      "periodEn": "Jun 2026",
+      "note": {
+        "zh": "B2B 采购型客群，询价周期长，对话成本自然高于零售类。",
+        "en": "A B2B procurement audience with a longer buying cycle, so the cost per conversation sits above retail campaigns."
+      }
+    }
   },
   {
     "slug": "mj-pro",
@@ -1105,7 +1183,20 @@
     ],
     "featured": false,
     "order": 8,
-    "cover_thumb": "/works/meta-genesis/d1-t.webp"
+    "cover_thumb": "/works/meta-genesis/d1-t.webp",
+    "result": {
+      "value": "RM 3.94 – 5.82",
+      "label": {
+        "zh": "每次 WhatsApp 对话成本",
+        "en": "Cost per WhatsApp conversation"
+      },
+      "period": "2026 年 7 月",
+      "periodEn": "Jul 2026",
+      "note": {
+        "zh": "按业务员分组并行投放多条 campaign，这是全部组别的实际区间；规模最大的一组落在 RM5.82，表现最好的一组 RM3.94。",
+        "en": "Several campaigns ran in parallel, split by salesperson. This is the real spread across all of them — the largest group landed at RM5.82 and the best at RM3.94."
+      }
+    }
   },
   {
     "slug": "merslim",
@@ -1169,7 +1260,20 @@
     ],
     "featured": false,
     "order": 9,
-    "cover_thumb": "/works/merslim/v1-t.webp"
+    "cover_thumb": "/works/merslim/v1-t.webp",
+    "result": {
+      "value": "RM 21.92",
+      "label": {
+        "zh": "每次 WhatsApp 对话成本",
+        "en": "Cost per WhatsApp conversation"
+      },
+      "period": "2026 年 6 月",
+      "periodEn": "Jun 2026",
+      "note": {
+        "zh": "剧情式广告降低广告感，投放规模较小，属于测试阶段的数据。",
+        "en": "Story-led creative to reduce the ad feel. This ran at small scale, so treat it as test-phase data."
+      }
+    }
   },
   {
     "slug": "deluxe-tint",

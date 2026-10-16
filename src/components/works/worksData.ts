@@ -34,6 +34,15 @@ export interface Work {
   cover_thumb: string;
   /** One-line angle for this case — describes the work, never a claimed business outcome. */
   highlight: Bilingual;
+  /** One real campaign outcome. Unit cost only — never spend, never raw counts,
+   *  since count x unit cost would give the client's budget away. */
+  result?: {
+    value: string;
+    label: Bilingual;
+    period: string;
+    periodEn: string;
+    note: Bilingual;
+  };
   summary: Bilingual;
   challenge: Bilingual;
   approach: Bilingual;
