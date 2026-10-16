@@ -12,11 +12,11 @@ export const LEGAL_NAME = 'Cheaper Nexus Sdn Bhd';
 export const SSM_NUMBER = '202601007953 (1670051-W)';
 
 const footerT: Record<Language, {
-  rights: string; services: string; pricing: string; works: string; blog: string; contact: string;
+  rights: string; services: string; pricing: string; works: string; blog: string; about: string; contact: string;
 }> = {
-  zh: { rights: '版权所有', services: '服务项目', pricing: '价格套餐', works: '客户作品', blog: '营销博客', contact: '联系我们' },
-  en: { rights: 'All rights reserved', services: 'Services', pricing: 'Pricing', works: 'Works', blog: 'Blog', contact: 'Contact' },
-  ms: { rights: 'Hak cipta terpelihara', services: 'Perkhidmatan', pricing: 'Harga', works: 'Kerja Kami', blog: 'Blog', contact: 'Hubungi' },
+  zh: { rights: '版权所有', services: '服务项目', pricing: '价格套餐', works: '客户作品', blog: '营销博客', about: '关于我们', contact: '联系我们' },
+  en: { rights: 'All rights reserved', services: 'Services', pricing: 'Pricing', works: 'Works', blog: 'Blog', about: 'About', contact: 'Contact' },
+  ms: { rights: 'Hak cipta terpelihara', services: 'Perkhidmatan', pricing: 'Harga', works: 'Kerja Kami', blog: 'Blog', about: 'Tentang Kami', contact: 'Hubungi' },
 };
 
 interface FooterProps {
@@ -62,6 +62,7 @@ export function Footer({ lang, variant = 'light' }: FooterProps) {
             { to: '/works',    label: t.works    },
             { to: '/pricing',  label: t.pricing  },
             { to: '/blog',     label: t.blog     },
+            { to: '/about',    label: t.about    },
             { to: '/contact',  label: t.contact  },
           ].map(l => (
             <Link key={l.to} to={l.to} className={linkCls}>{l.label}</Link>

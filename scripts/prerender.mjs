@@ -72,6 +72,7 @@ const LEGAL_NAME = 'Cheaper Nexus Sdn Bhd';
 const SSM_NUMBER = '202601007953 (1670051-W)';
 const wrapEnd = `<hr style="margin:32px 0 16px;border:0;border-top:1px solid rgba(10,25,47,.12)" />`
   + `<p style="font-size:13px;color:rgba(10,25,47,.55)">${LEGAL_NAME} ${SSM_NUMBER}</p>`
+  + `<p style="font-size:13px"><a href="/">Home</a> · <a href="/services">Services</a> · <a href="/works">Work &amp; Pricing</a> · <a href="/blog">Blog</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></p>`
   + '</div>';
 
 /** Same-language related articles ranked by keyword + topic overlap (mirrors Article.tsx). */

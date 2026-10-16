@@ -4,11 +4,11 @@ import { Menu, X, Languages, Phone } from 'lucide-react';
 import { type Language } from '../hooks/useLanguage';
 
 const navT: Record<Language, {
-  services: string; works: string; pricing: string; blog: string; contact: string; cta: string;
+  services: string; works: string; pricing: string; blog: string; about: string; contact: string; cta: string;
 }> = {
-  zh: { services: '服务项目', works: '客户作品', pricing: '价格套餐', blog: '营销博客', contact: '联系我们', cta: '免费咨询' },
-  en: { services: 'Services', works: 'Works', pricing: 'Pricing', blog: 'Blog', contact: 'Contact', cta: 'Free Consultation' },
-  ms: { services: 'Perkhidmatan', works: 'Kerja Kami', pricing: 'Harga', blog: 'Blog', contact: 'Hubungi', cta: 'Konsultasi Percuma' },
+  zh: { services: '服务项目', works: '客户作品', pricing: '价格套餐', blog: '营销博客', about: '关于我们', contact: '联系我们', cta: '免费咨询' },
+  en: { services: 'Services', works: 'Works', pricing: 'Pricing', blog: 'Blog', about: 'About', contact: 'Contact', cta: 'Free Consultation' },
+  ms: { services: 'Perkhidmatan', works: 'Kerja Kami', pricing: 'Harga', blog: 'Blog', about: 'Tentang Kami', contact: 'Hubungi', cta: 'Konsultasi Percuma' },
 };
 
 interface NavbarProps {
@@ -26,6 +26,7 @@ export function Navbar({ lang, setLang }: NavbarProps) {
     { href: '/works', label: t.works },
     { href: '/pricing', label: t.pricing },
     { href: '/blog', label: t.blog },
+    { href: '/about', label: t.about },
     { href: '/contact', label: t.contact },
   ];
 
