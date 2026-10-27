@@ -14,10 +14,11 @@
  * consumes paid download quota.
  */
 import 'dotenv/config';
-import { writeFileSync, mkdirSync, readFileSync, readdirSync, existsSync } from 'fs';
+import { writeFileSync, mkdirSync, readFileSync, readdirSync, existsSync, statSync, unlinkSync } from 'fs';
 import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { createHash } from 'crypto';
+import { spawnSync } from 'child_process';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const API_KEY = process.env.MAGNIFIC_API_KEY;
@@ -33,10 +34,51 @@ const IMG_DIR = join(ROOT, 'public', 'blog', 'images');
  */
 const REGISTRY = join(IMG_DIR, 'used-resources.json');
 const md5 = buf => createHash('md5').update(buf).digest('hex');
+
+/**
+ * Downscale a cover to web size.
+ *
+ * Magnific hands back the print master. Writing that straight to disk gave us
+ * 6000-7600px covers of 15-25MB each — 772MB across 81 posts, with a 17MB
+ * image loading on the homepage. Nothing displays them above 1600px.
+ *
+ * Best effort: if ffmpeg is missing the full-size file is kept rather than
+ * failing the download, but the warning says what it will cost.
+ */
+const MAX_WIDTH = 1600;
+
+function shrink(path) {
+  const before = statSync(path).size;
+  const tmp = `${path}.tmp.jpg`;
+  const r = spawnSync('ffmpeg', [
+    '-v', 'error', '-i', path,
+    '-vf', `scale='min(${MAX_WIDTH},iw)':-2:flags=lanczos`,
+    '-pix_fmt', 'yuvj420p', '-q:v', '4', '-y', tmp,
+  ], { encoding: 'utf-8' });
+
+  if (r.error || r.status !== 0) {
+    if (existsSync(tmp)) unlinkSync(tmp);
+    console.error(
+      `[magnific] could not downscale (${r.error ? 'ffmpeg not found' : r.stderr.trim()}); `
+      + `keeping the ${(before / 1048576).toFixed(1)}MB original`,
+    );
+    return;
+  }
+
+  // A photo that is already web-sized can come back bigger after re-encoding.
+  const after = statSync(tmp).size;
+  if (after < before) {
+    writeFileSync(path, readFileSync(tmp));
+    console.error(`[magnific] cover ${(before / 1048576).toFixed(1)}MB -> ${Math.round(after / 1024)}KB`);
+  }
+  unlinkSync(tmp);
+}
 const loadRegistry = () => (existsSync(REGISTRY) ? JSON.parse(readFileSync(REGISTRY, 'utf-8')) : {});
 const existingHashes = () => new Set(
   existsSync(IMG_DIR)
-    ? readdirSync(IMG_DIR).filter(f => f.endsWith('.jpg')).map(f => md5(readFileSync(join(IMG_DIR, f))))
+    // A crashed run can leave a `.<slug>.staging.jpg` behind; it is not a cover.
+    ? readdirSync(IMG_DIR).filter(f => f.endsWith('.jpg') && !f.startsWith('.'))
+        .map(f => md5(readFileSync(join(IMG_DIR, f))))
     : [],
 );
 
@@ -100,15 +142,28 @@ async function main() {
     if (!imgRes.ok) continue;
     const buf = Buffer.from(await imgRes.arrayBuffer());
 
+    // Downscale before hashing, not after. The hashes this compares against
+    // are of files on disk, which are all downscaled — hashing the raw
+    // download would never match one of them, and the guard would pass
+    // everything while looking like it still worked.
+    //
+    // Staged through a temp file so a run where every candidate turns out to
+    // be a repeat leaves the slug's existing cover untouched.
+    mkdirSync(IMG_DIR, { recursive: true });
+    const staged = join(IMG_DIR, `.${slug}.staging.jpg`);
+    writeFileSync(staged, buf);
+    shrink(staged);
+    const stagedBuf = readFileSync(staged);
+    unlinkSync(staged);
+
     // Same photo under a different resource id still counts as a repeat.
-    if (hashes.has(md5(buf))) {
+    if (hashes.has(md5(stagedBuf))) {
       console.error(`[magnific] ${r.id} is identical to an existing cover, trying next`);
       registry[String(r.id)] = registry[String(r.id)] || '(duplicate content)';
       continue;
     }
 
-    mkdirSync(IMG_DIR, { recursive: true });
-    writeFileSync(ownPath, buf);
+    writeFileSync(ownPath, stagedBuf);
     registry[String(r.id)] = slug;
     writeFileSync(REGISTRY, JSON.stringify(registry, null, 2), 'utf-8');
     console.log(`/blog/images/${slug}.jpg`);
