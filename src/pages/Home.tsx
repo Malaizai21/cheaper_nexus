@@ -266,7 +266,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-brand-white">
+    <div className="min-h-screen bg-brand-blue">
       <SEO lang={lang} />
       <Navbar lang={lang} setLang={setLang} />
 
@@ -477,7 +477,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-cyan text-white rounded-full font-bold hover:bg-brand-cyan/90 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-cyan text-brand-blue rounded-full font-bold hover:bg-brand-cyan/90 transition-all"
                 >
                   {c.hero.cta1} <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -560,9 +560,9 @@ export default function Home() {
                     )}
                     <div className="p-7 flex flex-col flex-grow">
                       <span className={`self-start mb-3 px-2.5 py-0.5 rounded-full text-xs font-bold ${
-                        post.language === 'zh' ? 'bg-red-50 text-red-600' :
-                        post.language === 'ms' ? 'bg-green-50 text-green-600' :
-                        'bg-blue-50 text-blue-600'
+                        post.language === 'zh' ? 'bg-red-400/15 text-red-300' :
+                        post.language === 'ms' ? 'bg-green-400/15 text-green-300' :
+                        'bg-blue-400/15 text-blue-300'
                       }`}>
                         {post.language === 'zh' ? '中文' : post.language === 'ms' ? 'BM' : 'EN'}
                       </span>
@@ -601,7 +601,7 @@ export default function Home() {
               href="https://wa.me/60172915754"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-10 py-4 bg-brand-cyan text-white rounded-full font-bold text-base hover:bg-brand-cyan/90 transition-all shadow-xl shadow-brand-cyan/15"
+              className="group inline-flex items-center gap-3 px-10 py-4 bg-brand-cyan text-brand-blue rounded-full font-bold text-base hover:bg-brand-cyan/90 transition-all shadow-xl shadow-brand-cyan/15"
             >
               <MessageSquare className="w-5 h-5" />
               {c.final.btn}

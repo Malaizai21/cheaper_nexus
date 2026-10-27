@@ -163,7 +163,7 @@ export default function Pricing() {
         <meta property="og:url" content={`${SITE_URL}/pricing`} />
       </Helmet>
 
-      <div className="min-h-screen bg-brand-white">
+      <div className="min-h-screen bg-brand-blue">
         <Navbar lang={lang} setLang={setLang} />
 
         {/* Header */}
@@ -180,40 +180,40 @@ export default function Pricing() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
           {/* Package tiers */}
           <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-brand-blue mb-3">{content.packagesTitle}</h2>
-            <p className="text-brand-blue/60">{content.packagesSub}</p>
+            <h2 className="text-3xl font-bold text-white mb-3">{content.packagesTitle}</h2>
+            <p className="text-white/65">{content.packagesSub}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             {content.tiers.map((tier, idx) => (
               <div key={tier.name} className={`relative rounded-[28px] p-8 flex flex-col ${
-                idx === 1 ? 'bg-brand-blue text-white shadow-2xl shadow-brand-blue/30 scale-105' : 'bg-white border border-brand-blue/8'
+                idx === 1 ? 'bg-white text-brand-blue shadow-[0_24px_70px_-20px_rgba(0,212,255,0.45)] ring-2 ring-brand-cyan scale-105' : 'bg-white/[0.04] border border-white/10'
               }`}>
                 {idx === 1 && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-4 py-1.5 bg-brand-cyan text-brand-blue rounded-full text-xs font-bold">
                     <Star className="w-3 h-3" /> {content.mostPopular}
                   </div>
                 )}
-                <div className="text-xs font-bold uppercase tracking-widest mb-2 text-brand-cyan">{tier.tagline}</div>
-                <div className={`text-2xl font-bold mb-1 ${idx === 1 ? 'text-white' : 'text-brand-blue'}`}>{tier.name}</div>
+                <div className={`text-xs font-bold uppercase tracking-widest mb-2 ${idx === 1 ? 'text-brand-blue/70' : 'text-brand-cyan'}`}>{tier.tagline}</div>
+                <div className={`text-2xl font-bold mb-1 ${idx === 1 ? 'text-brand-blue' : 'text-white'}`}>{tier.name}</div>
                 <div className="mb-6">
-                  <span className={`text-3xl font-bold ${idx === 1 ? 'text-brand-cyan' : 'text-brand-blue'}`}>{prices[idx]}</span>
-                  <span className={`text-sm ml-1 ${idx === 1 ? 'text-white/60' : 'text-brand-blue/40'}`}>{units[lang][idx]}</span>
+                  <span className={`text-3xl font-bold ${idx === 1 ? 'text-brand-blue' : 'text-white'}`}>{prices[idx]}</span>
+                  <span className={`text-sm ml-1 ${idx === 1 ? 'text-brand-blue/65' : 'text-white/55'}`}>{units[lang][idx]}</span>
                 </div>
                 <ul className="space-y-3 flex-grow mb-8">
                   {tier.features.map(f => (
                     <li key={f.category} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-brand-cyan" />
+                      <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${idx === 1 ? 'text-brand-blue' : 'text-brand-cyan'}`} />
                       <div>
-                        <span className={`text-xs font-semibold block ${idx === 1 ? 'text-white/50' : 'text-brand-blue/40'}`}>{f.category}</span>
-                        <span className={`text-sm ${idx === 1 ? 'text-white' : 'text-brand-blue/80'}`}>{f.value}</span>
+                        <span className={`text-xs font-semibold block ${idx === 1 ? 'text-brand-blue/65' : 'text-white/55'}`}>{f.category}</span>
+                        <span className={`text-sm ${idx === 1 ? 'text-brand-blue/85' : 'text-white/75'}`}>{f.value}</span>
                       </div>
                     </li>
                   ))}
                 </ul>
                 <a href="https://wa.me/60172915754" target="_blank" rel="noopener noreferrer"
                   className={`w-full text-center py-3 rounded-full font-bold text-sm transition-all ${
-                    idx === 1 ? 'bg-brand-cyan text-brand-blue hover:opacity-90' : 'border-2 border-brand-blue/15 text-brand-blue hover:border-brand-cyan hover:text-brand-cyan'
+                    idx === 1 ? 'bg-brand-blue text-white hover:bg-brand-blue/90' : 'border-2 border-white/15 text-white hover:border-brand-cyan hover:text-brand-cyan'
                   }`}>
                   {content.getStarted}
                 </a>
@@ -222,7 +222,7 @@ export default function Pricing() {
           </div>
 
           {/* Enterprise */}
-          <div className="bg-brand-blue rounded-[28px] p-8 md:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 mb-20">
+          <div className="bg-white/[0.04] border border-white/10 rounded-[28px] p-8 md:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 mb-20">
             <div>
               <div className="text-brand-cyan font-bold text-sm mb-2">{content.enterprise}</div>
               <h3 className="text-2xl font-bold mb-2">RM 15,000+ / {lang === 'zh' ? '项目' : lang === 'ms' ? 'projek' : 'project'}</h3>
@@ -237,25 +237,25 @@ export default function Pricing() {
           {/* Individual services */}
           <div>
             <div className="text-center mb-10">
-              <h2 className="text-2xl font-bold text-brand-blue mb-3">{content.singleTitle}</h2>
-              <p className="text-brand-blue/60">{content.singleSub}</p>
+              <h2 className="text-2xl font-bold text-white mb-3">{content.singleTitle}</h2>
+              <p className="text-white/65">{content.singleSub}</p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {content.singleServices.map((s, i) => (
                 <Link
                   key={s.title}
                   to="/services"
-                  className="group flex flex-col p-7 rounded-[28px] border border-brand-blue/8 bg-white hover:border-brand-cyan/30 hover:shadow-xl hover:shadow-brand-blue/5 transition-all"
+                  className="group flex flex-col p-7 rounded-[28px] border border-white/10 bg-white/[0.04] hover:border-brand-cyan/30 hover:shadow-xl hover:shadow-black/40 transition-all"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-brand-blue text-brand-cyan flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                     {icons[i]}
                   </div>
-                  <h3 className="text-base font-bold text-brand-blue mb-1">{s.title}</h3>
-                  <p className="text-sm text-brand-blue/50 mb-6 flex-grow">{s.desc}</p>
+                  <h3 className="text-base font-bold text-white mb-1">{s.title}</h3>
+                  <p className="text-sm text-white/60 mb-6 flex-grow">{s.desc}</p>
                   <div className="flex items-end justify-between">
                     <div>
-                      <span className="text-xl font-bold text-brand-blue">{s.price}</span>
-                      <span className="text-xs text-brand-blue/40 ml-1">{s.unit}</span>
+                      <span className="text-xl font-bold text-white">{s.price}</span>
+                      <span className="text-xs text-white/55 ml-1">{s.unit}</span>
                     </div>
                     <ArrowRight className="w-4 h-4 text-brand-cyan opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </div>

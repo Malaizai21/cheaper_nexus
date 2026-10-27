@@ -79,7 +79,7 @@ export default function Contact() {
         <meta property="og:url" content={`${SITE_URL}/contact`} />
       </Helmet>
 
-      <div className="min-h-screen bg-brand-white">
+      <div className="min-h-screen bg-brand-blue">
         <Navbar lang={lang} setLang={setLang} />
 
         {/* Header */}
@@ -97,21 +97,21 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 gap-16">
             {/* Contact info */}
             <div>
-              <h2 className="text-2xl font-bold text-brand-blue mb-4">{content.teamTitle}</h2>
-              <p className="text-brand-blue/60 mb-10 leading-relaxed">{content.teamSub}</p>
+              <h2 className="text-2xl font-bold text-white mb-4">{content.teamTitle}</h2>
+              <p className="text-white/65 mb-10 leading-relaxed">{content.teamSub}</p>
               <div className="space-y-4 mb-12">
                 {[
                   { name: 'Henry', role: content.henryRole, phone: '017-291 5754', wa: '60172915754' },
                 ].map(person => (
                   <a key={person.name} href={`https://wa.me/${person.wa}`} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center justify-between p-6 bg-brand-blue/3 border border-brand-blue/8 rounded-2xl hover:border-brand-cyan/30 transition-all">
+                    className="flex items-center justify-between p-6 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-brand-cyan/30 transition-all">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-brand-blue text-brand-cyan rounded-xl flex items-center justify-center">
                         <MessageSquare className="w-6 h-6" />
                       </div>
                       <div>
-                        <div className="font-bold text-brand-blue">{person.name}</div>
-                        <div className="text-sm text-brand-blue/50">{person.role}</div>
+                        <div className="font-bold text-white">{person.name}</div>
+                        <div className="text-sm text-white/60">{person.role}</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg font-bold text-sm">
@@ -122,7 +122,7 @@ export default function Contact() {
               </div>
               <div className="space-y-3">
                 {content.perks.map(p => (
-                  <div key={p} className="flex items-center gap-2 text-sm text-brand-blue/70">
+                  <div key={p} className="flex items-center gap-2 text-sm text-white/70">
                     <CheckCircle2 className="w-4 h-4 text-brand-cyan shrink-0" /> {p}
                   </div>
                 ))}
@@ -130,14 +130,14 @@ export default function Contact() {
             </div>
 
             {/* Form */}
-            <div className="bg-white border border-brand-blue/8 rounded-[28px] p-8 shadow-xl shadow-brand-blue/5">
+            <div className="bg-white/[0.04] border border-white/10 rounded-[28px] p-8 shadow-xl shadow-black/40">
               {submitted ? (
                 <div className="text-center py-12">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-8 h-8 text-green-500" />
                   </div>
-                  <h3 className="text-xl font-bold text-brand-blue mb-2">{content.successTitle}</h3>
-                  <p className="text-brand-blue/60 mb-6">{content.successSub}</p>
+                  <h3 className="text-xl font-bold text-white mb-2">{content.successTitle}</h3>
+                  <p className="text-white/65 mb-6">{content.successSub}</p>
                   <Link to="/" className="inline-flex items-center gap-2 text-brand-cyan font-bold hover:gap-3 transition-all">
                     {content.backHome} <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -145,38 +145,38 @@ export default function Contact() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label className="block text-sm font-bold text-brand-blue mb-2">{content.form.nameLabel}</label>
+                    <label className="block text-sm font-bold text-white mb-2">{content.form.nameLabel}</label>
                     <input type="text" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })}
                       placeholder={lang === 'zh' ? '您的姓名' : lang === 'ms' ? 'Nama anda' : 'Your name'}
-                      className="w-full px-5 py-3.5 bg-brand-blue/3 border border-brand-blue/8 rounded-xl focus:ring-2 focus:ring-brand-cyan outline-none transition-all text-brand-blue" />
+                      className="w-full px-5 py-3.5 bg-white/[0.02] border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-cyan outline-none transition-all text-white" />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-brand-blue mb-2">{content.form.phoneLbl}</label>
+                    <label className="block text-sm font-bold text-white mb-2">{content.form.phoneLbl}</label>
                     <input type="tel" required value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+60 12-345 6789"
-                      className="w-full px-5 py-3.5 bg-brand-blue/3 border border-brand-blue/8 rounded-xl focus:ring-2 focus:ring-brand-cyan outline-none transition-all text-brand-blue" />
+                      className="w-full px-5 py-3.5 bg-white/[0.02] border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-cyan outline-none transition-all text-white" />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-brand-blue mb-2">{content.form.bizLbl}</label>
+                    <label className="block text-sm font-bold text-white mb-2">{content.form.bizLbl}</label>
                     <select required value={formData.business} onChange={e => setFormData({ ...formData, business: e.target.value })}
-                      className="w-full px-5 py-3.5 bg-brand-blue/3 border border-brand-blue/8 rounded-xl focus:ring-2 focus:ring-brand-cyan outline-none transition-all text-brand-blue appearance-none">
+                      className="w-full px-5 py-3.5 bg-white/[0.02] border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-cyan outline-none transition-all text-white appearance-none">
                       <option value="">{lang === 'zh' ? '选择行业' : lang === 'ms' ? 'Pilih industri' : 'Select your industry'}</option>
                       {content.industries.map(i => <option key={i} value={i}>{i}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-brand-blue mb-2">
-                      {content.form.msgLbl} <span className="font-normal text-brand-blue/40">{content.form.msgOpt}</span>
+                    <label className="block text-sm font-bold text-white mb-2">
+                      {content.form.msgLbl} <span className="font-normal text-white/55">{content.form.msgOpt}</span>
                     </label>
                     <textarea rows={3} value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })}
                       placeholder={content.form.msgPlaceholder}
-                      className="w-full px-5 py-3.5 bg-brand-blue/3 border border-brand-blue/8 rounded-xl focus:ring-2 focus:ring-brand-cyan outline-none transition-all text-brand-blue resize-none" />
+                      className="w-full px-5 py-3.5 bg-white/[0.02] border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-cyan outline-none transition-all text-white resize-none" />
                   </div>
                   <button type="submit"
-                    className="w-full py-4 bg-brand-blue text-white rounded-xl font-bold hover:bg-brand-blue/90 transition-colors flex items-center justify-center gap-2">
+                    className="w-full py-4 bg-brand-blue text-white rounded-xl font-bold hover:bg-brand-blue transition-colors flex items-center justify-center gap-2">
                     <MessageSquare className="w-5 h-5" /> {content.form.submit}
                   </button>
-                  <p className="text-xs text-brand-blue/40 text-center">{content.form.hint}</p>
+                  <p className="text-xs text-white/55 text-center">{content.form.hint}</p>
                 </form>
               )}
             </div>

@@ -342,7 +342,7 @@ export default function Services() {
         })}</script>
       </Helmet>
 
-      <div className="min-h-screen bg-brand-white">
+      <div className="min-h-screen bg-brand-blue">
         <Navbar lang={lang} setLang={setLang} />
 
         {/* Header */}
@@ -383,32 +383,32 @@ export default function Services() {
             <div key={i} className="grid md:grid-cols-2 gap-12 items-start">
               <div>
                 <div className="w-14 h-14 bg-brand-blue text-brand-cyan rounded-2xl flex items-center justify-center mb-6">{icons[i]}</div>
-                <h2 className="text-2xl md:text-3xl font-bold text-brand-blue mb-2">{s.title}</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{s.title}</h2>
                 <p className="text-brand-cyan font-semibold mb-4">{s.subtitle}</p>
-                <p className="text-brand-blue/60 leading-relaxed mb-6">{s.description}</p>
-                <p className="text-sm font-bold text-brand-blue mb-3">{content.included}:</p>
+                <p className="text-white/65 leading-relaxed mb-6">{s.description}</p>
+                <p className="text-sm font-bold text-white mb-3">{content.included}:</p>
                 <ul className="space-y-2 mb-6">
                   {s.includes.map(item => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-brand-blue/70">
+                    <li key={item} className="flex items-start gap-2 text-sm text-white/70">
                       <CheckCircle2 className="w-4 h-4 text-brand-cyan shrink-0 mt-0.5" /> {item}
                     </li>
                   ))}
                 </ul>
-                {s.note && <p className="text-xs text-brand-blue/40 italic mb-4">* {s.note}</p>}
+                {s.note && <p className="text-xs text-white/55 italic mb-4">* {s.note}</p>}
                 <a href="https://wa.me/60172915754" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-brand-cyan font-bold text-sm hover:gap-3 transition-all">
                   {content.getQuote} <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-              <div className="bg-brand-blue/3 border border-brand-blue/8 rounded-[28px] p-8">
-                <p className="text-xs font-bold text-brand-blue/40 uppercase tracking-widest mb-6">{content.pricingOptions}</p>
+              <div className="bg-white/[0.02] border border-white/10 rounded-[28px] p-8">
+                <p className="text-xs font-bold text-white/55 uppercase tracking-widest mb-6">{content.pricingOptions}</p>
                 <div className="space-y-4">
                   {s.options.map((opt, j) => (
-                    <div key={j} className="flex items-center justify-between py-4 border-b border-brand-blue/5 last:border-0">
-                      <span className="text-sm text-brand-blue/70 pr-4">{opt.name}</span>
+                    <div key={j} className="flex items-center justify-between py-4 border-b border-white/10 last:border-0">
+                      <span className="text-sm text-white/70 pr-4">{opt.name}</span>
                       <div className="text-right shrink-0">
-                        <div className="font-bold text-brand-blue">{opt.price}</div>
-                        <div className="text-xs text-brand-blue/40">{opt.unit}</div>
+                        <div className="font-bold text-white">{opt.price}</div>
+                        <div className="text-xs text-white/55">{opt.unit}</div>
                       </div>
                     </div>
                   ))}
@@ -419,14 +419,14 @@ export default function Services() {
         </div>
 
         {/* FAQ */}
-        <div className="bg-brand-blue/3 border-t border-brand-blue/5">
+        <div className="bg-white/[0.02] border-t border-white/10">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20">
-            <h2 className="text-2xl font-bold text-brand-blue mb-10 text-center">{content.faqTitle}</h2>
+            <h2 className="text-2xl font-bold text-white mb-10 text-center">{content.faqTitle}</h2>
             <div className="space-y-6">
               {content.faqs.map((faq, i) => (
-                <div key={i} className="p-6 bg-white rounded-2xl border border-brand-blue/5">
-                  <h3 className="font-bold text-brand-blue mb-2">{faq.q}</h3>
-                  <p className="text-brand-blue/60 text-sm leading-relaxed">{faq.a}</p>
+                <div key={i} className="p-6 bg-white/[0.04] rounded-2xl border border-white/10">
+                  <h3 className="font-bold text-white mb-2">{faq.q}</h3>
+                  <p className="text-white/65 text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>

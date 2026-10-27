@@ -619,10 +619,10 @@ ${listPricing}
   const first = ordered.find(w => w.media.some(m => m.type === 'video')) || ordered[0];
   const firstThumb = (first.media.find(m => m.type === 'video') || first.media[0]).thumb;
 
-  const staticHero = `<nav class="fixed top-0 left-0 right-0 z-50 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
+  const staticHero = `<nav class="fixed top-0 left-0 right-0 z-50 bg-brand-blue/95 backdrop-blur-sm border-b border-white/10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
-      <a href="/" class="flex items-center"><picture><source srcset="/logo.webp" type="image/webp" /><img src="/logo.png" alt="Cheaper Nexus" width="430" height="120" fetchpriority="high" class="h-12 w-auto object-contain" /></picture></a>
+      <a href="/" class="flex items-center"><picture><source srcset="/logo-dark.webp" type="image/webp" /><img src="/logo-dark.png" alt="Cheaper Nexus" width="430" height="120" fetchpriority="high" class="h-12 w-auto object-contain" /></picture></a>
     </div>
   </div>
 </nav>

@@ -25,7 +25,7 @@ interface FooterProps {
   variant?: 'light' | 'dark';
 }
 
-export function Footer({ lang, variant = 'light' }: FooterProps) {
+export function Footer({ lang, variant = 'dark' }: FooterProps) {
   const t = footerT[lang];
   const dark = variant === 'dark';
 

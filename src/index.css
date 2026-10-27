@@ -37,22 +37,29 @@
 }
 
 /* ── Article prose styles ──────────────────────────────────────────────── */
+/* Article body. Written for a white page originally; the whole site is on
+   ink now, so every colour here is inverted. Body text sits at 78% rather
+   than a literal inversion of 72% — white on #0A192F needs more alpha than
+   ink on white to reach the same legibility. */
 .prose-article {
-  color: #0A192F;
+  color: #F2F6FA;
   line-height: 1.8;
   font-size: 1.05rem;
 }
-.prose-article h1 { font-size: 2rem; font-weight: 800; margin: 2rem 0 1rem; line-height: 1.25; }
-.prose-article h2 { font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(10,25,47,0.06); color: #0A192F; }
+.prose-article h1 { font-size: 2rem; font-weight: 800; margin: 2rem 0 1rem; line-height: 1.25; color: #FFFFFF; }
+.prose-article h2 { font-size: 1.5rem; font-weight: 700; margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); color: #FFFFFF; }
 .prose-article h3 { font-size: 1.2rem; font-weight: 700; margin: 1.75rem 0 0.75rem; color: #00D4FF; }
-.prose-article p  { margin: 1rem 0; color: rgba(10,25,47,0.72); }
-.prose-article ul, .prose-article ol { margin: 1rem 0 1rem 1.5rem; color: rgba(10,25,47,0.72); }
+.prose-article p  { margin: 1rem 0; color: rgba(255,255,255,0.78); }
+.prose-article ul, .prose-article ol { margin: 1rem 0 1rem 1.5rem; color: rgba(255,255,255,0.78); }
 .prose-article li { margin: 0.4rem 0; }
 .prose-article ul li { list-style: disc; }
 .prose-article ol li { list-style: decimal; }
-.prose-article strong { color: #0A192F; font-weight: 700; }
-.prose-article blockquote { border-left: 4px solid #00D4FF; padding-left: 1.25rem; margin: 1.5rem 0; color: rgba(10,25,47,0.6); font-style: italic; }
-.prose-article code { background: rgba(0,212,255,0.08); color: #0A192F; padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; }
-.prose-article pre  { background: #0A192F; color: #e2e8f0; padding: 1.25rem; border-radius: 12px; overflow-x: auto; margin: 1.5rem 0; }
+.prose-article strong { color: #FFFFFF; font-weight: 700; }
+.prose-article blockquote { border-left: 4px solid #00D4FF; padding-left: 1.25rem; margin: 1.5rem 0; color: rgba(255,255,255,0.68); font-style: italic; }
+.prose-article code { background: rgba(0,212,255,0.14); color: #7FE8FF; padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; }
+.prose-article pre  { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #e2e8f0; padding: 1.25rem; border-radius: 12px; overflow-x: auto; margin: 1.5rem 0; }
 .prose-article a    { color: #00D4FF; text-decoration: underline; }
-.prose-article hr   { border: none; border-top: 1px solid rgba(10,25,47,0.08); margin: 2rem 0; }
+.prose-article hr   { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 2rem 0; }
+.prose-article table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+.prose-article th { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.18); color: #FFFFFF; font-weight: 700; }
+.prose-article td { padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.78); }

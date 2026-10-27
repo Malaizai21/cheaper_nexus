@@ -34,15 +34,15 @@ export function Navbar({ lang, setLang }: NavbarProps) {
   const isActive = (href: string) => loc.pathname === href || loc.pathname.startsWith(`${href}/`);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-blue/95 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <picture>
-              <source srcSet="/logo.webp" type="image/webp" />
+              <source srcSet="/logo-dark.webp" type="image/webp" />
               <img
-                src="/logo.png"
+                src="/logo-dark.png"
                 alt="Cheaper Nexus"
                 width={430}
                 height={120}
@@ -59,7 +59,7 @@ export function Navbar({ lang, setLang }: NavbarProps) {
                 key={l.href}
                 to={l.href}
                 className={`text-sm font-medium transition-colors ${
-                  isActive(l.href) ? 'text-brand-cyan' : 'text-brand-blue hover:text-brand-cyan'
+                  isActive(l.href) ? 'text-brand-cyan' : 'text-white/70 hover:text-brand-cyan'
                 }`}
               >
                 {l.label}
@@ -68,11 +68,11 @@ export function Navbar({ lang, setLang }: NavbarProps) {
 
             {/* Language switcher */}
             <div className="flex items-center gap-2 px-3 py-1 bg-brand-blue/5 rounded-full">
-              <Languages className="w-4 h-4 text-brand-blue/40" />
+              <Languages className="w-4 h-4 text-white/50" />
               <select
                 value={lang}
                 onChange={e => setLang(e.target.value as Language)}
-                className="bg-transparent text-xs font-bold text-brand-blue outline-none cursor-pointer"
+                className="bg-transparent text-xs font-bold text-white outline-none cursor-pointer"
               >
                 <option value="zh">中文</option>
                 <option value="en">EN</option>
@@ -95,13 +95,13 @@ export function Navbar({ lang, setLang }: NavbarProps) {
             <select
               value={lang}
               onChange={e => setLang(e.target.value as Language)}
-              className="bg-brand-blue/5 px-2 py-1 rounded text-xs font-bold text-brand-blue outline-none"
+              className="bg-white/10 px-2 py-1 rounded text-xs font-bold text-white outline-none"
             >
               <option value="zh">中文</option>
               <option value="en">EN</option>
               <option value="ms">MS</option>
             </select>
-            <button onClick={() => setOpen(!open)} className="p-2 text-brand-blue">
+            <button onClick={() => setOpen(!open)} className="p-2 text-white">
               {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
@@ -110,7 +110,7 @@ export function Navbar({ lang, setLang }: NavbarProps) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden border-t border-brand-blue/5 bg-white px-4 py-4 space-y-1">
+        <div className="lg:hidden border-t border-white/10 bg-brand-blue px-4 py-4 space-y-1">
           {links.map(l => (
             <Link
               key={l.href}
@@ -119,7 +119,7 @@ export function Navbar({ lang, setLang }: NavbarProps) {
               className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                 isActive(l.href)
                   ? 'bg-brand-cyan/10 text-brand-cyan'
-                  : 'text-brand-blue hover:bg-brand-blue/5'
+                  : 'text-white/70 hover:bg-white/5'
               }`}
             >
               {l.label}

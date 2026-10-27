@@ -16,9 +16,9 @@ export type ArticleSummary = {
 };
 
 const LANG_BADGES: Record<string, { label: string; color: string }> = {
-  zh: { label: '中文', color: 'bg-red-100 text-red-700' },
-  en: { label: 'EN', color: 'bg-blue-100 text-blue-700' },
-  ms: { label: 'BM', color: 'bg-green-100 text-green-700' },
+  zh: { label: '中文', color: 'bg-red-400/15 text-red-300' },
+  en: { label: 'EN', color: 'bg-blue-400/15 text-blue-300' },
+  ms: { label: 'BM', color: 'bg-green-400/15 text-green-300' },
 };
 
 const STYLE_LABELS: Record<string, string> = {
@@ -35,7 +35,7 @@ export function BlogCard({ article }: { article: ArticleSummary }) {
   return (
     <Link
       to={`/blog/${article.slug}`}
-      className="group flex flex-col h-full bg-white rounded-[28px] border border-brand-blue/5 hover:border-brand-cyan/30 hover:shadow-2xl hover:shadow-brand-blue/5 transition-all overflow-hidden"
+      className="group flex flex-col h-full bg-white/[0.04] rounded-[28px] border border-white/10 hover:border-brand-cyan/40 hover:bg-white/[0.06] transition-all overflow-hidden"
     >
       {article.image_url && (
         <div className="w-full h-44 overflow-hidden">
@@ -56,19 +56,19 @@ export function BlogCard({ article }: { article: ArticleSummary }) {
             {STYLE_LABELS[article.writing_style] ?? article.writing_style}
           </span>
         )}
-        <span className="ml-auto text-xs text-brand-blue/40">{date}</span>
+        <span className="ml-auto text-xs text-white/55">{date}</span>
       </div>
 
-      <h3 className="text-lg font-bold text-brand-blue mb-3 leading-snug group-hover:text-brand-cyan transition-colors line-clamp-2">
+      <h3 className="text-lg font-bold text-white mb-3 leading-snug group-hover:text-brand-cyan transition-colors line-clamp-2">
         {article.title}
       </h3>
 
-      <p className="text-sm text-brand-blue/60 leading-relaxed flex-grow line-clamp-3">
+      <p className="text-sm text-white/60 leading-relaxed flex-grow line-clamp-3">
         {article.meta_description}
       </p>
 
-      <div className="flex items-center justify-between mt-6 pt-5 border-t border-brand-blue/5">
-        <div className="flex items-center gap-1.5 text-xs text-brand-blue/40">
+      <div className="flex items-center justify-between mt-6 pt-5 border-t border-white/10">
+        <div className="flex items-center gap-1.5 text-xs text-white/55">
           <Globe className="w-3.5 h-3.5" />
           {article.word_count.toLocaleString()} words
         </div>

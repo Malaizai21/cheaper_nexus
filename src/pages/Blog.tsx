@@ -36,7 +36,7 @@ export default function Blog() {
   return (
     <>
       <SEO lang="zh" />
-      <div className="min-h-screen bg-brand-white">
+      <div className="min-h-screen bg-brand-blue">
         {/* Header */}
         <div className="bg-brand-blue text-brand-white pt-24 pb-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -51,7 +51,7 @@ export default function Blog() {
         </div>
 
         {/* Filters */}
-        <div className="sticky top-0 z-20 bg-brand-white/95 backdrop-blur-sm border-b border-brand-blue/5">
+        <div className="sticky top-0 z-20 bg-brand-blue/95 backdrop-blur-sm border-b border-white/10">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row gap-3 items-center">
             <div className="flex gap-2">
               {LANG_TABS.map(t => (
@@ -61,7 +61,7 @@ export default function Blog() {
                   className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
                     langFilter === t.id
                       ? 'bg-brand-blue text-white'
-                      : 'bg-brand-blue/5 text-brand-blue hover:bg-brand-blue/10'
+                      : 'bg-white/[0.03] text-white hover:bg-brand-blue/10'
                   }`}
                 >
                   {t.label}
@@ -69,12 +69,12 @@ export default function Blog() {
               ))}
             </div>
             <div className="relative flex-1 max-w-xs sm:ml-auto">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-blue/30" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/50" />
               <input
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="搜索文章..."
-                className="w-full pl-9 pr-4 py-2 text-sm bg-brand-blue/5 rounded-full outline-none focus:ring-2 focus:ring-brand-cyan"
+                className="w-full pl-9 pr-4 py-2 text-sm bg-white/[0.03] rounded-full outline-none focus:ring-2 focus:ring-brand-cyan"
               />
             </div>
           </div>
@@ -83,11 +83,11 @@ export default function Blog() {
         {/* Articles Grid */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
           {loading ? (
-            <div className="flex items-center justify-center py-32 text-brand-blue/40">
+            <div className="flex items-center justify-center py-32 text-white/55">
               <RefreshCw className="w-6 h-6 animate-spin mr-3" /> 加载中...
             </div>
           ) : filtered.length === 0 ? (
-            <div className="text-center py-32 text-brand-blue/40">
+            <div className="text-center py-32 text-white/55">
               <p className="text-lg font-medium mb-2">暂无文章</p>
               <p className="text-sm">前往 <Link to="/admin" className="text-brand-cyan hover:underline">管理后台</Link> 生成你的第一篇 SEO 文章</p>
             </div>
@@ -99,15 +99,15 @@ export default function Blog() {
         </div>
 
         {/* CTA */}
-        <div className="bg-brand-blue/[0.03] border-t border-brand-blue/5 py-16">
+        <div className="bg-brand-blue/[0.03] border-t border-white/10 py-16">
           <div className="max-w-2xl mx-auto text-center px-4">
-            <h2 className="text-2xl font-bold text-brand-blue mb-3">需要专业的数码营销服务？</h2>
-            <p className="text-brand-blue/60 mb-6">Cheaper Nexus 提供从内容制作到社媒代运营与广告投放的一站式服务。</p>
+            <h2 className="text-2xl font-bold text-white mb-3">需要专业的数码营销服务？</h2>
+            <p className="text-white/65 mb-6">Cheaper Nexus 提供从内容制作到社媒代运营与广告投放的一站式服务。</p>
             <a
               href="https://wa.me/60172915754"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-brand-blue text-white rounded-full font-bold hover:bg-brand-blue/90 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-brand-blue text-white rounded-full font-bold hover:bg-brand-blue transition-all"
             >
               WhatsApp 免费咨询
             </a>
