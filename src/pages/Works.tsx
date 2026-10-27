@@ -232,8 +232,8 @@ export default function Works() {
           {loading ? (
             <div className="h-[60vh] bg-brand-blue" />
           ) : filtered.length === 0 ? (
-            <div className="py-28 text-center bg-white">
-              <p className="text-brand-blue/50">{t.empty}</p>
+            <div className="py-28 text-center bg-brand-blue">
+              <p className="text-white/50">{t.empty}</p>
             </div>
           ) : (
             filtered.map((w, i) => (

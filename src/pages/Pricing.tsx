@@ -4,6 +4,8 @@ import { CheckCircle2, Phone, ArrowRight, Star, Megaphone, Users, Palette, Video
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useLanguage, type Language } from '../hooks/useLanguage';
+import { motion } from 'motion/react';
+import { fadeUp, stagger } from '../components/Motion';
 
 const SITE_URL = 'https://cheapernexus.com';
 
@@ -179,14 +181,14 @@ export default function Pricing() {
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
           {/* Package tiers */}
-          <div className="text-center mb-14">
+          <motion.div className="text-center mb-14" {...fadeUp}>
             <h2 className="text-3xl font-bold text-white mb-3">{content.packagesTitle}</h2>
             <p className="text-white/65">{content.packagesSub}</p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             {content.tiers.map((tier, idx) => (
-              <div key={tier.name} className={`relative rounded-[28px] p-8 flex flex-col ${
+              <motion.div key={tier.name} {...stagger(idx)} className={`relative rounded-[28px] p-8 flex flex-col ${
                 idx === 1 ? 'bg-white text-brand-blue shadow-[0_24px_70px_-20px_rgba(0,212,255,0.45)] ring-2 ring-brand-cyan scale-105' : 'bg-white/[0.04] border border-white/10'
               }`}>
                 {idx === 1 && (
@@ -217,7 +219,7 @@ export default function Pricing() {
                   }`}>
                   {content.getStarted}
                 </a>
-              </div>
+              </motion.div>
             ))}
           </div>
 

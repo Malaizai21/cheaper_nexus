@@ -6,6 +6,8 @@ import { Navbar } from '../components/Navbar';
 import { Footer, LEGAL_NAME, SSM_NUMBER } from '../components/Footer';
 import { useLanguage, type Language } from '../hooks/useLanguage';
 import { type Work } from '../components/works/worksData';
+import { motion } from 'motion/react';
+import { fadeUp, stagger, CountUp } from '../components/Motion';
 
 const SITE_URL = 'https://cheapernexus.com';
 const WHATSAPP = 'https://wa.me/60172915754';
@@ -217,18 +219,18 @@ export default function About() {
 
         {works.length > 0 && (
           <div className="border-y border-white/10">
-            <div className="px-4 sm:px-8 lg:px-12 py-6 max-w-4xl mx-auto flex flex-wrap gap-x-10 gap-y-3">
+            <motion.div className="px-4 sm:px-8 lg:px-12 py-6 max-w-4xl mx-auto flex flex-wrap gap-x-10 gap-y-3" {...fadeUp}>
               {[
                 [works.length, t.statsLabels.clients],
                 [videos, t.statsLabels.videos],
                 [designs, t.statsLabels.designs],
               ].map(([n, label]) => (
                 <span key={String(label)} className="flex items-baseline gap-2">
-                  <span className="text-2xl font-black text-brand-cyan tabular-nums">{n}</span>
+                  <CountUp value={String(n)} className="text-2xl font-black text-brand-cyan tabular-nums" />
                   <span className="text-sm text-white/55">{label}</span>
                 </span>
               ))}
-            </div>
+            </motion.div>
           </div>
         )}
 

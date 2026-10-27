@@ -17,6 +17,8 @@ import { useLanguage, type Language } from '../hooks/useLanguage';
 import { Footer } from '../components/Footer';
 import { WorkWall } from '../components/works/WorkWall';
 import { type Work } from '../components/works/worksData';
+import { ScrollFilm, FilmCopy } from '../components/ScrollFilm';
+import { fadeUp, stagger } from '../components/Motion';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -32,6 +34,7 @@ const t: Record<Language, {
   hero: { badge: string; line1: string; line2: string; sub: string; cta1: string; cta2: string; chips: string[] };
   stats: { value: string; label: string }[];
   services: { eyebrow: string; title: string; sub: string; cta: string };
+  work: { eyebrow: string; title: string; sub: string; cta: string };
   whyUs: { eyebrow: string; line1: string; line2: string; sub: string; points: { t: string; d: string }[] };
   blog: { eyebrow: string; title: string; sub: string; cta: string; read: string };
   final: { title: string; sub: string; btn: string };
@@ -53,6 +56,12 @@ const t: Record<Language, {
       { value: '30分钟', label: '免费策略咨询' },
       { value: '全国', label: '马来西亚服务' },
     ],
+    work: {
+      eyebrow: '真实客户作品',
+      title: '这些是我们实际交付的',
+      sub: '短视频、社媒设计、广告素材——每一支都来自马来西亚的真实客户项目。',
+      cta: '查看全部作品与价格',
+    },
     services: {
       eyebrow: '我们的服务',
       title: '我们提供什么？',
@@ -102,6 +111,12 @@ const t: Record<Language, {
       { value: '30 Min', label: 'Free Strategy Call' },
       { value: 'All MY', label: 'Malaysia-Wide' },
     ],
+    work: {
+      eyebrow: 'Real Client Work',
+      title: "What we've actually delivered",
+      sub: 'Short-form video, social design, ad creative — every piece came out of a real Malaysian client project.',
+      cta: 'See all work & pricing',
+    },
     services: {
       eyebrow: 'What We Do',
       title: 'Our Services',
@@ -151,6 +166,12 @@ const t: Record<Language, {
       { value: '30 Min', label: 'Sesi Strategi Percuma' },
       { value: 'Seluruh MY', label: 'Seluruh Malaysia' },
     ],
+    work: {
+      eyebrow: 'Kerja Pelanggan Sebenar',
+      title: 'Apa yang kami telah hasilkan',
+      sub: 'Video pendek, reka bentuk media sosial, bahan iklan — setiap satu daripada projek pelanggan Malaysia yang sebenar.',
+      cta: 'Lihat semua kerja & harga',
+    },
     services: {
       eyebrow: 'Perkhidmatan Kami',
       title: 'Apa Yang Kami Buat?',
@@ -219,28 +240,6 @@ const serviceCards: Record<Language, { icon: React.ReactNode; title: string; des
   ],
 };
 
-// ─── Animation helpers ────────────────────────────────────────────────────────
-
-/* Scroll reveals. The travel and the settle are deliberately long — a short
-   36px nudge read as barely-there, so headings now rise further and cards
-   arrive one after another rather than almost together. */
-/** Shared easing. Typed as a fixed tuple so it satisfies motion's `Easing`. */
-const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
-
-const fadeUp = {
-  initial: { opacity: 0, y: 90 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-90px' },
-  transition: { duration: 1.05, ease: EASE },
-};
-
-const stagger = (i: number) => ({
-  initial: { opacity: 0, y: 72, scale: 0.965 },
-  whileInView: { opacity: 1, y: 0, scale: 1 },
-  viewport: { once: true, margin: '-90px' },
-  transition: { duration: 0.85, delay: i * 0.13, ease: EASE },
-});
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -271,16 +270,14 @@ export default function Home() {
       <Navbar lang={lang} setLang={setLang} />
 
       {/* ─────────────────────────────────────────────────────── HERO ── */}
-      <section
-        /* Column, not a row: the headline and the work wall are siblings here
-           and must stack rather than compete for width.
-           Near-black, lit only by a soft vignette. The reference gets its
-           weight from restraint: four elements, one accent, a lot of dark. */
-        className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-        style={{ background: 'radial-gradient(1200px 780px at 50% 22%, #10141c 0%, #0a0c11 55%, #07080b 100%)' }}
-      >
-        {/* Main content */}
-        <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-8 pt-32 pb-14 flex flex-col items-center text-center" style={{ zIndex: 3 }}>
+      {/* The film plays under the copy and is scrubbed by the scroll: the
+          handset starts as a speck in the dark and ends filling the frame.
+          The copy owns the dark opening and clears out before the screen
+          arrives — see FilmCopy for why there is no scrim instead. */}
+      <ScrollFilm height={2.2}>
+        <FilmCopy>
+          {/* Main content */}
+          <div className="relative w-full max-w-[1400px] mx-auto flex flex-col items-center text-center">
 
           {/* Eyebrow — plain letterspaced type, no pill */}
           <motion.p
@@ -337,29 +334,46 @@ export default function Home() {
               {c.hero.cta2}
             </Link>
           </motion.div>
+          </div>
+
+          {/* Scroll cue — it is also the instruction for the film, so it sits
+              inside the copy and leaves with it. */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-35"
+            animate={{ y: [0, 7, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+          >
+            <div className="w-px h-10" style={{ background: 'linear-gradient(to bottom, transparent, #4ADE80)' }} />
+            <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#4ADE80' }} />
+          </motion.div>
+        </FilmCopy>
+      </ScrollFilm>
+
+      {/* ──────────────────────────────────────────────── REAL CLIENT WORK ── */}
+      {/* The film is ours; this is the client's. It follows the hero directly
+          so the first thing after the set piece is evidence. */}
+      <section className="bg-[#05070b] pt-20 pb-16 overflow-hidden">
+        <motion.div className="max-w-6xl mx-auto px-4 sm:px-6 text-center mb-12" {...fadeUp}>
+          <span className="text-xs font-bold text-brand-cyan uppercase tracking-widest block mb-3">
+            {c.work.eyebrow}
+          </span>
+          <h2 className="text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.1] font-bold text-white">
+            {c.work.title}
+          </h2>
+          <p className="text-white/50 mt-4 max-w-xl mx-auto leading-relaxed">{c.work.sub}</p>
+        </motion.div>
+
+        <WorkWall works={works} count={10} />
+
+        <div className="mt-12 text-center">
+          <Link
+            to="/works"
+            className="inline-flex items-center gap-2 text-brand-cyan font-bold hover:gap-3 transition-all group"
+          >
+            {c.work.cta}
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
-
-        {/* The work itself, drifting across under the headline. */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.55 }}
-          className="relative w-full"
-          style={{ zIndex: 3 }}
-        >
-          <WorkWall works={works} count={10} />
-        </motion.div>
-
-        {/* Scroll cue */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-35"
-          animate={{ y: [0, 7, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-          style={{ zIndex: 3 }}
-        >
-          <div className="w-px h-10" style={{ background: 'linear-gradient(to bottom, transparent, #4ADE80)' }} />
-          <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#4ADE80' }} />
-        </motion.div>
       </section>
 
       {/* ─────────────────────────────────────────────────── STATS BAND ── */}

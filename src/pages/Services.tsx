@@ -4,6 +4,8 @@ import { ArrowRight, CheckCircle2, Phone, Sparkles, Share2, Rocket, Megaphone, U
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useLanguage, type Language } from '../hooks/useLanguage';
+import { motion } from 'motion/react';
+import { fadeUp, stagger } from '../components/Motion';
 
 const SITE_URL = 'https://cheapernexus.com';
 
@@ -380,7 +382,7 @@ export default function Services() {
         {/* Services */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 space-y-20">
           {content.services.map((s, i) => (
-            <div key={i} className="grid md:grid-cols-2 gap-12 items-start">
+            <motion.div key={i} className="grid md:grid-cols-2 gap-12 items-start" {...stagger(i % 3)}>
               <div>
                 <div className="w-14 h-14 bg-brand-blue text-brand-cyan rounded-2xl flex items-center justify-center mb-6">{icons[i]}</div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{s.title}</h2>
@@ -414,7 +416,7 @@ export default function Services() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -424,10 +426,10 @@ export default function Services() {
             <h2 className="text-2xl font-bold text-white mb-10 text-center">{content.faqTitle}</h2>
             <div className="space-y-6">
               {content.faqs.map((faq, i) => (
-                <div key={i} className="p-6 bg-white/[0.04] rounded-2xl border border-white/10">
+                <motion.div key={i} className="p-6 bg-white/[0.04] rounded-2xl border border-white/10" {...stagger(i % 4)}>
                   <h3 className="font-bold text-white mb-2">{faq.q}</h3>
                   <p className="text-white/65 text-sm leading-relaxed">{faq.a}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

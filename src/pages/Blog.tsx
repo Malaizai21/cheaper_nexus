@@ -5,6 +5,8 @@ import { BlogCard, type ArticleSummary } from '../components/BlogCard';
 import { SEO } from '../components/SEO';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../hooks/useLanguage';
+import { motion } from 'motion/react';
+import { fadeUp, stagger } from '../components/Motion';
 
 const LANG_TABS = [
   { id: 'all', label: '全部' },
@@ -92,9 +94,9 @@ export default function Blog() {
               <p className="text-sm">前往 <Link to="/admin" className="text-brand-cyan hover:underline">管理后台</Link> 生成你的第一篇 SEO 文章</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" {...fadeUp}>
               {filtered.map((a: ArticleSummary) => <BlogCard key={a.id} article={a} />)}
-            </div>
+            </motion.div>
           )}
         </div>
 

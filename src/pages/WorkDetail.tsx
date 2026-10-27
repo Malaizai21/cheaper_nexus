@@ -9,6 +9,8 @@ import { useLanguage } from '../hooks/useLanguage';
 import {
   type Work, SERVICE_FILTERS, copyLang, worksT, WHATSAPP_URL, mediaCounts, countLabel, displayLeading,
 } from '../components/works/worksData';
+import { motion } from 'motion/react';
+import { fadeUp, CountUp } from '../components/Motion';
 
 const SITE_URL = 'https://cheapernexus.com';
 
@@ -145,14 +147,15 @@ export default function WorkDetail() {
           </p>
 
           {work.result && (
-            <div className="mt-10 max-w-2xl rounded-2xl border border-brand-cyan/30 bg-brand-cyan/[0.07] p-6 sm:p-7">
+            <motion.div className="mt-10 max-w-2xl rounded-2xl border border-brand-cyan/30 bg-brand-cyan/[0.07] p-6 sm:p-7" {...fadeUp}>
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-brand-cyan/80">
                 {lang === 'zh' ? '实际投放成效' : lang === 'ms' ? 'Hasil Kempen Sebenar' : 'Actual campaign result'}
               </p>
               <p className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span className="text-4xl sm:text-5xl font-black tracking-[-0.03em] text-brand-cyan">
-                  {work.result.value}
-                </span>
+                <CountUp
+                  value={work.result.value}
+                  className="text-4xl sm:text-5xl font-black tracking-[-0.03em] text-brand-cyan"
+                />
                 <span className="text-sm font-semibold text-white/70">{work.result.label[cl]}</span>
               </p>
               <p className="mt-2 text-xs font-medium text-white/45">
@@ -165,7 +168,7 @@ export default function WorkDetail() {
                     : 'Run by Cheaper Nexus'}
               </p>
               <p className="mt-4 text-sm text-white/55 leading-relaxed">{work.result.note[cl]}</p>
-            </div>
+            </motion.div>
           )}
         </header>
 
@@ -185,7 +188,7 @@ export default function WorkDetail() {
         </div>
 
         {/* Copy — two-column editorial */}
-        <div className="px-4 sm:px-8 lg:px-12 py-16 sm:py-20 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-10 lg:gap-16">
+        <motion.div className="px-4 sm:px-8 lg:px-12 py-16 sm:py-20 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-10 lg:gap-16" {...fadeUp}>
           <div>
             <h2 className="font-black uppercase text-2xl sm:text-3xl tracking-[-0.02em] leading-tight">
               {t.overview}
@@ -220,12 +223,17 @@ export default function WorkDetail() {
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Gallery on a light ground so the creative reads properly */}
-        <section className="bg-white text-brand-blue px-4 sm:px-8 lg:px-12 py-16 sm:py-20">
-          <h2 className="font-black uppercase text-2xl sm:text-3xl tracking-[-0.02em] mb-8">{t.gallery}</h2>
-          <WorkGallery media={work.media} lang={lang} clientName={work.client_name} />
+        {/* The creative still needs a light ground — a design on a white
+            artboard disappears on an ink page. On a site that is dark
+            everywhere else, though, a full-bleed white band reads as a page
+            that was missed, so the light ground is an inset panel instead. */}
+        <section className="px-4 sm:px-8 lg:px-12 py-16 sm:py-20">
+          <div className="rounded-[28px] bg-white text-brand-blue p-6 sm:p-10">
+            <h2 className="font-black uppercase text-2xl sm:text-3xl tracking-[-0.02em] mb-8">{t.gallery}</h2>
+            <WorkGallery media={work.media} lang={lang} clientName={work.client_name} />
+          </div>
         </section>
 
         {/* Next */}
@@ -249,7 +257,9 @@ export default function WorkDetail() {
           <h2 className="font-black uppercase leading-[0.9] tracking-[-0.03em] text-[clamp(2rem,7vw,5rem)]">
             {t.ctaTitle}
           </h2>
-          <p className="mt-5 text-brand-blue/70 font-medium">{t.ctaSub}</p>
+          {/* Ink at 70% on the cyan band measures 3.72:1 — under the 4.5 body
+              text needs. Cyan is a light colour and leaves little headroom. */}
+          <p className="mt-5 text-brand-blue/85 font-medium">{t.ctaSub}</p>
           <a
             href={WHATSAPP_URL}
             target="_blank"

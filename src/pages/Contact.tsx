@@ -5,6 +5,8 @@ import { Phone, MessageSquare, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useLanguage, type Language } from '../hooks/useLanguage';
+import { motion } from 'motion/react';
+import { fadeUp, stagger } from '../components/Motion';
 
 const SITE_URL = 'https://cheapernexus.com';
 
@@ -94,7 +96,7 @@ export default function Contact() {
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-          <div className="grid md:grid-cols-2 gap-16">
+          <motion.div className="grid md:grid-cols-2 gap-16" {...fadeUp}>
             {/* Contact info */}
             <div>
               <h2 className="text-2xl font-bold text-white mb-4">{content.teamTitle}</h2>
@@ -180,7 +182,7 @@ export default function Contact() {
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
       <Footer lang={lang} />
