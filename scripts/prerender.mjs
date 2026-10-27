@@ -364,9 +364,6 @@ const staticPages = [
 <h2>You talk to a person 你会直接找到人</h2>
 <p>Every enquiry is answered by Henry on WhatsApp at +60 17-291 5754. There is no support queue and no account manager relaying messages. Work starts with a free 30-minute conversation, and if we are not the right fit we say so during it.</p>
 
-<h2>What we do not do 我们不做的事</h2>
-<p>We do not manage Google Ads or SEM campaigns, we do not sell SEO services, we do not build websites or landing pages, and we do not run full-service e-commerce or live streaming. Saying so plainly is cheaper for both sides than discovering it on a first call. 我们不做 Google 广告代投、SEO 代运营、网站开发，以及电商全案与直播。</p>
-
 <h2>Our work 作品</h2>
 <p>The client work and the full price list are published together on one page, so the output can be judged before any money changes hands. See <a href="/works">client work and pricing</a>, the <a href="/services">full service list</a>, or <a href="/contact">how to reach us</a>.</p>`,
   },

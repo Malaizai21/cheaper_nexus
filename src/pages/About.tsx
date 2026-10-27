@@ -26,8 +26,6 @@ type Copy = {
   lede: string;
   sections: { h: string; p: string[] }[];
   statsLabels: { clients: string; videos: string; designs: string };
-  notTitle: string;
-  not: string[];
   ctaTitle: string;
   ctaBody: string;
   ctaButton: string;
@@ -64,13 +62,6 @@ const T: Record<Language, Copy> = {
       },
     ],
     statsLabels: { clients: '客户品牌', videos: '支短视频', designs: '张设计' },
-    notTitle: '我们不做的事',
-    not: [
-      'Google 广告代投与 SEM 代运营',
-      'SEO 代运营',
-      '网站与落地页开发',
-      '电商全案代运营与直播',
-    ],
     ctaTitle: '先聊聊？',
     ctaBody: '免费 30 分钟策略咨询，不合适也会直说。',
     ctaButton: 'WhatsApp Henry',
@@ -106,13 +97,6 @@ const T: Record<Language, Copy> = {
       },
     ],
     statsLabels: { clients: 'client brands', videos: 'short videos', designs: 'designs' },
-    notTitle: 'What we do not do',
-    not: [
-      'Google Ads and SEM campaign management',
-      'SEO services',
-      'Website and landing page builds',
-      'Full-service e-commerce management and live streaming',
-    ],
     ctaTitle: 'Want to talk it through?',
     ctaBody: 'A free 30-minute strategy conversation, with a straight answer if we are not a fit.',
     ctaButton: 'WhatsApp Henry',
@@ -148,13 +132,6 @@ const T: Record<Language, Copy> = {
       },
     ],
     statsLabels: { clients: 'jenama klien', videos: 'video pendek', designs: 'reka bentuk' },
-    notTitle: 'Apa yang kami tidak buat',
-    not: [
-      'Pengurusan kempen Google Ads dan SEM',
-      'Perkhidmatan SEO',
-      'Pembinaan website dan landing page',
-      'Pengurusan e-dagang menyeluruh dan live streaming',
-    ],
     ctaTitle: 'Nak berbincang dahulu?',
     ctaBody: 'Perbincangan strategi percuma 30 minit, dengan jawapan jujur kalau kami bukan pilihan yang sesuai.',
     ctaButton: 'WhatsApp Henry',
@@ -266,18 +243,6 @@ export default function About() {
               </div>
             </section>
           ))}
-
-          <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-7">
-            <h2 className="text-xl font-bold mb-4">{t.notTitle}</h2>
-            <ul className="space-y-2">
-              {t.not.map(n => (
-                <li key={n} className="text-white/55 text-sm flex gap-2.5">
-                  <span className="text-white/25 shrink-0">—</span>
-                  {n}
-                </li>
-              ))}
-            </ul>
-          </section>
         </main>
 
         <section className="bg-brand-cyan text-brand-blue">
