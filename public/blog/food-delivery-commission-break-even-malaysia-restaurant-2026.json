@@ -1,0 +1,44 @@
+{
+  "id": 1794000000000,
+  "slug": "food-delivery-commission-break-even-malaysia-restaurant-2026",
+  "language": "en",
+  "title": "Is GrabFood or foodpanda Worth It for a Malaysian Restaurant? Commission Break-Even Maths (2026)",
+  "meta_description": "Is GrabFood or foodpanda worth it for a Malaysian restaurant in 2026? Public guides quote roughly 15 to 30 percent commission per order. Run the break-even maths on your own margins before you list.",
+  "keywords": [
+    "GrabFood commission Malaysia",
+    "foodpanda commission Malaysia",
+    "restaurant delivery app worth it",
+    "food delivery break-even Malaysia",
+    "F&B digital marketing Malaysia"
+  ],
+  "content": "Short answer: for most Malaysian restaurants, GrabFood and foodpanda only make sense if the dish margin can absorb a commission of roughly 15 to 30 percent per order. Public vendor guides quote GrabFood around 15 to 22 percent and foodpanda commonly 25 to 30 percent, but neither platform publishes one official rate card, so your signed merchant agreement is the number that matters.\n\nThose commission ranges come from Klikit's Malaysia commission guide and other POS vendor guides. They are marketing sources, so treat them as directional.\n\n## Why the headline commission is not the real cost\n\nA commission is charged on the order value, so it grows with every discount you run, every combo you bundle and every voucher you co-fund. Many owners compare the platform commission with nothing at all. The right comparison is the gross profit you keep per order after food cost and packaging.\n\n## A break-even check you can run tonight\n\nThe numbers below are an arithmetic demonstration only. They are not the result of any restaurant.\n\n- Average delivery order: RM40\n- Commission at 25 percent: RM10\n- Food and packaging cost at 35 percent: RM14\n- Left before rider cost, staff time and ads: RM16\n\nIf your delivery dishes run food cost above about 50 percent, a 25 percent commission leaves almost nothing before rider cost. Run this check on your three best-selling delivery dishes, not on your average order, because the highest-volume dish is often the lowest-margin one.\n\n## Three questions to ask the platform first\n\n1. Is the commission quoted before or after SST? Public guides suggest this differs by provider.\n2. Is the rate fixed, or does it change with your plan tier?\n3. If a voucher runs, is commission charged on the discounted price, and what share of that discount do you fund?\n\nIf the answers are unclear, ask the account team in writing before you list a new menu.\n\n## A 30-day test that does not waste money\n\nPick three delivery dishes. For two weeks, record orders, food cost and net margin per order before any ads. Then add one small ad or promotion and record the same numbers for the next two weeks. Keep the channel only if net profit per order stays positive after commission and ad cost, and total profit rises. A rise in order count alone is not enough.\n\n## Where paid ads fit\n\nPlatform ad products are priced case by case, and public Malaysian pricing data is thin. Start with a small, time-boxed test and judge it by cost per incremental order, not by impressions. A useful rule: if ad cost plus commission eats the whole margin, the ad is buying volume at a loss.\n\nYou can also move repeat customers to your own ordering. Our [WhatsApp automation guide](/blog/whatsapp-business-api-malaysia-sme-automation-2026) explains how to set that up, and our [F&B digital marketing guide](/blog/pemasaran-digital-restoran-fnb-malaysia-2026) covers the wider funnel.\n\nCheaper Nexus is a Malaysian digital marketing agency. We do not run delivery-platform stores, but we can produce short videos and dish photography (a single design is RM150, or RM800 for 10), and set up Meta ads that send customers to WhatsApp ordering. Our First Trial Package is RM888 a month, one time per company, and includes 1 short video, 2 designs and a basic Meta ads setup. See [our services](/services) and [pricing](/pricing), or message Henry on WhatsApp at [wa.me/60172915754](https://wa.me/60172915754) (+60 17-291 5754).",
+  "writing_style": "professional",
+  "featured_image_prompt": null,
+  "word_count": 640,
+  "topic": "Commission break-even check for GrabFood and foodpanda, Malaysian restaurants (comparison and cost-benefit)",
+  "status": "published",
+  "created_at": "2026-11-16T09:00:00.000Z",
+  "image_url": "/blog/images/food-delivery-commission-break-even-malaysia-restaurant-2026.jpg",
+  "faq": [
+    {
+      "q": "Is GrabFood worth it for a small restaurant in Malaysia?",
+      "a": "It depends on margin, not reach alone. If a RM40 order carries a 15 to 22 percent commission, that is roughly RM6 to RM9 per order before food cost, packaging, rider cost and ads. Test three dishes for 30 days and compare net profit per order with your dine-in margin."
+    },
+    {
+      "q": "What commission do foodpanda and GrabFood charge in Malaysia?",
+      "a": "No single official rate is published. Public vendor guides quote roughly 15 to 22 percent for GrabFood and 25 to 30 percent for foodpanda, depending on plan and contract. Confirm your exact rate in your merchant agreement and ask whether it is calculated before or after SST."
+    },
+    {
+      "q": "Should I raise delivery menu prices to cover the commission?",
+      "a": "Some operators test a higher delivery price. On an RM40 dish with a 25 percent commission, you keep RM30 before food cost. Raising the delivery price to RM44 may recover the gap, but only keep it if order volume holds up over two weeks of tracking."
+    },
+    {
+      "q": "How do I calculate break-even for one delivery order?",
+      "a": "Start with the selling price, then subtract commission, food and packaging cost, rider cost and any ad cost. A RM40 order at 25 percent commission and 35 percent food cost leaves RM16 before rider, packaging, ads and staff. If the figure is near zero, the channel adds volume but not profit."
+    },
+    {
+      "q": "Can WhatsApp ordering replace delivery apps for my restaurant?",
+      "a": "Only partly. WhatsApp ordering avoids platform commission, but you handle marketing, order coordination and any delivery arrangements yourself. Use it first for repeat customers, and compare the payment gateway fee you pay with the commission you save."
+    }
+  ]
+}
