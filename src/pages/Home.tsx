@@ -440,7 +440,9 @@ export default function Home() {
             {cards.map((card, i) => (
               <motion.div key={i} {...stagger(i)}>
                 <Link
-                  to="/services"
+                  /* The social media card is the one service with a page of
+                     its own; the rest still land on the service list. */
+                  to={i === 1 ? '/social-media-management' : '/services'}
                   className="group flex flex-col h-full p-8 rounded-[28px] border border-white/8 bg-white/[0.03] hover:border-brand-cyan/30 hover:bg-white/[0.06] transition-all duration-300"
                 >
                   {/* Icon */}

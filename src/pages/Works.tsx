@@ -92,49 +92,9 @@ export default function Works() {
         <link rel="alternate" hrefLang="en-MY" href={canonical} />
         <link rel="alternate" hrefLang="ms-MY" href={canonical} />
         <link rel="alternate" hrefLang="x-default" href={canonical} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'CollectionPage',
-            name: t.metaTitle,
-            description: t.metaDesc,
-            url: canonical,
-            hasPart: works.map(w => ({
-              '@type': 'CreativeWork',
-              name: `${w.client_name} — ${w.industry.en}`,
-              url: `${SITE_URL}/works/${w.slug}`,
-              creator: { '@type': 'Organization', name: 'Cheaper Nexus' },
-            })),
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'OfferCatalog',
-            name: o.pricingTitle,
-            url: `${canonical}#pricing`,
-            provider: { '@type': 'Organization', name: 'Cheaper Nexus', url: SITE_URL },
-            itemListElement: offerT.en.tiers.map(tier => ({
-              '@type': 'Offer',
-              name: tier.name,
-              price: tier.price.replace(/[^\d]/g, ''),
-              priceCurrency: 'MYR',
-              description: tier.features.join('; '),
-              url: `${canonical}#pricing`,
-            })),
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: o.faqs.map(f => ({
-              '@type': 'Question',
-              name: f.q,
-              acceptedAnswer: { '@type': 'Answer', text: f.a },
-            })),
-          })}
-        </script>
+        {/* CollectionPage, OfferCatalog and FAQPage schema are emitted by
+            scripts/prerender.mjs into this route's static <head>, which React
+            never replaces. Repeating them here put two of each on the page. */}
       </Helmet>
 
       <Navbar lang={lang} setLang={setLang} />

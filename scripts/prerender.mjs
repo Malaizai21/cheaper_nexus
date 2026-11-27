@@ -72,7 +72,7 @@ const LEGAL_NAME = 'Cheaper Nexus Sdn Bhd';
 const SSM_NUMBER = '202601007953 (1670051-W)';
 const wrapEnd = `<hr style="margin:32px 0 16px;border:0;border-top:1px solid rgba(10,25,47,.12)" />`
   + `<p style="font-size:13px;color:rgba(10,25,47,.55)">${LEGAL_NAME} ${SSM_NUMBER}</p>`
-  + `<p style="font-size:13px"><a href="/">Home</a> · <a href="/services">Services</a> · <a href="/works">Work &amp; Pricing</a> · <a href="/blog">Blog</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></p>`
+  + `<p style="font-size:13px"><a href="/">Home</a> · <a href="/services">Services</a> · <a href="/social-media-management">Social Media Management</a> · <a href="/works">Work &amp; Pricing</a> · <a href="/blog">Blog</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></p>`
   + '</div>';
 
 /** Same-language related articles ranked by keyword + topic overlap (mirrors Article.tsx). */
@@ -412,6 +412,88 @@ const staticPages = [
 <p>WhatsApp us for a free 30-minute strategy consultation with no commitment: Henry +60 17-291 5754. 免费 30 分钟策略咨询，直接 WhatsApp 联系。</p>`,
   },
   {
+    // The flagship service on its own URL. /services lists six services in
+    // parallel and ranks for none of them; the two agencies above us cover
+    // this whole cluster with a homepage and one deep service page.
+    path: 'social-media-management',
+    title: 'Social Media Agency Malaysia | FB, IG, TikTok, XHS from RM2,888 | Cheaper Nexus',
+    description: 'Social media management Malaysia: script, filming, editing, design, daily page management and Meta ads handled by one team across Facebook, Instagram, TikTok and Xiaohongshu. RM2,888/month, prices published, real client cost-per-conversation data.',
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Social Media Management',
+        serviceType: 'Social media marketing',
+        provider: { '@type': 'Organization', name: 'Cheaper Nexus', url: SITE_URL },
+        areaServed: { '@type': 'Country', name: 'Malaysia' },
+        url: `${SITE_URL}/social-media-management`,
+        offers: {
+          '@type': 'Offer',
+          price: '2888',
+          priceCurrency: 'MYR',
+          url: `${SITE_URL}/social-media-management`,
+          description: '2 short videos, 5 professional designs with IG feed layout, daily management of Facebook, Instagram, TikTok and Xiaohongshu, and Meta ads management. Ad spend not included.',
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          ['How much does social media management cost in Malaysia?', 'The Cheaper Nexus Social Media Management Package is RM2,888 per month, covering 2 short videos, 5 designs, daily management of four platforms and Meta ads management. To see the production standard first, the First Trial Package is RM888, limited to one per company.'],
+          ['Does the package price include ad spend?', 'No. The package covers our production and management work. Meta and TikTok ad spend is paid by you directly to the platform from your own ad account, at whatever budget you set.'],
+          ['Which platforms do you manage?', 'One Facebook, Instagram, TikTok and Xiaohongshu account each as standard. The Full Business Growth Package (RM8,888 / 3 months) adds Google Business Profile, Waze, Telegram and Lemon8.'],
+          ['What language is the content in?', 'Chinese, English or Bahasa Malaysia, depending on who you are selling to. Several clients run two language versions of the same campaign as separate ad sets.'],
+          ['How long until the work is delivered?', 'Counting from package and script confirmation, videos and designs are usually delivered within a week. Shoot scheduling and revision rounds affect this, and firm dates are agreed during the first consultation.'],
+          ['Can I see your past work first?', 'Yes. Work for 10 Malaysian clients is published alongside the full price list on one page, and 8 of those case studies carry real Meta campaign cost data.'],
+        ].map(([q, a]) => ({
+          '@type': 'Question',
+          name: q,
+          acceptedAnswer: { '@type': 'Answer', text: a },
+        })),
+      },
+    ],
+    body: `<h1>Social Media Agency Malaysia — Social Media Management 社媒代运营</h1>
+<p>Cheaper Nexus runs social media management for Malaysian SMEs from Kuala Lumpur. From writing the script to running the ads, it is handled by one team. This is not post scheduling — we make the content, then pay to put it in front of people who do not follow you yet. 从写脚本到投广告，一个团队做完。</p>
+
+<h2>We take the whole loop 我们接手的是整条链路</h2>
+<p>Most "social media management" in Malaysia only does the last step: you still have to think up and shoot the content yourself. We cover six stages instead.</p>
+<ul>
+<li><strong>Script</strong> — written around what your customers are actually thinking, not off a template. You approve the direction before anything is filmed.</li>
+<li><strong>Filming</strong> — we come and shoot. You provide the product or service details and a place to film.</li>
+<li><strong>Editing</strong> — finished short-form video with subtitles, sound and pacing, in Chinese, English or Bahasa Malaysia depending on who you sell to.</li>
+<li><strong>Design</strong> — graphic design plus IG feed layout, so the account reads as one brand instead of a pile of unrelated posts.</li>
+<li><strong>Daily management</strong> — day-to-day posting and upkeep on Facebook, Instagram, TikTok and Xiaohongshu.</li>
+<li><strong>Meta ads</strong> — good content still needs reach. We run and optimise the ads; you set the budget and pay the platform directly.</li>
+</ul>
+
+<h2>Channels covered 覆盖平台</h2>
+<p>Facebook, Instagram, TikTok and Xiaohongshu (小红书) are standard on the Social Media Management Package. The Full Business Growth Package (RM8,888 / 3 months) adds Google Business Profile, Waze, Telegram and Lemon8.</p>
+
+<h2>Real campaign results 真实投放成效</h2>
+<p>Eight of our ten published case studies carry the cost per WhatsApp conversation we actually produced — figures from the campaigns themselves, not an industry average. They range from RM3.94 to RM43.37 depending on the industry and the offer. We publish the unit cost only, never spend or volume: that is the client's budget and it should not leak out through us. See <a href="/works">client work and pricing</a>.</p>
+
+<h2>Who this suits 适合什么样的生意</h2>
+<p>Owners running their own marketing who have run out of hours for it; businesses that know short-form video works but cannot produce it weekly; anyone who hired separate freelancers and ended up with a different tone on every platform; and businesses already paying for Meta ads but short on creative to run.</p>
+
+<h2>What we do not do 这些我们不做</h2>
+<p>Website builds, Google Ads, SEO and full e-commerce operations. We do not offer these, and we will say so on the first call rather than take the job and work it out later. 建网站、Google 广告代投、SEO、电商全案 —— 这几块我们不接。</p>
+
+<h2>How it works 合作流程</h2>
+<p>Everything starts with a free 30-minute WhatsApp conversation about your business, your customers and your budget, in which we tell you which package fits or that none of them do. Script and design direction are agreed before filming starts, so a whole shoot day is never spent on the wrong idea. Filming, editing, design and copywriting are then handled by us. Content goes live, ads start, and we review the numbers monthly and adjust.</p>
+
+<h2>Price 价格</h2>
+<p>The <strong>Social Media Management Package is RM2,888 per month</strong>. It includes two short videos (script, filming, editing and copywriting), five professional designs plus IG feed layout, daily management of one Facebook, Instagram, TikTok and Xiaohongshu account each, and Meta ads management and optimisation.</p>
+<p>Ad spend is not included — you pay the platform directly from your own ad account, at whatever budget you set. Model and influencer fees are also excluded. To see the production standard before committing to anything monthly, the <a href="/pricing">First Trial Package</a> is RM888, limited to one per company.</p>
+
+<h2>Common questions 常见问题</h2>
+<p><strong>How much does social media management cost in Malaysia?</strong> With Cheaper Nexus it is RM2,888 per month for the Social Media Management Package, or RM888 once for the First Trial Package.</p>
+<p><strong>Does the package price include ad spend?</strong> No. The package covers production and management. Meta and TikTok ad spend is paid by you directly to the platform.</p>
+<p><strong>What language is the content in?</strong> Chinese, English or Bahasa Malaysia. Several clients run two language versions of the same campaign as separate ad sets.</p>
+<p><strong>How long until the work is delivered?</strong> Usually within a week of package and script confirmation.</p>
+
+<p>WhatsApp Henry at +60 17-291 5754 for a free 30-minute consultation with no commitment. See also the <a href="/services">full service list</a>, <a href="/works">client work</a> and <a href="/pricing">all prices</a>. 免费 30 分钟咨询，直接 WhatsApp 联系。</p>`,
+  },
+  {
     path: 'pricing',
     title: 'Pricing 价格方案 | Cheaper Nexus — Trial from RM888',
     description: 'Transparent digital marketing pricing Malaysia: First Trial Package RM888 (one-time), Social Media Management RM2,888/month, Full Business Growth Package RM8,888/3 months, Ads Management from RM2,000/month, KOC/KOL from RM3,888. No hidden fees.',
@@ -492,7 +574,11 @@ for (const page of staticPages) {
     <meta property="og:site_name" content="Cheaper Nexus" />
     <meta property="og:image" content="${SITE_URL}/logo-og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script type="application/ld+json">${JSON.stringify(bizSchema)}</script>`.trimStart();
+    <script type="application/ld+json">${JSON.stringify(bizSchema)}</script>${
+      // A page may carry its own schema on top of the business one — a Service
+      // page wants Service + FAQPage, which is what AI answers quote from.
+      (page.schema || []).map(s => `\n    <script type="application/ld+json">${JSON.stringify(s)}</script>`).join('')
+    }`.trimStart();
 
   const html = buildPage(cleanShell(baseHtml, { nested: true }), {
     headMeta,
@@ -803,6 +889,9 @@ const today = new Date().toISOString().slice(0, 10);
 const staticUrls = [
   { loc: `${SITE_URL}/`, priority: '1.0', changefreq: 'weekly', lastmod: today },
   { loc: `${SITE_URL}/services`, priority: '0.9', changefreq: 'monthly', lastmod: today },
+  // The flagship service page carries the same priority as the homepage's
+  // commercial pages — it is the one meant to win the keyword cluster.
+  { loc: `${SITE_URL}/social-media-management`, priority: '0.9', changefreq: 'monthly', lastmod: today },
   { loc: `${SITE_URL}/about`, priority: '0.6', changefreq: 'yearly', lastmod: today },
   { loc: `${SITE_URL}/pricing`, priority: '0.9', changefreq: 'monthly', lastmod: today },
   { loc: `${SITE_URL}/contact`, priority: '0.8', changefreq: 'monthly', lastmod: today },

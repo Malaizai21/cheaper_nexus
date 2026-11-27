@@ -375,6 +375,21 @@ export default function Services() {
                 <p key={i} className="text-white/60 leading-relaxed">{p}</p>
               ))}
               <p className="text-brand-cyan font-semibold pt-2">{agencyCopy[lang].aside}</p>
+
+              {/* Social media management is the service most clients come for
+                  and the only one with a page of its own, so this list hands
+                  off to it rather than treating all six as equals. */}
+              <Link
+                to="/social-media-management"
+                className="group mt-4 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-cyan/35 bg-brand-cyan/[0.07] text-brand-cyan font-bold hover:bg-brand-cyan/15 transition-colors"
+              >
+                {lang === 'zh'
+                  ? '社媒代运营详情 — RM 2,888／月'
+                  : lang === 'ms'
+                    ? 'Butiran pengurusan media sosial — RM2,888/bulan'
+                    : 'Social media management in detail — RM2,888/month'}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </div>
         </div>
